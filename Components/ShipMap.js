@@ -27,7 +27,7 @@ convertor.translate([shipPt], 1, 5, (data) => {
 
   map.addOverlay(shipMarker);
 
-  shipMarker.addEventListener("click", function(){    
+  shipMarker.addEventListener("click", function () {
     // alert("Clicked on the ship");
     map.centerAndZoom(shipPt, 10);
     if (document.getElementById("pop-up-ship-info").hidden) {
@@ -35,8 +35,7 @@ convertor.translate([shipPt], 1, 5, (data) => {
     } else {
       document.getElementById("pop-up-ship-info").hidden = true;
     }
-    
-});  
+  });
 })
 
 
