@@ -21,7 +21,7 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 
     <!-- layui CSS -->
-    <link rel="stylesheet" href="../layui-v2.5.5/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
 
     <title>Hello, world!</title>
 
@@ -81,44 +81,50 @@
         </div>
 
         <div class="pop-up" id="pop-up-ship-info" hidden="true">
-            <div class="ship-info-header">
-                <h6 class="ship-info"> SHIP INFO </h6>
-                <button class="edit-button"><img src="./Images/icon_edit.png"></button>
-                <button class="close-button" id="close-button-infobox"><img src="./Images/icon_close.png"></button>
+            <div class="ship-info-header-bar">
+                <h6 class="ship-info">Ship Name</h6>
+                <button class="edit-button"><img src="./Images/icon_edit.png" style="width:15px;height:15px;"></button>
+                <button class="close-button" id="close-button-infobox"><img src="./Images/icon_close.png"
+                        style="width:15px;height:15px;"></button>
             </div>
 
-            <div class="ship-info-left-block">
-                <p>Name: <span>RenJian 6</span></p>
-                <p>Name: <span>RenJian 6</span></p>
-                <p>Name: <span>RenJian 6</span></p>
-                <p>Name: <span>RenJian 6</span></p>
-                <img class="ship-image" src="./Images/CIR-logo.png">
+            <div class="ship-info-group">
+                <div class="ship-info-left-block">
+                    <p class=“ship-info-heading>Name: <span>RenJian 6</span></p>
+                    <p class=“ship-info-heading>Name: <span>RenJian 6</span></p>
+                    <p class=“ship-info-heading>Name: <span>RenJian 6</span></p>
+                    <p class=“ship-info-heading>Name: <span>RenJian 6</span></p>
+                    <img class="ship-image" src="./Images/CIR-logo.png">
+                </div>
+
+                <div class="ship-info-right-block">
+                    <p>Name: <span>RenJian 6</span></p>
+                    <p>Name: <span>RenJian 6</span></p>
+                    <p>Name: <span>RenJian 6</span></p>
+                    <p>Name: <span>RenJian 6</span></p>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+                            <input type="tel" name="url" lay-verify="url" autocomplete="off" class="layui-input">
+                        </div>
+                        <button type="button" class="layui-btn layui-btn-normal">Select</button>
+                        <button type="button" class="layui-btn layui-btn-primary">Cancel</button>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="button" class="layui-btn layui-btn-normal">Select</button>
+                    <button type="button" class="layui-btn layui-btn-normal">Cancel</button>
+                </div>
             </div>
-
-            <div class="ship-info-right-block">
-                <p>Name: <span>RenJian 6</span></p>
-                <p>Name: <span>RenJian 6</span></p>
-                <p>Name: <span>RenJian 6</span></p>
-                <p>Name: <span>RenJian 6</span></p>
-            </div>
-            <form id="ship-detail-box">
-                <input type="text">
-            </form>
-            <button id="search-button">Search</button>
-            <button id="cancel-button">Cancel</button>
-
-            <div>
-                <button id="observe-button">Observe</button>
-                <button id="select-button">Select</button>
-            </div>
-
-
         </div>
 
         <!-- Change name box -->
         <div class="pop-up" id="pop-up-change-name" hidden="true">
             <div class="ship-info-header">
-                <h6 class="ship-info"> SHIP INFO </h6>
+                <h6 class="ship-info">Ship Name</h6>
                 <button class="close-button" id="close-button-infobox"><img src="./Images/icon_close.png"></button>
             </div>
             <span>
