@@ -16,17 +16,20 @@ body {
   background: white;
   margin-left: 5%;
   margin-top: 2%;
-  height: 50%;
-  width: 20%;
+  height: 45%;
+  width: 23%;
   position: absolute;
   z-index: 1;
   /*---------------------------------------------ship-info--------zwj-------------------------------------------------------*/
 }
-.pop-up .ship-info-header {
+.pop-up p {
+  margin: 5%;
+}
+.pop-up .ship-info-header-bar {
   background: dodgerblue;
 }
 .pop-up .ship-info {
-  padding: 5px;
+  margin-left: 4%;
   color: white;
   display: inline;
 }
@@ -35,31 +38,33 @@ body {
   vertical-align: middle;
   border-color: transparent;
   background-color: transparent;
-  height: 5px;
-  width: 5px;
-  padding-right: 25px;
+  margin: 2%;
 }
 .pop-up .edit-button {
   vertical-align: middle;
   border-color: transparent;
   background-color: transparent;
-  height: 5px;
-  width: 5px;
-  padding-bottom: 32px;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 .pop-up .ship-info-left-block {
   width: 50%;
   float: left;
-  padding: 5px;
 }
 .pop-up .ship-info-left-block .ship-image {
+  margin: 5%;
   width: 70px;
   height: 70px;
 }
 .pop-up .ship-info-right-block {
   width: 50%;
   float: right;
-  padding: 5px;
+}
+.pop-up .ship-info-heading {
+  margin: 100%;
+}
+.pop-up .ship-info-group {
+  margin: 2%;
 }
 .pop-up #ship-detail-box {
   margin: 1%;
