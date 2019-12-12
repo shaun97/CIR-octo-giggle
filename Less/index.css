@@ -16,7 +16,7 @@ body {
   background: white;
   margin-left: 10%;
   margin-top: 2%;
-  height: 40%;
+  height: 43%;
   width: 30%;
   position: absolute;
   z-index: 1;
@@ -60,4 +60,35 @@ body {
   width: 50%;
   float: right;
   padding: 5px;
+}
+#pop-up-ship-info #ship-detail-box {
+  margin: 1%;
+  display: inline;
+}
+#pop-up-ship-info #search-button {
+  background-color: dodgerblue;
+  color: white;
+  border: transparent;
+  margin: 1%;
+  margin-left: 0%;
+}
+#pop-up-ship-info #cancel-button {
+  background-color: grey;
+  color: white;
+  border: transparent;
+  margin: 1%;
+  margin-left: 0%;
+}
+#pop-up-ship-info #observe-button {
+  background-color: dodgerblue;
+  color: white;
+  border: transparent;
+  margin: 1%;
+}
+#pop-up-ship-info #select-button {
+  background-color: dodgerblue;
+  color: white;
+  border: transparent;
+  margin: 1%;
+  margin-left: 0%;
 }
