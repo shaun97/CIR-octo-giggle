@@ -26,7 +26,7 @@ body {
   margin: 5%;
 }
 .pop-up .ship-info-header-bar {
-  background: dodgerblue;
+  background: #0853e2;
 }
 .pop-up .ship-info {
   margin-left: 4%;
@@ -71,7 +71,7 @@ body {
   display: inline;
 }
 .pop-up #search-button {
-  background-color: dodgerblue;
+  background-color: #0853e2;
   color: white;
   border: transparent;
   margin: 1%;
@@ -85,27 +85,33 @@ body {
   margin-left: 0%;
 }
 .pop-up #observe-button {
-  background-color: dodgerblue;
+  background-color: #0853e2;
   color: white;
   border: transparent;
   margin: 1%;
 }
 .pop-up #select-button {
-  background-color: dodgerblue;
+  background-color: #0853e2;
   color: white;
   border: transparent;
   margin: 1%;
   margin-left: 0%;
 }
+.pop-up .two-buttons {
+  text-align: center;
+}
 #pop-up-change-name {
-  height: 30%;
+  height: 20%;
   width: 15%;
   left: 23%;
+}
+#name-form-baby {
+  margin-block-end: 10%;
+  padding-top: 10%;
 }
 #search-bar {
   position: absolute;
   margin-top: 2%;
-  margin-left: 1%;
   width: 50%;
   z-index: 1;
 }

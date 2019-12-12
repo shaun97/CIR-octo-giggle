@@ -80,6 +80,7 @@
             </button>
         </div>
 
+        <!-- Pop up ship info -->
         <div class="pop-up" id="pop-up-ship-info" hidden="true">
             <div class="ship-info-header-bar">
                 <h6 class="ship-info">Ship Name</h6>
@@ -122,15 +123,26 @@
         </div>
 
         <!-- Change name box -->
-        <div class="pop-up" id="pop-up-change-name" hidden="true">
-            <div class="ship-info-header">
-                <h6 class="ship-info">Ship Name</h6>
-                <button class="close-button" id="close-button-infobox"><img src="./Images/icon_close.png"></button>
+        <div class="pop-up" id="pop-up-change-name">
+            <div class="ship-info-header-bar">
+                <h6 class="ship-info">Edit Name</h6>
+                <!-- <button class="edit-button"><img src="./Images/icon_edit.png" style="width:15px;height:15px;"></button> -->
+                <button class="close-button" id="close-button-infobox"><img src="./Images/icon_close.png"
+                        style="width:15px;height:15px;"></button>
             </div>
-            <span>
-                <form style="display: inline;"><input type="text"></form>
-                <button style="display: inline;">Change</button>
-            </span>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label name-form-baby">Name</label>
+                <div class="layui-input-block name-form-baby">
+                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="New name"
+                        class="layui-input">
+                </div>
+            </div>
+
+            <div class="two-buttons">
+                <button type="button" class="layui-btn layui-btn-normal">Change</button>
+                <button type="button" class="layui-btn layui-btn-normal">Cancel</button>
+            </div>
         </div>
 
         <div class="map" id="ship-map"></div>
