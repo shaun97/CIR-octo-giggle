@@ -14,23 +14,23 @@ body {
 }
 .pop-up {
   background: white;
-  margin-left: 10%;
+  margin-left: 5%;
   margin-top: 2%;
-  height: 43%;
-  width: 30%;
+  height: 50%;
+  width: 20%;
   position: absolute;
   z-index: 1;
+  /*---------------------------------------------ship-info--------zwj-------------------------------------------------------*/
 }
-/*---------------------------------------------ship-info--------zwj-------------------------------------------------------*/
-#pop-up-ship-info .ship-info-header {
+.pop-up .ship-info-header {
   background: dodgerblue;
 }
-#pop-up-ship-info .ship-info {
+.pop-up .ship-info {
   padding: 5px;
   color: white;
   display: inline;
 }
-#pop-up-ship-info .close-button {
+.pop-up .close-button {
   float: right;
   vertical-align: middle;
   border-color: transparent;
@@ -39,7 +39,7 @@ body {
   width: 5px;
   padding-right: 25px;
 }
-#pop-up-ship-info .edit-button {
+.pop-up .edit-button {
   vertical-align: middle;
   border-color: transparent;
   background-color: transparent;
@@ -47,48 +47,53 @@ body {
   width: 5px;
   padding-bottom: 32px;
 }
-#pop-up-ship-info .ship-info-left-block {
+.pop-up .ship-info-left-block {
   width: 50%;
   float: left;
   padding: 5px;
 }
-#pop-up-ship-info .ship-info-left-block .ship-image {
+.pop-up .ship-info-left-block .ship-image {
   width: 70px;
   height: 70px;
 }
-#pop-up-ship-info .ship-info-right-block {
+.pop-up .ship-info-right-block {
   width: 50%;
   float: right;
   padding: 5px;
 }
-#pop-up-ship-info #ship-detail-box {
+.pop-up #ship-detail-box {
   margin: 1%;
   display: inline;
 }
-#pop-up-ship-info #search-button {
+.pop-up #search-button {
   background-color: dodgerblue;
   color: white;
   border: transparent;
   margin: 1%;
   margin-left: 0%;
 }
-#pop-up-ship-info #cancel-button {
+.pop-up #cancel-button {
   background-color: grey;
   color: white;
   border: transparent;
   margin: 1%;
   margin-left: 0%;
 }
-#pop-up-ship-info #observe-button {
+.pop-up #observe-button {
   background-color: dodgerblue;
   color: white;
   border: transparent;
   margin: 1%;
 }
-#pop-up-ship-info #select-button {
+.pop-up #select-button {
   background-color: dodgerblue;
   color: white;
   border: transparent;
   margin: 1%;
   margin-left: 0%;
+}
+#pop-up-change-name {
+  height: 30%;
+  width: 15%;
+  left: 23%;
 }
