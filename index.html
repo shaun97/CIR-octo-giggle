@@ -21,7 +21,7 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 
     <!-- layui CSS -->
-    <link rel="stylesheet" href="../layui-v2.5.5/layui/css/layui.css">
+    <link rel="stylesheet" href="../layui-v2.5.5/layui/css/layui.css" media="all">
 
     <title>Hello, world!</title>
 
@@ -29,7 +29,7 @@
 
 <body>
     <!-- layui Javascript -->
-    <script src="../layui-v2.5.5/layui/layui.all.js"></script>
+    <script src="../layui-v2.5.5/layui/layui.js"></script>
 
     <div id=body>
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -38,10 +38,10 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <form class="form-inline my-2 my-lg-0">
+            <!-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item active">
@@ -67,6 +67,17 @@
                     </li>
                 </ul>
             </div>
+        </div>
+
+        <!-- Search bar baby -->
+        <div class="layui-form-item" id="search-bar">
+            <div class="layui-input-block search-bar-item" id="search-form">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Search"
+                    class="layui-input">
+            </div>
+            <button type="button" class="layui-btn layui-btn-primary search-bar-item" id="search-button">
+                <img src="./Images/icon_search.png">
+            </button>
         </div>
 
         <div class="pop-up" id="pop-up-ship-info" hidden="true">
@@ -105,14 +116,14 @@
         </div>
 
         <div class="pop-up" id="pop-up-change-name" hidden="true">
-                <div class="ship-info-header">
-                        <h6 class="ship-info"> SHIP INFO </h6>
-                        <button class="close-button" id="close-button-infobox"><img src="./Images/icon_close.png"></button>
-                    </div>
-                <span>
-                    <form style="display: inline;"><input type="text"></form>
-                    <button style="display: inline;">Change</button>
-                </span>
+            <div class="ship-info-header">
+                <h6 class="ship-info"> SHIP INFO </h6>
+                <button class="close-button" id="close-button-infobox"><img src="./Images/icon_close.png"></button>
+            </div>
+            <span>
+                <form style="display: inline;"><input type="text"></form>
+                <button style="display: inline;">Change</button>
+            </span>
         </div>
 
         <div class="map" id="ship-map"></div>
@@ -134,5 +145,6 @@
 <script type="text/javascript" src="./Components/NavBar.js"></script>
 <script type="text/javascript" src="./Components/ShipMap.js"></script>
 <script type="text/javascript" src="./Components/ShipInfoBox.js"></script>
+<script type="text/javascript" src="./Components/Search.js"></script>
 
 </html>

@@ -15,7 +15,7 @@ body {
 .pop-up {
   background: white;
   margin-left: 5%;
-  margin-top: 2%;
+  margin-top: 7%;
   height: 50%;
   width: 20%;
   position: absolute;
@@ -96,4 +96,25 @@ body {
   height: 30%;
   width: 15%;
   left: 23%;
+}
+#search-bar {
+  position: absolute;
+  margin-top: 2%;
+  margin-left: 1%;
+  width: 50%;
+  z-index: 1;
+}
+#search-bar #search-form {
+  width: 70%;
+}
+#search-bar #search-button {
+  background-color: cornflowerblue;
+}
+#search-bar .search-bar-item {
+  float: left;
+}
+#search-bar img {
+  position: relative;
+  width: 80%;
+  height: 60%;
 }
