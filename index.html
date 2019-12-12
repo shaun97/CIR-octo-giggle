@@ -29,7 +29,7 @@
 
 <body>
     <!-- layui Javascript -->
-    <script src="../layui-v2.5.5/layui/layui.js"></script>
+    <script src="./layui/layui.all.js"></script>
 
     <div id=body>
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -76,7 +76,7 @@
                     class="layui-input">
             </div>
             <button type="button" class="layui-btn layui-btn-primary search-bar-item" id="search-button">
-                <img src="./Images/icon_search.png">
+                <img src="./Images/icon_search.png" id="search-image">
             </button>
         </div>
 
@@ -84,7 +84,7 @@
         <div class="pop-up" id="pop-up-ship-info" hidden="true">
             <div class="ship-info-header-bar">
                 <h6 class="ship-name-header">Ship Name</h6>
-                <button class="edit-button"><img src="./Images/icon_edit.png" style="width:15px;height:15px;"></button>
+                <button class="edit-button" id="edit-button-infobox"><img src="./Images/icon_edit.png" style="width:15px;height:15px;"></button>
                 <button class="close-button" id="close-button-infobox"><img src="./Images/icon_close.png"
                         style="width:15px;height:15px;"></button>
             </div>
@@ -115,7 +115,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="two-buttons">
                     <button type="button" class="layui-btn layui-btn-normal">Select</button>
                     <button type="button" class="layui-btn layui-btn-normal">Cancel</button>
                 </div>
@@ -123,18 +123,18 @@
         </div>
 
         <!-- Change name box -->
-        <div class="pop-up" id="pop-up-change-name">
+        <div class="pop-up" id="pop-up-change-name" hidden="true">
             <div class="ship-info-header-bar">
-                <h6 class="ship-info">Edit Name</h6>
+                <h6 class="ship-name-header" id="edit-name">Edit Name</h6>
                 <!-- <button class="edit-button"><img src="./Images/icon_edit.png" style="width:15px;height:15px;"></button> -->
-                <button class="close-button" id="close-button-infobox"><img src="./Images/icon_close.png"
+                <button class="close-button" id="close-button-editnamebox"><img src="./Images/icon_close.png"
                         style="width:15px;height:15px;"></button>
             </div>
 
-            <div class="layui-form-item">
-                <label class="layui-form-label name-form-baby">Name</label>
-                <div class="layui-input-block name-form-baby">
-                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="New name"
+            <div class="layui-form-item" id="new-name-form">
+                <label class="layui-form-label" id="name-label">Name</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="New Name"
                         class="layui-input">
                 </div>
             </div>
@@ -145,6 +145,7 @@
             </div>
         </div>
 
+        <!-- Map -->
         <div class="map" id="ship-map"></div>
 
     </div>
@@ -164,6 +165,7 @@
 <script type="text/javascript" src="./Components/NavBar.js"></script>
 <script type="text/javascript" src="./Components/ShipMap.js"></script>
 <script type="text/javascript" src="./Components/ShipInfoBox.js"></script>
+<script type="text/javascript" src="./Components/ShipEditNameBox.js"></script>
 <script type="text/javascript" src="./Components/Search.js"></script>
 
 </html>
