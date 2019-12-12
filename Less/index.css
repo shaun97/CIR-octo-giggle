@@ -15,118 +15,64 @@ body {
 .pop-up {
   background: white;
   margin-left: 5%;
-  margin-top: 7%;
-  height: 50%;
-  width: 20%;
+  margin-top: 2%;
+  height: 45%;
+  width: 24%;
   position: absolute;
   z-index: 1;
   /*---------------------------------------------ship-info--------zwj-------------------------------------------------------*/
 }
 .pop-up p {
   margin: 5%;
+  margin-left: 0%;
 }
 .pop-up .ship-info-header-bar {
-  background: #0853e2;
+  background: dodgerblue;
 }
-.pop-up .ship-info {
-  margin-left: 4%;
+.pop-up .ship-info-header-bar .ship-name-header {
+  margin-left: 5%;
   color: white;
   display: inline;
 }
-.pop-up .close-button {
+.pop-up .ship-info-header-bar .close-button {
   float: right;
   vertical-align: middle;
   border-color: transparent;
   background-color: transparent;
   margin: 2%;
 }
-.pop-up .edit-button {
+.pop-up .ship-info-header-bar .edit-button {
   vertical-align: middle;
   border-color: transparent;
   background-color: transparent;
   margin-top: 2%;
   margin-bottom: 2%;
 }
-.pop-up .ship-info-left-block {
+.pop-up .ship-info-group {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.pop-up .ship-info-group .ship-info-left-block {
+  text-align: left;
   width: 50%;
   float: left;
 }
-.pop-up .ship-info-left-block .ship-image {
-  margin: 5%;
+.pop-up .ship-info-group .ship-info-left-block .ship-image {
+  margin-bottom: 7%;
   width: 70px;
   height: 70px;
 }
-.pop-up .ship-info-right-block {
+.pop-up .ship-info-group .ship-info-right-block {
+  text-align: left;
   width: 50%;
   float: right;
 }
-.pop-up .ship-info-heading {
-  margin: 100%;
+.pop-up .ship-info-group .cancel-button {
+  margin-right: -5%;
+  background-color: lightgrey;
 }
-.pop-up .ship-info-group {
-  margin: 2%;
-}
-.pop-up #ship-detail-box {
-  margin: 1%;
-  display: inline;
-}
-.pop-up #search-button {
-  background-color: #0853e2;
-  color: white;
-  border: transparent;
-  margin: 1%;
-  margin-left: 0%;
-}
-.pop-up #cancel-button {
-  background-color: grey;
-  color: white;
-  border: transparent;
-  margin: 1%;
-  margin-left: 0%;
-}
-.pop-up #observe-button {
-  background-color: #0853e2;
-  color: white;
-  border: transparent;
-  margin: 1%;
-}
-.pop-up #select-button {
-  background-color: #0853e2;
-  color: white;
-  border: transparent;
-  margin: 1%;
-  margin-left: 0%;
-}
-.pop-up .two-buttons {
-  text-align: center;
-}
-#pop-up-change-name {
-  height: 20%;
+.pop-up #pop-up-change-name {
+  height: 30%;
   width: 15%;
   left: 23%;
-}
-#name-form-baby {
-  margin-block-end: 10%;
-  padding-top: 10%;
-}
-#search-bar {
-  position: absolute;
-  margin-top: 2%;
-  width: 50%;
-  z-index: 1;
-}
-#search-bar #search-form {
-  width: 70%;
-}
-#search-bar #search-button {
-  background-color: #0853e2;
-}
-#search-bar .search-bar-item {
-  float: left;
-}
-#search-bar img {
-  position: relative;
-  width: 80%;
-  height: 60%;
-  margin-bottom: 10%;
 }
