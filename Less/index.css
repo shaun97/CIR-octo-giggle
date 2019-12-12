@@ -108,7 +108,7 @@ body {
   width: 70%;
 }
 #search-bar #search-button {
-  background-color: cornflowerblue;
+  background-color: #0853e2;
 }
 #search-bar .search-bar-item {
   float: left;
@@ -117,4 +117,5 @@ body {
   position: relative;
   width: 80%;
   height: 60%;
+  margin-bottom: 10%;
 }
