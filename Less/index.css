@@ -70,11 +70,20 @@ body {
 }
 #observed-list {
   height: 50%;
-  width: 20%;
+  width: 28%;
   right: 15%;
 }
 #observed-list-header {
   margin-top: 3%;
+}
+#add-ship-title {
+  width: 100%;
+  margin-left: 0%;
+  text-align: left;
+}
+.add-ship-label {
+  padding-right: 0%;
+  padding-left: 0%;
 }
 #pop-up-change-name {
   height: 20%;
@@ -127,6 +136,7 @@ body {
   width: 60%;
   height: auto;
 }
+<<<<<<< HEAD
 .blue-button {
   background-color: #0953e2;
 }
@@ -156,4 +166,9 @@ body {
 #right-float-parent .image {
   width: 100%;
   height: auto;
+=======
+#test1 {
+  overflow-y: scroll;
+  height: 80px;
+>>>>>>> 31a131741dc1f9ef533fefce85f3b6c03ccf1075
 }

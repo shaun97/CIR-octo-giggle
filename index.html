@@ -22,7 +22,6 @@
 
     <!-- Own CSS -->
     <link rel="stylesheet" href="./Less/index.css">
-    
     <title>Hello, world!</title>
 
 </head>
@@ -142,18 +141,70 @@
                             style="width:15px;height:15px;"></button>
                 </div>
             </div>
-            <!-- <div class="ship-info-group" id="observed-list-group">
-                <form class="layui-form">
-                    <label class="layui-form-label">原始复选框</label>
+            <div class="ship-info-group" id="observed-list-group">
+                <!--Checkbox goes here-->
+                <label class="layui-form-label" id="add-ship-title">Add ship</label>
+                <hr>
+                </hr>
+                <form class="layui-form" action="">
+                    <label class="layui-form-label" id="add-ship-title">Add ship</label>
                     <div class="layui-form-item">
+                        <label class="layui-form-label add-ship-label">Name of </label>
                         <div class="layui-input-block">
-                            <input type="checkbox" name="like2[write]" title="写作" checked>
-                            <input type="radio" name="sex" value="1" title="女" checked>
+                            <input type="text" name="username" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？"
+                                placeholder="请输入" autocomplete="off" class="layui-input">
                         </div>
                     </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label add-ship-label">Name of </label>
+                        <div class="layui-input-block">
+                            <input type="text" name="username" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？"
+                                placeholder="请输入" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="two-buttons">
+                        <button type="button" class="layui-btn layui-btn-normal">Change</button>
+                        <button type="button" class="layui-btn layui-btn-normal">Cancel</button>
+                    </div>
                 </form>
-            </div> -->
+                <hr>
+                </hr>
+                <div id="test1">tree</div>
+            </div>
         </div>
+
+        <script>
+            layui.use('tree', function () {
+                var tree = layui.tree;
+                //渲染
+                var inst1 = tree.render({
+                    elem: '#test1'  //绑定元素
+                    , showLine: false
+                    , data: [{
+                        title: '江西' //一级菜单
+                        , children: [{
+                            title: '南昌' //二级菜单
+                            , children: [{
+                                title: '高新区' //三级菜单
+                                , title: '高新区' //三级菜单
+                                , title: '高新区' //三级菜单
+                                //…… //以此类推，可无限层级
+                            }]
+                        }]
+                    }, {
+                        title: '陕西' //一级菜单
+                        , children: [{
+                            title: '西安' //二级菜单
+                        }]
+                    }, {
+                        title: '陕西' //一级菜单
+                        , children: [{
+                            title: '西安' //二级菜单
+                        }]
+                    }]
+                });
+            });
+        </script>
 
         <!-- Map -->
         <div class="map" id="ship-map"></div>
