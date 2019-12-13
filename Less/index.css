@@ -68,10 +68,6 @@ body {
   width: 50%;
   float: right;
 }
-.pop-up .ship-info-group .cancel-button {
-  margin-right: -5%;
-  background-color: lightgrey;
-}
 #observed-list {
   height: 50%;
   width: 20%;
@@ -100,7 +96,6 @@ body {
 }
 #search-button {
   width: 10%;
-  background-color: #0953e2;
 }
 #search-image {
   height: 60%;
@@ -131,4 +126,12 @@ body {
   padding-bottom: 10%;
   width: 60%;
   height: auto;
+}
+.blue-button {
+  background-color: #0953e2;
+}
+.cancel-button {
+  color: black;
+  margin-right: -5%;
+  background-color: lightgrey;
 }
