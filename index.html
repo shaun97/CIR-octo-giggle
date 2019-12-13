@@ -84,7 +84,8 @@
         <div class="pop-up" id="pop-up-ship-info" hidden="true">
             <div class="ship-info-header-bar">
                 <h6 class="ship-name-header">Ship Name</h6>
-                <button class="edit-button" id="edit-button-infobox"><img src="./Images/icon_edit.png" style="width:15px;height:15px;"></button>
+                <button class="edit-button" id="edit-button-infobox"><img src="./Images/icon_edit.png"
+                        style="width:15px;height:15px;"></button>
                 <button class="close-button" id="close-button-infobox"><img src="./Images/icon_close.png"
                         style="width:15px;height:15px;"></button>
             </div>
@@ -142,6 +143,31 @@
             <div class="two-buttons">
                 <button type="button" class="layui-btn layui-btn-normal">Change</button>
                 <button type="button" class="layui-btn layui-btn-normal">Cancel</button>
+            </div>
+        </div>
+
+        <!-- Observed Ships List -->
+        <div class="pop-up" id="observed-list">
+            <!-- Change to true afterwards -->
+            <div class="ship-info-header-bar">
+                <div class="ship-name-header-bar" id="observed-list-bar">
+                    <h6 class="ship-name-header" id="observed-list-header"><img src="./Images/icon_flitrate_ship.png">
+                        Observed List</h6>
+                    <!--- change to star-->
+                    <button class="close-button" id="close-button-observedlistbox"><img src="./Images/icon_close.png"
+                            style="width:15px;height:15px;"></button>
+                </div>
+            </div>
+            <div class="ship-info-group" id="observed-list-group">
+                <form class="layui-form">
+                    <label class="layui-form-label">原始复选框</label>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="like2[write]" title="写作">
+                            <input type="radio" name="sex" value="1" title="女" checked>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
 

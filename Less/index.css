@@ -72,6 +72,14 @@ body {
   margin-right: -5%;
   background-color: lightgrey;
 }
+#observed-list {
+  height: 50%;
+  width: 20%;
+  right: 15%;
+}
+#observed-list-header {
+  margin-top: 3%;
+}
 #pop-up-change-name {
   height: 20%;
   width: 15%;
