@@ -136,7 +136,6 @@ body {
   width: 60%;
   height: auto;
 }
-<<<<<<< HEAD
 .blue-button {
   background-color: #0953e2;
 }
@@ -166,9 +165,8 @@ body {
 #right-float-parent .image {
   width: 100%;
   height: auto;
-=======
+}
 #test1 {
   overflow-y: scroll;
   height: 80px;
->>>>>>> 31a131741dc1f9ef533fefce85f3b6c03ccf1075
 }
