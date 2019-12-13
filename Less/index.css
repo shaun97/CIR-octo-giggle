@@ -96,7 +96,7 @@ body {
 }
 #search-image {
   height: 60%;
-  width: 50%;
+  width: auto;
 }
 #new-name-form {
   padding: 5%;
@@ -112,4 +112,15 @@ body {
 }
 #edit-name {
   margin-top: 5%;
+}
+#logo {
+  padding-bottom: 23%;
+  align-content: right;
+  width: 60%;
+  height: auto;
+}
+#user-logo {
+  padding-bottom: 10%;
+  width: 60%;
+  height: auto;
 }
