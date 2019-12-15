@@ -30,10 +30,10 @@ convertor.translate([shipPt], 1, 5, (data) => {
   shipMarker.addEventListener("click", function () {
     // alert("Clicked on the ship");
     map.centerAndZoom(shipPt, 10);
-    if (document.getElementById("pop-up-ship-info").hidden) {
-      document.getElementById("pop-up-ship-info").hidden = false;
+    if (document.getElementById("ship-info-box").hidden) {
+      document.getElementById("ship-info-box").hidden = false;
     } else {
-      document.getElementById("pop-up-ship-info").hidden = true;
+      document.getElementById("ship-info-box").hidden = true;
     }
   });
 })

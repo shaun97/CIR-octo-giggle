@@ -1,98 +1,150 @@
 html {
-  height: 100%;
+  height: 100vh;
 }
 body {
-  height: 100%;
+  height: 100vh;
   margin: 0px;
   padding: 0px;
 }
 #body {
-  height: 100%;
+  height: 100vh;
 }
 #ship-map {
-  height: 94%;
+  height: 93%;
+}
+.my-nav {
+  background-color: black;
+  border-radius: 0px;
 }
 .pop-up {
-  background: white;
-  margin-left: 5%;
-  margin-top: 7%;
-  height: 45%;
-  width: 25%;
   position: absolute;
   z-index: 1;
+  background: white;
+  display: block;
 }
-.pop-up p {
-  margin: 5%;
-  margin-left: 0%;
-}
-.pop-up .ship-info-header-bar {
+.pop-up .pop-up-header {
   background: #0953e2;
-  height: 35px;
-}
-.pop-up .ship-info-header-bar .ship-name-header {
   position: relative;
-  margin-left: 5%;
+  height: 35px;
+  width: 100%;
+}
+.pop-up .pop-up-header .pop-up-header-text {
+  position: absolute;
+  top: 25%;
+  left: 25px;
   color: white;
-  display: inline-block;
 }
-.pop-up .ship-info-header-bar .close-button {
-  float: right;
-  vertical-align: middle;
-  border-color: transparent;
+.pop-up .pop-up-header .pop-up-header-button {
+  position: absolute;
+  top: 20%;
   background-color: transparent;
-  margin: 2%;
+  border: transparent;
 }
-.pop-up .ship-info-header-bar .edit-button {
-  vertical-align: middle;
-  border-color: transparent;
-  background-color: transparent;
-  margin-top: 2%;
-  margin-bottom: 2%;
+.pop-up .pop-up-header .edit-button {
+  left: 33%;
 }
-.pop-up .ship-info-group {
+.pop-up .pop-up-header .close-button {
+  right: 10px;
+}
+#ship-info-box {
+  margin-left: 7.3%;
+  margin-top: 7%;
+  height: 400px;
+  width: 330px;
+}
+#ship-info-box #inquire-bar {
+  margin-right: 0px;
+  width: 60%;
+}
+#ship-info-box #inq-btn {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+#ship-info-box #clr-btn {
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-left: 0px;
+}
+#ship-info-box .row-info {
+  position: absolute;
+  margin: 15px 5px 5px 5px;
+}
+#ship-info-box .row-info .big-item {
+  margin-top: 10px;
+}
+#ship-info-box .row-info .item {
+  display: inline;
+  margin-left: 5px;
+}
+#ship-info-box .row-1 {
+  left: 5%;
+}
+#ship-info-box .row-2 {
+  left: 50%;
+}
+#ship-info-box .ship-image {
+  position: absolute;
+  height: 20%;
+  width: auto;
+  margin-top: 45%;
+  margin-left: 8%;
+}
+#ship-info-box .inquire-row {
+  margin-top: 75%;
+  margin-left: 7%;
+}
+#change-name-box {
+  margin-left: 30%;
+  margin-top: 7%;
+  height: 170px;
+  width: 250px;
+}
+#change-name-box #new-name-form {
+  margin-top: 5%;
+}
+#change-name-box #name-label {
+  position: relative;
+  padding-left: 5%;
   margin-left: 5%;
   margin-right: 5%;
+  width: 20%;
 }
-.pop-up .ship-info-group .ship-info-left-block {
-  text-align: left;
-  width: 50%;
-  float: left;
+#change-name-box #input-bar {
+  position: relative;
+  width: 63%;
 }
-.pop-up .ship-info-group .ship-info-left-block .ship-image {
-  margin-bottom: 7%;
-  width: 70px;
-  height: 70px;
-}
-.pop-up .ship-info-group .ship-info-right-block {
-  text-align: left;
-  width: 50%;
-  float: right;
-}
-#observed-list {
+#observed-list-box {
+  right: 5%;
+  margin-top: 7%;
+  width: 23%;
   height: 50%;
-  width: 28%;
-  right: 15%;
 }
-#observed-list-header {
-  margin-top: 3%;
+#observed-list-box .form-item {
+  position: relative;
+  width: 90%;
 }
-#add-ship-title {
-  width: 100%;
-  margin-left: 0%;
+#observed-list-box .add-ship-title {
+  position: relative;
+  width: 90%;
+  margin-left: 3%;
   text-align: left;
 }
-.add-ship-label {
+#observed-list-box .add-ship-label {
+  position: relative;
   padding-right: 0%;
   padding-left: 0%;
+  margin-right: 0%;
 }
-#pop-up-change-name {
-  height: 20%;
-  width: 15%;
-  left: 26%;
+#observed-list-box #ship-list {
+  position: relative;
+  margin-left: 3%;
+  overflow-y: scroll;
+  height: 80px;
 }
 #search-bar {
   margin-top: 2%;
-  width: 50%;
+  left: 0.7%;
+  width: 50.2%;
   position: absolute;
   background-color: transparent;
   z-index: 1;
@@ -100,30 +152,19 @@ body {
 #search-bar .search-bar-item {
   float: left;
 }
-#search-form {
-  width: 60%;
+#search-bar #search-form {
+  width: 65%;
 }
-#search-button {
+#search-bar #search-button {
   width: 10%;
 }
-#search-image {
+#search-bar #search-image {
   height: 60%;
   width: auto;
 }
-#new-name-form {
-  padding: 5%;
-  padding-bottom: 0%;
-}
-.two-buttons {
-  text-align: center;
-  margin: 0 auto;
-}
-#id-label {
+#search-bar #id-label {
   width: -10%;
   padding: -5%;
-}
-#edit-name {
-  margin-top: 5%;
 }
 #logo {
   padding-bottom: 23%;
@@ -135,14 +176,6 @@ body {
   padding-bottom: 10%;
   width: 60%;
   height: auto;
-}
-.blue-button {
-  background-color: #0953e2;
-}
-.cancel-button {
-  color: black;
-  margin-right: -5%;
-  background-color: lightgrey;
 }
 #right-float-parent {
   margin-top: 2%;
@@ -167,7 +200,14 @@ body {
   width: 50%;
   height: auto;
 }
-#test1 {
-  overflow-y: scroll;
-  height: 80px;
+.two-buttons {
+  text-align: center;
+}
+.blue-button {
+  background-color: #0953e2;
+}
+.cancel-button {
+  color: black;
+  margin-right: -5%;
+  background-color: lightgrey;
 }

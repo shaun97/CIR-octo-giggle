@@ -1,7 +1,6 @@
-var close = document.getElementById("close-button-editnamebox");
+var close = document.getElementById("edit-name-close-button");
 close.setAttribute("onClick", "closeEditHandler()");
 
 function closeEditHandler() {
-  // alert("close plz");
-  document.getElementById("pop-up-change-name").hidden = true;
+  document.getElementById("change-name-box").hidden = true;
 }

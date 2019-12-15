@@ -2,7 +2,7 @@ layui.use('tree', function () {
   var tree = layui.tree;
   //渲染
   var inst1 = tree.render({
-      elem: '#test1'  //绑定元素
+      elem: '#ship-list'  //绑定元素
       , showLine: false
       , data: [{
           title: '江西' //一级菜单

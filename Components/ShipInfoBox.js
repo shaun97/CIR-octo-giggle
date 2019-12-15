@@ -1,13 +1,13 @@
-var close = document.getElementById("close-button-infobox");
+var close = document.getElementById("info-close-button");
 close.setAttribute("onClick", "closeInfoHandler()");
 
 function closeInfoHandler() {
-  document.getElementById("pop-up-ship-info").hidden = true;
+  document.getElementById("ship-info-box").hidden = true;
 }
 
-var close = document.getElementById("edit-button-infobox");
+var close = document.getElementById("info-edit-button");
 close.setAttribute("onClick", "editHandler()");
 
 function editHandler() {
-  document.getElementById("pop-up-change-name").hidden = false;
+  document.getElementById("change-name-box").hidden = false;
 }

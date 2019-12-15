@@ -1,162 +1,181 @@
 html {
-  height: 100%
+  height: 100vh
 }
 
 body {
-  height : 100%;
+  height : 100vh;
   margin : 0px;
   padding: 0px
 }
 
 #body {
-  height: 100%
+  height: 100vh
 }
 
 #ship-map {
-  height: 94%
+  height: 93%;
 }
 
+.my-nav{
+  background-color: black;
+  border-radius: 0px;
+}
 // --------------- pop-up styling --------------- //
-
 .pop-up {
+  position: absolute;
+  z-index : 1;
   background : white;
-  margin-left: 5%;
+  display: block;
+  .pop-up-header{
+    background : #0953e2;
+    position: relative; //important
+    height: 35px;
+    width: 100%;
+    .pop-up-header-text{
+      position: absolute; //important
+      top: 25%; 
+      left: 25px;
+      color: white;
+    }
+    .pop-up-header-button{
+      position: absolute;
+      top: 20%; 
+      background-color: transparent;
+      border: transparent;
+    }
+    .edit-button{
+      left: 33%;
+    }
+    .close-button{
+      right: 10px;
+    }
+  }
+}
+#ship-info-box {
+  margin-left: 7.3%;
   margin-top : 7%;
-  height     : 45%;
-  width      : 25%;
-  position   : absolute;
-  z-index    : 1;
-
-  p {
-    margin     : 5%;
-    margin-left: 0%;
+  height     : 400px;
+  width      : 330px;
+  #inquire-bar{
+    margin-right: 0px;
+    width: 60%;
   }
-
-  .ship-info-header-bar {
-    background: #0953e2;
-    height    : 35px;
-
-    .ship-name-header {
-      position   : relative;
-      margin-left: 5%;
-      color      : white;
-      display    : inline-block;
-
+  #inq-btn{
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+  #clr-btn{
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: 0px;
+  }
+  .row-info {
+    position: absolute;
+    margin: 15px 5px 5px 5px;
+    .big-item{
+      margin-top: 10px;
     }
-
-    .close-button {
-      float           : right;
-      vertical-align  : middle;
-      border-color    : transparent;
-      background-color: transparent;
-      margin          : 2%;
-    }
-
-    .edit-button {
-      vertical-align  : middle;
-      border-color    : transparent;
-      background-color: transparent;
-      margin-top      : 2%;
-      margin-bottom   : 2%;
+    .item {
+      display: inline;
+      margin-left: 5px;
     }
   }
-
-  .ship-info-group {
-    margin-left : 5%;
+  .row-1 {
+    left: 5%;
+  }
+  .row-2 {
+    left: 50%;
+  }
+  .ship-image{
+    position: absolute;
+    height: 20%;
+    width: auto;
+    margin-top: 45%;
+    margin-left: 8%;
+  }
+  .inquire-row{
+    margin-top: 75%;
+    margin-left: 7%;
+  }
+}
+#change-name-box {
+  margin-left: 30%;
+  margin-top : 7%;
+  height     : 170px;
+  width      : 250px;
+  #new-name-form{
+    margin-top:5%;
+  }
+  #name-label {
+    position: relative;
+    padding-left: 5%;
+    margin-left: 5%;
     margin-right: 5%;
-
-    .ship-info-left-block {
-      text-align: left;
-      width     : 50%;
-      float     : left;
-
-      .ship-image {
-        margin-bottom: 7%;
-        width        : 70px;
-        height       : 70px;
-      }
-    }
-
-    .ship-info-right-block {
-      text-align: left;
-      width     : 50%;
-      float     : right;
-    }
+    width: 20%;
+  }
+  #input-bar{
+    position: relative;
+    width: 63%;
+  }
+}
+#observed-list-box {
+  right: 5%;
+  margin-top : 7%;
+  width: 23%;
+  height: 50%;
+  .form-item{
+    position: relative;
+    width: 90%;
+  }
+  .add-ship-title {
+    position: relative;
+    width      : 90%;
+    margin-left: 3%;
+    text-align : left;
+  }
+  .add-ship-label {
+    position: relative;
+    padding-right: 0%;
+    padding-left : 0%;
+    margin-right: 0%;
+  }
+  #ship-list {
+    position: relative;
+    margin-left:3%; 
+    overflow-y: scroll;
+    height    : 80px;
   }
 }
 
-// ---------------  name styling --------------- //
-#observed-list {
-  height: 50%;
-  width : 28%;
-  right : 15%;
-}
-
-#observed-list-header {
-  margin-top: 3%;
-}
-
-#add-ship-title {
-  width      : 100%;
-  margin-left: 0%;
-  text-align : left;
-}
-
-.add-ship-label {
-  padding-right: 0%;
-  padding-left : 0%;
-}
-
-// --------------- edit name styling --------------- //
-#pop-up-change-name {
-  height: 20%;
-  width : 15%;
-  left  : 26%;
-}
+// --------------- search bar styling --------------- //
 
 #search-bar {
   margin-top      : 2%;
-  width           : 50%;
+  left: 0.7%;
+  width           : 50.2%;
   position        : absolute;
   background-color: transparent;
   z-index         : 1;
-
   .search-bar-item {
     float: left;
   }
+  #search-form {
+    width: 65%;
+  }
+  #search-button {
+    width: 10%;
+  }
+  #search-image {
+    height: 60%;
+    width : auto;
+  }
+  #id-label {
+    width  : -10%;
+    padding: -5%;
+  }
 }
 
-#search-form {
-  width: 60%;
-}
-
-#search-button {
-  width: 10%;
-}
-
-#search-image {
-  height: 60%;
-  width : auto;
-}
-
-#new-name-form {
-  padding       : 5%;
-  padding-bottom: 0%;
-}
-
-.two-buttons {
-  text-align: center;
-  margin    : 0 auto;
-}
-
-#id-label {
-  width  : -10%;
-  padding: -5%;
-}
-
-#edit-name {
-  margin-top: 5%;
-}
+// ----------------------- nav-bar ------------------- //
 
 #logo {
   padding-bottom: 23%;
@@ -171,15 +190,7 @@ body {
   height        : auto;
 }
 
-.blue-button {
-  background-color: #0953e2;
-}
-
-.cancel-button {
-  color           : black;
-  margin-right    : -5%;
-  background-color: lightgrey;
-}
+// ----------------------- right-float ------------------- //
 
 #right-float-parent {
   margin-top           : 2%;
@@ -195,7 +206,7 @@ body {
 
   .layui-btn {
     width           : 45%;
-    float: left;
+    float           : left;
     margin          : 0;
     background-color: transparent;
     border          : transparent;
@@ -207,7 +218,16 @@ body {
   }
 }
 
-#test1 {
-  overflow-y: scroll;
-  height    : 80px;
+// ----------------------- buttons ------------------- //
+
+.two-buttons {
+  text-align: center;
+}
+.blue-button {
+  background-color: #0953e2;
+}
+.cancel-button {
+  color           : black;
+  margin-right    : -5%;
+  background-color: lightgrey;
 }
