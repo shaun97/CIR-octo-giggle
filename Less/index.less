@@ -1,3 +1,11 @@
+@blue: #006ce7;
+@icon-grey: #cccccc;
+@border-grey: #dcdcdc;
+@word-grey: #bcbcbc;
+@word-black: #333333;
+@button-grey: #e5e5e5;
+
+
 html {
   height: 100vh
 }
@@ -27,7 +35,7 @@ body {
   background : white;
   display: block;
   .pop-up-header{
-    background : #0953e2;
+    background : @blue;
     position: relative; //important
     height: 35px;
     width: 100%;
@@ -72,6 +80,8 @@ body {
     padding-left: 7px;
     padding-right: 7px;
     margin-left: 0px;
+    background-color: @button-grey;
+    color: @word-black;
   }
   .row-info {
     position: absolute;
@@ -184,21 +194,21 @@ ul, #myUL {
 }
 
 /* Create the caret/arrow with a unicode, and style it */
-.caret::before {
-  content: "\25B6";
-  color: black;
+.caret-icon {
+  color: @icon-grey;
   display: inline-block;
-  margin-right: 6px;
+  font-size: 13px;
+  margin-right: 2%;
 }
 
 /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
-.caret-down::before {
+.caret-icon-down {
   transform: rotate(90deg);
 }
 
 /* Hide the nested list */
 .nested {
-  margin-left: 6%;
+  margin-left: 6.5%;
   display: none;
 }
 
@@ -300,12 +310,12 @@ ul, #myUL {
   text-align: center;
 }
 .blue-button {
-  background-color: #0953e2;
+  background-color:@blue;
 }
 .cancel-button {
   color           : black;
   margin-right    : -5%;
-  background-color: lightgrey;
+  background-color: @button-grey;
 }
 .layui-btn:focus {
   border: 10px;
