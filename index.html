@@ -55,7 +55,8 @@
 
         <!-- Right Float -->
         <div class="layui-btn-group" id="right-float-parent">
-            <button type="button" class="layui-btn" id="star-button"><img class="image" src="./Images/icon_add_white.png" class="image">
+            <button type="button" class="layui-btn" id="star-button"><img class="image"
+                    src="./Images/icon_add_white.png" class="image">
                 增加</button>
             <button type="button" class="layui-btn "><img class="image" src="./Images/icon_flitrate_ship.png"
                     class="image"> 编辑</button>
@@ -149,7 +150,7 @@
             <!-- Change to true afterwards -->
             <div class="ship-info-header-bar">
                 <div class="pop-up-header">
-                    <h6 class="pop-up-header-text"><img src="./Images/icon_flitrate_ship.png">
+                    <h6 class="pop-up-header-text"><img src="./Images/icon_add_white.png" style="height:17px; width:17px">
                         Observed List</h6>
                     <button class="pop-up-header-button close-button" id="observed-close-button"><img
                             src="./Images/icon_close.png"></button>
@@ -182,7 +183,49 @@
                 </form>
                 <hr>
                 </hr>
+                <!-- old code
                 <div id="ship-list">tree</div>
+                -->
+                <!-- test -->
+                <ul id="myUL">
+                    <li><span class="caret">Beverages</span> <div class="tree-buttons">
+                            <button class="indiv-tree-button" id="tree-button1"><img
+                                    src="./Images/icon_hide.png" class="tree-button-icon"></button>
+                            <button class="indiv-tree-button" id="tree-button2"><img
+                                    src="./Images/icon_info_myship_track.png" class="tree-button-icon"></button>
+                            <button class="indiv-tree-button" id="tree-button3"><img
+                                    src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
+                            <button class="indiv-tree-button" id="tree-button4"><img
+                                    src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                        </div>
+                        <ul class="nested">
+                            <li>Water <div class="tree-buttons">
+                                    <button class="indiv-tree-button" id="nested1-button1"><img
+                                            src="./Images/icon_hide.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="nested1-button2"><img
+                                            src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="nested1-button3"><img
+                                            src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="nested1-button4"><img
+                                            src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                                </div>
+                            </li>
+                            <li>Coffee <div class="tree-buttons">
+                                    <button class="indiv-tree-button" id="tree-button1"><img
+                                            src="./Images/icon_hide.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="tree-button2"><img
+                                            src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="tree-button3"><img
+                                            src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="tree-button4"><img
+                                            src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- end of test -->
             </div>
         </div>
 

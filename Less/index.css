@@ -118,6 +118,13 @@ body {
   margin-top: 7%;
   width: 23%;
   height: 50%;
+  /* Remove default bullets */
+  /* Remove margins and padding from the parent ul */
+  /* Style the caret/arrow */
+  /* Create the caret/arrow with a unicode, and style it */
+  /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+  /* Hide the nested list */
+  /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
 }
 #observed-list-box .form-item {
   position: relative;
@@ -140,6 +147,52 @@ body {
   margin-left: 3%;
   overflow-y: scroll;
   height: 80px;
+}
+#observed-list-box ul,
+#observed-list-box #myUL {
+  list-style-type: none;
+}
+#observed-list-box #myUL {
+  margin: 3%;
+  padding: 0;
+  overflow-y: scroll;
+  height: 80px;
+}
+#observed-list-box .caret {
+  cursor: pointer;
+  user-select: none;
+  /* Prevent text selection */
+}
+#observed-list-box .caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+#observed-list-box .caret-down::before {
+  transform: rotate(90deg);
+}
+#observed-list-box .nested {
+  margin-left: 6%;
+  display: none;
+}
+#observed-list-box .active {
+  display: block;
+}
+#observed-list-box .tree-buttons {
+  float: right;
+  margin-right: 3%;
+}
+#observed-list-box .tree-buttons .indiv-tree-button {
+  height: 13px;
+  width: 13px;
+  background-color: transparent;
+  border: transparent;
+}
+#observed-list-box .tree-buttons .indiv-tree-button .tree-button-icon {
+  height: 100%;
+  width: 100%;
+  filter: invert(40%);
 }
 #search-bar {
   margin-top: 2%;
