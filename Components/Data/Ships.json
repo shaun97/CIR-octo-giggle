@@ -1,0 +1,23 @@
+{
+  "id": "ships",
+  "fakeShips": [
+    {
+      "id": "123456789",
+      "lng": "122.020",
+      "lat": "31.650",
+      "name": "Ren Jian 6",
+      "nickname": "8888",
+      "country": "China [CN]",
+      "img": "../Images/Boaty-McBoatface-minisub.jpg"
+    },
+    {
+      "id": "543216789",
+      "lng": "121.020",
+      "lat": "31.050",
+      "name": "Ren Jian 6",
+      "nickname": "8888",
+      "country": "China [CN]",
+      "img": "../Images/Boaty-McBoatface-minisub.jpg"
+    }
+  ]
+}
