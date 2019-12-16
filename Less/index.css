@@ -46,6 +46,7 @@ body {
 .pop-up .pop-up-header .close-button {
   right: 10px;
 }
+
 #ship-info-box {
   margin-left: 7.3%;
   margin-top: 7%;
@@ -173,7 +174,7 @@ body {
   transform: rotate(90deg);
 }
 #observed-list-box .nested {
-  margin-left: 6%;
+  margin-left: 5%;
   display: none;
 }
 #observed-list-box .active {
