@@ -21,22 +21,36 @@ convertor.translate([point], 1, 5, (data) => {
 /**
  * Adding a point
  */
-var shipPt = new BMap.Point(122.020, 31.650);
-convertor.translate([shipPt], 1, 5, (data) => {
-  let shipMarker = new BMap.Marker(shipPt);
-
-  map.addOverlay(shipMarker);
-
-  shipMarker.addEventListener("click", function () {
-    // alert("Clicked on the ship");
-    map.centerAndZoom(shipPt, 10);
-    if (document.getElementById("ship-info-box").hidden) {
-      document.getElementById("ship-info-box").hidden = false;
-    } else {
-      document.getElementById("ship-info-box").hidden = true;
+var json = (function () {
+  var json = null;
+  $.ajax({
+    'async': false,
+    'global': false,
+    'url': "http://localhost:3000/posts",
+    'dataType': "json",
+    'success': function (data) {
+      json = data;
     }
   });
-})
+  return json;
+})();
+
+for (let i = 0; i < json.length; i++) {
+  let pt = new BMap.Point(json[i].lng, json[i].lat);
+  convertor.translate([pt], 1, 5, (data) => {
+    let ship = new BMap.Marker(pt);
+    map.addOverlay(ship);
+    ship.addEventListener("click", function () {
+      ship.data = json[i];
+      map.centerAndZoom(json.point, 10);
+      if (document.getElementById("ship-info-box").hidden) {
+        document.getElementById("ship-info-box").hidden = false;
+      } else {
+        document.getElementById("ship-info-box").hidden = true;
+      }
+    });
+  })
+}
 
 
 
