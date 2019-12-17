@@ -6,3 +6,13 @@ $(document).ready(function () {
     $("#change-name-box").show();
   });
 });
+
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  
+  laydate.render({
+    elem: '#ship-date-range'
+    ,range: true
+    , theme: '#006ce7'
+  });
+});
