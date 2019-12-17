@@ -23,41 +23,58 @@ body {
   display: block;
 }
 .pop-up .pop-up-header {
+  display: flex;
+  padding-left: 6%;
+  padding-: 6%;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   background: #006ce7;
   position: relative;
   height: 35px;
   width: 100%;
 }
 .pop-up .pop-up-header .pop-up-header-text {
-  position: absolute;
-  height: 100%;
-  top: 25%;
-  left: 20px;
+  position: relative;
+  height: auto;
   color: white;
 }
 .pop-up .pop-up-header .pop-up-header-button {
-  position: absolute;
-  top: 20%;
   background-color: transparent;
   border: transparent;
   height: auto;
   width: auto;
 }
 .pop-up .pop-up-header .edit-button {
-  left: 29%;
+  margin-left: 2%;
 }
 .pop-up .pop-up-header .close-button {
-  right: 10px;
+  margin-left: auto;
 }
 .pop-up .input-bar {
   position: relative;
   width: 63%;
 }
 #ship-info-box {
-  margin-left: 7.3%;
-  margin-top: 7%;
-  height: 400px;
-  width: 330px;
+  left: 7.3%;
+  top: 20%;
+  height: 350px;
+  width: 350px;
+}
+#ship-info-box .ship-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 4% 6% 4% 6%;
+}
+#ship-info-box .ship-details .row-info {
+  width: 48%;
+}
+#ship-info-box .ship-details .row-info .big-item {
+  margin-top: 10px;
+}
+#ship-info-box .ship-details .row-info .item {
+  display: inline;
 }
 #ship-info-box #inquire-bar {
   margin-right: 0px;
@@ -73,23 +90,6 @@ body {
   margin-left: 0px;
   background-color: #e5e5e5;
   color: #333333;
-}
-#ship-info-box .row-info {
-  position: absolute;
-  margin: 15px 5px 5px 5px;
-}
-#ship-info-box .row-info .big-item {
-  margin-top: 10px;
-}
-#ship-info-box .row-info .item {
-  display: inline;
-  margin-left: 5px;
-}
-#ship-info-box .row-1 {
-  left: 5%;
-}
-#ship-info-box .row-2 {
-  left: 50%;
 }
 #ship-info-box .ship-image {
   position: absolute;
