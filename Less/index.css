@@ -30,8 +30,9 @@ body {
 }
 .pop-up .pop-up-header .pop-up-header-text {
   position: absolute;
+  height: 100%;
   top: 25%;
-  left: 25px;
+  left: 20px;
   color: white;
 }
 .pop-up .pop-up-header .pop-up-header-button {
@@ -39,9 +40,11 @@ body {
   top: 20%;
   background-color: transparent;
   border: transparent;
+  height: auto;
+  width: auto;
 }
 .pop-up .pop-up-header .edit-button {
-  left: 33%;
+  left: 29%;
 }
 .pop-up .pop-up-header .close-button {
   right: 10px;
