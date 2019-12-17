@@ -58,7 +58,7 @@
             <button type="button" class="layui-btn" id="star-button"><img class="image"
                     src="./Images/icon_add_white.png" class="image">
                 增加</button>
-            <button type="button" class="layui-btn "><img class="image" src="./Images/icon_flitrate_ship.png"
+            <button type="button" class="layui-btn" id="filtrate-button"><img class="image" src="./Images/icon_flitrate_ship.png"
                     class="image"> 编辑</button>
         </div>
 
@@ -284,41 +284,89 @@
             </div>
             <div id="ship-filtrate-inner-box">
                 <div class="layui-btn-group filtrate-selector">
-                    <button type="button" class="layui-btn layui-btn-sm selector-button" id="selector-all-button">全选</button>
-                    <button type="button" class="layui-btn layui-btn-sm selector-button" id="selector-clear-button">清空</button>
+                    <button type="button" class="layui-btn layui-btn-sm selector-button"
+                        id="selector-all-button">全选</button>
+                    <button type="button" class="layui-btn layui-btn-sm selector-button"
+                        id="selector-clear-button">清空</button>
                 </div>
                 <div class="filtrate-sub-box">
                     <h6 class="filtrate-titles"><b>船舶类型</b></h6>
                     <ul class="filtrate-filters-options" id="filtrate-type-options">
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button" id="option-type-freighter-btn">散货船</button></li c>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button" id="option-type-container-btn">集装箱船</button></liclass="filtrate-option-li">
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button" id="option-type-oil-btn">邮轮</button></liclass="filtrate-option-li">
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button" id="option-type-tugboat-btn">拖轮/引航船</button></li>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button" id="option-type-fish-btn">渔船</button></li>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button" id="option-type-passenger-btn">客船</button></li>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button" id="option-type-others-btn">其他</button></li>
+                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
+                                id="option-type-freighter-btn">散货船</button></li c>
+                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
+                                id="option-type-container-btn">集装箱船</button></liclass="filtrate-option-li">
+                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
+                                id="option-type-oil-btn">邮轮</button></liclass="filtrate-option-li">
+                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
+                                id="option-type-tugboat-btn">拖轮/引航船</button></li>
+                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
+                                id="option-type-fish-btn">渔船</button></li>
+                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
+                                id="option-type-passenger-btn">客船</button></li>
+                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
+                                id="option-type-others-btn">其他</button></li>
                     </ul>
                 </div>
-                <hr></hr>
+                <hr>
+                </hr>
                 <div class="filtrate-sub-box">
-                      <h6 class="filtrate-titles"><b>船舶类型</b></h6>
+                    <h6 class="filtrate-titles"><b>船舶类型</b></h6>
                     <ul class="filtrate-filters-options" id="filtrate-type-options">
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button filtrate-size-btn" id="option-size-40-btn">0-40</button></li c>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button filtrate-size-btn" id="option-size-80-btn">41-80</button></liclass="filtrate-option-li">
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button filtrate-size-btn" id="option-size-120-btn">81-120</button></liclass="filtrate-option-li">
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button filtrate-size-btn" id="option-size-160-btn">121-160</button></li>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button filtrate-size-btn" id="option-size-240-btn">161-240</button></li>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button filtrate-size-btn" id="option-size-320-btn">241-320</button></li>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button filtrate-size-btn" id="option-size-320abv-btn">>320</button></li>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button" id="option-size-custom">自定义长度</button></li>
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm blue-button filtrate-size-btn"
+                                id="option-size-40-btn">0-40</button></li c>
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm blue-button filtrate-size-btn"
+                                id="option-size-80-btn">41-80</button></liclass="filtrate-option-li">
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm blue-button filtrate-size-btn"
+                                id="option-size-120-btn">81-120</button></liclass="filtrate-option-li">
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm blue-button filtrate-size-btn"
+                                id="option-size-160-btn">121-160</button></li>
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm blue-button filtrate-size-btn"
+                                id="option-size-240-btn">161-240</button></li>
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm blue-button filtrate-size-btn"
+                                id="option-size-320-btn">241-320</button></li>
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm blue-button filtrate-size-btn"
+                                id="option-size-320abv-btn">>320</button></li>
+                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
+                                id="option-size-custom">自定义长度</button></li>
                     </ul>
                 </div>
                 <hr>
                 </hr>
-                <div class="filtrate-sub-box"></div>
+                <div class="filtrate-sub-box">
+                    <h6 class="filtrate-titles"><b>传播速度</b></h6>
+                    <ul class="filtrate-filters-options" id="filtrate-type-options">
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm blue-button filtrate-speed-btn"
+                                id="option-size-40-btn">静止</button></li c>
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm blue-button filtrate-speed-btn"
+                                id="option-size-80-btn">在船</button></liclass="filtrate-option-li">
+                    </ul>
+                </div>
                 <hr>
                 </hr>
-                <div class="filtrate-sub-box"></div>
+                <div class="filtrate-sub-box">
+                    <h6 class="filtrate-titles"><b>船旗</b></h6>
+                    <ul class="filtrate-filters-options" id="filtrate-type-options">
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm blue-button"
+                                id="option-size-40-btn">中国大陆</button></li c>
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm blue-button"
+                                id="option-size-80-btn">中国港澳台</button></liclass="filtrate-option-li">
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm blue-button"
+                                id="option-size-80-btn">国外</button></liclass="filtrate-option-li">
+                    </ul>
+                </div>
             </div>
             <div class="filtrate-selector"></div>
 
@@ -336,5 +384,6 @@
 <script type="text/javascript" src="./Components/Search.js"></script>
 <script type="text/javascript" src="Components/ObservedList.js"></script>
 <script type="text/javascript" src="Components/RightFloat.js"></script>
+<script type="text/javascript" src="Components/FiltrateBox.js"></script>
 
 </html>
