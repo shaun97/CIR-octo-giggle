@@ -155,54 +155,8 @@ body {
   margin-bottom: 0;
 }
 #observed-list-box .show-ships-bar .display-ships-chkbox {
-  display: inline-block;
-  margin-top: 0;
-  margin-bottom: 10px;
-  position: relative;
-}
-#observed-list-box .show-ships-bar [type="checkbox"]:not(:checked) + label::before,
-#observed-list-box .show-ships-bar [type="checkbox"]:checked + label::before {
-  background: white none repeat scroll 0 0;
-  border: 1px solid #aaa;
-  content: "";
-  height: 28px;
-  left: 0;
-  position: absolute;
-  top: 2px;
-  width: 28px;
-}
-#observed-list-box .show-ships-bar [type="checkbox"]:not(:checked) + label::after {
-  opacity: 0;
-  transform: scale(0);
-}
-#observed-list-box .show-ships-bar [type="checkbox"]:not(:checked) + label::after,
-#observed-list-box .show-ships-bar [type="checkbox"]:checked + label::after {
-  color: #09ad7e;
-  content: "✔";
-  font-size: 32px;
-  left: 4px;
-  line-height: 0.8;
-  position: absolute;
-  top: 3px;
-  transition: all 0.2s ease 0s;
-}
-#observed-list-box .show-ships-bar [type="checkbox"]:not(:checked) + label,
-#observed-list-box .show-ships-bar [type="checkbox"]:checked + label {
-  cursor: pointer;
-  padding-left: 25px;
-  position: relative;
-}
-#observed-list-box .show-ships-bar .radio label,
-#observed-list-box .show-ships-bar .checkbox label {
-  cursor: pointer;
-  margin-bottom: 0;
-  min-height: 20px;
-  padding-left: 20px;
-  font-size: 1.125rem;
-  line-height: 32px;
-  font-weight: normal;
-  display: inline-block;
-  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 #observed-list-box .show-ships-bar .layui-form-label {
   padding-left: 0;
@@ -212,6 +166,7 @@ body {
 }
 #observed-list-box .add-ship-box .real-label {
   padding: 4px 8px 4px 4px;
+  margin-bottom: 2px;
   width: 25%;
   color: #bcbcbc;
 }
