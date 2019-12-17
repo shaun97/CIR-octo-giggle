@@ -163,25 +163,28 @@
                             src="./Images/icon_close.png" height="75%" width="75%"></button>
                 </div>
             </div>
-            <input type="checkbox" class="display-ships-box">
-            <label class="layui-form-label display-ship-text">隐藏未关注船</label>
-            <hr>
-            </hr>
-            <label class="layui-form-label display-ship-text">添加到船队</label>
-            <div class="layui-form-item">
-                <label class="layui-form-label real-label">船队分组</label>
-                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="搜索或创建"
-                    class="layui-input input-bar">
-                <button type="button" class="layui-btn layui-btn-sm" id="add-fleet-btn">&nbsp;+ 创建分组</button>
+            <div class="layui-form-item show-ships-bar">
+                <input type="checkbox" class="display-ships-chkbox">
+                <label class="layui-form-label observe-big-text">隐藏未关注船</label>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label real-label">自定义名称</label>
-                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder=""
-                    class="layui-input input-bar">
-            </div>
-            <div class="add-fleet-two-buttons">
-                <button type="button" class="layui-btn layui-btn-sm blue-button">保存</button>
-                <button type="button" class="layui-btn layui-btn-sm cancel-button">取消</button>
+            <hr />
+            <div class="add-ship-box">
+                <label class="layui-form-label observe-big-text">添加到船队</label>
+                <div class="layui-form-item">
+                    <label class="layui-form-label real-label">船队分组</label>
+                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="搜索或创建"
+                        class="layui-input input-bar">
+                    <button type="button" class="layui-btn layui-btn-sm" id="add-fleet-btn">&nbsp;+ 创建分组</button>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label real-label">自定义名称</label>
+                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder=""
+                        class="layui-input input-bar">
+                </div>
+                <div class="add-fleet-two-buttons">
+                    <button type="button" class="layui-btn layui-btn-sm blue-button">保存</button>
+                    <button type="button" class="layui-btn layui-btn-sm cancel-button">取消</button>
+                </div>
             </div>
             <hr />
             <div class="list-wrapper">
@@ -262,12 +265,36 @@
                                             src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
                                 </div>
                             </li>
+                            <li>Beer <div class="tree-buttons">
+                                    <button class="indiv-tree-button" id="tree-button1"><img
+                                            src="./Images/icon_hide.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="tree-button2"><img
+                                            src="./Images/icon_track_myship_track.png"
+                                            class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="tree-button3"><img
+                                            src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="tree-button4"><img
+                                            src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                                </div>
+                            </li>
+                            <li>Burger <div class="tree-buttons">
+                                    <button class="indiv-tree-button" id="tree-button1"><img
+                                            src="./Images/icon_hide.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="tree-button2"><img
+                                            src="./Images/icon_track_myship_track.png"
+                                            class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="tree-button3"><img
+                                            src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="tree-button4"><img
+                                            src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                                </div>
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </div>
             <div class="bottom">
-                <button type="button" class="layui-btn layui-btn-sm cancel-button">取消</button>
+                <button type="button" class="layui-btn layui-btn-sm blue-button">取消</button>
             </div>
         </div>
 

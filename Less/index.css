@@ -142,40 +142,92 @@ body {
   right: 5%;
   top: 21%;
   width: 23%;
-  height: 55%;
-  /* Remove default bullets */
-  /* Remove margins and padding from the parent ul */
-  /* Style the caret/arrow */
-  /* Create the caret/arrow with a unicode, and style it */
-  /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
-  /* Hide the nested list */
-  /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
-}
-#observed-list-box .display-ships-box {
-  margin-top: 2%;
-  margin-left: 6%;
-  margin-right: 0;
-  position: relative;
-  float: left;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-  border: black;
-}
-#observed-list-box .display-ship-text {
-  position: relative;
-  float: left;
-  text-align: left;
-  margin-left: 0;
-  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 0;
 }
-#observed-list-box .input-bar {
+#observed-list-box .show-ships-bar {
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0;
+}
+#observed-list-box .show-ships-bar .display-ships-chkbox {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 10px;
+  position: relative;
+}
+#observed-list-box .show-ships-bar [type="checkbox"]:not(:checked) + label::before,
+#observed-list-box .show-ships-bar [type="checkbox"]:checked + label::before {
+  background: white none repeat scroll 0 0;
+  border: 1px solid #aaa;
+  content: "";
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 2px;
+  width: 28px;
+}
+#observed-list-box .show-ships-bar [type="checkbox"]:not(:checked) + label::after {
+  opacity: 0;
+  transform: scale(0);
+}
+#observed-list-box .show-ships-bar [type="checkbox"]:not(:checked) + label::after,
+#observed-list-box .show-ships-bar [type="checkbox"]:checked + label::after {
+  color: #09ad7e;
+  content: "✔";
+  font-size: 32px;
+  left: 4px;
+  line-height: 0.8;
+  position: absolute;
+  top: 3px;
+  transition: all 0.2s ease 0s;
+}
+#observed-list-box .show-ships-bar [type="checkbox"]:not(:checked) + label,
+#observed-list-box .show-ships-bar [type="checkbox"]:checked + label {
+  cursor: pointer;
+  padding-left: 25px;
+  position: relative;
+}
+#observed-list-box .show-ships-bar .radio label,
+#observed-list-box .show-ships-bar .checkbox label {
+  cursor: pointer;
+  margin-bottom: 0;
+  min-height: 20px;
+  padding-left: 20px;
+  font-size: 1.125rem;
+  line-height: 32px;
+  font-weight: normal;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+#observed-list-box .show-ships-bar .layui-form-label {
+  padding-left: 0;
+}
+#observed-list-box .add-ship-box {
+  height: 180px;
+}
+#observed-list-box .add-ship-box .real-label {
+  padding: 4px 8px 4px 4px;
+  width: 25%;
+  color: #bcbcbc;
+}
+#observed-list-box .add-ship-box ::placeholder {
+  color: #bcbcbc;
+}
+#observed-list-box .add-ship-box .add-fleet-two-buttons {
+  position: relative;
+  left: 25%;
+}
+#observed-list-box .add-ship-box .input-bar {
   float: left;
   width: 50%;
   color: #bcbcbc;
 }
-#observed-list-box #add-fleet-btn {
+#observed-list-box .add-ship-box #add-fleet-btn {
   float: left;
   margin-left: 1%;
   background-color: white;
@@ -186,81 +238,90 @@ body {
   padding-left: 2px;
   padding-right: 4px;
 }
-#observed-list-box #ship-list {
-  position: relative;
-  margin-left: 3%;
+#observed-list-box hr {
+  margin: 0.5px 0.3px 0.5px 0.3px;
+}
+#observed-list-box .observe-big-text {
+  text-align: left;
+  margin-left: 0;
+  width: 40%;
+  margin-bottom: 0;
 }
 #observed-list-box .list-wrapper {
-  height: 15%;
+  max-height: 100px;
+  min-height: 70px;
   overflow-y: scroll;
+  height: 25%;
+  margin: 7px 3px 7px 5px;
+  /* Remove default bullets */
+  /* Remove margins and padding from the parent ul */
+  /* Style the caret/arrow */
+  /* Create the caret/arrow with a unicode, and style it */
+  /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+  /* Hide the nested list */
+  /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
 }
-#observed-list-box ul,
-#observed-list-box #myUL {
+#observed-list-box .list-wrapper ul,
+#observed-list-box .list-wrapper #myUL {
   list-style-type: none;
 }
-#observed-list-box #myUL {
-  margin: 3%;
+#observed-list-box .list-wrapper #myUL {
   padding: 0;
   overflow-y: scroll;
-  height: 80px;
+  height: auto;
 }
-#observed-list-box .caret {
+#observed-list-box .list-wrapper .caret {
   cursor: pointer;
   user-select: none;
   /* Prevent text selection */
 }
-#observed-list-box .caret-icon {
+#observed-list-box .list-wrapper .caret-icon {
   color: #cccccc;
   display: inline-block;
   font-size: 13px;
   margin-right: 2%;
 }
-#observed-list-box .caret-icon-down {
+#observed-list-box .list-wrapper .caret-icon-down {
   transform: rotate(90deg);
 }
-#observed-list-box .nested {
+#observed-list-box .list-wrapper .nested {
   margin-left: 6.5%;
   display: none;
 }
-#observed-list-box .active {
+#observed-list-box .list-wrapper .active {
   display: block;
 }
-#observed-list-box .tree-buttons {
+#observed-list-box .list-wrapper .tree-buttons {
   float: right;
   margin-right: 3%;
 }
-#observed-list-box .tree-buttons .indiv-tree-button {
+#observed-list-box .list-wrapper .tree-buttons .indiv-tree-button {
   height: 13px;
   width: 13px;
   background-color: transparent;
   border: transparent;
 }
-#observed-list-box .tree-buttons .indiv-tree-button .tree-button-icon {
+#observed-list-box .list-wrapper .tree-buttons .indiv-tree-button .tree-button-icon {
   height: 100%;
   width: 100%;
   filter: invert(40%);
 }
-#observed-list-box .layui-form-item {
+#observed-list-box .list-wrapper .layui-form-item {
   margin-bottom: 4px;
 }
-#observed-list-box .real-label {
-  padding: 4px 8px 4px 4px;
-  width: 25%;
-  color: #bcbcbc;
-}
-#observed-list-box ::placeholder {
-  color: #bcbcbc;
-}
-#observed-list-box .add-fleet-two-buttons {
-  position: relative;
-  left: 25%;
-}
 #observed-list-box .bottom {
-  background-color: lightblue;
-  display: absolute;
-  bottom: 0;
+  background-color: #DEECFD;
+  display: relative;
   width: 100%;
-  height: 40px;
+  height: 50px;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: auto;
+  align-items: center;
+}
+#observed-list-box .bottom .layui-btn {
+  width: 80px;
+  margin-right: 20px;
 }
 #search-bar {
   margin-top: 2%;
