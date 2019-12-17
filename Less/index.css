@@ -114,7 +114,7 @@ body {
 }
 #change-name-box {
   margin-left: 30%;
-  margin-top: 7%;
+  top: 20%;
   height: 170px;
   width: 250px;
 }
@@ -122,10 +122,9 @@ body {
   margin-top: 5%;
 }
 #change-name-box #name-label {
-  position: relative;
   padding-left: 5%;
+  padding-right: 2%;
   margin-left: 5%;
-  margin-right: 5%;
   width: 20%;
 }
 #change-name-box #input-bar {
