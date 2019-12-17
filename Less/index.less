@@ -73,9 +73,10 @@ body {
   }
 
   .input-bar {
-    position: relative;
-    width   : 63%;
-    height: 30px;
+    position : relative;
+    width    : 63%;
+    height   : 30px;
+    font-size: smaller;
   }
 }
 
@@ -152,23 +153,26 @@ body {
 
 #change-name-box {
   margin-left: 30%;
-  top: 20%;
-  height     : 170px;
-  width      : 250px;
+  top        : 20%;
+  height     : 150px;
+  width      : 225px;
 
   #new-name-form {
-    margin-top: 5%;
+    margin-top     : 5%;
+    margin-bottom: 5%;
+    display        : flex;
+    flex-direction : row;
+    justify-content: flex-start;
+    align-items    : center;
   }
 
   #name-label {
-    padding-left: 5%;
-    padding-right: 2%;
-   margin-left: 5%;
-    width       : 20%;
+    margin-bottom: 0;
+    text-align   : left;
+    width        : auto;
   }
-
-  #input-bar {
-    position: relative;
+  .edit-button {
+    width: 30%;
   }
 }
 
@@ -206,15 +210,15 @@ body {
   }
 
   #add-fleet-btn {
-    float      : left;
-    margin-left: 1%;
+    float           : left;
+    margin-left     : 1%;
     background-color: white;
-    border: solid;
-    border-color: @border-grey;
-    border-width: thin;
-    color: @word-grey;
-    padding-left:2px;
-    padding-right:4px;
+    border          : solid;
+    border-color    : @border-grey;
+    border-width    : thin;
+    color           : @word-grey;
+    padding-left    : 2px;
+    padding-right   : 4px;
   }
 
   #ship-list {
@@ -406,7 +410,8 @@ body {
 
 .cancel-button {
   color           : black;
-  margin-right    : -5%;
+  width: 15%;
+//  margin-right    : -5%;
   background-color: @button-grey;
 }
 
