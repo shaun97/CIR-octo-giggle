@@ -1,3 +1,11 @@
+@blue: #006ce7;
+@icon-grey: #cccccc;
+@border-grey: #dcdcdc;
+@word-grey: #bcbcbc;
+@word-black: #333333;
+@button-grey: #e5e5e5;
+
+
 html {
   height: 100vh
 }
@@ -27,27 +35,31 @@ body {
   background : white;
   display: none;
   .pop-up-header{
-    background : #0953e2;
-    position: relative; //important
+    display: flex;
+    padding-left: 6%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background : @blue;
+    position: relative; //important'
     height: 35px;
     width: 100%;
     .pop-up-header-text{
-      position: absolute; //important
-      top: 25%; 
-      left: 25px;
+      position: relative; //important
+      height: auto;
       color: white;
     }
-    .pop-up-header-button{
-      position: absolute;
-      top: 20%; 
+    .pop-up-header-button {
       background-color: transparent;
       border: transparent;
+      height: auto;
+      width: auto;
     }
     .edit-button{
-      left: 33%;
+      margin-left: 2%;
     }
     .close-button{
-      right: 10px;
+      margin-left: auto;
     }
   }
   .input-bar{
@@ -56,10 +68,32 @@ body {
   }
 }
 #ship-info-box {
-  margin-left: 7.3%;
-  margin-top : 7%;
-  height     : 400px;
-  width      : 330px;
+  left: 7.3%;
+  top : 20%;
+  height     : 350px;
+  width      : 350px;
+  .ship-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 4% 6% 4% 6%;
+    .row-info {
+      width: 48%;
+      .big-item{
+        margin-top: 10px;
+      }
+      .item {
+        display: inline;
+        
+      }
+    }
+    .row-1 {
+      
+    }
+    .row-2 {
+      
+    }
+  }
   #inquire-bar{
     margin-right: 0px;
     width: 60%;
@@ -72,24 +106,10 @@ body {
     padding-left: 7px;
     padding-right: 7px;
     margin-left: 0px;
+    background-color: @button-grey;
+    color: @word-black;
   }
-  .row-info {
-    position: absolute;
-    margin: 15px 5px 15px 5px;
-    .big-item{
-      margin-top: 10px;
-    }
-    .item {
-      display: inline;
-      margin-left: 5px;
-    }
-  }
-  .row-1 {
-    left: 5%;
-  }
-  .row-2 {
-    left: 50%;
-  }
+  
   .ship-image{
     position: absolute;
     height: 20%;
@@ -184,21 +204,21 @@ ul, #myUL {
 }
 
 /* Create the caret/arrow with a unicode, and style it */
-.caret::before {
-  content: "\25B6";
-  color: black;
+.caret-icon {
+  color: @icon-grey;
   display: inline-block;
-  margin-right: 6px;
+  font-size: 13px;
+  margin-right: 2%;
 }
 
 /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
-.caret-down::before {
+.caret-icon-down {
   transform: rotate(90deg);
 }
 
 /* Hide the nested list */
 .nested {
-  margin-left: 6%;
+  margin-left: 6.5%;
   display: none;
 }
 
@@ -300,12 +320,12 @@ ul, #myUL {
   text-align: center;
 }
 .blue-button {
-  background-color: #0953e2;
+  background-color:@blue;
 }
 .cancel-button {
   color           : black;
   margin-right    : -5%;
-  background-color: lightgrey;
+  background-color: @button-grey;
 }
 .layui-btn:focus {
   border: 10px;

@@ -67,11 +67,11 @@
             <div class="pop-up-header">
                 <h5 class="layui-header pop-up-header-text" id="ship-info-nknm">Ship Name</h5>
                 <button class="pop-up-header-button edit-button" id="info-edit-button"><img
-                        src="./Images/icon_edit.png"></button>
+                        src="./Images/icon_edit.png" height="75%" width="75%"></button>
                 <button class="pop-up-header-button close-button" id="info-close-button"><img
-                        src="./Images/icon_close.png"></button>
+                        src="./Images/icon_close.png" height="75%" width="75%"></button>
             </div>
-            <div class="ship-info">
+            <div class="ship-details">
                 <ul class="row-info row-1">
                     <ul class="big-item">
                         <li class="item">Name:</li>
@@ -115,7 +115,7 @@
                         <li class="item">Lat:</li>
                         <li class="item" id="ship-info-lat"></li>
                     </ul>
-                </ul>
+                
             </div>
             <img class="ship-image" id="ship-info-img" src="">
             <div class="layui-form-item inquire-row">
@@ -136,7 +136,7 @@
             <div class="pop-up-header">
                 <h6 class="pop-up-header-text">Edit Name</h6>
                 <button class="pop-up-header-button close-button edit-name-close"><img
-                        src="./Images/icon_close.png"></button>
+                        src="./Images/icon_close.png" height="75%" width="75%"></button>
             </div>
 
             <div class="layui-form-item" id="new-name-form">
@@ -156,10 +156,10 @@
             <!-- Change to true afterwards -->
             <div class="ship-info-header-bar">
                 <div class="pop-up-header">
-                    <h6 class="pop-up-header-text"><img src="./Images/icon_add_white.png">
+                    <h6 class="pop-up-header-text"><img src="./Images/icon_add_white.png" height="17px" width="17px">
                         Observed List</h6>
                     <button class="pop-up-header-button close-button" id="observed-close-button"><img
-                            src="./Images/icon_close.png"></button>
+                            src="./Images/icon_close.png" height="75%" width="75%"></button>
                 </div>
             </div>
             <div class="ship-info-group" id="observed-list-group">
@@ -191,9 +191,11 @@
                 -->
                 <!-- test -->
                 <ul id="myUL">
-                    <li><span class="caret">Beverages</span> <div class="tree-buttons">
-                            <button class="indiv-tree-button" id="tree-button1"><img
-                                    src="./Images/icon_hide.png" class="tree-button-icon"></button>
+                    <li><i class="layui-icon caret-icon" id="caret-icon">&#xe602;</i><span
+                            class="caret">Beverages</span>
+                        <div class="tree-buttons">
+                            <button class="indiv-tree-button" id="tree-button1"><img src="./Images/icon_hide.png"
+                                    class="tree-button-icon"></button>
                             <button class="indiv-tree-button" id="tree-button2"><img
                                     src="./Images/icon_info_myship_track.png" class="tree-button-icon"></button>
                             <button class="indiv-tree-button" id="tree-button3"><img
@@ -206,7 +208,8 @@
                                     <button class="indiv-tree-button" id="nested1-button1"><img
                                             src="./Images/icon_hide.png" class="tree-button-icon"></button>
                                     <button class="indiv-tree-button" id="nested1-button2"><img
-                                            src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
+                                            src="./Images/icon_track_myship_track.png"
+                                            class="tree-button-icon"></button>
                                     <button class="indiv-tree-button" id="nested1-button3"><img
                                             src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
                                     <button class="indiv-tree-button" id="nested1-button4"><img
@@ -217,13 +220,52 @@
                                     <button class="indiv-tree-button" id="tree-button1"><img
                                             src="./Images/icon_hide.png" class="tree-button-icon"></button>
                                     <button class="indiv-tree-button" id="tree-button2"><img
-                                            src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
+                                            src="./Images/icon_track_myship_track.png"
+                                            class="tree-button-icon"></button>
                                     <button class="indiv-tree-button" id="tree-button3"><img
                                             src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
                                     <button class="indiv-tree-button" id="tree-button4"><img
                                             src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
                                 </div>
-
+                            </li>
+                        </ul>
+                    </li>
+                    <li><i class="layui-icon caret-icon" id="caret-icon">&#xe602;</i><span
+                            class="caret">Beverages</span>
+                        <div class="tree-buttons">
+                            <button class="indiv-tree-button" id="tree-button1"><img src="./Images/icon_hide.png"
+                                    class="tree-button-icon"></button>
+                            <button class="indiv-tree-button" id="tree-button2"><img
+                                    src="./Images/icon_info_myship_track.png" class="tree-button-icon"></button>
+                            <button class="indiv-tree-button" id="tree-button3"><img
+                                    src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
+                            <button class="indiv-tree-button" id="tree-button4"><img
+                                    src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                        </div>
+                        <ul class="nested">
+                            <li>Water <div class="tree-buttons">
+                                    <button class="indiv-tree-button" id="nested1-button1"><img
+                                            src="./Images/icon_hide.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="nested1-button2"><img
+                                            src="./Images/icon_track_myship_track.png"
+                                            class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="nested1-button3"><img
+                                            src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="nested1-button4"><img
+                                            src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                                </div>
+                            </li>
+                            <li>Coffee <div class="tree-buttons">
+                                    <button class="indiv-tree-button" id="tree-button1"><img
+                                            src="./Images/icon_hide.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="tree-button2"><img
+                                            src="./Images/icon_track_myship_track.png"
+                                            class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="tree-button3"><img
+                                            src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
+                                    <button class="indiv-tree-button" id="tree-button4"><img
+                                            src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                                </div>
                             </li>
                         </ul>
                     </li>
