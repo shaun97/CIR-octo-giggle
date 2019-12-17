@@ -21,6 +21,7 @@ body {
   z-index: 1;
   background: white;
   overflow: hidden;
+  font-size: small;
 }
 .pop-up .pop-up-header {
   display: flex;
@@ -55,7 +56,6 @@ body {
   position: relative;
   width: 63%;
   height: 30px;
-  font-size: smaller;
 }
 #ship-info-box {
   left: 7.3%;
@@ -132,14 +132,12 @@ body {
 }
 #change-name-box #input-bar {
   position: relative;
-  width: 63%;
 }
 #observed-list-box {
   right: 5%;
   top: 21%;
   width: 23%;
   height: 55%;
-  font-size: small;
   /* Remove default bullets */
   /* Remove margins and padding from the parent ul */
   /* Style the caret/arrow */
@@ -165,10 +163,12 @@ body {
   text-align: left;
   margin-left: 0;
   width: 80%;
+  margin-bottom: 0;
 }
 #observed-list-box .input-bar {
   float: left;
   width: 50%;
+  color: #bcbcbc;
 }
 #observed-list-box #add-fleet-btn {
   float: left;
@@ -235,9 +235,24 @@ body {
   width: 100%;
   filter: invert(40%);
 }
+#observed-list-box .layui-form-item {
+  margin-bottom: 4px;
+}
+#observed-list-box .real-label {
+  padding: 4px 8px 4px 4px;
+  width: 25%;
+  color: #bcbcbc;
+}
+#observed-list-box ::placeholder {
+  color: #bcbcbc;
+}
+#observed-list-box .add-fleet-two-buttons {
+  position: relative;
+  left: 25%;
+}
 #observed-list-box .bottom {
   background-color: lightblue;
-  display: relative;
+  display: absolute;
   bottom: 0;
   width: 100%;
   height: 40px;

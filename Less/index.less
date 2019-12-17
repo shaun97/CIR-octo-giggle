@@ -35,6 +35,7 @@ body {
   z-index   : 1;
   background: white;
   overflow  : hidden;
+  font-size: small;
 
   // display: none;
   .pop-up-header {
@@ -75,7 +76,6 @@ body {
     position: relative;
     width   : 63%;
     height: 30px;
-    font-size: smaller;
   }
 }
 
@@ -169,7 +169,6 @@ body {
 
   #input-bar {
     position: relative;
-    width   : 63%;
   }
 }
 
@@ -178,7 +177,6 @@ body {
   top      : 21%;
   width    : 23%;
   height   : 55%;
-  font-size: small;
 
   .display-ships-box {
     margin-top      : 2%;
@@ -198,11 +196,13 @@ body {
     text-align : left;
     margin-left: 0;
     width      : 80%;
+    margin-bottom: 0;
   }
 
   .input-bar {
     float: left;
     width: 50%;
+    color: @word-grey;
   }
 
   #add-fleet-btn {
@@ -290,9 +290,28 @@ body {
     }
   }
 
+  .layui-form-item {
+    margin-bottom: 4px;
+  }
+
+  .real-label {
+    padding: 4px 8px 4px 4px;
+    width: 25%;
+    color: @word-grey;
+  }
+
+  ::placeholder {
+    color: @word-grey;
+  }
+
+  .add-fleet-two-buttons {
+    position: relative;
+    left: 25%;
+  }
+
   .bottom {
     background-color: lightblue;
-    display         : relative;
+    display         : absolute;
     bottom          : 0;
     width           : 100%;
     height          : 40px;
