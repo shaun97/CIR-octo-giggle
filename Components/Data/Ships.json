@@ -11,7 +11,7 @@
       "name": "Ren Jian 6",
       "nickname": "8888",
       "country": "China [CN]",
-      "img": "../Images/Boaty-McBoatface-minisub.jpg"
+      "img": "./Images/Boaty-McBoatface-minisub.jpg"
     },
     {
       "idL": "543216789",
@@ -24,7 +24,7 @@
       "name": "Hello Boat",
       "nickname": "Mother",
       "country": "China [CN]",
-      "img": "../Images/Boaty-McBoatface-minisub.jpg"
+      "img": "./Images/Ship2.jpg"
     },
     {
       "idL": "543216789",
@@ -37,7 +37,8 @@
       "name": "Boat No. 3",
       "nickname": "Nickname",
       "country": "Korea [KR]",
-      "img": "../Images/Boaty-McBoatface-minisub.jpg"
+      "img": "./Images/Ship3.jpg"
     }
-  ]
+  ],
+  "comments": []
 }

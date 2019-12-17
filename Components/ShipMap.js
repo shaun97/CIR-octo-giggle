@@ -35,19 +35,15 @@ var json = (function () {
 })();
 
 for (let i = 0; i < json.length; i++) {
-  console.log(json[i]);
   let pt = new BMap.Point(json[i].lng, json[i].lat);
   convertor.translate([pt], 1, 5, (data) => {
     let ship = new BMap.Marker(pt);
     map.addOverlay(ship);
     ship.addEventListener("click", function () {
-      // ship.data = json[i];
-      // $(document).
       map.centerAndZoom(pt, 10);
-      // document.getElementById("ship-info-box").hidden = false;
-      const {name, nickname, idM, len, country, idL, idS, mass, lng, lat} = json[i];
-      console.log("length", len);
-      $(document).ready(function(){
+      const { name, nickname, idM, len, country, idL, idS, mass, lng, lat, img } = json[i];
+      console.log(img);
+      $(document).ready(function () {
         $("#ship-info-box").show();
         $("#ship-info-nknm").text(nickname);
         $("#ship-info-name").text(name);
@@ -60,8 +56,9 @@ for (let i = 0; i < json.length; i++) {
         $("#ship-info-mass").text(mass);
         $("#ship-info-lng").text(lng);
         $("#ship-info-lat").text(lat);
+        $("#ship-info-img").attr("src", img);
       });
-      
+
     });
   })
 }

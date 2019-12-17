@@ -117,7 +117,7 @@
                     </ul>
                 </ul>
             </div>
-            <img class="ship-image" src="./Images/Boaty-McBoatface-minisub.jpg">
+            <img class="ship-image" id="ship-info-img" src="">
             <div class="layui-form-item inquire-row">
                 <div class="layui-input-inline item" id="inquire-bar">
                     <input type="tel" name="url" lay-verify="url" autocomplete="off" class="layui-input">
@@ -135,21 +135,19 @@
         <div class="pop-up" id="change-name-box" style="display: none">
             <div class="pop-up-header">
                 <h6 class="pop-up-header-text">Edit Name</h6>
-                <button class="pop-up-header-button close-button" id="edit-name-close-button"><img
+                <button class="pop-up-header-button close-button edit-name-close"><img
                         src="./Images/icon_close.png"></button>
             </div>
 
             <div class="layui-form-item" id="new-name-form">
                 <label class="layui-form-label" id="name-label">Name</label>
-                <!-- <div class="layui-input-block" > -->
                 <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="New Name"
-                    class="layui-input input-bar">
-                <!-- </div> -->
+                    class="layui-input input-bar" id="edit-name-input">
             </div>
 
             <div class="two-buttons">
-                <button type="button" class="layui-btn layui-btn-normal blue-button">Change</button>
-                <button type="button" class="layui-btn layui-btn-normal cancel-button">Cancel</button>
+                <button type="button" class="layui-btn layui-btn-normal blue-button" id="edit-name-change">Change</button>
+                <button type="button" class="layui-btn layui-btn-normal cancel-button edit-name-close">Cancel</button>
             </div>
         </div>
 
