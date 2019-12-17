@@ -132,7 +132,7 @@
         </div>
 
         <!-- Change name box -->
-        <div class="pop-up" id="change-name-box" style="display: none">
+        <div class="pop-up" id="change-name-box">
             <div class="pop-up-header">
                 <h6 class="pop-up-header-text">Edit Name</h6>
                 <button class="pop-up-header-button close-button edit-name-close"><img src="./Images/icon_close.png"
@@ -158,39 +158,33 @@
             <div class="ship-info-header-bar">
                 <div class="pop-up-header">
                     <h6 class="pop-up-header-text"><img src="./Images/icon_add_white.png" height="17px" width="17px">
-                        Observed List</h6>
+                        我的关注</h6>
                     <button class="pop-up-header-button close-button" id="observed-close-button"><img
                             src="./Images/icon_close.png" height="75%" width="75%"></button>
                 </div>
             </div>
-            <div class="ship-info-group" id="observed-list-group">
-                <div class>
-                    <input type="checkbox" id="display-ships-box">
-                    <label class="layui-form-label display-ship-title">Display ships</label>
-                </div>
-                <hr>
-                </hr>
-                <div class="layui-form-item" id="form">
-                    <label class="layui-form-label">Name</label>
-                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="New Name"
-                        class="layui-input input-bar">
-                    <button type="button" class="layui-btn layui-btn-normal blue-button" id="add-ship-btn">Add</button>
-                </div>
-                <div class="layui-form-item" id="form">
-                    <label class="layui-form-label" id="name-label">Name</label>
-                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="New Name"
-                        class="layui-input input-bar">
-                </div>
-                <div class="two-buttons">
-                    <button type="button" class="layui-btn layui-btn-normal blue-button">Change</button>
-                    <button type="button" class="layui-btn layui-btn-normal cancel-button">Cancel</button>
-                </div>
-                <hr>
-                </hr>
-                <!-- old code
-                <div id="ship-list">tree</div>
-                -->
-                <!-- test -->
+            <input type="checkbox" class="display-ships-box">
+            <label class="layui-form-label display-ship-text">隐藏未关注船</label>
+            <hr>
+            </hr>
+            <label class="layui-form-label display-ship-text">添加到船队</label>
+            <div class="layui-form-item">
+                <label class="layui-form-label">添加到船队</label>
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="搜索或创建"
+                    class="layui-input input-bar">
+                <button type="button" class="layui-btn layui-btn-sm blue-button" id="add-fleet-btn">创建分组</button>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" id="name-label">自定义名称</label>
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder=""
+                    class="layui-input input-bar">
+            </div>
+            <div class="two-buttons">
+                <button type="button" class="layui-btn layui-btn-sm blue-button">保存</button>
+                <button type="button" class="layui-btn layui-btn-sm cancel-button">取消</button>
+            </div>
+            <hr/>
+            <div class="list-wrapper">
                 <ul id="myUL">
                     <li><i class="layui-icon caret-icon" id="caret-icon">&#xe602;</i><span
                             class="caret">Beverages</span>
@@ -271,25 +265,15 @@
                         </ul>
                     </li>
                 </ul>
-                <!-- end of test -->
+            </div>
+            <div class="bottom">
+                <button type="button" class="layui-btn layui-btn-sm cancel-button">取消</button>
             </div>
         </div>
 
         <!-- Map -->
         <div class="map" id="ship-map"></div>
-
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script> -->
 </body>
 
 <script type="text/javascript" src="./Components/NavBar.js"></script>

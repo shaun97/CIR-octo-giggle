@@ -20,6 +20,7 @@ body {
   position: absolute;
   z-index: 1;
   background: white;
+  overflow: hidden;
 }
 .pop-up .pop-up-header {
   display: flex;
@@ -131,9 +132,10 @@ body {
 }
 #observed-list-box {
   right: 5%;
-  margin-top: 7%;
-  width: 20%;
-  height: 50%;
+  top: 21%;
+  width: 23%;
+  height: 55%;
+  font-size: small;
   /* Remove default bullets */
   /* Remove margins and padding from the parent ul */
   /* Style the caret/arrow */
@@ -142,11 +144,7 @@ body {
   /* Hide the nested list */
   /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
 }
-#observed-list-box .form-item {
-  position: relative;
-  width: 90%;
-}
-#observed-list-box #display-ships-box {
+#observed-list-box .display-ships-box {
   margin-top: 2%;
   margin-left: 6%;
   margin-right: 0;
@@ -157,7 +155,7 @@ body {
   background-color: #eee;
   border: black;
 }
-#observed-list-box .display-ship-title {
+#observed-list-box .display-ship-text {
   position: relative;
   float: left;
   text-align: left;
@@ -168,15 +166,17 @@ body {
   float: left;
   width: 50%;
 }
-#observed-list-box #add-ship-btn {
+#observed-list-box #add-fleet-btn {
   float: left;
   margin-left: 1%;
 }
 #observed-list-box #ship-list {
   position: relative;
   margin-left: 3%;
+}
+#observed-list-box .list-wrapper {
+  height: 15%;
   overflow-y: scroll;
-  height: 80px;
 }
 #observed-list-box ul,
 #observed-list-box #myUL {
@@ -223,6 +223,13 @@ body {
   height: 100%;
   width: 100%;
   filter: invert(40%);
+}
+#observed-list-box .bottom {
+  background-color: lightblue;
+  display: relative;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
 }
 #search-bar {
   margin-top: 2%;

@@ -34,8 +34,9 @@ body {
   position  : absolute;
   z-index   : 1;
   background: white;
+  overflow  : hidden;
 
-  //display: none;
+  // display: none;
   .pop-up-header {
     display        : flex;
     padding-left   : 6%;
@@ -168,17 +169,13 @@ body {
 }
 
 #observed-list-box {
-  right     : 5%;
-  margin-top: 7%;
-  width     : 20%;
-  height    : 50%;
+  right    : 5%;
+  top      : 21%;
+  width    : 23%;
+  height   : 55%;
+  font-size: small;
 
-  .form-item {
-    position: relative;
-    width   : 90%;
-  }
-
-  #display-ships-box {
+  .display-ships-box {
     margin-top      : 2%;
     margin-left     : 6%;
     margin-right    : 0;
@@ -190,7 +187,7 @@ body {
     border          : black;
   }
 
-  .display-ship-title {
+  .display-ship-text {
     position   : relative;
     float      : left;
     text-align : left;
@@ -203,7 +200,7 @@ body {
     width: 50%;
   }
 
-  #add-ship-btn {
+  #add-fleet-btn {
     float      : left;
     margin-left: 1%;
   }
@@ -211,8 +208,11 @@ body {
   #ship-list {
     position   : relative;
     margin-left: 3%;
-    overflow-y : scroll;
-    height     : 80px;
+  }
+
+  .list-wrapper {
+    height    : 15%;
+    overflow-y: scroll;
   }
 
   /* Remove default bullets */
@@ -276,6 +276,14 @@ body {
         filter: invert(40%);
       }
     }
+  }
+
+  .bottom {
+    background-color: lightblue;
+    display         : relative;
+    bottom          : 0;
+    width           : 100%;
+    height          : 40px;
   }
 }
 
