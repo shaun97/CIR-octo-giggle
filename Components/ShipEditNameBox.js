@@ -1,6 +1,5 @@
-var close = document.getElementById("edit-name-close-button");
-close.setAttribute("onClick", "closeEditHandler()");
-
-function closeEditHandler() {
-  document.getElementById("change-name-box").hidden = true;
-}
+$(document).ready(function () {
+  $("#edit-name-close-button").click(function () {
+    $("#change-name-box").hide();
+  });
+});

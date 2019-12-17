@@ -65,7 +65,7 @@
         <!-- Pop up ship info -->
         <div class="pop-up" id="ship-info-box">
             <div class="pop-up-header">
-                <h5 class="layui-header pop-up-header-text">Ship Name</h5>
+                <h5 class="layui-header pop-up-header-text" id="ship-info-nknm">Ship Name</h5>
                 <button class="pop-up-header-button edit-button" id="info-edit-button"><img
                         src="./Images/icon_edit.png"></button>
                 <button class="pop-up-header-button close-button" id="info-close-button"><img
@@ -75,37 +75,45 @@
                 <ul class="row-info row-1">
                     <ul class="big-item">
                         <li class="item">Name:</li>
-                        <li class="item">Hello World</li>
+                        <li class="item" id="ship-info-name">Hello World</li>
                     </ul>
                     <ul class="big-item">
-                        <li class="item">Name:</li>
-                        <li class="item">Renjian 6</li>
+                        <li class="item">ID-M:</li>
+                        <li class="item" id="ship-info-id-m"></li>
                     </ul>
                     <ul class="big-item">
-                        <li class="item">Name:</li>
-                        <li class="item">Abc</li>
+                        <li class="item">Length:</li>
+                        <li class="item" id="ship-info-length"></li>
                     </ul>
                     <ul class="big-item">
-                        <li class="item">Name:</li>
-                        <li class="item">Renjian 6</li>
+                        <li class="item">Country:</li>
+                        <li class="item" id="ship-info-country1"></li>
+                    </ul>
+                    <ul class="big-item">
+                        <li class="item">Country:</li>
+                        <li class="item" id="ship-info-country2"></li>
                     </ul>
                 </ul>
                 <ul class="row-info row-2">
                     <ul class="big-item">
-                        <li class="item">Name:</li>
-                        <li class="item">Renjian 6</li>
+                        <li class="item">ID-L:</li>
+                        <li class="item" id="ship-info-id-l"></li>
                     </ul>
                     <ul class="big-item">
-                        <li class="item">Name:</li>
-                        <li class="item">Renjian 6</li>
+                        <li class="item">ID-S:</li>
+                        <li class="item" id="ship-info-id-s"></li>
                     </ul>
                     <ul class="big-item">
-                        <li class="item">Name:</li>
-                        <li class="item">Renjian 6</li>
+                        <li class="item">Mass:</li>
+                        <li class="item" id="ship-info-mass"></li>
                     </ul>
                     <ul class="big-item">
-                        <li class="item">Name:</li>
-                        <li class="item">Renjian 6</li>
+                        <li class="item">Lng:</li>
+                        <li class="item" id="ship-info-lng"></li>
+                    </ul>
+                    <ul class="big-item">
+                        <li class="item">Lat:</li>
+                        <li class="item" id="ship-info-lat"></li>
                     </ul>
                 </ul>
             </div>
@@ -124,7 +132,7 @@
         </div>
 
         <!-- Change name box -->
-        <div class="pop-up" id="change-name-box">
+        <div class="pop-up" id="change-name-box" style="display: none">
             <div class="pop-up-header">
                 <h6 class="pop-up-header-text">Edit Name</h6>
                 <button class="pop-up-header-button close-button" id="edit-name-close-button"><img
