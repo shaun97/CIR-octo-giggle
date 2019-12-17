@@ -1,4 +1,5 @@
 @blue       : #006ce7;
+@light-blue : #DEECFD;
 @icon-grey  : #cccccc;
 @border-grey: #dcdcdc;
 @word-grey  : #bcbcbc;
@@ -182,148 +183,168 @@ body {
 
 // --------------- search bar styling --------------- //
 #observed-list-box {
-  right : 5%;
-  top   : 21%;
-  width : 23%;
-  height: 55%;
+  right         : 5%;
+  top           : 21%;
+  width         : 23%;
+  height        : auto;
+  display       : flex;
+  flex-direction: column;
+  margin-bottom : 0;
 
-  .display-ships-box {
-    margin-top      : 2%;
-    margin-left     : 6%;
-    margin-right    : 0;
-    position        : relative;
-    float           : left;
-    height          : 25px;
-    width           : 25px;
-    background-color: #eee;
-    border          : black;
-  }
+  .show-ships-bar {
+    height        : 10%;
+    display       : flex;
+    flex-direction: row;
+    align-items   : center;
+    margin-bottom : 0;
 
-  .display-ship-text {
-    position     : relative;
-    float        : left;
-    text-align   : left;
-    margin-left  : 0;
-    width        : 80%;
-    margin-bottom: 0;
-  }
+    .display-ships-chkbox {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
 
-  .input-bar {
-    float: left;
-    width: 50%;
-    color: @word-grey;
-  }
-
-  #add-fleet-btn {
-    float           : left;
-    margin-left     : 1%;
-    background-color: white;
-    border          : solid;
-    border-color    : @border-grey;
-    border-width    : thin;
-    color           : @word-grey;
-    padding-left    : 2px;
-    padding-right   : 4px;
-  }
-
-  #ship-list {
-    position   : relative;
-    margin-left: 3%;
-  }
-
-  .list-wrapper {
-    height    : 15%;
-    overflow-y: scroll;
-  }
-
-  /* Remove default bullets */
-  ul,
-  #myUL {
-    list-style-type: none;
-  }
-
-  /* Remove margins and padding from the parent ul */
-  #myUL {
-    margin    : 3%;
-    padding   : 0;
-    overflow-y: scroll;
-    height    : 80px;
-  }
-
-  /* Style the caret/arrow */
-  .caret {
-    cursor     : pointer;
-    user-select: none;
-    /* Prevent text selection */
-  }
-
-  /* Create the caret/arrow with a unicode, and style it */
-  .caret-icon {
-    color       : @icon-grey;
-    display     : inline-block;
-    font-size   : 13px;
-    margin-right: 2%;
-  }
-
-  /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
-  .caret-icon-down {
-    transform: rotate(90deg);
-  }
-
-  /* Hide the nested list */
-  .nested {
-    margin-left: 6.5%;
-    display    : none;
-  }
-
-  /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
-  .active {
-    display: block;
-  }
-
-  .tree-buttons {
-    float       : right;
-    margin-right: 3%;
-
-    .indiv-tree-button {
-      height          : 13px;
-      width           : 13px;
-      background-color: transparent;
-      border          : transparent;
-
-      .tree-button-icon {
-        height: 100%;
-        width : 100%;
-        filter: invert(40%);
-      }
+    .layui-form-label {
+      padding-left: 0;
     }
   }
 
-  .layui-form-item {
-    margin-bottom: 4px;
+  .add-ship-box {
+    height: 180px;
+
+    .real-label {
+      padding: 4px 8px 4px 4px;
+      margin-bottom: 2px;
+      width  : 25%;
+      color  : @word-grey;
+    }
+
+    ::placeholder {
+      color: @word-grey;
+    }
+
+    .add-fleet-two-buttons {
+      position: relative;
+      left    : 25%;
+    }
+
+    .input-bar {
+      float: left;
+      width: 50%;
+      color: @word-grey;
+    }
+
+    #add-fleet-btn {
+      float           : left;
+      margin-left     : 1%;
+      background-color: white;
+      border          : solid;
+      border-color    : @border-grey;
+      border-width    : thin;
+      color           : @word-grey;
+      padding-left    : 2px;
+      padding-right   : 4px;
+    }
   }
 
-  .real-label {
-    padding: 4px 8px 4px 4px;
-    width  : 25%;
-    color  : @word-grey;
+  hr {
+    margin: 0.5px 0.3px 0.5px 0.3px;
   }
 
-  ::placeholder {
-    color: @word-grey;
+  .observe-big-text {
+    text-align   : left;
+    margin-left  : 0;
+    width        : 40%;
+    margin-bottom: 0;
   }
 
-  .add-fleet-two-buttons {
-    position: relative;
-    left    : 25%;
+  .list-wrapper {
+    max-height: 100px;
+    min-height: 70px;
+    overflow-y: scroll;
+    height    : 25%;
+    margin    : 7px 3px 7px 5px;
+
+    /* Remove default bullets */
+    ul,
+    #myUL {
+      list-style-type: none;
+    }
+
+    /* Remove margins and padding from the parent ul */
+    #myUL {
+      padding   : 0;
+      overflow-y: scroll;
+      height    : auto;
+    }
+
+    /* Style the caret/arrow */
+    .caret {
+      cursor     : pointer;
+      user-select: none;
+      /* Prevent text selection */
+    }
+
+    /* Create the caret/arrow with a unicode, and style it */
+    .caret-icon {
+      color       : @icon-grey;
+      display     : inline-block;
+      font-size   : 13px;
+      margin-right: 2%;
+    }
+
+    /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+    .caret-icon-down {
+      transform: rotate(90deg);
+    }
+
+    /* Hide the nested list */
+    .nested {
+      margin-left: 6.5%;
+      display    : none;
+    }
+
+    /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+    .active {
+      display: block;
+    }
+
+    .tree-buttons {
+      float       : right;
+      margin-right: 3%;
+
+      .indiv-tree-button {
+        height          : 13px;
+        width           : 13px;
+        background-color: transparent;
+        border          : transparent;
+
+        .tree-button-icon {
+          height: 100%;
+          width : 100%;
+          filter: invert(40%);
+        }
+      }
+    }
+
+    .layui-form-item {
+      margin-bottom: 4px;
+    }
   }
 
   .bottom {
-    background-color: lightblue;
-    display         : absolute;
-    bottom          : 0;
+    background-color: @light-blue;
+    display         : relative;
     width           : 100%;
-    height          : 40px;
+    height          : 50px;
+    display         : flex;
+    flex-direction  : row-reverse;
+    margin-top      : auto;
+    align-items     : center;
+
+    .layui-btn {
+      width       : 80px;
+      margin-right: 20px;
+    }
   }
 }
 
@@ -488,10 +509,9 @@ body {
 }
 
 .cancel-button {
-  color               : black;
-  width               : 15%;
-  //  margin-right    : -5%;
-  background-color    : @button-grey;
+  color           : black;
+  width           : 15%;
+  background-color: @button-grey;
 }
 
 .layui-btn:focus {
