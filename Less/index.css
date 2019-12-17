@@ -118,21 +118,24 @@ body {
 #change-name-box {
   margin-left: 30%;
   top: 20%;
-  height: 170px;
-  width: 250px;
+  height: 150px;
+  width: 225px;
 }
 #change-name-box #new-name-form {
   margin-top: 5%;
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 #change-name-box #name-label {
-  padding-left: 5%;
-  padding-right: 2%;
-  margin-left: 5%;
-  width: 20%;
+  margin-bottom: 0;
+  text-align: left;
+  width: auto;
 }
-#change-name-box #input-bar {
-  position: relative;
-  width: 63%;
+#change-name-box .edit-button {
+  width: 30%;
 }
 #observed-list-box {
   right: 5%;
@@ -309,7 +312,7 @@ body {
 }
 .cancel-button {
   color: black;
-  margin-right: -5%;
+  width: 15%;
   background-color: #e5e5e5;
 }
 .layui-btn:focus {
