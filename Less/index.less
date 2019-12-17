@@ -1,8 +1,8 @@
-@blue: #006ce7;
-@icon-grey: #cccccc;
+@blue       : #006ce7;
+@icon-grey  : #cccccc;
 @border-grey: #dcdcdc;
-@word-grey: #bcbcbc;
-@word-black: #333333;
+@word-grey  : #bcbcbc;
+@word-black : #333333;
 @button-grey: #e5e5e5;
 
 
@@ -24,220 +24,255 @@ body {
   height: 93%;
 }
 
-.my-nav{
+.my-nav {
   background-color: black;
-  border-radius: 0px;
+  border-radius   : 0px;
 }
+
 // --------------- pop-up styling --------------- //
 .pop-up {
-  position: absolute;
-  z-index : 1;
-  background : white;
-  display: block;
-  .pop-up-header{
-    display: flex;
-    padding-left: 6%;
-    padding-right: 4%;
-    flex-direction: row;
+  position  : absolute;
+  z-index   : 1;
+  background: white;
+
+  //display: none;
+  .pop-up-header {
+    display        : flex;
+    padding-left   : 6%;
+    padding-right  : 4%;
+    flex-direction : row;
     justify-content: flex-start;
-    align-items: center;
-    background : @blue;
-    position: relative; //important'
-    height: 35px;
-    width: 100%;
-    .pop-up-header-text{
+    align-items    : center;
+    background     : @blue;
+    position       : relative; //important'
+    height         : 35px;
+    width          : 100%;
+
+    .pop-up-header-text {
       position: relative; //important
-      height: auto;
-      color: white;
+      height  : auto;
+      color   : white;
     }
+
     .pop-up-header-button {
       background-color: transparent;
-      border: transparent;
-      height: auto;
-      width: auto;
+      border          : transparent;
+      height          : auto;
+      width           : auto;
     }
-    .edit-button{
+
+    .edit-button {
       margin-left: 2%;
     }
-    .close-button{
+
+    .close-button {
       margin-left: auto;
     }
   }
-  .input-bar{
+
+  .input-bar {
     position: relative;
-    width: 63%;
+    width   : 63%;
   }
 }
+
 #ship-info-box {
-  left: 7.3%;
-  top : 20%;
-  height     : 350px;
-  width      : 350px;
+  left  : 7.3%;
+  top   : 20%;
+  height: 350px;
+  width : 350px;
+
   .ship-details {
-    display: flex;
-    flex-direction: row;
+    display        : flex;
+    flex-direction : row;
     justify-content: flex-start;
-    padding: 4% 4% 4% 6%;
+    padding        : 4% 4% 4% 6%;
+
     .row-info {
       width: 48%;
-      .big-item{
+
+      .big-item {
         margin-top: 10px;
       }
+
       .item {
         display: inline;
       }
     }
   }
-  #inquire-bar{
+
+  #inquire-bar {
     margin-right: 0px;
-    width: 60%;
+    width       : 60%;
   }
-  #inq-btn{
-    padding-left: 7px;
+
+  #inq-btn {
+    padding-left : 7px;
     padding-right: 7px;
   }
-  #clr-btn{
-    padding-left: 7px;
-    padding-right: 7px;
-    margin-left: 0px;
+
+  #clr-btn {
+    padding-left    : 7px;
+    padding-right   : 7px;
+    margin-left     : 0px;
     background-color: @button-grey;
-    color: @word-black;
+    color           : @word-black;
   }
+
   .ship-image {
-    height: 15%;
-    width: auto;
+    height     : 15%;
+    width      : auto;
     margin-left: 6%;
   }
-  .inquire-row{
-    margin-top: 3%;
-    margin-left: 6%;
+
+  .inquire-row {
+    margin-top   : 3%;
+    margin-left  : 6%;
     margin-bottom: 3%;
   }
-  .ship-info-two-buttons{
+
+  .ship-info-two-buttons {
     margin-left: 6%;
+
     .ship-info-button {
-      width: 20%;
-      margin-top: 0%;
-      padding-left: 7px;
+      width        : 20%;
+      margin-top   : 0%;
+      padding-left : 7px;
       padding-right: 7px;
     }
   }
 }
+
 #change-name-box {
   margin-left: 30%;
   margin-top : 7%;
   height     : 170px;
   width      : 250px;
-  #new-name-form{
-    margin-top:5%;
+
+  #new-name-form {
+    margin-top: 5%;
   }
+
   #name-label {
-    position: relative;
+    position    : relative;
     padding-left: 5%;
-    margin-left: 5%;
+    margin-left : 5%;
     margin-right: 5%;
-    width: 20%;
+    width       : 20%;
   }
-  #input-bar{
+
+  #input-bar {
     position: relative;
-    width: 63%;
+    width   : 63%;
   }
 }
+
 #observed-list-box {
-  right: 5%;
-  margin-top : 7%;
-  width: 20%;
-  height: 50%;
-  .form-item{
+  right     : 5%;
+  margin-top: 7%;
+  width     : 20%;
+  height    : 50%;
+
+  .form-item {
     position: relative;
-    width: 90%;
+    width   : 90%;
   }
+
   #display-ships-box {
-    margin-top: 2%;
-    margin-left: 6%;
-    margin-right: 0;
-    position: relative;
-    float: left;
-    height: 25px;
-    width: 25px;
+    margin-top      : 2%;
+    margin-left     : 6%;
+    margin-right    : 0;
+    position        : relative;
+    float           : left;
+    height          : 25px;
+    width           : 25px;
     background-color: #eee;
-    border: black;
+    border          : black;
   }
-  .display-ship-title{
-    position: relative;
-    float: left;
+
+  .display-ship-title {
+    position   : relative;
+    float      : left;
     text-align : left;
     margin-left: 0;
     width      : 80%;
   }
-  .input-bar{
+
+  .input-bar {
     float: left;
     width: 50%;
   }
-  #add-ship-btn{
-    float: left;
+
+  #add-ship-btn {
+    float      : left;
     margin-left: 1%;
   }
+
   #ship-list {
-    position: relative;
-    margin-left:3%; 
+    position   : relative;
+    margin-left: 3%;
+    overflow-y : scroll;
+    height     : 80px;
+  }
+
+  /* Remove default bullets */
+  ul,
+  #myUL {
+    list-style-type: none;
+  }
+
+  /* Remove margins and padding from the parent ul */
+  #myUL {
+    margin    : 3%;
+    padding   : 0;
     overflow-y: scroll;
     height    : 80px;
   }
 
- /* Remove default bullets */
-ul, #myUL {
-  list-style-type: none;
-}
+  /* Style the caret/arrow */
+  .caret {
+    cursor     : pointer;
+    user-select: none;
+    /* Prevent text selection */
+  }
 
-/* Remove margins and padding from the parent ul */
-#myUL {
-  margin: 3%;
-  padding: 0;
-  overflow-y: scroll;
-  height    : 80px;
-}
+  /* Create the caret/arrow with a unicode, and style it */
+  .caret-icon {
+    color       : @icon-grey;
+    display     : inline-block;
+    font-size   : 13px;
+    margin-right: 2%;
+  }
 
-/* Style the caret/arrow */
-.caret {
-  cursor: pointer;
-  user-select: none; /* Prevent text selection */
-}
+  /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+  .caret-icon-down {
+    transform: rotate(90deg);
+  }
 
-/* Create the caret/arrow with a unicode, and style it */
-.caret-icon {
-  color: @icon-grey;
-  display: inline-block;
-  font-size: 13px;
-  margin-right: 2%;
-}
+  /* Hide the nested list */
+  .nested {
+    margin-left: 6.5%;
+    display    : none;
+  }
 
-/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
-.caret-icon-down {
-  transform: rotate(90deg);
-}
+  /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+  .active {
+    display: block;
+  }
 
-/* Hide the nested list */
-.nested {
-  margin-left: 6.5%;
-  display: none;
-}
-
-/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
-.active {
-  display: block;
-}
   .tree-buttons {
-    float: right;
+    float       : right;
     margin-right: 3%;
+
     .indiv-tree-button {
-      height: 13px;
-      width: 13px;
-      background-color:transparent;
-      border: transparent;
+      height          : 13px;
+      width           : 13px;
+      background-color: transparent;
+      border          : transparent;
+
       .tree-button-icon {
         height: 100%;
-        width: 100%;
+        width : 100%;
         filter: invert(40%);
       }
     }
@@ -248,24 +283,29 @@ ul, #myUL {
 
 #search-bar {
   margin-top      : 2%;
-  left: 0.7%;
+  left            : 0.7%;
   width           : 50.2%;
   position        : absolute;
   background-color: transparent;
   z-index         : 1;
+
   .search-bar-item {
     float: left;
   }
+
   #search-form {
     width: 65%;
   }
+
   #search-button {
     width: 10%;
   }
+
   #search-image {
     height: 60%;
     width : auto;
   }
+
   #id-label {
     width  : -10%;
     padding: -5%;
@@ -320,17 +360,21 @@ ul, #myUL {
 .two-buttons {
   text-align: center;
 }
+
 .blue-button {
-  background-color:@blue;
+  background-color: @blue;
 }
+
 .cancel-button {
   color           : black;
   margin-right    : -5%;
   background-color: @button-grey;
 }
+
 .layui-btn:focus {
-  outline:0;
+  outline: 0;
 }
+
 .layui-btn:active {
   background-color: white;
 }

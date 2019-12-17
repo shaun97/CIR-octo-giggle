@@ -1,6 +1,11 @@
-var close = document.getElementById("edit-name-close-button");
-close.setAttribute("onClick", "closeEditHandler()");
-
-function closeEditHandler() {
-  document.getElementById("change-name-box").hidden = true;
-}
+$(document).ready(function () {
+  $(".edit-name-close").click(function () {
+    $("#change-name-box").hide();
+  });
+  $("#edit-name-change").click(function () {
+    $("#ship-info-nknm").text(
+      $("#edit-name-input").val()
+    );
+    // Need to call backend to update value!!!
+  })
+});

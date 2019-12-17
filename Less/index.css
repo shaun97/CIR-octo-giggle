@@ -20,7 +20,6 @@ body {
   position: absolute;
   z-index: 1;
   background: white;
-  display: block;
 }
 .pop-up .pop-up-header {
   display: flex;
