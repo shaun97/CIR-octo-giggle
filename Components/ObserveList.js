@@ -1,6 +1,10 @@
 $(document).ready(function () {
-  $("#observed-close-button").click(function () {
-    $("#observed-list-box").hide();
+  $("#observe-close-button").click(function () {
+    $("#observe-list-box").hide();
+  });
+  $("#observe-add-ship").click(function () {
+    $("#observe-write").show();
+    $("#observe-read").hide();
   });
 });
 

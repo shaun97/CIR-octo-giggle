@@ -140,7 +140,7 @@ body {
 #change-name-box .edit-button {
   width: 30%;
 }
-#observed-list-box {
+#observe-list-box {
   right: 5%;
   top: 20%;
   width: 23%;
@@ -149,27 +149,27 @@ body {
   flex-direction: column;
   margin-bottom: 0;
 }
-#observed-list-box .show-ships-bar {
+#observe-list-box .show-ships-bar {
   height: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 0;
 }
-#observed-list-box .show-ships-bar .display-ships-chkbox {
+#observe-list-box .show-ships-bar .display-ships-chkbox {
   margin-left: 10px;
   margin-right: 10px;
 }
-#observed-list-box .show-ships-bar .layui-form-label {
+#observe-list-box .show-ships-bar .layui-form-label {
   padding-left: 0;
 }
-#observed-list-box .add-ship-box-hidden {
+#observe-list-box .add-ship-box-hidden {
   height: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-#observed-list-box .add-ship-box-hidden .layui-btn {
+#observe-list-box .add-ship-box-hidden .layui-btn {
   margin-left: 10px;
   color: #bcbcbc;
   background-color: white;
@@ -183,36 +183,36 @@ body {
   display: flex;
   flex-direction: column;
 }
-#observed-list-box .add-ship-box-hidden .layui-btn img {
+#observe-list-box .add-ship-box-hidden .layui-btn img {
   height: 15px;
   width: auto;
   transform: rotate(45deg);
 }
-#observed-list-box .add-ship-box-hidden .layui-btn:active {
+#observe-list-box .add-ship-box-hidden .layui-btn:active {
   border-color: black;
 }
-#observed-list-box .add-ship-box {
+#observe-list-box .add-ship-box {
   height: 180px;
 }
-#observed-list-box .add-ship-box .real-label {
+#observe-list-box .add-ship-box .real-label {
   padding: 4px 8px 4px 4px;
   margin-bottom: 2px;
   width: 25%;
   color: #bcbcbc;
 }
-#observed-list-box .add-ship-box ::placeholder {
+#observe-list-box .add-ship-box ::placeholder {
   color: #bcbcbc;
 }
-#observed-list-box .add-ship-box .add-fleet-two-buttons {
+#observe-list-box .add-ship-box .add-fleet-two-buttons {
   position: relative;
   left: 25%;
 }
-#observed-list-box .add-ship-box .input-bar {
+#observe-list-box .add-ship-box .input-bar {
   float: left;
   width: 50%;
   color: #bcbcbc;
 }
-#observed-list-box .add-ship-box #add-fleet-btn {
+#observe-list-box .add-ship-box #add-fleet-btn {
   float: left;
   margin-left: 1%;
   background-color: white;
@@ -223,16 +223,16 @@ body {
   padding-left: 2px;
   padding-right: 4px;
 }
-#observed-list-box hr {
+#observe-list-box hr {
   margin: 0.5px 5px 0.5px 5px;
 }
-#observed-list-box .observe-big-text {
+#observe-list-box .observe-big-text {
   text-align: left;
   margin-left: 0;
   width: 40%;
   margin-bottom: 0;
 }
-#observed-list-box .list-wrapper {
+#observe-list-box .list-wrapper {
   max-height: 100px;
   min-height: 70px;
   overflow-y: scroll;
@@ -246,55 +246,55 @@ body {
   /* Hide the nested list */
   /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
 }
-#observed-list-box .list-wrapper ul,
-#observed-list-box .list-wrapper #myUL {
+#observe-list-box .list-wrapper ul,
+#observe-list-box .list-wrapper #myUL {
   list-style-type: none;
 }
-#observed-list-box .list-wrapper #myUL {
+#observe-list-box .list-wrapper #myUL {
   padding: 0;
   overflow-y: scroll;
   height: auto;
 }
-#observed-list-box .list-wrapper .caret {
+#observe-list-box .list-wrapper .caret {
   cursor: pointer;
   user-select: none;
   /* Prevent text selection */
 }
-#observed-list-box .list-wrapper .caret-icon {
+#observe-list-box .list-wrapper .caret-icon {
   color: #cccccc;
   display: inline-block;
   font-size: 13px;
   margin-right: 2%;
 }
-#observed-list-box .list-wrapper .caret-icon-down {
+#observe-list-box .list-wrapper .caret-icon-down {
   transform: rotate(90deg);
 }
-#observed-list-box .list-wrapper .nested {
+#observe-list-box .list-wrapper .nested {
   margin-left: 6.5%;
   display: none;
 }
-#observed-list-box .list-wrapper .active {
+#observe-list-box .list-wrapper .active {
   display: block;
 }
-#observed-list-box .list-wrapper .tree-buttons {
+#observe-list-box .list-wrapper .tree-buttons {
   float: right;
   margin-right: 3%;
 }
-#observed-list-box .list-wrapper .tree-buttons .indiv-tree-button {
+#observe-list-box .list-wrapper .tree-buttons .indiv-tree-button {
   height: 13px;
   width: 13px;
   background-color: transparent;
   border: transparent;
 }
-#observed-list-box .list-wrapper .tree-buttons .indiv-tree-button .tree-button-icon {
+#observe-list-box .list-wrapper .tree-buttons .indiv-tree-button .tree-button-icon {
   height: 100%;
   width: 100%;
   filter: invert(40%);
 }
-#observed-list-box .list-wrapper .layui-form-item {
+#observe-list-box .list-wrapper .layui-form-item {
   margin-bottom: 4px;
 }
-#observed-list-box .bottom {
+#observe-list-box .bottom {
   background-color: #DEECFD;
   display: relative;
   width: 100%;
@@ -304,7 +304,7 @@ body {
   margin-top: auto;
   align-items: center;
 }
-#observed-list-box .bottom .layui-btn {
+#observe-list-box .bottom .layui-btn {
   width: 80px;
   margin-right: 20px;
 }
