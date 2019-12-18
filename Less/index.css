@@ -21,7 +21,6 @@ body {
   z-index: 1;
   background: white;
   font-size: small;
-  display: none;
 }
 .pop-up .pop-up-header {
   display: inline-block;
@@ -258,6 +257,10 @@ body {
   padding-left: 2px;
   padding-right: 4px;
 }
+#observe-list-box .add-ship-box #add-fleet-btn:active {
+  border-color: black;
+  color: black;
+}
 #observe-list-box hr {
   margin: 0.5px 5px 0.5px 5px;
 }
@@ -301,6 +304,9 @@ body {
   background-color: transparent;
   border: 0;
   width: 15px;
+}
+#observe-list-box .my-ship-list .tree-buttons .tree-button:hover {
+  filter: sepia(100%) hue-rotate(190deg) saturate(500%);
 }
 #observe-list-box .my-ship-list .tree-buttons .tree-button-icon {
   height: 13px;
@@ -437,9 +443,6 @@ body {
   width: 15%;
   background-color: #e5e5e5;
 }
-<<<<<<< HEAD
-button:focus {
-=======
 .grey-button {
   background-color: #e5e5e5;
   color: #333333;
@@ -447,8 +450,7 @@ button:focus {
 .grey-button:hover {
   color: black;
 }
-.layui-btn:focus {
->>>>>>> 24ff6448cf396971fd1d1181ac5da1ef6de58e81
+button:focus {
   outline: 0;
 }
 .layui-btn:active {
