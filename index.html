@@ -17,6 +17,9 @@
     <!-- JQuery -->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <!-- layui CSS -->
     <link rel="stylesheet" href="./layui/css/layui.css" media="all">
 
@@ -58,8 +61,8 @@
             <button type="button" class="layui-btn" id="star-button"><img class="image"
                     src="./Images/icon_add_white.png" class="image">
                 增加</button>
-            <button type="button" class="layui-btn" id="filtrate-button"><img class="image" src="./Images/icon_flitrate_ship.png"
-                    class="image"> 编辑</button>
+            <button type="button" class="layui-btn" id="filtrate-button"><img class="image"
+                    src="./Images/icon_flitrate_ship.png" class="image"> 编辑</button>
         </div>
 
         <!-- Pop up ship info -->
@@ -383,22 +386,17 @@
                 <div class="filtrate-sub-box">
                     <h6 class="filtrate-titles"><b>船旗</b></h6>
                     <ul class="filtrate-filters-options" id="filtrate-type-options">
-                        <li class="filtrate-option-li"> <button type="button"
-                                class="layui-btn layui-btn-sm blue-button"
+                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
                                 id="option-size-40-btn">中国大陆</button></li c>
-                        <li class="filtrate-option-li"> <button type="button"
-                                class="layui-btn layui-btn-sm blue-button"
+                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
                                 id="option-size-80-btn">中国港澳台</button></liclass="filtrate-option-li">
-                        <li class="filtrate-option-li"> <button type="button"
-                                class="layui-btn layui-btn-sm blue-button"
+                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
                                 id="option-size-80-btn">国外</button></liclass="filtrate-option-li">
                     </ul>
                 </div>
             </div>
-            <div class="filtrate-selector"></div>
-
-
         </div>
+
         <!-- Map -->
         <div class="map" id="ship-map"></div>
     </div>

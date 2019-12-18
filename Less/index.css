@@ -141,7 +141,7 @@ body {
   width: 30%;
 }
 #observed-list-box {
-  right: 5%;
+  left: 70%;
   top: 21%;
   width: 23%;
   height: auto;
@@ -281,8 +281,8 @@ body {
   margin-right: 20px;
 }
 #ship-filtrate-box {
-  left: 30%;
-  top: 20%;
+  left: 70%;
+  top: 21%;
   height: 520px;
   width: 450px;
 }
@@ -415,4 +415,9 @@ body {
 }
 .layui-btn:active {
   background-color: white;
+}
+#draggable {
+  width: 100px;
+  height: 100px;
+  background: #ccc;
 }
