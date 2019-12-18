@@ -32,15 +32,17 @@
 <body>
     <!-- layui Javascript -->
     <script src="./layui/layui.all.js"></script>
+    <script src="./layui/layui.js" charset="utf-8"></script>
 
     <div id=body>
 
         <!-- Nav bar baby -->
         <ul class="layui-nav my-nav">
             <li class="layui-nav-item"><a style="padding:0px; text-align: right;" href=""><img id="logo"
-                        src="./Images/CIR-logo.png"/></a></li>
+                        src="./Images/CIR-logo.png" /></a></li>
             <li class="layui-nav-item"><a href="" style="font-size: larger;">陆海新通道</a></li>
-            <li class="layui-nav-item navbar-background-highlight" id="ship-position-selector"><a class="l" href="">船位</a></li>
+            <li class="layui-nav-item navbar-background-highlight" id="ship-position-selector"><a class="l"
+                    href="">船位</a></li>
             <li class="layui-nav-item" style="float: right; vertical-align: middle;"><a href=""><img id="user-logo"
                         src="./Images/icon_user.png" /></a></li>
         </ul>
@@ -156,7 +158,7 @@
             </div>
         </div>
 
-        <!--  Ships List -->
+        <!--  Ships observe -->
         <div class="pop-up" id="observe-list-box">
             <!-- Change to true afterwards -->
             <div class="ship-info-header-bar">
@@ -196,111 +198,88 @@
                 </div>
             </div>
             <hr />
-            <div class="list-wrapper">
-                <ul id="myUL">
-                    <li><i class="layui-icon caret-icon" id="caret-icon">&#xe602;</i><span
-                            class="caret">Beverages</span>
+            <div class="layui-collapse my-ship-list" lay-filter="test">
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title">我的船队
                         <div class="tree-buttons">
-                            <button class="indiv-tree-button" id="tree-button1"><img src="./Images/icon_hide.png"
+                            <button class="tree-button" id="tree-button1"><img src="./Images/icon_hide.png"
                                     class="tree-button-icon"></button>
-                            <button class="indiv-tree-button" id="tree-button2"><img
+                            <button class="tree-button" id="tree-button2"><img
                                     src="./Images/icon_info_myship_track.png" class="tree-button-icon"></button>
-                            <button class="indiv-tree-button" id="tree-button3"><img
+                            <button class="tree-button" id="tree-button3"><img
                                     src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                            <button class="indiv-tree-button" id="tree-button4"><img
+                            <button class="tree-button" id="tree-button4"><img
                                     src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
                         </div>
-                        <ul class="nested">
-                            <li>Water <div class="tree-buttons">
-                                    <button class="indiv-tree-button" id="nested1-button1"><img
-                                            src="./Images/icon_hide.png" class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="nested1-button2"><img
-                                            src="./Images/icon_track_myship_track.png"
-                                            class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="nested1-button3"><img
-                                            src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="nested1-button4"><img
-                                            src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
-                                </div>
-                            </li>
-                            <li>Coffee <div class="tree-buttons">
-                                    <button class="indiv-tree-button" id="tree-button1"><img
-                                            src="./Images/icon_hide.png" class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="tree-button2"><img
-                                            src="./Images/icon_track_myship_track.png"
-                                            class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="tree-button3"><img
-                                            src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="tree-button4"><img
-                                            src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><i class="layui-icon caret-icon" id="caret-icon">&#xe602;</i><span
-                            class="caret">Beverages</span>
+                    </h2>
+                    <div class="layui-colla-content">
+                        <div class="ship-in-list">红的船
+                            <div class="tree-buttons">
+                                <button class="tree-button" id="nested1-button1"><img src="./Images/icon_hide.png"
+                                        class="tree-button-icon"></button>
+                                <button class="tree-button" id="nested1-button2"><img
+                                        src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
+                                <button class="tree-button" id="nested1-button3"><img
+                                        src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
+                                <button class="tree-button" id="nested1-button4"><img
+                                        src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                            </div>
+                        </div>
+                        <div class="ship-in-list">牛奶船
+                            <div class="tree-buttons">
+                                <button class="tree-button" id="nested1-button1"><img src="./Images/icon_hide.png"
+                                        class="tree-button-icon"></button>
+                                <button class="tree-button" id="nested1-button2"><img
+                                        src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
+                                <button class="tree-button" id="nested1-button3"><img
+                                        src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
+                                <button class="tree-button" id="nested1-button4"><img
+                                        src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title">
+                        他的船
                         <div class="tree-buttons">
-                            <button class="indiv-tree-button" id="tree-button1"><img src="./Images/icon_hide.png"
+                            <button class="tree-button" id="tree-button1"><img src="./Images/icon_hide.png"
                                     class="tree-button-icon"></button>
-                            <button class="indiv-tree-button" id="tree-button2"><img
+                            <button class="tree-button" id="tree-button2"><img
                                     src="./Images/icon_info_myship_track.png" class="tree-button-icon"></button>
-                            <button class="indiv-tree-button" id="tree-button3"><img
+                            <button class="tree-button" id="tree-button3"><img
                                     src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                            <button class="indiv-tree-button" id="tree-button4"><img
+                            <button class="tree-button" id="tree-button4"><img
                                     src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
                         </div>
-                        <ul class="nested">
-                            <li>Water <div class="tree-buttons">
-                                    <button class="indiv-tree-button" id="nested1-button1"><img
-                                            src="./Images/icon_hide.png" class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="nested1-button2"><img
-                                            src="./Images/icon_track_myship_track.png"
-                                            class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="nested1-button3"><img
-                                            src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="nested1-button4"><img
-                                            src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
-                                </div>
-                            </li>
-                            <li>Coffee <div class="tree-buttons">
-                                    <button class="indiv-tree-button" id="tree-button1"><img
-                                            src="./Images/icon_hide.png" class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="tree-button2"><img
-                                            src="./Images/icon_track_myship_track.png"
-                                            class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="tree-button3"><img
-                                            src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="tree-button4"><img
-                                            src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
-                                </div>
-                            </li>
-                            <li>Beer <div class="tree-buttons">
-                                    <button class="indiv-tree-button" id="tree-button1"><img
-                                            src="./Images/icon_hide.png" class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="tree-button2"><img
-                                            src="./Images/icon_track_myship_track.png"
-                                            class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="tree-button3"><img
-                                            src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="tree-button4"><img
-                                            src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
-                                </div>
-                            </li>
-                            <li>Burger <div class="tree-buttons">
-                                    <button class="indiv-tree-button" id="tree-button1"><img
-                                            src="./Images/icon_hide.png" class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="tree-button2"><img
-                                            src="./Images/icon_track_myship_track.png"
-                                            class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="tree-button3"><img
-                                            src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                                    <button class="indiv-tree-button" id="tree-button4"><img
-                                            src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                    </h2>
+                    <div class="layui-colla-content">
+                        <div class="ship-in-list">Water
+                            <div class="tree-buttons">
+                                <button class="tree-button" id="nested1-button1"><img src="./Images/icon_hide.png"
+                                        class="tree-button-icon"></button>
+                                <button class="tree-button" id="nested1-button2"><img
+                                        src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
+                                <button class="tree-button" id="nested1-button3"><img
+                                        src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
+                                <button class="tree-button" id="nested1-button4"><img
+                                        src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                            </div>
+                        </div>
+                        <div class="ship-in-list">Water
+                            <div class="tree-buttons">
+                                <button class="tree-button" id="nested1-button1"><img src="./Images/icon_hide.png"
+                                        class="tree-button-icon"></button>
+                                <button class="tree-button" id="nested1-button2"><img
+                                        src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
+                                <button class="tree-button" id="nested1-button3"><img
+                                        src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
+                                <button class="tree-button" id="nested1-button4"><img
+                                        src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="bottom">
                 <button type="button" class="layui-btn layui-btn-sm blue-button">取消</button>
