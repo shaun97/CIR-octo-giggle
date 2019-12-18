@@ -13,7 +13,6 @@ $(document).ready(function () {
     }
   });
 
-  //
   $("#selector-clear-button").click(function () {
     $(this).toggleClass("grey-button");
     if (!$(this).hasClass("grey-button")) {
@@ -22,7 +21,7 @@ $(document).ready(function () {
     }
   });
 
-  //Type buttons
+  //Ship type buttons
   $("#option-type-freighter-btn").click(function () {
     $(this).toggleClass("grey-button");
     if ($(this).hasClass("grey-button")) {
@@ -88,6 +87,61 @@ $(document).ready(function () {
     };
   })
 
+  //Weight Buttons
+  $("#option-size-40-btn").click(function () {
+    $(this).toggleClass("grey-button");
+  })
 
+  $("#option-size-80-btn").click(function () {
+    $(this).toggleClass("grey-button");
+  })
+
+  $("#option-size-120-btn").click(function () {
+    $(this).toggleClass("grey-button");
+  })
+
+  $("#option-size-160-btn").click(function () {
+    $(this).toggleClass("grey-button");
+  })
+
+  $("#option-size-240-btn").click(function () {
+    $(this).toggleClass("grey-button");
+  })
+
+  $("#option-size-320-btn").click(function () {
+    $(this).toggleClass("grey-button");
+  })
+
+  $("#option-size-320abv-btn").click(function () {
+    $(this).toggleClass("grey-button");
+  })
+
+  $("#option-size-custom").click(function () {
+
+  })
+
+  //Ship status
+  $("#option-status-stop-btn").click(function () {
+    $(this).toggleClass("grey-button");
+  })
+
+  $("#option-status-moving-btn").click(function () {
+    $(this).toggleClass("grey-button");
+  })
+
+  //Ship flag
+  $("#option-flag-china-btn").click(function () {
+    $(this).toggleClass("grey-button");
+  })
+
+  $("#option-flag-ht-btn").click(function () {
+    $(this).toggleClass("grey-button");
+  })
+
+  $("#option-flag-others-btn").click(function () {
+    $(this).toggleClass("grey-button");
+  })
 });
+
+
 
