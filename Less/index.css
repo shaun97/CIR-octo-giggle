@@ -159,7 +159,6 @@ body {
   top: 40%;
   width: 40%;
   max-height: 40%;
-  overflow: scroll;
 }
 #group-info-box .table-responsive-xl {
   width: 100%;
@@ -291,7 +290,6 @@ body {
 }
 #observe-list-box .list-wrapper #myUL {
   padding: 0;
-  overflow-y: scroll;
   height: auto;
 }
 #observe-list-box .list-wrapper .caret {
