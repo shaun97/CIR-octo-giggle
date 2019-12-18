@@ -414,6 +414,12 @@ body {
   width: -10%;
   padding: -5%;
 }
+.navbar-background-highlight {
+  background-color: #006ce7;
+}
+#ship-position-selector {
+  left: 60%;
+}
 #logo {
   padding-bottom: 23%;
   align-content: right;

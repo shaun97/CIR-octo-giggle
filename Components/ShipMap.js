@@ -33,7 +33,6 @@ var json = (function () {
   });
   return json;
 })();
-
 for (let i = 0; i < json.length; i++) {
   let pt = new BMap.Point(json[i].lng, json[i].lat);
   convertor.translate([pt], 1, 5, (data) => {
