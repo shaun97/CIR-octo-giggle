@@ -35,29 +35,27 @@ body {
   position  : absolute;
   z-index   : 1;
   background: white;
-  overflow  : hidden;
+  // overflow  : hidden;
   font-size : small;
 
   // display: none;
   .pop-up-header {
-    display        : flex;
-    padding-left   : 20px;
-    padding-right  : 12px;
-    flex-direction : row;
-    justify-content: flex-start;
-    align-items    : center;
-    background     : @blue;
-    position       : relative; //important'
-    height         : 35px;
-    width          : 100%;
-
+    display           : inline-block;
+    padding-left      : 20px;
+    padding-right     : 12px;
+    align-items       : center;
+    background        : @blue;
+    position          : relative; //important'
+    height            : 35px;
+    width             : 100%;
+    text-align: justify;
 
     .pop-up-header-text {
-      position   : relative; //important
       height     : auto;
       color      : white;
-      line-height: 30px;
-      height     : 30px;
+      display    : inline-block; // this is to make width of text block varying
+      vertical-align: middle;
+      line-height: 35px;
     }
 
     .pop-up-header-button {
@@ -67,12 +65,9 @@ body {
       width           : auto;
     }
 
-    .edit-button {
-      margin-left: 2%;
-    }
-
     .close-button {
-      margin-left: auto;
+      float: right;
+      line-height: 35px;
     }
   }
 
@@ -198,30 +193,33 @@ body {
 }
 
 #group-info-box {
-  left  : 29%;
-  top   : 40%;
-  width : 40%;
+  left      : 29%;
+  top       : 40%;
+  width     : 40%;
   max-height: 40%;
-  overflow: scroll;
+  overflow  : scroll;
 
   .table-responsive-xl {
-    width   : 100%;
+    width     : 100%;
     max-height: 250px;
-    overflow: scroll;
+    overflow  : scroll;
+
     tr {
       // max-width    : 0;
-      overflow     : hidden;
-      text-overflow: ellipsis;
-      white-space  : nowrap;
+      overflow        : hidden;
+      text-overflow   : ellipsis;
+      white-space     : nowrap;
     }
+
     td {
       // max-width    : 0;
-      overflow     : hidden;
-      text-overflow: ellipsis;
-      white-space  : nowrap;
+      overflow        : hidden;
+      text-overflow   : ellipsis;
+      white-space     : nowrap;
     }
   }
-  .bottom{
+
+  .bottom {
     background-color: white;
   }
 }
