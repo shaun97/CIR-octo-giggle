@@ -324,10 +324,6 @@ body {
 #ship-filtrate-box #ship-filtrate-inner-box .filtrate-selector .selector-button {
   background-color: #006ce7;
 }
-#ship-filtrate-box #ship-filtrate-inner-box .filtrate-selector #selector-clear-button {
-  background-color: #e5e5e5;
-  color: #333333;
-}
 #ship-filtrate-box .filtrate-sub-box {
   width: 100%;
   padding-left: 20px;
@@ -441,7 +437,18 @@ body {
   width: 15%;
   background-color: #e5e5e5;
 }
+<<<<<<< HEAD
 button:focus {
+=======
+.grey-button {
+  background-color: #e5e5e5;
+  color: #333333;
+}
+.grey-button:hover {
+  color: black;
+}
+.layui-btn:focus {
+>>>>>>> 24ff6448cf396971fd1d1181ac5da1ef6de58e81
   outline: 0;
 }
 .layui-btn:active {
