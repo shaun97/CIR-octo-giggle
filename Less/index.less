@@ -38,7 +38,7 @@ body {
   // overflow  : hidden;
   font-size    : small;
 
-  // display: none;
+  display: none;
   .pop-up-header {
     display      : inline-block;
     padding-left : 20px;
@@ -342,14 +342,16 @@ body {
       border: 0;
     }
     .layui-colla-content {
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding-top: 0;
+      padding-bottom: 0;
       border: 0;
     }
     .layui-colla-title {
-      height          : 30px;
+      height: 25px;
+      line-height: 25px;
       background-color: white;
       padding          : auto;
+      font-size: small;
     }
     .ship-in-list{
       margin-left: 20px;
@@ -367,6 +369,9 @@ body {
         height: 13px;
         // width: 15px;
       }
+    }
+    .tree-buttons:hover {
+      
     }
   }
 }
@@ -545,7 +550,7 @@ body {
   background-color: @button-grey;
 }
 
-.layui-btn:focus {
+button:focus {
   outline: 0;
 }
 

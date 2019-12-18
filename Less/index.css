@@ -21,6 +21,7 @@ body {
   z-index: 1;
   background: white;
   font-size: small;
+  display: none;
 }
 .pop-up .pop-up-header {
   display: inline-block;
@@ -277,14 +278,16 @@ body {
   border: 0;
 }
 #observe-list-box .my-ship-list .layui-colla-content {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 0;
+  padding-bottom: 0;
   border: 0;
 }
 #observe-list-box .my-ship-list .layui-colla-title {
-  height: 30px;
+  height: 25px;
+  line-height: 25px;
   background-color: white;
   padding: auto;
+  font-size: small;
 }
 #observe-list-box .my-ship-list .ship-in-list {
   margin-left: 20px;
@@ -438,7 +441,7 @@ body {
   width: 15%;
   background-color: #e5e5e5;
 }
-.layui-btn:focus {
+button:focus {
   outline: 0;
 }
 .layui-btn:active {
