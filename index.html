@@ -204,12 +204,12 @@
                         <div class="tree-buttons">
                             <button class="tree-button" id="tree-button1"><img src="./Images/icon_hide.png"
                                     class="tree-button-icon"></button>
-                            <button class="tree-button" id="tree-button2"><img
-                                    src="./Images/icon_info_myship_track.png" class="tree-button-icon"></button>
-                            <button class="tree-button" id="tree-button3"><img
-                                    src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                            <button class="tree-button" id="tree-button4"><img
-                                    src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                            <button class="tree-button" id="tree-button2"><img src="./Images/icon_info_myship_track.png"
+                                    class="tree-button-icon"></button>
+                            <button class="tree-button" id="tree-button3"><img src="./Images/icon_edit_myship_track.png"
+                                    class="tree-button-icon"></button>
+                            <button class="tree-button" id="tree-button4"><img src="./Images/icon_delt_myship_track.png"
+                                    class="tree-button-icon"></button>
                         </div>
                     </h2>
                     <div class="layui-colla-content">
@@ -269,12 +269,12 @@
                         <div class="tree-buttons">
                             <button class="tree-button" id="tree-button1"><img src="./Images/icon_hide.png"
                                     class="tree-button-icon"></button>
-                            <button class="tree-button" id="tree-button2"><img
-                                    src="./Images/icon_info_myship_track.png" class="tree-button-icon"></button>
-                            <button class="tree-button" id="tree-button3"><img
-                                    src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                            <button class="tree-button" id="tree-button4"><img
-                                    src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
+                            <button class="tree-button" id="tree-button2"><img src="./Images/icon_info_myship_track.png"
+                                    class="tree-button-icon"></button>
+                            <button class="tree-button" id="tree-button3"><img src="./Images/icon_edit_myship_track.png"
+                                    class="tree-button-icon"></button>
+                            <button class="tree-button" id="tree-button4"><img src="./Images/icon_delt_myship_track.png"
+                                    class="tree-button-icon"></button>
                         </div>
                     </h2>
                     <div class="layui-colla-content">
@@ -331,25 +331,52 @@
                 <div class="filtrate-sub-box">
                     <h6 class="filtrate-titles"><b>船舶类型</b></h6>
                     <ul class="filtrate-filters-options" id="filtrate-type-options">
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm filtrate-type-button blue-button"
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm filtrate-type-button blue-button"
                                 id="option-type-freighter-btn">散货船</button></li c>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm filtrate-type-button blue-button"
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm filtrate-type-button blue-button"
                                 id="option-type-container-btn">集装箱船</button></liclass="filtrate-option-li">
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm filtrate-type-button blue-button"
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm filtrate-type-button blue-button"
                                 id="option-type-oil-btn">邮轮</button></liclass="filtrate-option-li">
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm filtrate-type-button blue-button"
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm filtrate-type-button blue-button"
                                 id="option-type-tugboat-btn">拖轮/引航船</button></li>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm filtrate-type-button blue-button"
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm filtrate-type-button blue-button"
                                 id="option-type-fish-btn">渔船</button></li>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm filtrate-type-button blue-button"
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm filtrate-type-button blue-button"
                                 id="option-type-passenger-btn">客船</button></li>
-                        <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm filtrate-type-button blue-button"
+                        <li class="filtrate-option-li"> <button type="button"
+                                class="layui-btn layui-btn-sm filtrate-type-button blue-button"
                                 id="option-type-others-btn">其他</button></li>
                     </ul>
                 </div>
                 <hr>
                 </hr>
-                <div class="filtrate-sub-box">
+                <div class="filtrate-sub-box filtrate-custom-weight-subclass">
+                    <h6 class="filtrate-titles"><b>船舶类型</b></h6>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <div class="layui-input-inline" style="width: 100px;">
+                                <input type="text" name="price_min" placeholder="20" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                            <div class="layui-form-mid">-</div>
+                            <div class="layui-input-inline" style="width: 100px;">
+                                <input type="text" name="price_max" placeholder="100" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                            <button type="button" class="layui-btn layui-btn-sm filtrate-type-button blue-button"
+                                id="option-type-others-btn">你好</button>
+                            <button type="button" class="layui-btn layui-btn-sm filtrate-type-button grey-button"
+                                id="filtrate-option-custom-close">不要谢谢</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="filtrate-sub-box filtrate-set-weight-subclass">
                     <h6 class="filtrate-titles"><b>船舶类型</b></h6>
                     <ul class="filtrate-filters-options" id="filtrate-type-options">
                         <li class="filtrate-option-li"> <button type="button"
@@ -406,6 +433,7 @@
             </div>
         </div>
 
+        <!-- Ship Group info box  -->
         <div class="pop-up" id="group-info-box">
             <div class="ship-filtrate-header-bar">
                 <div class="pop-up-header">

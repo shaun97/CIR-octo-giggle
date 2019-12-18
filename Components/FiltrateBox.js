@@ -117,7 +117,13 @@ $(document).ready(function () {
   })
 
   $("#option-size-custom").click(function () {
+    $(".filtrate-set-weight-subclass").hide();
+    $(".filtrate-custom-weight-subclass").show();
+  })
 
+  $("#filtrate-option-custom-close").click(function () {
+    $(".filtrate-set-weight-subclass").show();
+    $(".filtrate-custom-weight-subclass").hide();
   })
 
   //Ship status

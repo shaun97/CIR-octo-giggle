@@ -9,5 +9,6 @@ $(document).ready(function () {
 $(document).ready(function () {
   $("#filtrate-button").click(function () {
     $("#ship-filtrate-box").show();
+    $("#filtrate-option-custom-close").click()
   });
 });
