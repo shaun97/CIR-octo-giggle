@@ -389,6 +389,23 @@ body {
   height: 1px;
   margin-bottom: 0%;
 }
+#ship-filtrate-box .filtrate-custom-weight-subclass {
+  display: none;
+}
+#ship-filtrate-box .filtrate-custom-weight-subclass .layui-form-item {
+  margin-bottom: 0;
+}
+#ship-filtrate-box .filtrate-custom-weight-subclass .layui-form-item .layui-inline {
+  height: 30px;
+}
+#ship-filtrate-box .filtrate-custom-weight-subclass .layui-form-item .layui-inline #filtrate-option-custom-close {
+  margin-right: auto;
+  background-color: #e5e5e5;
+  color: #006ce7;
+}
+#ship-filtrate-box .filtrate-custom-weight-subclass .layui-form-item .layui-input {
+  height: 30px;
+}
 #search-bar {
   margin-top: 2%;
   left: 0.7%;
