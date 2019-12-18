@@ -11,6 +11,9 @@ $(document).ready(function () {
     $("#observe-write").show();
     $("#observe-read").hide();
   });
+  $(".tree-button").click(function (e) {
+    e.stopPropagation();
+  });
 });
 
 var toggler = document.getElementsByClassName("caret");
