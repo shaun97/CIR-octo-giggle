@@ -25,7 +25,7 @@ var json = (function () {
   $.ajax({
     'async': false,
     'global': false,
-    'url': "http://localhost:3000/posts",
+    'url': "http://localhost:3000/ships",
     'dataType': "json",
     'success': function (data) {
       json = data;

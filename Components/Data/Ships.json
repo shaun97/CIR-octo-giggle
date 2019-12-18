@@ -1,5 +1,5 @@
 {
-  "posts": [
+  "ships": [
     {
       "idL": "123456789",
       "idM": "1234567",
@@ -38,7 +38,111 @@
       "nickname": "Nickname",
       "country": "Korea [KR]",
       "img": "./Images/Ship3.jpg"
+    },
+    {
+      "idL": "123416789",
+      "idM": "3451268",
+      "idS": "A4B23",
+      "lng": "123.720",
+      "lat": "31.850",
+      "len": "24066",
+      "mass": "1010.93",
+      "name": "Boat No. 3",
+      "nickname": "Nickname",
+      "country": "Korea [KR]",
+      "img": "./Images/Ship3.jpg"
+    },
+    {
+      "idL": "545624789",
+      "idM": "3451268",
+      "idS": "A4B23",
+      "lng": "124.520",
+      "lat": "31.150",
+      "len": "24066",
+      "mass": "1010.93",
+      "name": "Boat No. 3",
+      "nickname": "Nickname",
+      "country": "Korea [KR]",
+      "img": "./Images/Boaty-McBoatface-minisub.jpg"
+    },
+    {
+      "idL": "876374647",
+      "idM": "3451268",
+      "idS": "A4B23",
+      "lng": "122.120",
+      "lat": "33.350",
+      "len": "24066",
+      "mass": "1010.93",
+      "name": "Boat No. 3",
+      "nickname": "Nickname",
+      "country": "Korea [KR]",
+      "img": "./Images/Ship1.jpg"
+    },
+    {
+      "idL": "342834758",
+      "idM": "3451268",
+      "idS": "A4B23",
+      "lng": "121.520",
+      "lat": "31.435",
+      "len": "24066",
+      "mass": "1010.93",
+      "name": "Boat No. 3",
+      "nickname": "Nickname",
+      "country": "Korea [KR]",
+      "img": "./Images/Boaty-McBoatface-minisub.jpg"
+    },
+    {
+      "idL": "543216789",
+      "idM": "3451268",
+      "idS": "A4B23",
+      "lng": "124.220",
+      "lat": "31.250",
+      "len": "24066",
+      "mass": "1010.93",
+      "name": "Boat No. 3",
+      "nickname": "Nickname",
+      "country": "Korea [KR]",
+      "img": "./Images/Ship2.jpg"
+    },
+    {
+      "idL": "543216789",
+      "idM": "3451268",
+      "idS": "A4B23",
+      "lng": "122.520",
+      "lat": "33.250",
+      "len": "24066",
+      "mass": "1010.93",
+      "name": "Boat No. 3",
+      "nickname": "Nickname",
+      "country": "Korea [KR]",
+      "img": "./Images/Ship2.jpg"
+    },
+    {
+      "idL": "543216789",
+      "idM": "3451268",
+      "idS": "A4B23",
+      "lng": "124.520",
+      "lat": "31.432",
+      "len": "24066",
+      "mass": "1010.93",
+      "name": "Boat No. 3",
+      "nickname": "Nickname",
+      "country": "Korea [KR]",
+      "img": "./Images/Boaty-McBoatface-minisub.jpg"
+    },
+    {
+      "idL": "543216789",
+      "idM": "3451268",
+      "idS": "A4B23",
+      "lng": "125.520",
+      "lat": "32.250",
+      "len": "24066",
+      "mass": "1010.93",
+      "name": "Boat No. 3",
+      "nickname": "Nickname",
+      "country": "Korea [KR]",
+      "img": "./Images/Ship3.jpg"
     }
   ],
-  "comments": []
+  "groups": []
 }
