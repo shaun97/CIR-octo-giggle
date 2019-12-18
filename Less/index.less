@@ -32,30 +32,30 @@ body {
 
 // --------------- pop-up styling --------------- //
 .pop-up {
-  position  : absolute;
-  z-index   : 1;
-  background: white;
+  position     : absolute;
+  z-index      : 1;
+  background   : white;
   // overflow  : hidden;
-  font-size : small;
+  font-size    : small;
 
   // display: none;
   .pop-up-header {
-    display           : inline-block;
-    padding-left      : 20px;
-    padding-right     : 12px;
-    align-items       : center;
-    background        : @blue;
-    position          : relative; //important'
-    height            : 35px;
-    width             : 100%;
-    text-align: justify;
+    display      : inline-block;
+    padding-left : 20px;
+    padding-right: 12px;
+    align-items  : center;
+    background   : @blue;
+    position     : relative; //important'
+    height       : 35px;
+    width        : 100%;
+    text-align   : justify;
 
     .pop-up-header-text {
-      height     : auto;
-      color      : white;
-      display    : inline-block; // this is to make width of text block varying
+      height        : auto;
+      color         : white;
+      display       : inline-block; // this is to make width of text block varying
       vertical-align: middle;
-      line-height: 35px;
+      line-height   : 35px;
     }
 
     .pop-up-header-button {
@@ -66,7 +66,7 @@ body {
     }
 
     .close-button {
-      float: right;
+      float      : right;
       line-height: 35px;
     }
   }
@@ -223,8 +223,6 @@ body {
   }
 }
 
-// --------------- search bar styling --------------- //
-
 #observe-list-box {
   left          : 70%;
   top           : 21%;
@@ -319,6 +317,11 @@ body {
       padding-left    : 2px;
       padding-right   : 4px;
     }
+
+    #add-fleet-btn:active {
+      border-color: black;
+      color       : black;
+    }
   }
 
   hr {
@@ -332,76 +335,54 @@ body {
     margin-bottom: 0;
   }
 
-  .list-wrapper {
-    max-height: 100px;
+  .my-ship-list {
+    max-height: 170px;
     min-height: 70px;
     overflow-y: scroll;
-    height    : 25%;
-    margin    : 7px 3px 7px 5px;
+    border    : 0;
+    font-size : smaller;
 
-    /* Remove default bullets */
-    ul,
-    #myUL {
-      list-style-type: none;
+    .layui-colla-item {
+      border: 0;
     }
 
-    /* Remove margins and padding from the parent ul */
-    #myUL {
-      padding   : 0;
-      height    : auto;
+    .layui-colla-content {
+      padding-top   : 0;
+      padding-bottom: 0;
+      border        : 0;
     }
 
-    /* Style the caret/arrow */
-    .caret {
-      cursor     : pointer;
-      user-select: none;
-      /* Prevent text selection */
+    .layui-colla-title {
+      height          : 25px;
+      line-height     : 25px;
+      background-color: white;
+      padding         : auto;
+      font-size       : small;
     }
 
-    /* Create the caret/arrow with a unicode, and style it */
-    .caret-icon {
-      color       : @icon-grey;
-      display     : inline-block;
-      font-size   : 13px;
-      margin-right: 2%;
-    }
-
-    /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
-    .caret-icon-down {
-      transform: rotate(90deg);
-    }
-
-    /* Hide the nested list */
-    .nested {
-      margin-left: 6.5%;
-      display    : none;
-    }
-
-    /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
-    .active {
-      display: block;
+    .ship-in-list {
+      margin-left: 20px;
     }
 
     .tree-buttons {
       float       : right;
-      margin-right: 3%;
+      margin-right: 10px;
+      height      : 22px;
 
-      .indiv-tree-button {
-        height          : 13px;
-        width           : 13px;
+      .tree-button {
         background-color: transparent;
-        border          : transparent;
-
-        .tree-button-icon {
-          height: 100%;
-          width : 100%;
-          filter: invert(40%);
-        }
+        border          : 0;
+        width           : 15px;
       }
-    }
 
-    .layui-form-item {
-      margin-bottom: 4px;
+      .tree-button:hover {
+        filter: sepia(100%) hue-rotate(190deg) saturate(500%);
+      }
+
+      .tree-button-icon {
+        height  : 13px;
+        // width: 15px;
+      }
     }
   }
 }
@@ -575,17 +556,17 @@ body {
   width           : 15%;
   background-color: @button-grey;
 }
- 
+
 .grey-button {
   background-color: @button-grey;
-  color: @word-black;
+  color           : @word-black;
 }
 
 .grey-button:hover {
   color: black;
 }
 
-.layui-btn:focus {
+button:focus {
   outline: 0;
 }
 
