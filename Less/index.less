@@ -182,8 +182,9 @@ body {
 }
 
 // --------------- search bar styling --------------- //
-#observed-list-box {
-  left        : 70%;
+
+#observe-list-box {
+  left          : 70%;
   top           : 21%;
   width         : 23%;
   height        : auto;
@@ -192,14 +193,14 @@ body {
   margin-bottom : 0;
 
   .show-ships-bar {
-    height        : 10%;
+    height        : 50px;
     display       : flex;
     flex-direction: row;
     align-items   : center;
     margin-bottom : 0;
 
     .display-ships-chkbox {
-      margin-left: 10px;
+      margin-left : 10px;
       margin-right: 10px;
     }
 
@@ -208,14 +209,46 @@ body {
     }
   }
 
+  .add-ship-box-hidden {
+    height        : 50px;
+    display       : flex;
+    flex-direction: row;
+    align-items   : center;
+
+    .layui-btn {
+      margin-left     : 10px;
+      color           : @word-grey;
+      background-color: white;
+      border          : solid;
+      border-color    : @border-grey;
+      border-width    : thin;
+      justify-content : center;
+      align-items     : center;
+      height          : 20px;
+      width           : 20px;
+      display         : flex;
+      flex-direction  : column;
+
+      img {
+        height   : 15px;
+        width    : auto;
+        transform: rotate(45deg);
+      }
+    }
+
+    .layui-btn:active {
+      border-color: black;
+    }
+  }
+
   .add-ship-box {
     height: 180px;
 
     .real-label {
-      padding: 4px 8px 4px 4px;
+      padding      : 4px 8px 4px 4px;
       margin-bottom: 2px;
-      width  : 25%;
-      color  : @word-grey;
+      width        : 25%;
+      color        : @word-grey;
     }
 
     ::placeholder {
@@ -247,7 +280,7 @@ body {
   }
 
   hr {
-    margin: 0.5px 0.3px 0.5px 0.3px;
+    margin: 0.5px 5px 0.5px 5px;
   }
 
   .observe-big-text {
@@ -523,7 +556,7 @@ body {
 }
 
 #draggable {
-  width: 100px;
-  height: 100px;
+  width     : 100px;
+  height    : 100px;
   background: #ccc;
 }

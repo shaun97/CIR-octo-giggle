@@ -1,6 +1,8 @@
 $(document).ready(function () {
   $("#star-button").click(function () {
-    $("#observed-list-box").show();
+    $("#observe-list-box").show();
+    $("#observe-write").hide()
+    $("#observe-read").show();
   });
 });
 
