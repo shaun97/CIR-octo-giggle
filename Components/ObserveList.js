@@ -22,12 +22,27 @@ $(document).ready(function () {
       }
     }
     if (i == len) {
-      let wrapper = $("<div class='layui-colla-item'></div>");
-      let newFleet = $("<h2 class='layui-colla-title'></h2>").text(newFleetName);
-      let content = $("<div class='layui-colla-content'></div>").text("hello");
-      let eye = $("<button class='tree-button'></button>").html('<img src="./Images/icon_hide.png" class="tree-button-icon">');
-      wrapper.append(newFleet.append(eye)).append(content);
-      $(".my-ship-list").append(wrapper);
+      let showing = false;
+      let newFleet = $('<h2/>').addClass("layui-colla-title").text(newFleetName);
+      let content = $('<div/>').addClass("layui-colla-content").html("<p>hello</p>");
+      let icon = $('<i/>').addClass("layui-icon").addClass("layui-colla-icon").html("");
+      newFleet.click(function() {
+        if (!showing) {
+          content.addClass("layui-show");
+          icon.html("");
+        } else {
+          content.attr("class", "layui-colla-content");
+          icon.html("")
+        }
+        showing = !showing;
+      })
+      newFleet.append(icon);
+      $('.my-ship-list').append(
+        $('<div/>')
+          .addClass("layui-colla-item")
+          .append(newFleet)
+          .append(content)
+      );
     }
   });
 });
