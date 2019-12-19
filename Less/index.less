@@ -198,10 +198,38 @@ body {
   width     : 40%;
   max-height: 40%;
 
+
   .table-responsive-xl {
     width     : 100%;
     max-height: 250px;
     overflow  : scroll;
+
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width           : 12px;
+      height: 12px;
+    }
+
+    /* background of the scrollbar except button or resizer */
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    /* scrollbar itself */
+    &::-webkit-scrollbar-thumb {
+      background-color: lightgrey;
+      border-radius   : 8px;
+       border       : 3px solid white;
+    }
+
+    /* set button(top and bottom of the scrollbar) */
+    &::-webkit-scrollbar-button {
+      display: none
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgb(177, 176, 176);
+    }
 
     tr {
       // max-width    : 0;
@@ -342,6 +370,9 @@ body {
     border    : 0;
     font-size : smaller;
 
+    //scrollbar styling
+
+    
     .layui-colla-item {
       border: 0;
     }
