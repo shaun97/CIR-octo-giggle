@@ -160,7 +160,6 @@
 
         <!--  Ships observe -->
         <div class="pop-up" id="observe-list-box">
-            <!-- Change to true afterwards -->
             <div class="ship-info-header-bar">
                 <div class="pop-up-header">
                     <h6 class="pop-up-header-text"><img src="./Images/icon_add_white.png" height="17px" width="17px">
@@ -169,7 +168,7 @@
                             src="./Images/icon_close.png" height="75%" width="75%"></button>
                 </div>
             </div>
-            <form class = "layui-form" action = "">
+            <form class="layui-form" action="">
                 <div class="layui-form-item show-ships-bar">
                     <input type="checkbox" name="" title="隐藏未关注船" lay-skin="primary">
                 </div>
@@ -307,7 +306,7 @@
                 </div>
             </div>
             <div class="bottom">
-                <button type="button" class="layui-btn layui-btn-sm blue-button">取消</button>
+                <button type="button" class="layui-btn layui-btn-sm blue-button">导出船舶</button>
             </div>
         </div>
 
@@ -444,11 +443,11 @@
                             src="./Images/icon_close.png" height="75%" width="75%"></button>
                 </div>
             </div>
-            <div class="table-responsive-xl">
-                <table class="table table-striped">
+
+            <div class="ship-group-table">
+                <table class="layui-table" lay-skin="line">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">组</th>
                             <th scope="col">船名</th>
                             <th scope="col">航速</th>
@@ -465,9 +464,9 @@
                             <th scope="col">更新时间</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
                             <td>Mark</td>
                             <td>Otto</td>
                             <td>@mdo</td>
@@ -484,7 +483,6 @@
                             <td>Otto</td>
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
                             <td>Jacob</td>
                             <td>Thornton</td>
                             <td>@fat</td>
@@ -501,7 +499,6 @@
                             <td>Otto</td>
                         </tr>
                         <tr>
-                            <th scope="row">4</th>
                             <td>Larry</td>
                             <td>the Bird</td>
                             <td>@twitter</td>
@@ -518,7 +515,6 @@
                             <td>Otto</td>
                         </tr>
                         <tr>
-                            <th scope="row">5</th>
                             <td>Larry</td>
                             <td>the Bird</td>
                             <td>@twitter</td>
@@ -535,7 +531,6 @@
                             <td>Otto</td>
                         </tr>
                         <tr>
-                            <th scope="row">6 </th>
                             <td>Larry</td>
                             <td>the Bird</td>
                             <td>@twitter</td>
@@ -555,7 +550,7 @@
                 </table>
             </div>
             <div class="bottom">
-                <button type="button" class="layui-btn layui-btn-sm blue-button">取消</button>
+                <button type="button" class="layui-btn layui-btn-sm blue-button">导出</button>
             </div>
         </div>
 
