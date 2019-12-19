@@ -11,24 +11,49 @@ $(document).ready(function () {
   $(".tree-button").click(function (e) {
     e.stopPropagation();
   });
-  const fleetNames = ["我的船队", "他的船", "a"];
-  let len = 3;
+  const fleetNames = [];
+  let len = 0;
   $("#add-fleet-btn").click(function (e) {
     let newFleetName = $("#add-ship-fleet-name").val();
+    if (newFleetName == "") { return; }
     $("#add-ship-fleet-name").val("");
     let i = 0;
     for (i = 0; i < len; i++) {
-      // console.log($(".my-ship-list").find(`.layui-colla-title:eq(${i})`).text().substr(0, newFleetName.length), newFleetName);
-      if (newFleetName == fleetNames[i]) {
-        break;
-      }
+      if (newFleetName == fleetNames[i]) { break; }
     }
+    let eye = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_hide.png" class="tree-button-icon">');
+    let track = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_track_myship_track.png" class="tree-button-icon">');
+    let edit = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_edit_myship_track.png" class="tree-button-icon">');
+    let close = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_delt_myship_track.png" class="tree-button-icon">');
+    let treeButtons = $('<div/>').addClass("tree-buttons").append(eye, track, edit, close);
+    let ship = $('<div/>').addClass("ship-in-list").html($("#ship-info-name").text()).append(treeButtons);
+
+    //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
+
+    close.click(function () {
+      ship.remove();
+    });
+
+    //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
     if (i == len) {
       let showing = false;
       let newFleet = $('<h2/>').addClass("layui-colla-title").text(newFleetName);
-      let content = $('<div/>').addClass("layui-colla-content").html("<p>hello</p>");
       let icon = $('<i/>').addClass("layui-icon").addClass("layui-colla-icon").html("");
-      newFleet.click(function() {
+      let eyeF = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_hide.png" class="tree-button-icon">');
+      let tableF = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_info_myship_track.png" class="tree-button-icon">');
+      let editF = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_edit_myship_track.png" class="tree-button-icon">');
+      let closeF = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_delt_myship_track.png" class="tree-button-icon">');
+      let treeButtonsF = $('<div/>').addClass("tree-buttons").append(eyeF, tableF, editF, closeF);
+      let content = $('<div/>').addClass("layui-colla-content").attr("id", `content-list-${i}`).append(ship);
+      let newItem = $('<div/>').addClass("layui-colla-item")
+        .append(newFleet.append(treeButtonsF).append(icon))
+        .append(content)
+      $('.my-ship-list').append(newItem);
+      len = fleetNames.push(newFleetName);
+
+      //-------------- FUNCTIONALITY FOR FLEET TREE-BUTTONS --------------//
+
+      newFleet.click(function () {
         if (!showing) {
           content.addClass("layui-show");
           icon.html("");
@@ -38,13 +63,20 @@ $(document).ready(function () {
         }
         showing = !showing;
       })
-      newFleet.append(icon);
-      $('.my-ship-list').append(
-        $('<div/>')
-          .addClass("layui-colla-item")
-          .append(newFleet)
-          .append(content)
-      );
+
+      closeF.click(function () {
+        newItem.empty();
+        newItem.remove();
+      });
+
+      tableF.click(() => {
+        $("#group-info-box").show();
+      });
+
+      //-------------- END FUNCTIONALITY FOR FLEET TREE-BUTTONS --------------//
+
+    } else {
+      $(`#content-list-${i}`).append(ship);
     }
   });
 });

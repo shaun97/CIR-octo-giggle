@@ -360,12 +360,12 @@ body {
 #observe-list-box .my-ship-list .tree-buttons {
   float: right;
   height: 22px;
-  z-index: 2;
 }
 #observe-list-box .my-ship-list .tree-buttons .tree-button {
   background-color: transparent;
   border: 0;
   width: 15px;
+  margin: 0px 2px 0px 2px;
 }
 #observe-list-box .my-ship-list .tree-buttons .tree-button:hover {
   filter: sepia(100%) hue-rotate(190deg) saturate(500%);
