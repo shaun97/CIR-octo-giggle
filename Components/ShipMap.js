@@ -11,10 +11,9 @@ var point = new BMap.Point(121.4737, 31.2304);
 var convertor = new BMap.Convertor();
 convertor.translate([point], 1, 5, (data) => {
   map.centerAndZoom(point, 9);
-  map.addControl(new BMap.NavigationControl());
   map.addControl(new BMap.ScaleControl());
   map.addControl(new BMap.OverviewMapControl());
-  map.addControl(new BMap.MapTypeControl());
+
 })
 
 /**

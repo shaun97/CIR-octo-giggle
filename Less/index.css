@@ -159,7 +159,11 @@ body {
   width: 40%;
   max-height: 40%;
 }
-#group-info-box .table-responsive-xl {
+#group-info-box tbody tr:hover {
+  background-color: #006ce7;
+  color: white;
+}
+#group-info-box .ship-group-table {
   width: 100%;
   max-height: 250px;
   overflow: scroll;
@@ -167,31 +171,34 @@ body {
   /* scrollbar itself */
   /* set button(top and bottom of the scrollbar) */
 }
-#group-info-box .table-responsive-xl::-webkit-scrollbar {
+#group-info-box .ship-group-table .layui-table {
+  margin-top: 0px;
+}
+#group-info-box .ship-group-table::-webkit-scrollbar {
   background-color: transparent;
   width: 12px;
   height: 12px;
 }
-#group-info-box .table-responsive-xl::-webkit-scrollbar-track {
+#group-info-box .ship-group-table::-webkit-scrollbar-track {
   background-color: transparent;
 }
-#group-info-box .table-responsive-xl::-webkit-scrollbar-thumb {
+#group-info-box .ship-group-table::-webkit-scrollbar-thumb {
   background-color: lightgrey;
   border-radius: 8px;
   border: 3px solid white;
 }
-#group-info-box .table-responsive-xl::-webkit-scrollbar-button {
+#group-info-box .ship-group-table::-webkit-scrollbar-button {
   display: none;
 }
-#group-info-box .table-responsive-xl::-webkit-scrollbar-thumb:hover {
+#group-info-box .ship-group-table::-webkit-scrollbar-thumb:hover {
   background: #b1b0b0;
 }
-#group-info-box .table-responsive-xl tr {
+#group-info-box .ship-group-table tr {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-#group-info-box .table-responsive-xl td {
+#group-info-box .ship-group-table td {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
