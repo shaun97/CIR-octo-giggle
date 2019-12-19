@@ -26,8 +26,10 @@ $(document).ready(function () {
 
       //-------------- FUNCTIONALITY FOR FLEET TREE-BUTTONS --------------//
 
+      // <i class="layui-icon layui-colla-icon"></i>
       newFleet.click(function () {
         content.toggleClass("layui-show");
+        icon.html() == "" ? icon.html("") : icon.html(""); // Styling for Dropdown
       })
 
       eyeF.click(function () {
