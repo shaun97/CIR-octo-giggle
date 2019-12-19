@@ -50,6 +50,9 @@ body {
     width        : 100%;
     text-align   : justify;
 
+    &:hover {
+      cursor: move;
+    }
     .pop-up-header-text {
       height        : auto;
       color         : white;
@@ -207,7 +210,7 @@ body {
     &::-webkit-scrollbar {
       background-color: transparent;
       width           : 12px;
-      height: 12px;
+      height          : 12px;
     }
 
     /* background of the scrollbar except button or resizer */
@@ -219,7 +222,7 @@ body {
     &::-webkit-scrollbar-thumb {
       background-color: lightgrey;
       border-radius   : 8px;
-       border       : 3px solid white;
+      border          : 3px solid white;
     }
 
     /* set button(top and bottom of the scrollbar) */
@@ -267,13 +270,30 @@ body {
     align-items   : center;
     margin-bottom : 0;
 
-    .display-ships-chkbox {
-      margin-left : 10px;
-      margin-right: 10px;
-    }
-
     .layui-form-label {
       padding-left: 0;
+    }
+
+    //checkbox changing layui styling
+    .layui-form-checkbox[lay-skin=primary] i {
+      border-radius: 0px;
+    }
+
+    .layui-form-checkbox[lay-skin=primary]:hover i {
+      border-color : grey;
+      border-radius: 0px;
+    }
+
+    .layui-form-checked[lay-skin=primary] i {
+      background-color: @blue;
+      border-color    : @blue  !important;
+      border-radius   : 0px;
+      color           : #fff
+    }
+
+    .layui-form-checkbox[lay-skin=primary] {
+      margin-top: 0px;
+      margin-left: 10px;
     }
   }
 
@@ -372,7 +392,33 @@ body {
 
     //scrollbar styling
 
-    
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width           : 12px;
+      height          : 12px;
+    }
+
+    /* background of the scrollbar except button or resizer */
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    /* scrollbar itself */
+    &::-webkit-scrollbar-thumb {
+      background-color: lightgrey;
+      border-radius   : 8px;
+      border          : 3px solid white;
+    }
+
+    /* set button(top and bottom of the scrollbar) */
+    &::-webkit-scrollbar-button {
+      display: none
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgb(177, 176, 176);
+    }
+
     .layui-colla-item {
       border: 0;
     }
@@ -393,13 +439,13 @@ body {
 
     .ship-in-list {
       margin-left: 5.5%;
-      width: 94.5%;
-      overflow: hidden;
+      width      : 94.5%;
+      overflow   : hidden;
     }
 
     .tree-buttons {
-      float       : right;
-      height      : 22px;
+      float  : right;
+      height : 22px;
       z-index: 2;
 
       .tree-button {
@@ -413,7 +459,7 @@ body {
       }
 
       .tree-button-icon {
-        height  : 12px;
+        height: 12px;
       }
     }
   }

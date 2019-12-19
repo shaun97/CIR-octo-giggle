@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
   $("#observe-close-button").click(function () {
     $("#observe-list-box").hide();
@@ -32,7 +34,8 @@ $(document).ready(function () {
   });
 });
 
-layui.use(['element', 'layer'], function () {
+layui.use(['element', 'layer', 'form'], function () {
   var element = layui.element;
   var layer = layui.layer;
+  var form = layui.form;
 });
