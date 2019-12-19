@@ -190,118 +190,15 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label real-label">自定义名称</label>
                     <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder=""
-                        class="layui-input input-bar">
+                        class="layui-input input-bar" id="add-ship-to-fleet-inputbar">
                 </div>
                 <div class="add-fleet-two-buttons">
-                    <button type="button" class="layui-btn layui-btn-sm blue-button">保存</button>
+                    <button type="button" class="layui-btn layui-btn-sm blue-button" id="add-ship-to-fleet-btn">保存</button>
                     <button type="button" class="layui-btn layui-btn-sm cancel-button">取消</button>
                 </div>
             </div>
             <hr />
             <div class="layui-collapse my-ship-list" lay-filter="test">
-                <!-- <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">我的船队<div class="tree-buttons">
-                            <button class="tree-button"><img src="./Images/icon_hide.png"
-                                    class="tree-button-icon"></button>
-                            <button class="tree-button"><img src="./Images/icon_info_myship_track.png"
-                                    class="tree-button-icon"></button>
-                            <button class="tree-button"><img src="./Images/icon_edit_myship_track.png"
-                                    class="tree-button-icon"></button>
-                            <button class="tree-button"><img src="./Images/icon_delt_myship_track.png"
-                                    class="tree-button-icon"></button>
-                        </div>
-                    </h2>
-                    <div class="layui-colla-content">
-                        <div class="ship-in-list">红的船
-                            <div class="tree-buttons">
-                                <button class="tree-button"><img src="./Images/icon_hide.png"
-                                        class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
-                            </div>
-                        </div>
-                        <div class="ship-in-list">牛奶船
-                            <div class="tree-buttons">
-                                <button class="tree-button"><img src="./Images/icon_hide.png"
-                                        class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
-                            </div>
-                        </div>
-                        <div class="ship-in-list">我最喜欢的船
-                            <div class="tree-buttons">
-                                <button class="tree-button"><img src="./Images/icon_hide.png"
-                                        class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
-                            </div>
-                        </div>
-                        <div class="ship-in-list">朋友给我的船
-                            <div class="tree-buttons">
-                                <button class="tree-button"><img src="./Images/icon_hide.png"
-                                        class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">
-                        他的船<div class="tree-buttons">
-                            <button class="tree-button"><img src="./Images/icon_hide.png"
-                                    class="tree-button-icon"></button>
-                            <button class="tree-button"><img src="./Images/icon_info_myship_track.png"
-                                    class="tree-button-icon"></button>
-                            <button class="tree-button"><img src="./Images/icon_edit_myship_track.png"
-                                    class="tree-button-icon"></button>
-                            <button class="tree-button"><img src="./Images/icon_delt_myship_track.png"
-                                    class="tree-button-icon"></button>
-                        </div>
-                    </h2>
-                    <div class="layui-colla-content">
-                        <div class="ship-in-list">Water
-                            <div class="tree-buttons">
-                                <button class="tree-button"><img src="./Images/icon_hide.png"
-                                        class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
-                            </div>
-                        </div>
-                        <div class="ship-in-list">Water
-                            <div class="tree-buttons">
-                                <button class="tree-button"><img src="./Images/icon_hide.png"
-                                        class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_track_myship_track.png" class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_edit_myship_track.png" class="tree-button-icon"></button>
-                                <button class="tree-button"><img
-                                        src="./Images/icon_delt_myship_track.png" class="tree-button-icon"></button>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
             <div class="bottom">
                 <button type="button" class="layui-btn layui-btn-sm blue-button">导出船舶</button>
