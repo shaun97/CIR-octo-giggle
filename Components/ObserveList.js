@@ -10,7 +10,7 @@ $(document).ready(function () {
     let newFleetName = $("#add-ship-fleet-name").val();
     if (newFleetName == "") { return; }
 
-    if (!$(`#content-list-${newFleetName.replace(" ", "")}`).length) {
+    if (!$(`#content-list-${newFleetName.replace(" ", "-")}`).length) {
       let newFleet = $('<h2/>').addClass("layui-colla-title").text(newFleetName);
       let icon = $('<i/>').addClass("layui-icon").addClass("layui-colla-icon").html("");
       let eyeF = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_hide.png" class="tree-button-icon">');
@@ -18,7 +18,7 @@ $(document).ready(function () {
       let editF = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_edit_myship_track.png" class="tree-button-icon">');
       let closeF = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_delt_myship_track.png" class="tree-button-icon">');
       let treeButtonsF = $('<div/>').addClass("tree-buttons").append(eyeF, tableF, editF, closeF);
-      let content = $('<div/>').addClass("layui-colla-content").attr("id", `content-list-${newFleetName.replace(" ", "")}`);
+      let content = $('<div/>').addClass("layui-colla-content").attr("id", `content-list-${newFleetName.replace(" ", "-")}`);
       let newItem = $('<div/>').addClass("layui-colla-item")
         .append(newFleet.append(treeButtonsF).append(icon))
         .append(content)
@@ -69,7 +69,7 @@ $(document).ready(function () {
     let close = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_delt_myship_track.png" class="tree-button-icon">');
     let treeButtons = $('<div/>').addClass("tree-buttons").append(eye, track, edit, close);
     let ship = $('<div/>').addClass("ship-in-list").html(nickname ? nickname : $("#ship-info-name").text()).append(treeButtons);
-    $(`#content-list-${fleetName.replace(" ", "")}`).append(ship);
+    $(`#content-list-${fleetName.replace(" ", "-")}`).append(ship);
     //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
 
     eye.click(function () {
