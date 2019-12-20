@@ -28,5 +28,5 @@ function searchForShip(MmsiIorName) {
     return json;
 }
 
-var test = searchForShip(232003233); 
-console.log(test);
+// var test = searchForShip(232003233); 
+// console.log(test);
