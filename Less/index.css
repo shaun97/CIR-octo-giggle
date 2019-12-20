@@ -16,11 +16,29 @@ body {
   background-color: black;
   border-radius: 0px;
 }
+.my-nav .navbar-background-highlight {
+  background-color: #006ce7;
+}
+.my-nav #ship-position-selector {
+  left: 60%;
+}
+.my-nav #logo {
+  padding-bottom: 23%;
+  align-content: right;
+  width: 60%;
+  height: auto;
+}
+.my-nav #user-logo {
+  padding-bottom: 10%;
+  width: 60%;
+  height: auto;
+}
 .pop-up {
   position: absolute;
   z-index: 1;
   background: white;
   font-size: small;
+  display: none;
 }
 .pop-up .pop-up-header {
   display: inline-block;
@@ -478,24 +496,7 @@ body {
   width: -10%;
   padding: -5%;
 }
-.navbar-background-highlight {
-  background-color: #006ce7;
-}
-#ship-position-selector {
-  left: 60%;
-}
-#logo {
-  padding-bottom: 23%;
-  align-content: right;
-  width: 60%;
-  height: auto;
-}
-#user-logo {
-  padding-bottom: 10%;
-  width: 60%;
-  height: auto;
-}
-#right-float-parent {
+#right-float {
   margin-top: 2%;
   width: 10%;
   position: absolute;
@@ -507,14 +508,14 @@ body {
   opacity: 70%;
   right: 10%;
 }
-#right-float-parent .layui-btn {
+#right-float .layui-btn {
   width: 45%;
   float: left;
   margin: 0;
   background-color: transparent;
   border: transparent;
 }
-#right-float-parent .image {
+#right-float .image {
   width: 50%;
   height: auto;
 }

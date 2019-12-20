@@ -13,7 +13,6 @@ convertor.translate([point], 1, 5, (data) => {
   map.centerAndZoom(point, 9);
   map.addControl(new BMap.ScaleControl());
   map.addControl(new BMap.OverviewMapControl());
-
 })
 
 /**
@@ -38,7 +37,7 @@ for (let i = 0; i < json.length; i++) {
     let ship = new BMap.Marker(pt);
     map.addOverlay(ship);
     ship.addEventListener("click", function () {
-      map.centerAndZoom(pt, 10);
+      map.centerAndZoom(pt, 9);
       const { name, nickname, idM, len, country, idL, idS, mass, lng, lat, img } = json[i];
       console.log(img);
       $(document).ready(function () {

@@ -21,22 +21,49 @@ body {
   height: 100vh
 }
 
+// --------------- Map styling --------------- //
+
 #ship-map {
   height: 93%
 }
 
+// --------------- Navigation Bar styling --------------- //
+
 .my-nav {
   background-color: black;
   border-radius   : 0px;
+
+  .navbar-background-highlight {
+    background-color: @blue;
+  }
+
+  #ship-position-selector {
+    left: 60%;
+  }
+
+  #logo {
+    padding-bottom: 23%;
+    align-content : right;
+    width         : 60%;
+    height        : auto;
+  }
+
+  #user-logo {
+    padding-bottom: 10%;
+    width         : 60%;
+    height        : auto;
+  }
 }
 
-// --------------- pop-up styling --------------- //
+// --------------- Pop-up styling --------------- //
+
 .pop-up {
   position     : absolute;
   z-index      : 1;
   background   : white;
   // overflow  : hidden;
   font-size    : small;
+  display      : none;
 
   // display: none;
   .pop-up-header {
@@ -53,6 +80,7 @@ body {
     &:hover {
       cursor: move;
     }
+
     .pop-up-header-text {
       height        : auto;
       color         : white;
@@ -200,20 +228,22 @@ body {
   top       : 40%;
   width     : 40%;
   max-height: 40%;
-  tbody{
-  tr:hover {
-    background-color: @blue;
-    color: white;
-  
-  }}
+
+  tbody {
+    tr:hover {
+      background-color: @blue;
+      color           : white;
+
+    }
+  }
 
   .ship-group-table {
     width     : 100%;
     max-height: 250px;
-overflow:scroll;
+    overflow  : scroll;
 
     .layui-table {
-      margin-top:0px;
+      margin-top: 0px;
     }
 
     &::-webkit-scrollbar {
@@ -301,7 +331,7 @@ overflow:scroll;
     }
 
     .layui-form-checkbox[lay-skin=primary] {
-      margin-top: 0px;
+      margin-top : 0px;
       margin-left: 10px;
     }
   }
@@ -453,14 +483,14 @@ overflow:scroll;
     }
 
     .tree-buttons {
-      float  : right;
-      height : 22px;
+      float : right;
+      height: 22px;
 
       .tree-button {
         background-color: transparent;
         border          : 0;
         width           : 15px;
-        margin: 0px 2px 0px 2px;
+        margin          : 0px 2px 0px 2px;
       }
 
       .tree-button:hover {
@@ -475,6 +505,7 @@ overflow:scroll;
 }
 
 // --------------- ship filtrate styling --------------- //
+
 #ship-filtrate-box {
   left  : 70%;
   top   : 21%;
@@ -600,32 +631,9 @@ overflow:scroll;
   }
 }
 
-// ----------------------- nav-bar ------------------- //
-
-.navbar-background-highlight {
-  background-color: @blue;
-}
-
-#ship-position-selector {
-  left: 60%;
-}
-
-#logo {
-  padding-bottom: 23%;
-  align-content : right;
-  width         : 60%;
-  height        : auto;
-}
-
-#user-logo {
-  padding-bottom: 10%;
-  width         : 60%;
-  height        : auto;
-}
-
 // ----------------------- right-float ------------------- //
 
-#right-float-parent {
+#right-float {
   margin-top           : 2%;
   width                : 10%;
   position             : absolute;
