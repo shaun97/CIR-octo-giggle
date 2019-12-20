@@ -1,39 +1,56 @@
 html {
   height: 100vh;
 }
-html,
 body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
   overflow: hidden;
+}
+#body {
+  height: 100vh;
 }
 #ship-map {
   position: absolute;
   width: 100%;
   height: 93%;
 }
-.my-nav {
+.my-nav .layui-nav {
   background-color: black;
+  padding-left: 100px;
+  width: 100%;
   border-radius: 0px;
 }
-.my-nav .navbar-background-highlight {
-  background-color: #006ce7;
+.my-nav .layui-nav-bar,
+.my-nav .layui-nav .layui-this:after,
+.my-nav .layui-nav-tree .layui-nav-itemed:after .layui-nav-item:active {
+  background-color: transparent;
+}
+.my-nav #cir-logo {
+  padding-bottom: 30%;
+  align-content: right;
+  width: 80%;
+  height: auto;
+  line-height: normal;
+}
+.my-nav .logo_font {
+  vertical-align: bottom;
+  font-size: 17.5px;
+  color: white;
+  font-weight: bold;
+  padding-left: 8px !important;
 }
 .my-nav #ship-position-selector {
-  left: 60%;
-}
-.my-nav #logo {
-  padding-bottom: 23%;
-  align-content: right;
-  width: 60%;
-  height: auto;
+  left: 45%;
+  background-color: #006ce7;
 }
 .my-nav #user-logo {
   padding-bottom: 10%;
-  width: 60%;
+  width: 80%;
   height: auto;
+}
+.my-nav #user-account-btn {
+  right: 4%;
 }
 .pop-up {
   position: absolute;
@@ -473,53 +490,111 @@ body {
 #ship-filtrate-box .filtrate-custom-weight-subclass .layui-form-item .layui-input {
   height: 30px;
 }
-#search-bar {
-  margin-top: 2%;
-  left: 0.7%;
-  width: 50.2%;
-  position: absolute;
-  background-color: transparent;
+.search_box2 {
+  position: fixed;
+  top: 10%;
+  left: 2%;
+  width: 30%;
+  box-shadow: 0 0 2px 2px #ebebeb;
+  border-radius: 4px;
+  overflow: hidden;
   z-index: 1;
 }
-#search-bar .search-bar-item {
-  float: left;
+.search_box2 .search_box2_child {
+  display: inline-block;
+  line-height: 50px;
+  padding: 0 10px;
+  width: 85%;
+  background: white;
+  border: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 16px;
 }
-#search-bar #search-form {
-  width: 65%;
+.search_box2 .search_box2_child::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #b3b3b3;
+  font-size: 16px;
 }
-#search-bar #search-button {
-  width: 10%;
+.search_box2 .search_box2_child:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #b3b3b3;
+  font-size: 16px;
 }
-#search-bar #search-image {
-  height: 60%;
-  width: auto;
+.search_box2 .search_box2_child::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #b3b3b3;
+  font-size: 16px;
 }
-#search-bar #id-label {
-  width: -10%;
-  padding: -5%;
+.search_box2 .search_box2_child:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #b3b3b3;
+  font-size: 16px;
 }
-#right-float {
-  margin-top: 2%;
-  width: 10%;
+.search_box2 input[type='text']:focus {
+  border: none;
+  outline: none;
+}
+.search_box2 .se_btn {
+  width: 15%;
+  line-height: 50px;
+  height: 50px;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-left: -5px;
+  background: #006ce7 url("../img/icon_search.png") no-repeat center center;
+}
+.fastmenu_box {
+  top: 10%;
+  right: 6.5%;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+  line-height: 30px;
+  overflow: hidden;
   position: absolute;
   background-color: black;
   background-blend-mode: overlay;
   text-align: center;
   z-index: 1;
-  border-radius: 5px;
+  border-radius: 3px;
   opacity: 70%;
-  right: 10%;
 }
-#right-float .layui-btn {
-  width: 45%;
-  float: left;
-  margin: 0;
-  background-color: transparent;
-  border: transparent;
+.fastmenu_box a {
+  display: inline-block;
+  font-size: 12px;
+  color: white;
+  padding: 3px 10px 3px 10px;
+  position: relative;
 }
-#right-float .image {
-  width: 50%;
-  height: auto;
+.fastmenu_box a:hover {
+  color: #006CE8;
+}
+.fastmenu_box a b {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 2px;
+  margin-right: 6px;
+  width: 18px;
+  height: 18px;
+  background-position-x: 0;
+}
+.fastmenu_box .follow b {
+  background: url(../img/icon_add_grey.png) no-repeat;
+  background-size: 100% auto;
+}
+.fastmenu_box .follow:hover b {
+  background: url(../img/icon_add_grey_check.png) no-repeat;
+  background-size: 100% auto;
+}
+.fastmenu_box .screen b {
+  background: url(../img/icon_flitrate_ship.png) no-repeat;
+  background-size: 100% auto;
+}
+.fastmenu_box .screen:hover b {
+  background: url(../img/icon_flitrate_ship_check.png) no-repeat;
+  background-size: 100% auto;
 }
 .two-buttons {
   text-align: center;

@@ -30,49 +30,54 @@
     <script src="./layui/layui.js" charset="utf-8"></script>
 
     <div id=body>
-
         <!-- Nav bar baby -->
-        <ul class="layui-nav my-nav">
-            <li class="layui-nav-item"><a style="padding:0px; text-align: right;" href=""><img id="logo"
-                        src="./Images/CIR-logo.png" /></a></li>
-            <li class="layui-nav-item"><a href="" style="font-size: larger;">陆海新通道</a></li>
-            <li class="layui-nav-item navbar-background-highlight" id="ship-position-selector"><a class="l"
-                    href="">船位</a></li>
-            <li class="layui-nav-item" style="float: right; vertical-align: middle;"><a href=""><img id="user-logo"
-                        src="./Images/icon_user.png" /></a></li>
-        </ul>
+        <!-- 导航-->
+        <div class="my-nav">
+            <ul class="layui-nav" lay-filter="">
+                <li class="layui-nav-item logo"><a style="padding:0px; text-align: right;" href=""><img id="cir-logo"
+                            src="./img/CIR-logo.png" alt="" style="vertical-align: middle" /></a></li>
+                <li class="layui-nav-item"><a href="" class="logo_font">陆海新通道</a></li>
+                <li class="layui-nav-item" id="ship-position-selector"><a class="l" href="">船位</a></li>
+                <li class="layui-nav-item" id="user-account-btn" style="float: right; vertical-align: middle;"><a
+                        href=""><img id="user-logo" src="./img/icon_user.png" /></a></li>
+            </ul>
+        </div>
+        <!--导航end -->
 
         <!-- Map -->
-        <div class="map" id="ship-map"></div>
+        <!-- <div class="map" id="ship-map"></div> -->
 
         <!-- Search bar baby -->
-        <div class="layui-form-item" id="search-bar">
+        <!-- <div class="layui-form-item" id="search-bar">
             <div class="layui-input-block search-bar-item" id="search-form">
                 <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Search"
                     class="layui-input">
             </div>
             <button type="button" class="layui-btn layui-btn-primary search-bar-item blue-button" id="search-button">
-                <img src="./Images/icon_search.png" id="search-image">
+                <img src="./img/icon_search.png" id="search-image">
             </button>
-        </div>
+        </div> -->
 
-        <!-- Right Float -->
-        <div class="layui-btn-group" id="right-float">
-            <button type="button" class="layui-btn" id="star-button"><img class="image"
-                    src="./Images/icon_add_white.png" class="image">
-                增加</button>
-            <button type="button" class="layui-btn" id="filtrate-button"><img class="image"
-                    src="./Images/icon_flitrate_ship.png" class="image"> 编辑</button>
+        <div class="search_box2">
+            <input type="text" class="search_box2_child" placeholder="请以MMSI进行搜索">
+            <div class="se_btn"></div>
+        </div>
+        <!-- Fast Menu Selector-->
+        <div class="fastmenu_box">
+            <a href="javascript:void(0)" id="star-button" data-name="myships"
+                class="follow must_login"><b></b>关注<i></i><em></em> </a>
+            <a href="javascript:void(0)" id="filtrate-button" data-name="myflag"
+                class="screen myflag must_login"><b></b>船舶筛选<i></i><em></em></a>
         </div>
 
         <!-- Pop up ship info -->
         <div class="pop-up" id="ship-info-box">
             <div class="pop-up-header">
                 <h5 class="layui-header pop-up-header-text" id="ship-info-nknm">Ship Name</h5>
-                <button class="pop-up-header-button edit-button" id="info-edit-button"><img src="./Images/icon_edit.png"
+                <button class="pop-up-header-button edit-button" id="info-edit-button"><img src="./img/icon_edit.png"
                         height="75%" width="75%"></button>
-                <button class="pop-up-header-button close-button" id="info-close-button"><img
-                        src="./Images/icon_close.png" height="75%" width="75%"></button>
+                <button class="pop-up-header-button close-button" id="info-close-button"><img src="./img/icon_close.png"
+                        height="75%" width="75%"></button>
             </div>
             <div class="ship-details">
                 <ul class="row-info row-1">
@@ -120,7 +125,7 @@
                     </ul>
                 </ul>
             </div>
-            <img class="ship-image" id="ship-info-img" src="./Images/Boaty-McBoatface-minisub.jpg">
+            <img class="ship-image" id="ship-info-img" src="./img/Boaty-McBoatface-minisub.jpg">
             <div class="layui-form-item inquire-row">
                 <div class="layui-input-inline item" id="inquire-bar">
                     <input type="text" class="layui-input" id="ship-date-range">
@@ -139,7 +144,7 @@
         <div class="pop-up" id="change-name-box">
             <div class="pop-up-header">
                 <h6 class="pop-up-header-text">修改船名</h6>
-                <button class="pop-up-header-button close-button edit-name-close"><img src="./Images/icon_close.png"
+                <button class="pop-up-header-button close-button edit-name-close"><img src="./img/icon_close.png"
                         height="75%" width="75%"></button>
             </div>
 
@@ -160,10 +165,10 @@
         <div class="pop-up" id="observe-list-box">
             <div class="ship-info-header-bar">
                 <div class="pop-up-header">
-                    <h6 class="pop-up-header-text"><img src="./Images/icon_add_white.png" height="17px" width="17px">
+                    <h6 class="pop-up-header-text"><img src="./img/icon_add_white.png" height="17px" width="17px">
                         我的关注</h6>
                     <button class="pop-up-header-button close-button" id="observe-close-button"><img
-                            src="./Images/icon_close.png" height="75%" width="75%"></button>
+                            src="./img/icon_close.png" height="75%" width="75%"></button>
                 </div>
             </div>
             <form class="layui-form" action="">
@@ -174,7 +179,7 @@
             <hr />
             <div class="add-ship-box-hidden" id="observe-read">
                 <button type="button" class="layui-btn layui-btn-sm" id="observe-add-ship"><img
-                        src="./Images/icon_delt_myship_track.png" /></button>
+                        src="./img/icon_delt_myship_track.png" /></button>
                 <label class="layui-form-label observe-big-text">添加到船队</label>
             </div>
             <div class="add-ship-box" id="observe-write">
@@ -207,11 +212,10 @@
         <div class="pop-up" id="ship-filtrate-box">
             <div class="ship-filtrate-header-bar">
                 <div class="pop-up-header">
-                    <h6 class="pop-up-header-text"><img src="./Images/icon_flitrate_ship.png" height="17px"
-                            width="17px">
+                    <h6 class="pop-up-header-text"><img src="./img/icon_flitrate_ship.png" height="17px" width="17px">
                         船舶筛选</h6>
                     <button class="pop-up-header-button close-button" id="filtrate-close-button"><img
-                            src="./Images/icon_close.png" height="75%" width="75%"></button>
+                            src="./img/icon_close.png" height="75%" width="75%"></button>
                 </div>
             </div>
             <div id="ship-filtrate-inner-box">
@@ -333,7 +337,7 @@
                     <h6 class="pop-up-header-text">
                         船舶列表</h6>
                     <button class="pop-up-header-button close-button" id="group-info-close-button"><img
-                            src="./Images/icon_close.png" height="75%" width="75%"></button>
+                            src="./img/icon_close.png" height="75%" width="75%"></button>
                 </div>
             </div>
 
@@ -446,6 +450,10 @@
                 <button type="button" class="layui-btn layui-btn-sm blue-button">导出</button>
             </div>
         </div>
+
+        <!-- Map -->
+        <div class="map" id="ship-map"></div>
+
     </div>
 </body>
 
