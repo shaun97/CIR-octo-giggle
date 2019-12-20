@@ -16,8 +16,8 @@ convertor.translate([point], 1, 5, (data) => {
 })
 
 // 600000
-//json = getAllShips();
-//arr = json.data;
+// json = getAllShips();
+// arr = json.data;
 /**
  * Adding a point
  */
