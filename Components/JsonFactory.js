@@ -27,6 +27,3 @@ function searchForShip(MmsiIorName) {
     });
     return json;
 }
-
-var test = searchForShip(232003233); 
-console.log(test);
