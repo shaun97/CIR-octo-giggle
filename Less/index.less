@@ -6,15 +6,15 @@
 @word-black : #333333;
 @button-grey: #e5e5e5;
 
-
 html {
   height: 100vh
 }
 
 body {
-  height : 100vh;
-  margin : 0px;
-  padding: 0px
+  height  : 100vh;
+  margin  : 0px;
+  padding : 0px;
+  overflow: hidden
 }
 
 #body {
@@ -30,28 +30,48 @@ body {
 // --------------- Navigation Bar styling --------------- //
 
 .my-nav {
-  background-color: black;
-  border-radius   : 0px;
+  .layui-nav {
+    background-color: black;
+    padding-left    : 100px;
+    width           : 100%;
+    border-radius   : 0px;
+  }
 
-  .navbar-background-highlight {
-    background-color: @blue;
+  .layui-nav-bar,
+  .layui-nav .layui-this:after,
+  .layui-nav-tree .layui-nav-itemed:after .layui-nav-item:active {
+    background-color: transparent;
+  }
+
+  #cir-logo {
+    padding-bottom: 30%;
+    align-content : right;
+    width         : 80%;
+    height        : auto;
+    line-height   : normal;
+  }
+
+  .logo_font {
+    vertical-align: bottom;
+    font-size     : 17.5px;
+    color         : white;
+    font-weight   : bold;
+    padding-left  : 8px !important;
   }
 
   #ship-position-selector {
-    left: 60%;
-  }
-
-  #logo {
-    padding-bottom: 23%;
-    align-content : right;
-    width         : 60%;
-    height        : auto;
+    left            : 45%;
+    background-color: @blue;
   }
 
   #user-logo {
     padding-bottom: 10%;
-    width         : 60%;
+    width         : 80%;
     height        : auto;
+  }
+
+  #user-account-btn {
+    right: 4%;
   }
 }
 
@@ -61,15 +81,14 @@ body {
   position  : absolute;
   z-index   : 1;
   background: white;
-  font-size: small;
-  display  : none;
+  font-size : small;
+  display   : none;
 
   .pop-up-header {
     display: inline-block;
-
     align-items: center;
     background : @blue;
-    position   : relative; //important'
+    position   : relative; 
     height     : 35px;
     width      : 100%;
     text-align : justify;
@@ -598,64 +617,140 @@ body {
 
 }
 
-// --------------- search bar styling --------------- //
+// --------------- search box -zj --------------- //
 
-#search-bar {
-  margin-top      : 2%;
-  left            : 0.7%;
-  width           : 50.2%;
-  position        : absolute;
-  background-color: transparent;
-  z-index         : 1;
-
-  .search-bar-item {
-    float: left;
-  }
-
-  #search-form {
-    width: 65%;
-  }
-
-  #search-button {
-    width: 10%;
-  }
-
-  #search-image {
-    height: 60%;
-    width : auto;
-  }
-
-  #id-label {
-    width  : -10%;
-    padding: -5%;
-  }
+.search_box2 {
+  position     : fixed;
+  top          : 10%;
+  left         : 2%;
+  width        : 30%;
+  box-shadow   : 0 0 2px 2px #ebebeb;
+  border-radius: 4px;
+  overflow     : hidden;
+  z-index      : 1;
 }
 
-// ----------------------- right-float ------------------- //
+.search_box2 .search_box2_child { 
+  display           : inline-block;
+  line-height       : 50px;
+  padding           : 0 10px;
+  width             : 85%;
+  background        : white;
+  border            : none;
+  -moz-box-sizing   : border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing     : border-box;
+  -ms-box-sizing    : border-box;
+  box-sizing        : border-box;
+  font-size         : 16px;
+}
 
-#right-float {
-  margin-top           : 2%;
-  width                : 10%;
+.search_box2 .search_box2_child::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color    : #b3b3b3;
+  font-size: 16px;
+}
+
+.search_box2 .search_box2_child:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color    : #b3b3b3;
+  font-size: 16px;
+}
+
+.search_box2 .search_box2_child::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color    : #b3b3b3;
+  font-size: 16px;
+}
+
+.search_box2 .search_box2_child:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color    : #b3b3b3;
+  font-size: 16px;
+}
+
+.search_box2 input[type='text']:focus {
+  border : none;
+  outline: none;
+}
+
+.search_box2 .se_btn {
+  width         : 15%;
+  line-height   : 50px;
+  height        : 50px;
+  display       : inline-block;
+  vertical-align: bottom;
+  margin-left   : -5px;
+  background    : @blue url("../img/icon_search.png") no-repeat center center;
+
+}
+
+// ----------------------- fasemenu -wj ------------------- //
+
+.fastmenu_box {
+  top                  : 10%;
+  right                : 6.5%;
+  box-shadow           : 0 2px 2px rgba(0, 0, 0, .25);
+  line-height          : 30px;
+  overflow             : hidden;
   position             : absolute;
   background-color     : black;
   background-blend-mode: overlay;
   text-align           : center;
   z-index              : 1;
-  border-radius        : 5px;
+  border-radius        : 3px;
   opacity              : 70%;
-  right                : 10%;
 
-  .layui-btn {
-    width           : 45%;
-    float           : left;
-    margin          : 0;
-    background-color: transparent;
-    border          : transparent;
+  a {
+    display  : inline-block;
+    font-size: 12px;
+    color    : white;
+    padding  : 3px 10px 3px 10px;
+    position : relative;
+
+    &:hover {
+      color: #006CE8;
+    }
+
+    b {
+      display              : inline-block;
+      vertical-align       : middle;
+      margin-bottom        : 2px;
+      margin-right         : 6px;
+      width                : 18px;
+      height               : 18px;
+      background-position-x: 0;
+
+    }
   }
 
-  .image {
-    width : 50%;
-    height: auto;
+  .follow {
+    b {
+      background     : url(../img/icon_add_grey.png) no-repeat;
+      background-size: 100% auto;
+    }
+
+    &:hover {
+      b {
+        background     : url(../img/icon_add_grey_check.png) no-repeat;
+        background-size: 100% auto;
+      }
+    }
+
+  }
+
+  .screen {
+    b {
+      background     : url(../img/icon_flitrate_ship.png) no-repeat;
+      background-size: 100% auto;
+    }
+
+    &:hover {
+      b {
+        background     : url(../img/icon_flitrate_ship_check.png) no-repeat;
+        background-size: 100% auto;
+      }
+    }
   }
 }
 
