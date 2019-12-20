@@ -18,19 +18,6 @@ convertor.translate([point], 1, 5, (data) => {
 /**
  * Adding a point
  */
-var json = (function () {
-  var json = null;
-  $.ajax({
-    'async': false,
-    'global': false,
-    'url': "http://localhost:3000/ships",
-    'dataType': "json",
-    'success': function (data) {
-      json = data;
-    }
-  });
-  return json;
-})();
 for (let i = 0; i < json.length; i++) {
   let pt = new BMap.Point(json[i].lng, json[i].lat);
   convertor.translate([pt], 1, 5, (data) => {
