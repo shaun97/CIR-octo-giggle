@@ -9,7 +9,7 @@
     <!-- Baiduditu API -->
     <script type="text/javascript"
         src="http://api.map.baidu.com/api?v=3.0&ak=PPvpPZs1KkXFvlqeslt7uB17y6zUDqTs"></script>
-
+    <script type="text/javascript" src="js/mapv.min.js"></script>
     <!-- JQuery -->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 
@@ -41,6 +41,9 @@
             <li class="layui-nav-item" style="float: right; vertical-align: middle;"><a href=""><img id="user-logo"
                         src="./Images/icon_user.png" /></a></li>
         </ul>
+
+        <!-- Map -->
+        <div class="map" id="ship-map"></div>
 
         <!-- Search bar baby -->
         <div class="layui-form-item" id="search-bar">
@@ -443,15 +446,11 @@
                 <button type="button" class="layui-btn layui-btn-sm blue-button">导出</button>
             </div>
         </div>
-
-        <!-- Map -->
-        <div class="map" id="ship-map"></div>
     </div>
 </body>
 
 <script type="text/javascript" src="./Components/JsonFactory.js"></script>
 <script type="text/javascript" src="./Components/NavBar.js"></script>
-<script type="text/javascript" src="./Components/ShipMap.js"></script>
 <script type="text/javascript" src="./Components/ShipInfoBox.js"></script>
 <script type="text/javascript" src="./Components/ShipEditNameBox.js"></script>
 <script type="text/javascript" src="./Components/Search.js"></script>
@@ -460,5 +459,7 @@
 <script type="text/javascript" src="./Components/FiltrateBox.js"></script>
 <script type="text/javascript" src="./Components/Draggable.js"></script>
 <script type="text/javascript" src="./Components/GroupInfo.js"></script>
+<script type="text/javascript" src="./Components/ShipMap.js"></script>
+<script type="text/javascript" src="./Components/MapZoomLeaflet.js"></script>
 
 </html>

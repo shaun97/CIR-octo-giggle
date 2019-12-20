@@ -11,20 +11,20 @@ html {
   height: 100vh
 }
 
-body {
-  height : 100vh;
-  margin : 0px;
-  padding: 0px
-}
-
-#body {
-  height: 100vh
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 // --------------- Map styling --------------- //
 
 #ship-map {
-  height: 93%
+  position: absolute;
+  width: 100%;
+  height: 93%;
 }
 
 // --------------- Navigation Bar styling --------------- //
@@ -696,4 +696,34 @@ button:focus {
   width     : 100px;
   height    : 100px;
   background: #ccc;
+}
+
+/*--------------------------------------地图中放大缩小样式--zj--------------------------------------------------*/
+/*-------------------------------------LEAFLET CONTROL ZOOM--------------------------------------------------*/
+.leaflet-control-zoom{
+  position: absolute;
+  right:10px!important;
+  bottom: 90px!important;
+  display: inline-block;
+  left: auto!important;
+  top: auto!important;
+
+}
+.leaflet-control-zoom a {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  background: #FFFFFF;
+  display: block;
+  font-size: 24px;
+  text-align: center;
+  color: #999999;
+  cursor: pointer;
+  &:hover{
+    color: #006ce7;
+  }
+
+}
+.leaflet-control-zoom .scale_aa{
+  border-bottom: 1px solid #CCCCCC;
 }
