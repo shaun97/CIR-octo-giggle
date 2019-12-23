@@ -1,10 +1,3 @@
-$('#clr-track-btn').click(function () {
-  // window.location.reload()
-  map.clearOverlays();
-  map.centerAndZoom(map.getPosition(),)
-  alert("done");
-});
-
 var shipsArr = [];
 var listen_status = 0;
 
@@ -12,6 +5,13 @@ var search_lng = 0;
 var search_lat = 0;
 var search_status = 0;
 var zhong = 0;
+
+$('#clr-track-btn').click(function () {
+  // window.location.reload()
+  map.clearOverlays();
+  listen_status = 0;
+  map.centerAndZoom(map.getCenter(), 10);
+});
 
 $(function () {
   $.ajax({
@@ -21,13 +21,12 @@ $(function () {
     dataType: "json", //返回数据格式为json
     success: function (data) {
       shipsArr = data.data; // Change back
-      // shipsArr = data;
       // 船只
       // 第一步创建mapv示例 -船只数开始
       // 数据集
       var data = [];
-      // for (var i = 0; i < shipsArr.length; i++) {
-      for (var i = 0; i < 1000; i++) {
+
+      for (var i = 0; i < shipsArr.length; i++) {
         data.push({
           geometry: {
             type: 'Point',
@@ -36,23 +35,14 @@ $(function () {
           }
         });
       }
-      var dataSet = new mapv.DataSet(data);
 
-     close_load();
+      var dataSet = new mapv.DataSet(data);
+      
       // 点击时的监听事件
-      // var O_alert=document.getElementsByClassName("alert_info")[0];
-      // var btn_close=document.getElementsByClassName("btn_close")[0];
-      // btn_close.onclick=function(){
-      //     O_alert.style.display="none";
-      // };
 
       // 实现缩放展示隐藏船
       map.addEventListener("zoomend", function (e) {
         var ZoomNum = map.getZoom();
-        if (ZoomNum < 9) {
-          map.clearMarkers();
-          mapvLayer.show();
-        }
         if (ZoomNum >= 9) {
           if (listen_status == '0') {
             mapvLayer.hide();
@@ -90,20 +80,22 @@ $(function () {
                 background: '#fff',
                 color: '#000'
               };
-              // if (search_lng == shipsArr[i].lng && search_lat == shipsArr[i].lat) {
-              //   label_dot.setStyle(style_info2);
-              // } else {
-              //   label_dot.setStyle(style_info);
-              //   addMouseHandler_dot_over(boats[i], style_info2, label_dot);
-              //   addMouseHandler_dot_out(boats[i], style_info3, label_dot);
-              // }
+              // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER -----START------
+              if (search_lng == shipsArr[i].lng && search_lat == shipsArr[i].lat) {
+                label_dot.setStyle(style_info2);
+              } else {
+                label_dot.setStyle(style_info);
+                addMouseHandler_dot_over(boats[i], style_info2, label_dot);
+                addMouseHandler_dot_out(boats[i], style_info3, label_dot);
+              }
+              // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER ------END-------
               boats[i].setLabel(label_dot);
 
               addClickHandler_dot_click(i, boats[i]);
             }
             function addClickHandler_dot_click(i, marker) {
               marker.addEventListener("click", function () {
-                let { A, DRAUGHT, B, C, NAVSTAT, D, LONGITUDE, TIME, SOG, IMO, NAME, HEADING, 
+                let { A, DRAUGHT, B, C, NAVSTAT, D, LONGITUDE, TIME, SOG, IMO, NAME, HEADING,
                   MMSI, CALLSIGN, ETA, ROT, COG, LATITUDE, TYPE, DEST } = marker.data;
                 $("#ship-info-box").show();
                 $("#ship-info-nknm").text(NAME == null ? "-" : NAME);
@@ -113,11 +105,11 @@ $(function () {
                 $("#ship-info-dest").text(DEST == null ? "-" : DEST);
                 $("#ship-info-time").text(TIME == null ? "-" : TIME);
                 $("#ship-info-id-l").text(MMSI == null ? "-" : MMSI);
-                $("#ship-info-id-s").text(CALLSIGN == null ? "-" :CALLSIGN);
+                $("#ship-info-id-s").text(CALLSIGN == null ? "-" : CALLSIGN);
                 $("#ship-info-type").text(TYPE == null ? "-" : TYPE);
-                $("#ship-info-lng").text(LONGITUDE == null ? "-" :LONGITUDE);
+                $("#ship-info-lng").text(LONGITUDE == null ? "-" : LONGITUDE);
                 $("#ship-info-lat").text(LATITUDE == null ? "-" : LATITUDE);
-                cha_info(shipsArr[i].MMSI)
+                cha_info(MMSI);
                 map.panTo(marker.getPosition(), true);
               });
             }
@@ -138,20 +130,20 @@ $(function () {
         } else {
           // map.clearOverlays(marker_dot);//清除标注
           if (listen_status == '0') {
-            console.log("clearing all overlays except mapv");
-            // O_alert.style.display = "none";
-            // $("#ship-info-box").hide();
+            if (map.getOverlays().length > 1) {
+              map.clearOverlays();
+            }
+
+            mapvLayer.show();
             // 删除船图案
-            // for (var i = 0; i < shipsArr.length; i++) {
+            // for (var i = 0; i < boats.length; i++) {
             //   map.removeOverlay(boats[i]);
             // }
-            // map.clearOverlays();
-            // mapvLayer.show();
           }
         }
       });
 
-      // 搜索 SEARCH BUTTON
+      // 搜索 SEARCH BUTTON ----------------------------------------------------------START
       // $('.se_btn').click(function () {
       //   $.ajax({
       //     url: "http://140.246.248.132:3000/vessels/" + $('.search_box2_child').val(),
@@ -166,6 +158,7 @@ $(function () {
       //     }
       //   });
       // });
+      // 搜索 SEARCH BUTTON ------------------------------------------------------------END
 
       // 添加百度地图可视化叠加图层 The OVERLAY OPTIONS!!!
       var options = {
@@ -191,31 +184,38 @@ $(function () {
       };
 
       var mapvLayer = new mapv.baiduMapLayer(map, dataSet, options);
+      close_load();
       // 船只数结束
 
       function cha_info(id) {
+        $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
         $('#inq-track-btn').click(function () {
           // map.clearOverlays(marker_dot);//清除标注
           // 删除船图案
-          // for (var i = 0; i < shipsArr.length; i++) {
-          //   map.removeOverlay(boats[i]);
-          // }
+          for (var i = 0; i < shipsArr.length; i++) {
+            map.removeOverlay(boats[i]);
+          }
 
           map.clearOverlays();
+
           listen_status = 1;
           $.ajax({
             url: 'http://192.168.0.121:8761/shipsController/getMMSI?MmsiIorName=' + id,
-            // url: 'http://localhost:3000/data',
             type: "GET",//请求方式为get
             dataType: "json", //返回数据格式为json
             success: function (data) {
-              console.log(data, id); // Will need to change this to data.data
-              history_data = data.data.reverse();
+              // console.log(data, id); // Will need to change this to data.data
+              try {
+              history_data = data.data.slice(0, 5).sort((x, y) => x.TIME > y.TIME ? 1 : -1); // Slice first 
               dynamicLine();
               get_track(history_data); //开始和结束的图标
-              biao = '1';
+              } catch (error) {
+                alert("Cannot load ship data");
+                $('#clr-track-btn').click();
+              }
             },
             error: function () {
+              $('#clr-track-btn').click();
             }
           });
         });
@@ -253,7 +253,7 @@ function addMarker(points) {
 
     });
     var marker_track0 = new BMap.Marker(point_track0, { icon: myIcon });
-    var content_track0 = "MMSI:" + points[i].mmsi + "<br>时间:" + points[i].TIME + "<br>航速:" + points[i].SOG;
+    var content_track0 = "MMSI:" + points[i].MMSI + "<br>时间:" + points[i].TIME + "<br>航速:" + points[i].SOG;
     // var content_track0 ="到港时间:***离岗时间:***港口名字***";
     map.addOverlay(marker_track0);
     addClickHandler(content_track0, marker_track0);
@@ -293,6 +293,7 @@ function addLine(points) {
 
 //轨迹点加入到轨迹中。
 function dynamicLine() {
+  console.log("history data", history_data);
   for (var i = 0; i < history_data.length; i++) {
     var point = history_data[i];
     var lng = point.LONGITUDE;
@@ -336,30 +337,30 @@ function dynamicLine() {
 //数据准备,
 var points1 = [];//原始点信息数组
 var bPoints = [];//百度化坐标数组。用于更新显示范围。
-var biao = '0';
+// var biao = '0';
 // 开始和结束图片
 function get_track(history_data) {
   // 开始标签
-  var point_label = new BMap.Point(history_data[0].LATITUDE, history_data[0].LONGITUDE);
+  var point_label = new BMap.Point(history_data[0].LONGITUDE, history_data[0].LATITUDE);
   console.log("start point", history_data[0].TIME);
   var opts = {
     position: point_label,    // 指定文本标注所在的地理位置
     offset: new BMap.Size(-13, -45)    //设置文本偏移量
   };
-  var label2 = new BMap.Label('', opts);  // 创建文本标注对象
-  label2.setStyle({
+  var label1 = new BMap.Label('', opts);  // 创建文本标注对象
+  label1.setStyle({
     height: "50px",
     lineHeight: "50px",
     width: '30px',
     border: "none",
-    background: "url('img/start.png')",
+    background: "url('img/start2.png')",
     backgroundRepeat: "no-repeat",
     backgroundSize: "100% auto",
   });
   console.log("added start overlay");
-  map.addOverlay(label2);
+  map.addOverlay(label1);
+  
   // 结束标签
-
   var point_label = new BMap.Point(history_data[history_data.length - 1].LONGITUDE, history_data[history_data.length - 1].LATITUDE);
   console.log("end point", history_data[history_data.length - 1].TIME);
   var opts = {
@@ -401,15 +402,15 @@ var opts3 = {
   title: "船运信息", // 信息窗口标题
   enableMessage: true//设置允许信息窗发送短息
 };
-function addClickHandler(content, marker) {
-  marker.addEventListener("mouseover", function () {
-    openInfo(content, marker)
-  }
+function addClickHandler(content, marker){
+  marker.addEventListener("mouseover",function(e){
+          openInfo(content, e)
+      }
   );
 }
-function openInfo(content, marker) {
-  console.log(marker.getPosition().LONGITUDE);
-  var point = new BMap.Point(marker.getPosition().LONGITUDE, marker.getPosition().LATITUDE);
+function openInfo(content, e){
+  var p = e.target;
+  var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
   var infoWindow = new BMap.InfoWindow(content, opts3);  // 创建信息窗口对象
   map.openInfoWindow(infoWindow, point); //开启信息窗口
 }
