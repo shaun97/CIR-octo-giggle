@@ -1,4 +1,5 @@
 var ALL_SHIPS = [];
+var FILTERED_SHIPS = [];
 var MAPV_LAYER;
 var BOAT_MARKERS = [];
 var MAP_VIEW = true;

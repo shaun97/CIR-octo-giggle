@@ -1,3 +1,23 @@
+let TYPE_FREIGHTER = true;
+let TYPE_CONTAINER = true;
+let TYPE_OIL = true;
+let TYPE_TUGBOAT = true;
+let TYPE_FISH = true;
+let TYPE_PASSENGER = true;
+let TYPE_OTHERS = true;
+
+let SIZE_40 = true;
+let SIZE_80 = true;
+let SIZE_120 = true;
+let SIZE_160 = true;
+let SIZE_240 = true;
+let SIZE_360 = true;
+let SIZE_360_ABV = true;
+let SIZE_CUSTOM = false;
+
+let MOVING = true;
+let STOPPED = true;
+
 $(document).ready(function () {
   //Close Button
   $("#filtrate-close-button").click(function () {
