@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/index_.css">
+</head>
+<body onload="close_load()">
+<!--界面加载-->
+<div class="onload_box">
+    <div class="onload_table">
+        <div class="windows8">
+            <div class="wBall" id="wBall_1">
+                <div class="wInnerBall"></div>
+            </div>
+            <div class="wBall" id="wBall_2">
+                <div class="wInnerBall"></div>
+            </div>
+            <div class="wBall" id="wBall_3">
+                <div class="wInnerBall"></div>
+            </div>
+            <div class="wBall" id="wBall_4">
+                <div class="wInnerBall"></div>
+            </div>
+            <div class="wBall" id="wBall_5">
+                <div class="wInnerBall"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--界面加载end-->
+
+
+
+
+
+<!--导航-->
+<div class="ship_head">
+    <ul class="layui-nav " lay-filter="" >
+        <li class="layui-nav-item  layui-col-md-offset1 logo" ><a href="">
+            <img src="img/CIR-logo.png" alt="" style="vertical-align: middle"><span class="logo_font">陆海新通道</span>
+        </a></li>
+        <li class="layui-nav-item layui-this layui-col-md-offset5"><a href="" class="nav_color">船位</a></li>
+        <li class="layui-nav-item layui-col-md-offset3"><a href=""><img src="img/icon_user.png" alt=""></a></li>
+    </ul>
+</div>
+<!--导航end-->
+
+
+<!--个人中心界面-->
+<div class="layui-container personal_center_box">
+    <div class="layui-row">
+        <div class="layui-col-xs4">
+              <div class="change_img">
+                  <img src="img/icon_userpic.png" alt="">
+              </div>
+              <div class="a_width">
+                  <a href="javascript:void(0);" class="change_link">
+                      更换头像
+                  </a>
+              </div>
+        </div>
+        <div class="layui-col-xs8 personal_center_right">
+           <div class="account_box">
+               <div class="account_tittle_like">账户信息</div>
+               <div class="like_content">
+                   <p>手机号</p>
+                   <p>18345454651</p>
+                   <a href="javascript:void(0);" class="like_link_change link_margin_right demo" data-type="change_account">修改手机</a>
+               </div>
+
+           </div>
+            <div class="base_box like_margin_top">
+                <div class="account_tittle_like">基本信息</div>
+                <div class="like_content">
+                    <p>企业名称</p>
+                    <p>xxxxxxxxxxxxxxxxx</p>
+                    <a href="javascript:void(0);" class="like_link_change demo" data-type="change_name_addr">修改企业名称</a>
+                </div>
+                <div class="like_content">
+                    <p>企业地址</p>
+                    <p>xxxxxxxxxxxxxxxxx</p>
+                    <a href="javascript:void(0);" class="like_link_change demo" data-type="change_name_addr">修改企业地址</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--个人中心界面-修改账户信息-->
+<div class=" change_like_content" id="change_account_box">
+    <form class="layui-form change_like_form" action="#" id="chang_account_form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" lay-verify="title" autocomplete="off"  class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">原始密码</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" lay-verify="title" autocomplete="off"  class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">新密码</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" lay-verify="title" autocomplete="off"  class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认密码</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" lay-verify="title" autocomplete="off"  class="layui-input">
+            </div>
+        </div>
+        <div class="btn_like_box">
+            <a href="#" class="btn_link">确认</a>
+            <a href="#" class="btn_link btn_close">取消</a>
+        </div>
+    </form>
+</div>
+<!--个人中心界面-修改名称地址-->
+<div class=" change_like_content" id="change_name_addr_box">
+    <form class="layui-form change_like_form" action="#" id="chang_phone_form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">企业名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" lay-verify="title" autocomplete="off"  class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">企业地址</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" lay-verify="title" autocomplete="off"  class="layui-input">
+            </div>
+        </div>
+        <div class="btn_like_box">
+            <a href="#" class="btn_link">确认</a>
+            <a href="#" class="btn_link btn_close">取消</a>
+        </div>
+    </form>
+</div>
+
+<!--个人中心界面end-->
+
+
+
+
+
+
+
+
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script src="js/jquery.min.js"></script>
+<!--<script src="js/base2.js"></script>-->
+<!--layuiStart-->
+<script src="layui/layui.js"></script>
+<script>
+
+    //注意：导航/选项卡 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+
+    //弹框
+    layui.use('layer', function(){
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+        //触发事件
+        var active = {
+
+            change_name_addr: function(){
+                layer.open({
+                    title:'更改基本信息',
+                    type: 1,
+                    skin: 'layui-layer-rim',
+                    area: ['30%', '280px'],
+                    content: $('#change_name_addr_box'),
+                    success : function(layero, index) {
+                        $(".layui-layer-rim").addClass("change_like_siblings");
+                        // 关闭弹框
+                        $(".btn_close").click(function () {
+                            layer.close(index);
+                        })
+                    }
+
+                });
+            },
+            change_account: function(){
+                layer.open({
+                    title:'更改账户信息',
+                    type: 1,
+                    skin: 'layui-layer-rim',
+                    area: ['30%', '385px'],
+                    content: $('#change_account_box'),
+                    success : function(layero, index) {
+                        $(".layui-layer-rim").addClass("change_like_siblings");
+                        // 关闭弹框
+                        $(".btn_close").click(function () {
+                            layer.close(index);
+                        })
+                    }
+
+                });
+            }
+
+        };
+        $('.demo').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+</script>
+<!--layuiEnd-->
+
+
+<!--页面加载完成-->
+<script>
+    function close_load() {
+        $(".onload_box").hide();
+    }
+</script>
+
+</body>
+</html>

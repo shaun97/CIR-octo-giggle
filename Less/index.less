@@ -25,8 +25,8 @@ body {
 
 #ship-map {
   position: absolute;
-  width: 100%;
-  height: 93%;
+  width   : 100%;
+  height  : 93%;
 }
 
 // --------------- Navigation Bar styling --------------- //
@@ -87,10 +87,10 @@ body {
   display   : none;
 
   .pop-up-header {
-    display: inline-block;
+    display    : inline-block;
     align-items: center;
     background : @blue;
-    position   : relative; 
+    position   : relative;
     height     : 35px;
     width      : 100%;
     text-align : justify;
@@ -632,7 +632,7 @@ body {
   z-index      : 1;
 }
 
-.search_box2 .search_box2_child { 
+.search_box2 .search_box2_child {
   display           : inline-block;
   line-height       : 50px;
   padding           : 0 10px;
@@ -797,30 +797,217 @@ button:focus {
 
 /*--------------------------------------地图中放大缩小样式--zj--------------------------------------------------*/
 /*-------------------------------------LEAFLET CONTROL ZOOM--------------------------------------------------*/
-.leaflet-control-zoom{
+.leaflet-control-zoom {
   position: absolute;
-  right:10px!important;
-  bottom: 90px!important;
-  display: inline-block;
-  left: auto!important;
-  top: auto!important;
+  right   : 10px !important;
+  bottom  : 90px !important;
+  display : inline-block;
+  left    : auto !important;
+  top     : auto !important;
 
 }
+
 .leaflet-control-zoom a {
-  width: 30px;
-  height: 30px;
+  width      : 30px;
+  height     : 30px;
   line-height: 30px;
-  background: #FFFFFF;
-  display: block;
-  font-size: 24px;
-  text-align: center;
-  color: #999999;
-  cursor: pointer;
-  &:hover{
+  background : #FFFFFF;
+  display    : block;
+  font-size  : 24px;
+  text-align : center;
+  color      : #999999;
+  cursor     : pointer;
+
+  &:hover {
     color: #006ce7;
   }
 
 }
-.leaflet-control-zoom .scale_aa{
+
+.leaflet-control-zoom .scale_aa {
   border-bottom: 1px solid #CCCCCC;
+}
+
+/*--------------------------------------右侧工具箱--zj--------------------------------------------------*/
+.toolbox_btn,
+.toolbox_info {
+  position        : absolute;
+  z-index         : 900;
+  background-color: #fff;
+  border-radius   : 2px;
+  right           : 10px;
+  width           : 30px;
+  text-align      : center;
+  line-height     : 30px;
+  box-shadow      : 0 2px 2px rgba(0, 0, 0, 0.25);
+  bottom          : 160px;
+  padding-bottom  : 5px;
+}
+
+.toolbox_info a {
+  float     : left;
+  margin-top: 5px;
+}
+
+.toolbox_info a {
+  display          : inline-block;
+  width            : 30px;
+  height           : 30px;
+  background-image : url(../img/toolbox.jpg);
+  background-repeat: no-repeat;
+}
+
+.location_set {
+  background-position: 0 -30px;
+}
+
+.location_set:hover {
+  background-position: -30px -30px;
+}
+
+/*--------------------------------------坐标定位--zj--------------------------------------------------*/
+.coordinate_parents {
+  boxShadow: 0 2px 2px rgba(0, 0, 0, 0.25) !important;
+  border   : 0 solid rgba(0, 0, 0, 0.3) !important;
+}
+
+.coordinate_parents .layui-layer-ico {
+  background: url(../img/icon_close.png) no-repeat;
+}
+
+.coordinate_parents .layui-layer-setwin .layui-layer-close1 {
+  background-position: initial;
+  cursor             : pointer;
+}
+
+.coordinate_parents #coordinate .layui-tab-brief>.layui-tab-title .layui-this {
+  color: #006CE8;
+}
+
+.coordinate_parents #coordinate .layui-tab-brief>.layui-tab-title .layui-this:after,
+.coordinate_parents #coordinate .layui-tab-brief>.layui-tab-more li.layui-this:after {
+  border-bottom: 0px solid #5FB878;
+}
+
+.coordinate_parents #coordinate .layui-tab {
+  margin: 0;
+}
+
+.coordinate_parents #coordinate .layui-tab-title {
+  padding-left: 20px;
+}
+
+.coordinate_parents #coordinate .layui-tab-title li {
+  padding     : 0;
+  min-width   : auto;
+  margin-right: 15px;
+}
+
+.coordinate_parents #coordinate .nsew_sign {
+  margin-left: 5px;
+  cursor     : pointer;
+  position   : relative;
+  top        : 4px;
+  display    : inline-block;
+  width      : 41px;
+  height     : 20px;
+}
+
+.coordinate_parents #coordinate .sn_sign {
+  background: url(../img/s.png) no-repeat;
+}
+
+.coordinate_parents #coordinate .ns_sign {
+  background: url(../img/n.png) no-repeat;
+}
+
+.coordinate_parents #coordinate .we_sign {
+  background: url(../img/w.png) no-repeat;
+}
+
+.coordinate_parents #coordinate .ew_sign {
+  background: url(../img/e.png) no-repeat;
+}
+
+.coordinate_parents #coordinate .layui-form-item {
+  text-align: center;
+  position  : relative;
+}
+
+.coordinate_parents #coordinate .layui-form-item .tip_like0 {
+  position  : absolute;
+  left      : 60px;
+  bottom    : -13px;
+  font-size : 12px;
+  text-align: left;
+  color     : red;
+}
+
+.coordinate_parents #coordinate .layui-form-item .tip_like {
+  left: 60px;
+}
+
+.coordinate_parents #coordinate .layui-form-item .tip_like_fen {
+  left: 148px;
+}
+
+.coordinate_parents #coordinate .layui-form-item .layui-input-inline {
+  width       : 78px;
+  margin-right: 0;
+}
+
+.coordinate_parents #coordinate .layui-form-label {
+  width      : auto;
+  padding    : 0px 10px;
+  line-height: 28px;
+}
+
+.coordinate_parents #coordinate .layui-form-mid {
+  margin : 0 2px;
+  padding: 0 !important;
+}
+
+.coordinate_parents #coordinate .layui-input {
+  height     : 28px;
+  line-height: 28px;
+}
+
+.coordinate_parents #coordinate .ta_c {
+  text-align: center;
+}
+
+.coordinate_parents #coordinate .ta_c .btn {
+  display: inline-block;
+  padding: 5px 35px;
+  border : 1px solid #006CE8;
+  margin : 0 10px;
+  color  : #006CE8;
+}
+
+.coordinate_parents #coordinate .ta_c .btn:hover {
+  background: #006CE8;
+  color     : white;
+}
+
+.coordinate_parents #coordinate .ta_c .btn_active {
+  background: #006CE8;
+  color     : white;
+}
+
+.coordinate_parents #coordinate .layui-form-item .du_input {
+  width: 154px;
+}
+
+.coordinate_parents .layui-layer-shade {
+  height: auto;
+  width : auto;
+}
+
+.coordinate_parents .layui-layer-title {
+  background: #006CE8;
+  color     : #ffffff;
+}
+
+.close_alert {
+  display: none;
 }
