@@ -187,47 +187,46 @@ $(function () {
       close_load();
       // 船只数结束
 
-      function cha_info(id) {
-        $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
-        $('#inq-track-btn').click(function () {
-          // map.clearOverlays(marker_dot);//清除标注
-          // 删除船图案
-          for (var i = 0; i < shipsArr.length; i++) {
-            map.removeOverlay(boats[i]);
-          }
-
-          map.clearOverlays();
-
-          listen_status = 1;
-          $.ajax({
-            url: 'http://192.168.0.121:8761/shipsController/getMMSI?MmsiIorName=' + id,
-            type: "GET",//请求方式为get
-            dataType: "json", //返回数据格式为json
-            success: function (data) {
-              // console.log(data, id); // Will need to change this to data.data
-              try {
-              history_data = data.data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1).slice(0, 5); // Slice first 
-              dynamicLine();
-              get_track(history_data); //开始和结束的图标
-              } catch (error) {
-                alert("Cannot load this ship's ship data");
-                // console.log(error);
-                $('#clr-track-btn').click();
-              }
-            },
-            error: function () {
-              $('#clr-track-btn').click();
-            }
-          });
-        });
-      }
-
     },
     error: function () {
       alert("Cannot load ship data");
     }
   });
 })
+function cha_info(id) {
+  $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
+  $('#inq-track-btn').click(function () {
+    // map.clearOverlays(marker_dot);//清除标注
+    // 删除船图案
+    for (var i = 0; i < shipsArr.length; i++) {
+      map.removeOverlay(boats[i]);
+    }
+
+    map.clearOverlays();
+
+    listen_status = 1;
+    $.ajax({
+      url: 'http://192.168.0.121:8761/shipsController/getMMSI?MmsiIorName=' + id,
+      type: "GET",//请求方式为get
+      dataType: "json", //返回数据格式为json
+      success: function (data) {
+        // console.log(data, id); // Will need to change this to data.data
+        try {
+        history_data = data.data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1).slice(0, 5); // Slice first 
+        dynamicLine();
+        get_track(history_data); //开始和结束的图标
+        } catch (error) {
+          alert("Cannot load this ship's ship data");
+          // console.log(error);
+          $('#clr-track-btn').click();
+        }
+      },
+      error: function () {
+        $('#clr-track-btn').click();
+      }
+    });
+  });
+}
 
 var boats = [];
 var map = new BMap.Map("ship-map"); //初始化地图

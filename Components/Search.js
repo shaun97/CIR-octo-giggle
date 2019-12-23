@@ -1,5 +1,5 @@
 $('.se_btn').click(function () {
-    var MmsiIorName = $('.search_box2_child').val();
+    var MmsiIorName = $('.search_box2_child').val().trim();
 
     $.ajax({
         url: 'http://192.168.0.121:8761/shipsController/getMMSI?MmsiIorName=' + MmsiIorName,
