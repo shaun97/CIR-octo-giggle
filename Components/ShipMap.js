@@ -10,7 +10,8 @@ $('#clr-track-btn').click(function () {
   // window.location.reload()
   map.clearOverlays();
   listen_status = 0;
-  map.centerAndZoom(map.getCenter(), 10);
+  map.centerAndZoom(map.getCenter(), map.getZoom() - 1);
+  map.centerAndZoom(map.getCenter(), map.getZoom() + 1);
 });
 
 $(function () {
@@ -205,11 +206,12 @@ $(function () {
             success: function (data) {
               // console.log(data, id); // Will need to change this to data.data
               try {
-              history_data = data.data.slice(0, 5).sort((x, y) => x.TIME > y.TIME ? 1 : -1); // Slice first 
+              history_data = data.data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1).slice(0, 5); // Slice first 
               dynamicLine();
               get_track(history_data); //开始和结束的图标
               } catch (error) {
-                alert("Cannot load ship data");
+                alert("Cannot load this ship's ship data");
+                // console.log(error);
                 $('#clr-track-btn').click();
               }
             },
@@ -246,7 +248,7 @@ function addMarker(points) {
   for (var i = 0; i < pointsLen; i++) {
     //添加标注
     var point_track0 = new BMap.Point(points[i].LONGITUDE, points[i].LATITUDE);
-    map.centerAndZoom(point_track0, 15);
+    // map.centerAndZoom(point_track0, 15);
     var myIcon = new BMap.Icon("img/dot.png", new BMap.Size(15, 15), {
       offset: new BMap.Size(5, 5),
 
@@ -266,12 +268,14 @@ function addLine(points) {
     return;
   }
   // 创建标注对象并添加到地图
+  // console.log("history_data.length", history_data.length);
   for (var i = 0; i < history_data.length; i++) {
     var point = history_data[i];
     var lng = point.LONGITUDE;
     var lat = point.LATITUDE;
     linePoints.push(new BMap.Point(lng, lat));
   }
+  // console.log("after loop");
   var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
     scale: 0.3,//图标缩放大小
     strokeColor: '#fff',//设置矢量图标的线填充颜色
@@ -286,32 +290,36 @@ function addLine(points) {
     strokeWeight: 2,
     strokeOpacity: 0.5,
   });
-
+  // console.log("before add line");
   map.addOverlay(polyline);   //增加折线
 }
 
 //轨迹点加入到轨迹中。
 function dynamicLine() {
-  console.log("history data", history_data);
+  points1 = [];
+  // console.log("history data", history_data);
+  var lng; var lat;
   for (var i = 0; i < history_data.length; i++) {
     var point = history_data[i];
-    var lng = point.LONGITUDE;
-    var lat = point.LATITUDE;
+    lng = point.LONGITUDE;
+    lat = point.LATITUDE;
     var time = point.TIME;
-    var makerPoints = [];
+    var markerPoints = [];
     var newLinePoints = [];
     var len;
-    makerPoints.push(point);
-    addMarker(makerPoints);//增加对应该的轨迹点
-    points1.push(point);
+    markerPoints.push(point);
+    // console.log("in DLine before add marker");
+    addMarker([point]);//增加对应该的轨迹点
+    // console.log("in DLine after add marker");
+    points1[i] = point;
     len = points1.length;
     newLinePoints = points1.slice(len - 2, len);//最后两个点用来画线。
 
+    // console.log("in DLine before addline");
     addLine(newLinePoints);//增加轨迹线
-    // // 重新调整视野中心和缩放大小
-    map.centerAndZoom(new BMap.Point(lng, lat), 11);
+    // console.log("in DLine after addline");
 
-    // // 添加标签
+    // 添加标签
     var point_label = new BMap.Point(lng, lat);
     var opts = {
       position: point_label,    // 指定文本标注所在的地理位置
@@ -331,6 +339,9 @@ function dynamicLine() {
     });
     map.addOverlay(label);
   }
+  // 重新调整视野中心和缩放大小
+  // console.log("Moved");
+  map.centerAndZoom(new BMap.Point(lng, lat), 9);
 }
 
 //数据准备,
@@ -339,9 +350,10 @@ var bPoints = [];//百度化坐标数组。用于更新显示范围。
 // var biao = '0';
 // 开始和结束图片
 function get_track(history_data) {
+  // console.log("get_track");
   // 开始标签
   var point_label = new BMap.Point(history_data[0].LONGITUDE, history_data[0].LATITUDE);
-  console.log("start point", history_data[0].TIME);
+  // console.log("start point", history_data[0].TIME);
   var opts = {
     position: point_label,    // 指定文本标注所在的地理位置
     offset: new BMap.Size(-13, -45)    //设置文本偏移量
@@ -356,12 +368,12 @@ function get_track(history_data) {
     backgroundRepeat: "no-repeat",
     backgroundSize: "100% auto",
   });
-  console.log("added start overlay");
+  // console.log("added start overlay");
   map.addOverlay(label1);
   
   // 结束标签
   var point_label = new BMap.Point(history_data[history_data.length - 1].LONGITUDE, history_data[history_data.length - 1].LATITUDE);
-  console.log("end point", history_data[history_data.length - 1].TIME);
+  // console.log("end point", history_data[history_data.length - 1].TIME);
   var opts = {
     position: point_label,    // 指定文本标注所在的地理位置
     offset: new BMap.Size(-14, -47)    //设置文本偏移量
@@ -377,7 +389,7 @@ function get_track(history_data) {
       backgroundRepeat: "no-repeat",
       backgroundSize: "100% auto",
     });
-    console.log("added end overlay");
+    // console.log("added end overlay");
     map.addOverlay(label2);
   } else {
     label2.setStyle({
@@ -389,7 +401,7 @@ function get_track(history_data) {
       backgroundRepeat: "no-repeat",
       backgroundSize: "100% auto",
     });
-    console.log("added end overlay");
+    // console.log("added end overlay");
     map.addOverlay(label2);
   }
 }
