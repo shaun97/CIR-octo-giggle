@@ -35,7 +35,6 @@ $(function () {
           }
         });
       }
-
       var dataSet = new mapv.DataSet(data);
       
       // 点击时的监听事件

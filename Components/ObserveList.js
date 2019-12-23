@@ -13,10 +13,10 @@ $(document).ready(function () {
     if (!$(`#content-list-${newFleetName.replace(" ", "-")}`).length) {
       let newFleet = $('<h2/>').addClass("layui-colla-title").text(newFleetName);
       let icon = $('<i/>').addClass("layui-icon").addClass("layui-colla-icon").html("");
-      let eyeF = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_hide.png" class="tree-button-icon">');
-      let tableF = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_info_myship_track.png" class="tree-button-icon">');
-      let editF = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_edit_myship_track.png" class="tree-button-icon">');
-      let closeF = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_delt_myship_track.png" class="tree-button-icon">');
+      let eyeF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
+      let tableF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_info_myship_track.png" class="tree-button-icon">');
+      let editF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_edit_myship_track.png" class="tree-button-icon">');
+      let closeF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_delt_myship_track.png" class="tree-button-icon">');
       let treeButtonsF = $('<div/>').addClass("tree-buttons").append(eyeF, tableF, editF, closeF);
       let content = $('<div/>').addClass("layui-colla-content").attr("id", `content-list-${newFleetName.replace(" ", "-")}`);
       let newItem = $('<div/>').addClass("layui-colla-item")
