@@ -16,15 +16,18 @@ $('#clr-track-btn').click(function () {
 
 $(function () {
   $.ajax({
-    url: "http://192.168.0.121:8761/shipsController/getDateJson",
-    // url: "http://localhost:3000/data",
+    // url: "http://192.168.0.121:8761/shipsController/getDateJson",
+    url: "http://localhost:3000/data",
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
-      shipsArr = data.data; // Change back
+      // shipsArr = data.data; // Change back
+      shipsArr = data;
+
       // 船只
       // 第一步创建mapv示例 -船只数开始
       // 数据集
+      
       var data = [];
 
       for (var i = 0; i < shipsArr.length; i++) {
