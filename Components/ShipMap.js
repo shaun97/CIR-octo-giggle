@@ -204,9 +204,11 @@ $(function () {
             type: "GET",//请求方式为get
             dataType: "json", //返回数据格式为json
             success: function (data) {
+              // console.log(data.data.map(x => x.TIME));
               // console.log(data, id); // Will need to change this to data.data
               try {
-              history_data = data.data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1).slice(0, 5); // Slice first 
+              history_data = data.data.sort((x, y) => new Date(x.TIME).getTime() > new Date(y.TIME).getTime() ? 1 : -1);
+              // console.log(history_data.map(x => x.TIME));
               dynamicLine();
               get_track(history_data); //开始和结束的图标
               } catch (error) {
@@ -227,11 +229,16 @@ $(function () {
       alert("Cannot load ship data");
     }
   });
+
+  map.addEventListener("dragend", () => {
+    // map.centerAndZoom(map.getCenter(), map.getZoom() - 1);
+    // map.centerAndZoom(map.getCenter(), map.getZoom() + 1);
+  })
 })
 
 var boats = [];
 var map = new BMap.Map("ship-map"); //初始化地图
-// map.setMaxZoom(10);
+map.setMaxZoom(10);
 map.centerAndZoom(new BMap.Point(106.5584370000, 29.5689960000), 4);//设置中心点和显示级别。中国。
 map.enableScrollWheelZoom();//滚轮放大缩小。
 
