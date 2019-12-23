@@ -7,11 +7,7 @@ body {
   padding: 0px;
   overflow: hidden;
 }
-#body {
-  height: 100vh;
-}
 #ship-map {
-  position: absolute;
   width: 100%;
   height: 93%;
 }
@@ -1132,6 +1128,104 @@ button:focus {
     -moz-transform: rotate(900deg);
   }
 }
+/*--------------------------------------个人中心界面--zj--------------------------------------------------*/
+.personal_center_box {
+  margin-top: 150px;
+  width: 50%;
+}
+.personal_center_box .change_img {
+  width: 159px;
+  height: 159px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #DBDBDB;
+}
+.personal_center_box .change_img img {
+  width: 100%;
+}
+.personal_center_box .a_width {
+  width: 159px;
+  text-align: center;
+  margin-top: 30px;
+}
+.personal_center_box .a_width .change_link {
+  display: inline-block;
+  padding: 14px 30px;
+  border: 2px solid #006CE8;
+  color: black;
+}
+.personal_center_box .a_width .change_link:hover {
+  color: black;
+}
+.personal_center_box .personal_center_right .account_tittle_like {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #E5E5E5;
+}
+.personal_center_box .personal_center_right .like_content {
+  margin-top: 25px;
+  font-size: 16px;
+  color: black;
+  position: relative;
+}
+.personal_center_box .personal_center_right .like_content p {
+  line-height: 28px;
+}
+.personal_center_box .personal_center_right .like_margin_top {
+  margin-top: 30px;
+}
+.personal_center_box .personal_center_right .like_link_change {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  background: #0169EB;
+  color: white;
+  font-size: 14px;
+}
+.personal_center_box .personal_center_right .like_link_change:hover {
+  color: white;
+}
+.personal_center_box .personal_center_right .link_margin_right {
+  margin-right: 27px;
+}
+.change_like_siblings {
+  boxShadow: 0 2px 2px rgba(0, 0, 0, 0.25) !important;
+  border: 0 solid rgba(0, 0, 0, 0.3) !important;
+}
+.change_like_siblings .layui-layer-title {
+  background: #006CE8;
+  color: white;
+  height: 50px;
+  line-height: 50px;
+}
+.change_like_siblings .layui-layer-close {
+  display: none;
+}
+.change_like_content {
+  padding: 25px 95px 0 0;
+  display: none;
+}
+.change_like_content .layui-form-label {
+  font-weight: bold;
+}
+.change_like_content .btn_like_box {
+  text-align: right;
+  margin-top: 35px;
+}
+.change_like_content .btn_like_box .btn_link {
+  display: inline-block;
+  padding: 10px 25px;
+  background: #E5E5E5;
+  color: black;
+  margin-left: 20px;
+}
+.change_like_content .btn_like_box .btn_link:hover {
+  color: white;
+  background: #006CE8;
+}
 /*--------------------------------------登录注册界面--zj--------------------------------------------------*/
 .LR_box {
   margin-top: 60px;
@@ -1188,7 +1282,7 @@ button:focus {
   margin: auto;
 }
 .LR_box .loginRegister_box .LR_right .layui-tab-content {
-  height: auto!important;
+  height: auto !important;
 }
 .LR_box .loginRegister_box .LR_right .register_content {
   margin-top: 30px;
