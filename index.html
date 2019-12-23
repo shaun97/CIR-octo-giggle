@@ -19,44 +19,53 @@
     <!-- layui CSS -->
     <link rel="stylesheet" href="./layui/css/layui.css" media="all">
 
+    <!-- layui Javascript -->
+    <script src="./layui/layui.js" charset="utf-8"></script>
+
     <!-- Own CSS -->
     <link rel="stylesheet" href="./Less/index.css">
     <title>Hello, world!</title>
 
 </head>
 
-<body>
-    <!-- layui Javascript -->
-    <script src="./layui/layui.js" charset="utf-8"></script>
-
+<body onload="close_load()">
     <div id=body>
+        <!--界面加载-->
+        <div class="onload_box">
+            <div class="onload_table">
+                <div class="windows8">
+                    <div class="wBall" id="wBall_1">
+                        <div class="wInnerBall"></div>
+                    </div>
+                    <div class="wBall" id="wBall_2">
+                        <div class="wInnerBall"></div>
+                    </div>
+                    <div class="wBall" id="wBall_3">
+                        <div class="wInnerBall"></div>
+                    </div>
+                    <div class="wBall" id="wBall_4">
+                        <div class="wInnerBall"></div>
+                    </div>
+                    <div class="wBall" id="wBall_5">
+                        <div class="wInnerBall"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--界面加载end-->
+
         <!-- Nav bar baby -->
         <!-- 导航-->
-        <div class="my-nav">
-            <ul class="layui-nav" lay-filter="">
-                <li class="layui-nav-item logo"><a style="padding:0px; text-align: right;" href=""><img id="cir-logo"
-                            src="./img/CIR-logo.png" alt="" style="vertical-align: middle" /></a></li>
-                <li class="layui-nav-item"><a href="" class="logo_font">陆海新通道</a></li>
-                <li class="layui-nav-item" id="ship-position-selector"><a class="l" href="">船位</a></li>
-                <li class="layui-nav-item" id="user-account-btn" style="float: right; vertical-align: middle;"><a
-                        href=""><img id="user-logo" src="./img/icon_user.png" /></a></li>
+        <div class="ship_head">
+            <ul class="layui-nav " lay-filter="">
+                <li class="layui-nav-item  layui-col-md-offset1 logo"><a href="">
+                        <img src="img/CIR-logo.png" alt="" style="vertical-align: middle"><span
+                            class="logo_font">陆海新通道</span>
+                    </a></li>
+                <li class="layui-nav-item layui-this layui-col-md-offset5"><a href="" class="nav_color">船位</a></li>
+                <li class="layui-nav-item layui-col-md-offset3"><a href=""><img src="img/icon_user.png" alt=""></a></li>
             </ul>
         </div>
-        <!--导航end -->
-
-        <!-- Map -->
-        <!-- <div class="map" id="ship-map"></div> -->
-
-        <!-- Search bar baby -->
-        <!-- <div class="layui-form-item" id="search-bar">
-            <div class="layui-input-block search-bar-item" id="search-form">
-                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Search"
-                    class="layui-input">
-            </div>
-            <button type="button" class="layui-btn layui-btn-primary search-bar-item blue-button" id="search-button">
-                <img src="./img/icon_search.png" id="search-image">
-            </button>
-        </div> -->
 
         <div class="search_box2">
             <input type="text" class="search_box2_child" placeholder="请以MMSI进行搜索">
@@ -459,7 +468,7 @@
         </div>
         <!--工具箱-坐标定位-->
         <div id="coordinate" style="display: none;">
-            
+
             <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                 <ul class="layui-tab-title">
                     <li class="layui-this">度分</li>
@@ -576,28 +585,28 @@
 <script>
 
     //注意：导航/选项卡 依赖 element 模块，否则无法进行功能性操作
-    layui.use('element', function(){
+    layui.use('element', function () {
         var element = layui.element;
 
     });
     //弹框
-    layui.use('layer', function(){
+    layui.use('layer', function () {
         var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
 
         //触发事件
         var active = {
 
-            test5: function(){
-                $(".coordinate_parents").css({display:'block'});
+            test5: function () {
+                $(".coordinate_parents").css({ display: 'block' });
                 layer.open({
-                    title:'坐标定位',
+                    title: '坐标定位',
                     type: 1,
                     skin: 'layui-layer-rim',
                     area: ['320px', '250px'],
                     content: $('#coordinate'),
-                    success : function(layero, index) {
+                    success: function (layero, index) {
                         $(".layui-layer-rim").addClass("coordinate_parents");
-                        $(".layui-layer-shade").css({height:'auto',width:'auto'});
+                        $(".layui-layer-shade").css({ height: 'auto', width: 'auto' });
 
                         // 关闭弹框
                         $(".blue_btn1").click(function () {
@@ -607,12 +616,19 @@
                 });
             }
         };
-        $('.demo').on('click', function(){
+        $('.demo').on('click', function () {
             var type = $(this).data('type');
             active[type] ? active[type].call(this) : '';
         });
     });
 
+</script>
+
+<!--页面加载完成-->
+<script>
+    function close_load() {
+       $(".onload_box").hide();
+    }
 </script>
 
 <script type="text/javascript" src="./Components/JsonFactory.js"></script>

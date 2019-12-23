@@ -12,7 +12,7 @@ var zhong = 0;
 
 $(function () {
   $.ajax({
-    url: "http://192.168.0.113:8761/shipsController/getDateJson",
+    url: "http://192.168.0.121:8761/shipsController/getDateJson",
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
@@ -32,6 +32,8 @@ $(function () {
         });
       }
       var dataSet = new mapv.DataSet(data);
+
+     close_load();
       // 点击时的监听事件
       // var O_alert=document.getElementsByClassName("alert_info")[0];
       // var btn_close=document.getElementsByClassName("btn_close")[0];
