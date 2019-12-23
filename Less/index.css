@@ -562,6 +562,9 @@ body {
   margin-left: -5px;
   background: #006ce7 url("../img/icon_search.png") no-repeat center center;
 }
+.search_box2 .se_btn:hover {
+  cursor: pointer;
+}
 .fastmenu_box {
   top: 10%;
   right: 6.5%;
