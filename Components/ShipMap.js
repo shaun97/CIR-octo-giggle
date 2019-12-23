@@ -5,43 +5,7 @@ var BOAT_MARKERS = [];
 var MAP_VIEW = true;
 
 function mapLayersInit() {
-  var data = [];
-  for (var i = 0; i < ALL_SHIPS.length; i++) {
-    data.push({
-      geometry: {
-        type: 'Point',
-        coordinates: [ALL_SHIPS[i].LONGITUDE, ALL_SHIPS[i].LATITUDE],
-        id: i,
-      }
-    });
-  }
-  // 船只
-  // 第一步创建mapv示例 -船只数开始
-  // 数据集
-  var dataSet = new mapv.DataSet(data);
-  // 添加百度地图可视化叠加图层 The OVERLAY OPTIONS!!!
-  var options = {
-    // zIndex: 0, // 层级
-    // unit:'px',
-    fillStyle: '#df4c06',
-    // shadowColor: 'rgba(255, 50, 50, 1)',
-    // shadowBlur: 80,
-    // styleType: 'stroke',
-    globalCompositeOperation: 'lighter',
-    // lineWidth: 0,
-    methods: { // 一些事件回调函数
-      click: function (item) { // 点击事件，返回对应点击元素的对象值
-        // console.log(item);
-        // var localtion=item.geometry.coordinates;
-        // //BMap.Point(localtion)会报错，需要分开写
-        // map.centerAndZoom(new BMap.Point(localtion[0],localtion[1]),5);
-
-      }
-    },
-    draw: 'simple',
-    size: 2,
-  };
-  MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
+  filterShips(true);
   close_load();
   addFunctionality();
 }
@@ -50,6 +14,7 @@ function resetView() {
   var ZoomNum = map.getZoom();
   if (ZoomNum > 8 && MAP_VIEW) {
     MAPV_LAYER.hide();
+    map.clearOverlays();
     showShipsInView();
   } else if (MAP_VIEW) {
     if (map.getOverlays().length > 1) {
@@ -69,57 +34,44 @@ function addFunctionality() {
   });
 }
 
-function showShipsInView() {
-  boats = [];
-  for (var i = 0; i < ALL_SHIPS.length; i++) {
-    //添加船标注
-    var point = new BMap.Point(ALL_SHIPS[i].LONGITUDE, ALL_SHIPS[i].LATITUDE);
-    if (!map.getBounds().containsPoint(point)) {
-      continue;
-    }
-    if (boats.length > 50) return; // TEMPORARY SOLUTION!!!
-    var myIcon = new BMap.Icon("img/boat_m.png", new BMap.Size(15, 39), {
-      offset: new BMap.Size(5, 5),
-    });
-    var idx = boats.length;
-    boats[idx] = new BMap.Marker(point, { icon: myIcon });
-    boats[idx].data = ALL_SHIPS[i];
-    boats[idx].setRotation(ALL_SHIPS[i].HEADING);
-    map.addOverlay(boats[idx]);
+function drawBoatMarker(boatMarker, data, boo) {
+  boatMarker.data = data;
+  boatMarker.setRotation(data.HEADING);
+  map.addOverlay(boatMarker);
 
-    var label_dot = new BMap.Label(ALL_SHIPS[i].NAME, { offset: new BMap.Size(25, 0) });
-    var style_info = {
-      border: "0px solid rgba(6, 28, 44, 0.51)",
-      fontFamily: "微软雅黑",
-      padding: '0px 5px',
-
-    };
-    var style_info2 = {
-      border: "0px solid rgba(6, 28, 44, 0.51)",
-      fontFamily: "微软雅黑",
-      padding: '0px 5px',
-      background: 'red',
-      color: '#fff'
-    };
-    var style_info3 = {
-      border: "0px solid rgba(6, 28, 44, 0.51)",
-      fontFamily: "微软雅黑",
-      padding: '0px 5px',
-      background: '#fff',
-      color: '#000'
-    };
-    // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER -----START------
-    // if (search_lng == ALL_SHIPS[i].lng && search_lat == ALL_SHIPS[i].lat) {
-    //   label_dot.setStyle(style_info2);
-    // } else {
+  var label_dot = new BMap.Label(data.NAME, { offset: new BMap.Size(25, 0) });
+  var style_info = {
+    border: "0px solid rgba(6, 28, 44, 0.51)",
+    fontFamily: "微软雅黑",
+    padding: '0px 5px',
+  };
+  var style_info2 = {
+    border: "0px solid rgba(6, 28, 44, 0.51)",
+    fontFamily: "微软雅黑",
+    padding: '0px 5px',
+    background: 'red',
+    color: '#fff',
+  };
+  var style_info3 = {
+    border: "0px solid rgba(6, 28, 44, 0.51)",
+    fontFamily: "微软雅黑",
+    padding: '0px 5px',
+    background: '#fff',
+    color: '#000',
+  };
+  // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER -----START------
+  if (boo) {
+    label_dot.setStyle(style_info2);
+  } else {
     label_dot.setStyle(style_info);
-    addMouseHandler_dot_over(boats[idx], style_info2, label_dot);
-    addMouseHandler_dot_out(boats[idx], style_info3, label_dot);
-    // }
-    // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER ------END-------
-    boats[idx].setLabel(label_dot);
-    addClickHandler_dot_click(boats[idx]);
+    addMouseHandler_dot_over(boatMarker, style_info3, label_dot);
+    addMouseHandler_dot_out(boatMarker, style_info, label_dot);
   }
+  // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER ------END-------
+  boatMarker.setLabel(label_dot);
+
+  addClickHandler_dot_click(boatMarker);
+
   function addClickHandler_dot_click(marker) {
     marker.addEventListener("click", function () {
       let { A, DRAUGHT, B, C, NAVSTAT, D, LONGITUDE, TIME, SOG, IMO, NAME, HEADING,
@@ -140,7 +92,6 @@ function showShipsInView() {
       map.panTo(marker.getPosition(), true);
     });
   }
-
   function addMouseHandler_dot_over(marker, style, label_dot2) {
     marker.addEventListener("mouseover", function (e) {
       return label_dot2.setStyle(style_info2);
@@ -150,6 +101,22 @@ function showShipsInView() {
     marker.addEventListener("mouseout", function (e) {
       return label_dot2.setStyle(style_info3);
     });
+  }
+}
+
+function showShipsInView() {
+  let boatCount = 0;
+  for (var i = 0; i < ALL_SHIPS.length; i++) {
+    //添加船标注
+    var point = new BMap.Point(ALL_SHIPS[i].LONGITUDE, ALL_SHIPS[i].LATITUDE);
+    if (!map.getBounds().containsPoint(point) || !ALL_SHIPS[i].show) {
+      continue;
+    }
+    if (boatCount > 50) return; // TEMPORARY SOLUTION!!!
+    var myIcon = new BMap.Icon("img/boat_m.png", new BMap.Size(15, 39), {
+      offset: new BMap.Size(5, 5),
+    });
+    drawBoatMarker(new BMap.Marker(point, { icon: myIcon }), ALL_SHIPS[i], false);
   }
 }
 

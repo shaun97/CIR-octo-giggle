@@ -1,23 +1,49 @@
+let SEARCH_SHIP = null;
+
 $('.se_btn').click(function () {
     var MmsiIorName = $('.search_box2_child').val().trim();
 
     $.ajax({
-        url: 'http://192.168.0.121:8761/shipsController/getMMSI?MmsiIorName=' + MmsiIorName,
+        // url: 'http://192.168.0.121:8761/shipsController/getMMSI?MmsiIorName=' + MmsiIorName,
+        url: 'http://localhost:3000/data',
         type: "GET",//请求方式为get
         dataType: "json", //返回数据格式为json
         success: function (data) {
-            console.log(data);
-            var latestPoint = data.data[0];
-            data.data.forEach(point => {
-                latestTime = new Date(latestPoint.TIME).getTime();
-                currTime = new Date(point.TIME).getTime();
-                if (currTime > latestTime) {
-                    latestPoint = point;
-                }
+            // console.log(data);
+
+            var latestPoint = {
+                NAME: 'EBISU MARU',
+                MMSI: 431003062,
+                LONGITUDE: 135.20725,
+                LATITUDE: 34.4663,
+                TIME: '2019-12-20 08:55:25 GMT',
+            }
+
+            // Uncomment this! -----------------------------------------
+            // var latestPoint = data.data[0];
+            // data.data.forEach(point => {
+            //     latestTime = new Date(latestPoint.TIME).getTime();
+            //     currTime = new Date(point.TIME).getTime();
+            //     if (currTime > latestTime) {
+            //         latestPoint = point;
+            //     }
+            // });
+            // Uncomment this! -----------------------------------------
+
+            var myIcon = new BMap.Icon("img/boat_m.png", new BMap.Size(15, 39), {
+                offset: new BMap.Size(5, 5),
             });
-            map.centerAndZoom(new BMap.Point(latestPoint.LONGITUDE, latestPoint.LATITUDE), 9);//设置中心点和显示级别。中国。x
+
+            let point = new BMap.Point(latestPoint.LONGITUDE, latestPoint.LATITUDE)
+
+            map.centerAndZoom(point, 9);//设置中心点和显示级别。中国
+            resetView();
+
+            let marker = new BMap.Marker(point, { icon: myIcon });
+            drawBoatMarker(marker, latestPoint, true);
+            
             let { A, DRAUGHT, B, C, NAVSTAT, D, LONGITUDE, TIME, SOG, IMO, NAME, HEADING,
-                MMSI, CALLSIGN, ETA, ROT, COG, LATITUDE, TYPE, DEST } = latestPoint;
+                MMSI, CALLSIGN, ETA, ROT, COG, LATITUDE, TYPE, DEST } = marker.data;
             $("#ship-info-box").show();
             $("#ship-info-nknm").text(NAME == null ? "-" : NAME);
             $("#ship-info-name").text(NAME == null ? "-" : NAME);
