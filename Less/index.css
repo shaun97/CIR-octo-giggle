@@ -120,7 +120,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  padding: 4% 4% 4% 6%;
+  padding: 0% 4% 4% 6%;
 }
 #ship-info-box .ship-details .row-info {
   width: 48%;
@@ -138,11 +138,11 @@ body {
 #ship-info-box #ship-date-range {
   height: 30px;
 }
-#ship-info-box #inq-btn {
+#ship-info-box #inq-track-btn {
   padding-left: 7px;
   padding-right: 7px;
 }
-#ship-info-box #clr-btn {
+#ship-info-box #clr-track-btn {
   padding-left: 7px;
   padding-right: 7px;
   margin-left: 0px;
@@ -194,7 +194,7 @@ body {
   left: 29%;
   top: 40%;
   width: 40%;
-  max-height: 40%;
+  height: auto;
 }
 #group-info-box tbody tr:hover {
   background-color: #006ce7;
