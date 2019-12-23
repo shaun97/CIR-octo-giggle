@@ -25,56 +25,48 @@ body {
 
 #ship-map {
   position: absolute;
-  width: 100%;
-  height: 93%;
+  width   : 100%;
+  height  : 93%;
 }
 
 // --------------- Navigation Bar styling --------------- //
 
-.my-nav {
-  .layui-nav {
-    background-color: black;
-    padding-left    : 100px;
-    width           : 100%;
-    border-radius   : 0px;
-  }
+.ship_head {
+  //position: absolute;
+  top     : 0;
+  left    : 0;
+  right   : 0;
+  z-index : 1;
+}
 
-  .layui-nav-bar,
-  .layui-nav .layui-this:after,
-  .layui-nav-tree .layui-nav-itemed:after .layui-nav-item:active {
-    background-color: transparent;
-  }
+.ship_head .layui-nav-bar,
+.ship_head .layui-nav .layui-this:after,
+.ship_head .layui-nav-tree .layui-nav-itemed:after {
+  background-color: transparent;
+}
 
-  #cir-logo {
-    padding-bottom: 30%;
-    align-content : right;
-    width         : 80%;
-    height        : auto;
-    line-height   : normal;
-  }
+.ship_head .nav_color {
+  background: @blue;
+}
 
-  .logo_font {
-    vertical-align: bottom;
-    font-size     : 17.5px;
-    color         : white;
-    font-weight   : bold;
-    padding-left  : 8px !important;
-  }
+.ship_head .logo {
+  line-height: normal;
+}
 
-  #ship-position-selector {
-    left            : 45%;
-    background-color: @blue;
-  }
+.ship_head .logo_font {
+  vertical-align: bottom;
+  font-size     : 18px;
+  padding-left  : 10px;
+  color         : white;
+}
 
-  #user-logo {
-    padding-bottom: 10%;
-    width         : 80%;
-    height        : auto;
-  }
+.ship_head .layui-nav {
+  background-color: #061c2c;
+  border-radius: 0px;
+}
 
-  #user-account-btn {
-    right: 4%;
-  }
+.anchorBL {
+  display: none;
 }
 
 // --------------- Pop-up styling --------------- //
@@ -87,10 +79,10 @@ body {
   display   : none;
 
   .pop-up-header {
-    display: inline-block;
+    display    : inline-block;
     align-items: center;
     background : @blue;
-    position   : relative; 
+    position   : relative;
     height     : 35px;
     width      : 100%;
     text-align : justify;
@@ -633,7 +625,7 @@ body {
   z-index      : 1;
 }
 
-.search_box2 .search_box2_child { 
+.search_box2 .search_box2_child {
   display           : inline-block;
   line-height       : 50px;
   padding           : 0 10px;
@@ -798,30 +790,579 @@ button:focus {
 
 /*--------------------------------------地图中放大缩小样式--zj--------------------------------------------------*/
 /*-------------------------------------LEAFLET CONTROL ZOOM--------------------------------------------------*/
-.leaflet-control-zoom{
+.leaflet-control-zoom {
   position: absolute;
-  right:10px!important;
-  bottom: 90px!important;
-  display: inline-block;
-  left: auto!important;
-  top: auto!important;
+  right   : 10px !important;
+  bottom  : 90px !important;
+  display : inline-block;
+  left    : auto !important;
+  top     : auto !important;
 
 }
+
 .leaflet-control-zoom a {
-  width: 30px;
-  height: 30px;
+  width      : 30px;
+  height     : 30px;
   line-height: 30px;
-  background: #FFFFFF;
-  display: block;
-  font-size: 24px;
-  text-align: center;
-  color: #999999;
-  cursor: pointer;
-  &:hover{
+  background : #FFFFFF;
+  display    : block;
+  font-size  : 24px;
+  text-align : center;
+  color      : #999999;
+  cursor     : pointer;
+
+  &:hover {
     color: #006ce7;
   }
 
 }
-.leaflet-control-zoom .scale_aa{
+
+.leaflet-control-zoom .scale_aa {
   border-bottom: 1px solid #CCCCCC;
+}
+
+/*--------------------------------------右侧工具箱--zj--------------------------------------------------*/
+.toolbox_btn,
+.toolbox_info {
+  position        : absolute;
+  z-index         : 900;
+  background-color: #fff;
+  border-radius   : 2px;
+  right           : 10px;
+  width           : 30px;
+  text-align      : center;
+  line-height     : 30px;
+  box-shadow      : 0 2px 2px rgba(0, 0, 0, 0.25);
+  bottom          : 160px;
+  padding-bottom  : 5px;
+}
+
+.toolbox_info a {
+  float     : left;
+  margin-top: 5px;
+}
+
+.toolbox_info a {
+  display          : inline-block;
+  width            : 30px;
+  height           : 30px;
+  background-image : url(../img/toolbox.jpg);
+  background-repeat: no-repeat;
+}
+
+.location_set {
+  background-position: 0 -30px;
+}
+
+.location_set:hover {
+  background-position: -30px -30px;
+}
+
+/*--------------------------------------坐标定位--zj--------------------------------------------------*/
+.coordinate_parents {
+  boxShadow: 0 2px 2px rgba(0, 0, 0, 0.25) !important;
+  border   : 0 solid rgba(0, 0, 0, 0.3) !important;
+}
+
+.coordinate_parents .layui-layer-ico {
+  background: url(../img/icon_close.png) no-repeat;
+}
+
+.coordinate_parents .layui-layer-setwin .layui-layer-close1 {
+  background-position: initial;
+  cursor             : pointer;
+}
+
+.coordinate_parents #coordinate .layui-tab-brief>.layui-tab-title .layui-this {
+  color: #006CE8;
+}
+
+.coordinate_parents #coordinate .layui-tab-brief>.layui-tab-title .layui-this:after,
+.coordinate_parents #coordinate .layui-tab-brief>.layui-tab-more li.layui-this:after {
+  border-bottom: 0px solid #5FB878;
+}
+
+.coordinate_parents #coordinate .layui-tab {
+  margin: 0;
+}
+
+.coordinate_parents #coordinate .layui-tab-title {
+  padding-left: 20px;
+}
+
+.coordinate_parents #coordinate .layui-tab-title li {
+  padding     : 0;
+  min-width   : auto;
+  margin-right: 15px;
+}
+
+.coordinate_parents #coordinate .nsew_sign {
+  margin-left: 5px;
+  cursor     : pointer;
+  position   : relative;
+  top        : 4px;
+  display    : inline-block;
+  width      : 41px;
+  height     : 20px;
+}
+
+.coordinate_parents #coordinate .sn_sign {
+  background: url(../img/s.png) no-repeat;
+}
+
+.coordinate_parents #coordinate .ns_sign {
+  background: url(../img/n.png) no-repeat;
+}
+
+.coordinate_parents #coordinate .we_sign {
+  background: url(../img/w.png) no-repeat;
+}
+
+.coordinate_parents #coordinate .ew_sign {
+  background: url(../img/e.png) no-repeat;
+}
+
+.coordinate_parents #coordinate .layui-form-item {
+  text-align: center;
+  position  : relative;
+}
+
+.coordinate_parents #coordinate .layui-form-item .tip_like0 {
+  position  : absolute;
+  left      : 60px;
+  bottom    : -13px;
+  font-size : 12px;
+  text-align: left;
+  color     : red;
+}
+
+.coordinate_parents #coordinate .layui-form-item .tip_like {
+  left: 60px;
+}
+
+.coordinate_parents #coordinate .layui-form-item .tip_like_fen {
+  left: 148px;
+}
+
+.coordinate_parents #coordinate .layui-form-item .layui-input-inline {
+  width       : 78px;
+  margin-right: 0;
+}
+
+.coordinate_parents #coordinate .layui-form-label {
+  width      : auto;
+  padding    : 0px 10px;
+  line-height: 28px;
+}
+
+.coordinate_parents #coordinate .layui-form-mid {
+  margin : 0 2px;
+  padding: 0 !important;
+}
+
+.coordinate_parents #coordinate .layui-input {
+  height     : 28px;
+  line-height: 28px;
+}
+
+.coordinate_parents #coordinate .ta_c {
+  text-align: center;
+}
+
+.coordinate_parents #coordinate .ta_c .btn {
+  display: inline-block;
+  padding: 5px 35px;
+  border : 1px solid #006CE8;
+  margin : 0 10px;
+  color  : #006CE8;
+}
+
+.coordinate_parents #coordinate .ta_c .btn:hover {
+  background: #006CE8;
+  color     : white;
+}
+
+.coordinate_parents #coordinate .ta_c .btn_active {
+  background: #006CE8;
+  color     : white;
+}
+
+.coordinate_parents #coordinate .layui-form-item .du_input {
+  width: 154px;
+}
+
+.coordinate_parents .layui-layer-shade {
+  height: auto;
+  width : auto;
+}
+
+.coordinate_parents .layui-layer-title {
+  background: #006CE8;
+  color     : #ffffff;
+}
+
+.close_alert {
+  display: none;
+}
+
+.onload_box {
+  width     : 100%;
+  height    : 100%;
+  position  : absolute;
+  left      : 0;
+  top       : 0;
+  bottom    : 0;
+  right     : 0;
+  z-index   : 901;
+  background: rgba(0, 0, 0, 0.34);
+  display   : table;
+}
+
+.onload_box .onload_table {
+  display       : table-cell;
+  vertical-align: middle;
+}
+
+.onload_box .windows8 {
+  position: relative;
+  width   : 78px;
+  height  : 78px;
+  margin  : auto;
+}
+
+.onload_box .windows8 .wBall {
+  position         : absolute;
+  width            : 74px;
+  height           : 74px;
+  opacity          : 0;
+  transform        : rotate(225deg);
+  -o-transform     : rotate(225deg);
+  -ms-transform    : rotate(225deg);
+  -webkit-transform: rotate(225deg);
+  -moz-transform   : rotate(225deg);
+  animation        : orbit 6.96s infinite;
+  -o-animation     : orbit 6.96s infinite;
+  -ms-animation    : orbit 6.96s infinite;
+  -webkit-animation: orbit 6.96s infinite;
+  -moz-animation   : orbit 6.96s infinite;
+}
+
+.onload_box .windows8 .wBall .wInnerBall {
+  position     : absolute;
+  width        : 10px;
+  height       : 10px;
+  background   : #006CE8;
+  left         : 0px;
+  top          : 0px;
+  border-radius: 10px;
+}
+
+.onload_box .windows8 #wBall_1 {
+  animation-delay        : 1.52s;
+  -o-animation-delay     : 1.52s;
+  -ms-animation-delay    : 1.52s;
+  -webkit-animation-delay: 1.52s;
+  -moz-animation-delay   : 1.52s;
+}
+
+.onload_box .windows8 #wBall_2 {
+  animation-delay        : 0.3s;
+  -o-animation-delay     : 0.3s;
+  -ms-animation-delay    : 0.3s;
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay   : 0.3s;
+}
+
+.onload_box .windows8 #wBall_3 {
+  animation-delay        : 0.61s;
+  -o-animation-delay     : 0.61s;
+  -ms-animation-delay    : 0.61s;
+  -webkit-animation-delay: 0.61s;
+  -moz-animation-delay   : 0.61s;
+}
+
+.onload_box .windows8 #wBall_4 {
+  animation-delay        : 0.91s;
+  -o-animation-delay     : 0.91s;
+  -ms-animation-delay    : 0.91s;
+  -webkit-animation-delay: 0.91s;
+  -moz-animation-delay   : 0.91s;
+}
+
+.onload_box .windows8 #wBall_5 {
+  animation-delay        : 1.22s;
+  -o-animation-delay     : 1.22s;
+  -ms-animation-delay    : 1.22s;
+  -webkit-animation-delay: 1.22s;
+  -moz-animation-delay   : 1.22s;
+}
+
+@keyframes orbit {
+  0% {
+    opacity                  : 1;
+    z-index                  : 99;
+    transform                : rotate(180deg);
+    animation-timing-function: ease-out;
+  }
+
+  7% {
+    opacity                  : 1;
+    transform                : rotate(300deg);
+    animation-timing-function: linear;
+    origin                   : 0%;
+  }
+
+  30% {
+    opacity                  : 1;
+    transform                : rotate(410deg);
+    animation-timing-function: ease-in-out;
+    origin                   : 7%;
+  }
+
+  39% {
+    opacity                  : 1;
+    transform                : rotate(645deg);
+    animation-timing-function: linear;
+    origin                   : 30%;
+  }
+
+  70% {
+    opacity                  : 1;
+    transform                : rotate(770deg);
+    animation-timing-function: ease-out;
+    origin                   : 39%;
+  }
+
+  75% {
+    opacity                  : 1;
+    transform                : rotate(900deg);
+    animation-timing-function: ease-out;
+    origin                   : 70%;
+  }
+
+  76% {
+    opacity  : 0;
+    transform: rotate(900deg);
+  }
+
+  100% {
+    opacity  : 0;
+    transform: rotate(900deg);
+  }
+}
+
+@-o-keyframes orbit {
+  0% {
+    opacity                     : 1;
+    z-index                     : 99;
+    -o-transform                : rotate(180deg);
+    -o-animation-timing-function: ease-out;
+  }
+
+  7% {
+    opacity                     : 1;
+    -o-transform                : rotate(300deg);
+    -o-animation-timing-function: linear;
+    -o-origin                   : 0%;
+  }
+
+  30% {
+    opacity                     : 1;
+    -o-transform                : rotate(410deg);
+    -o-animation-timing-function: ease-in-out;
+    -o-origin                   : 7%;
+  }
+
+  39% {
+    opacity                     : 1;
+    -o-transform                : rotate(645deg);
+    -o-animation-timing-function: linear;
+    -o-origin                   : 30%;
+  }
+
+  70% {
+    opacity                     : 1;
+    -o-transform                : rotate(770deg);
+    -o-animation-timing-function: ease-out;
+    -o-origin                   : 39%;
+  }
+
+  75% {
+    opacity                     : 1;
+    -o-transform                : rotate(900deg);
+    -o-animation-timing-function: ease-out;
+    -o-origin                   : 70%;
+  }
+
+  76% {
+    opacity     : 0;
+    -o-transform: rotate(900deg);
+  }
+
+  100% {
+    opacity     : 0;
+    -o-transform: rotate(900deg);
+  }
+}
+
+@-ms-keyframes orbit {
+  0% {
+    opacity                      : 1;
+    z-index                      : 99;
+    -ms-transform                : rotate(180deg);
+    -ms-animation-timing-function: ease-out;
+  }
+
+  7% {
+    opacity                      : 1;
+    -ms-transform                : rotate(300deg);
+    -ms-animation-timing-function: linear;
+    -ms-origin                   : 0%;
+  }
+
+  30% {
+    opacity                      : 1;
+    -ms-transform                : rotate(410deg);
+    -ms-animation-timing-function: ease-in-out;
+    -ms-origin                   : 7%;
+  }
+
+  39% {
+    opacity                      : 1;
+    -ms-transform                : rotate(645deg);
+    -ms-animation-timing-function: linear;
+    -ms-origin                   : 30%;
+  }
+
+  70% {
+    opacity                      : 1;
+    -ms-transform                : rotate(770deg);
+    -ms-animation-timing-function: ease-out;
+    -ms-origin                   : 39%;
+  }
+
+  75% {
+    opacity                      : 1;
+    -ms-transform                : rotate(900deg);
+    -ms-animation-timing-function: ease-out;
+    -ms-origin                   : 70%;
+  }
+
+  76% {
+    opacity      : 0;
+    -ms-transform: rotate(900deg);
+  }
+
+  100% {
+    opacity      : 0;
+    -ms-transform: rotate(900deg);
+  }
+}
+
+@-webkit-keyframes orbit {
+  0% {
+    opacity                          : 1;
+    z-index                          : 99;
+    -webkit-transform                : rotate(180deg);
+    -webkit-animation-timing-function: ease-out;
+  }
+
+  7% {
+    opacity                          : 1;
+    -webkit-transform                : rotate(300deg);
+    -webkit-animation-timing-function: linear;
+    -webkit-origin                   : 0%;
+  }
+
+  30% {
+    opacity                          : 1;
+    -webkit-transform                : rotate(410deg);
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-origin                   : 7%;
+  }
+
+  39% {
+    opacity                          : 1;
+    -webkit-transform                : rotate(645deg);
+    -webkit-animation-timing-function: linear;
+    -webkit-origin                   : 30%;
+  }
+
+  70% {
+    opacity                          : 1;
+    -webkit-transform                : rotate(770deg);
+    -webkit-animation-timing-function: ease-out;
+    -webkit-origin                   : 39%;
+  }
+
+  75% {
+    opacity                          : 1;
+    -webkit-transform                : rotate(900deg);
+    -webkit-animation-timing-function: ease-out;
+    -webkit-origin                   : 70%;
+  }
+
+  76% {
+    opacity          : 0;
+    -webkit-transform: rotate(900deg);
+  }
+
+  100% {
+    opacity          : 0;
+    -webkit-transform: rotate(900deg);
+  }
+}
+
+@-moz-keyframes orbit {
+  0% {
+    opacity                       : 1;
+    z-index                       : 99;
+    -moz-transform                : rotate(180deg);
+    -moz-animation-timing-function: ease-out;
+  }
+
+  7% {
+    opacity                       : 1;
+    -moz-transform                : rotate(300deg);
+    -moz-animation-timing-function: linear;
+    -moz-origin                   : 0%;
+  }
+
+  30% {
+    opacity                       : 1;
+    -moz-transform                : rotate(410deg);
+    -moz-animation-timing-function: ease-in-out;
+    -moz-origin                   : 7%;
+  }
+
+  39% {
+    opacity                       : 1;
+    -moz-transform                : rotate(645deg);
+    -moz-animation-timing-function: linear;
+    -moz-origin                   : 30%;
+  }
+
+  70% {
+    opacity                       : 1;
+    -moz-transform                : rotate(770deg);
+    -moz-animation-timing-function: ease-out;
+    -moz-origin                   : 39%;
+  }
+
+  75% {
+    opacity                       : 1;
+    -moz-transform                : rotate(900deg);
+    -moz-animation-timing-function: ease-out;
+    -moz-origin                   : 70%;
+  }
+
+  76% {
+    opacity       : 0;
+    -moz-transform: rotate(900deg);
+  }
+
+  100% {
+    opacity       : 0;
+    -moz-transform: rotate(900deg);
+  }
 }

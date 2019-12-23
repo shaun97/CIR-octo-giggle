@@ -37,6 +37,8 @@ $(function () {
         });
       }
       var dataSet = new mapv.DataSet(data);
+
+     close_load();
       // 点击时的监听事件
       // var O_alert=document.getElementsByClassName("alert_info")[0];
       // var btn_close=document.getElementsByClassName("btn_close")[0];

@@ -19,30 +19,57 @@
     <!-- layui CSS -->
     <link rel="stylesheet" href="./layui/css/layui.css" media="all">
 
+    <!-- layui Javascript -->
+    <script src="./layui/layui.js" charset="utf-8"></script>
+
     <!-- Own CSS -->
     <link rel="stylesheet" href="./Less/index.css">
     <title>Hello, world!</title>
 
 </head>
 
-<body>
-    <!-- layui Javascript -->
-    <script src="./layui/layui.js" charset="utf-8"></script>
-
+<body onload="close_load()">
     <div id=body>
+        <!--界面加载-->
+        <div class="onload_box">
+            <div class="onload_table">
+                <div class="windows8">
+                    <div class="wBall" id="wBall_1">
+                        <div class="wInnerBall"></div>
+                    </div>
+                    <div class="wBall" id="wBall_2">
+                        <div class="wInnerBall"></div>
+                    </div>
+                    <div class="wBall" id="wBall_3">
+                        <div class="wInnerBall"></div>
+                    </div>
+                    <div class="wBall" id="wBall_4">
+                        <div class="wInnerBall"></div>
+                    </div>
+                    <div class="wBall" id="wBall_5">
+                        <div class="wInnerBall"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--界面加载end-->
+
         <!-- Nav bar baby -->
         <!-- 导航-->
-        <div class="my-nav">
-            <ul class="layui-nav" lay-filter="">
-                <li class="layui-nav-item logo"><a style="padding:0px; text-align: right;" href=""><img id="cir-logo"
-                            src="./img/CIR-logo.png" alt="" style="vertical-align: middle" /></a></li>
-                <li class="layui-nav-item"><a href="" class="logo_font">陆海新通道</a></li>
-                <li class="layui-nav-item" id="ship-position-selector"><a class="l" href="">船位</a></li>
-                <li class="layui-nav-item" id="user-account-btn" style="float: right; vertical-align: middle;"><a
-                        href=""><img id="user-logo" src="./img/icon_user.png" /></a></li>
+        <div class="ship_head">
+            <ul class="layui-nav " lay-filter="">
+                <li class="layui-nav-item  layui-col-md-offset1 logo"><a href="">
+                        <img src="img/CIR-logo.png" alt="" style="vertical-align: middle"><span
+                            class="logo_font">陆海新通道</span>
+                    </a></li>
+                <li class="layui-nav-item layui-this layui-col-md-offset5"><a href="" class="nav_color">船位</a></li>
+                <li class="layui-nav-item layui-col-md-offset3"><a href=""><img src="img/icon_user.png" alt=""></a></li>
             </ul>
         </div>
+<<<<<<< HEAD
         <!--导航end -->
+=======
+>>>>>>> 8ad4d190b95e6434dd7bd3da66128df53de9f001
 
         <div class="search_box2">
             <input type="text" class="search_box2_child" placeholder="请以MMSI进行搜索">
@@ -182,7 +209,8 @@
                         class="layui-input input-bar" id="add-ship-to-fleet-inputbar">
                 </div>
                 <div class="add-fleet-two-buttons">
-                    <button type="button" class="layui-btn layui-btn-sm blue-button" id="add-ship-to-fleet-btn">保存</button>
+                    <button type="button" class="layui-btn layui-btn-sm blue-button"
+                        id="add-ship-to-fleet-btn">保存</button>
                     <button type="button" class="layui-btn layui-btn-sm cancel-button">取消</button>
                 </div>
             </div>
@@ -437,11 +465,175 @@
             </div>
         </div>
 
+        <!-- Set Location control -->
+        <!--工具箱-->
+        <div class="toolbox_info" id="toolboxInfo">
+            <a href="javascript:void(0)" id="locationSet" class="location_set demo" data-type="test5"></a>
+        </div>
+        <!--工具箱-坐标定位-->
+        <div id="coordinate" style="display: none;">
+
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">度分</li>
+                    <li>度</li>
+                </ul>
+                <div class="layui-tab-content" style="height: 100px;" id="location_form">
+                    <div class="layui-tab-item layui-show">
+                        <form class="layui-form">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">纬度</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="price_min" maxlength="2"
+                                            onkeyup="Form.dufen_du_long(this,'90','[0-90°)','.tip_p_lat','2')"
+                                            autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid">°</div>
+
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="price_max" autocomplete="off" maxlength="5"
+                                            class="layui-input"
+                                            onkeyup="Form.dufen_du_long(this,'60','[0-60)','.tip_p_lat_fen','2')">
+                                    </div>
+                                    <div class="layui-form-mid">′</div>
+                                    <div class="layui-form-mid">
+                                        <b id="selectwd_dw0" class="nsew_sign ns_sign"></b>
+                                    </div>
+                                </div>
+                                <p class="tip_p_lat tip_like tip_like0"></p>
+                                <p class="tip_p_lat_fen tip_like_fen tip_like0"></p>
+
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">经度</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="price_min"
+                                            onkeyup="Form.dufen_du_long(this,'180','[0-180°)','.tip_p_long','3')"
+                                            autocomplete="off" class="layui-input" maxlength="3">
+                                    </div>
+                                    <div class="layui-form-mid">°</div>
+
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="price_max" autocomplete="off" class="layui-input"
+                                            maxlength="5"
+                                            onkeyup="Form.dufen_du_long(this,'60','[0-60)','.tip_p_long_fen','2')">
+                                    </div>
+                                    <div class="layui-form-mid">′</div>
+                                    <div class="layui-form-mid">
+                                        <b id="selectjd_dw01" class="nsew_sign ew_sign"></b>
+                                    </div>
+                                </div>
+                                <p class="tip_p_long tip_like tip_like0"></p>
+                                <p class="tip_p_long_fen tip_like_fen tip_like0"></p>
+                            </div>
+                            <p class="ta_c">
+                                <a href="javascript:void(0)" class="btn blue_btn btn_active"
+                                    onclick="Indexa.locationSave()">定位</a>
+                                <a href="javascript:void(0)" class="btn blue_btn1">取消</a>
+                            </p>
+                        </form>
+                    </div>
+                    <div class="layui-tab-item">
+                        <form class="layui-form">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">纬度</label>
+                                    <div class="layui-input-inline du_input">
+                                        <input type="text" name="price_min" autocomplete="off" class="layui-input"
+                                            maxlength="6"
+                                            onkeyup="Form.dufen_du_long(this,'90','[0-90°)','.tip_p_lat1','2')">
+                                    </div>
+                                    <div class="layui-form-mid">°</div>
+
+                                    <div class="layui-form-mid">
+                                        <b id="selectwd_dw1" class="nsew_sign sn_sign"></b>
+                                    </div>
+                                </div>
+                                <p class="tip_p_lat1 tip_like tip_like0"></p>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">经度</label>
+                                    <div class="layui-input-inline du_input">
+                                        <input type="text" name="price_min" autocomplete="off" class="layui-input"
+                                            maxlength="7"
+                                            onkeyup="Form.dufen_du_long(this,'180','[0-180°)','.tip_p_long1','2')">
+                                    </div>
+                                    <div class="layui-form-mid">°</div>
+
+                                    <div class="layui-form-mid">
+                                        <b id="selectjd_dw11" class="nsew_sign we_sign"></b>
+                                    </div>
+                                </div>
+                                <p class="tip_p_long1 tip_like tip_like0"></p>
+                            </div>
+                            <p class="ta_c">
+                                <a href="javascript:void(0)" class="btn blue_btn btn_active">定位</a>
+                                <a href="javascript:void(0)" class="btn blue_btn1">取消</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--工具箱end-->
+
         <!-- Map -->
         <div class="map" id="ship-map"></div>
 
     </div>
 </body>
+
+<script>
+
+    //注意：导航/选项卡 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+    //弹框
+    layui.use('layer', function () {
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+        //触发事件
+        var active = {
+
+            test5: function () {
+                $(".coordinate_parents").css({ display: 'block' });
+                layer.open({
+                    title: '坐标定位',
+                    type: 1,
+                    skin: 'layui-layer-rim',
+                    area: ['320px', '250px'],
+                    content: $('#coordinate'),
+                    success: function (layero, index) {
+                        $(".layui-layer-rim").addClass("coordinate_parents");
+                        $(".layui-layer-shade").css({ height: 'auto', width: 'auto' });
+
+                        // 关闭弹框
+                        $(".blue_btn1").click(function () {
+                            layer.close(index);
+                        })
+                    }
+                });
+            }
+        };
+        $('.demo').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+</script>
+
+<!--页面加载完成-->
+<script>
+    function close_load() {
+       $(".onload_box").hide();
+    }
+</script>
 
 <script type="text/javascript" src="./Components/JsonFactory.js"></script>
 <script type="text/javascript" src="./Components/NavBar.js"></script>
@@ -455,5 +647,6 @@
 <script type="text/javascript" src="./Components/GroupInfo.js"></script>
 <script type="text/javascript" src="./Components/ShipMap.js"></script>
 <script type="text/javascript" src="./Components/MapZoomLeaflet.js"></script>
+<script src="js/ShipxyIndex2.js"></script>
 
 </html>
