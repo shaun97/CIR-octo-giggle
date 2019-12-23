@@ -51,6 +51,8 @@ body {
   background: white;
   font-size: small;
   display: none;
+  border-radius: 2;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
 }
 .pop-up .pop-up-header {
   display: inline-block;
