@@ -66,10 +66,7 @@
                 <li class="layui-nav-item layui-col-md-offset3"><a href=""><img src="img/icon_user.png" alt=""></a></li>
             </ul>
         </div>
-<<<<<<< HEAD
         <!--导航end -->
-=======
->>>>>>> 8ad4d190b95e6434dd7bd3da66128df53de9f001
 
         <div class="search_box2">
             <input type="text" class="search_box2_child" placeholder="请以MMSI进行搜索">
@@ -84,13 +81,13 @@
         </div>
 
         <!-- Pop up ship info -->
-        <div class="pop-up" id="ship-info-box">
+        <div class="pop-up layui-anim layui-anim-scale" id="ship-info-box">
             <div class="pop-up-header">
                 <h5 class="layui-header pop-up-header-text" id="ship-info-nknm">Ship Name</h5>
                 <button class="pop-up-header-button edit-button" id="info-edit-button"><img src="./img/icon_edit.png"
-                        height="75%" width="75%"></button>
+                    class="header_button_image"></button>
                 <button class="pop-up-header-button close-button" id="info-close-button"><img src="./img/icon_close.png"
-                        height="75%" width="75%"></button>
+                    class="close_image"></button>
             </div>
             <div class="ship-details">
                 <ul class="row-info row-1">
@@ -154,11 +151,11 @@
         </div>
 
         <!-- Change name box -->
-        <div class="pop-up" id="change-name-box">
+        <div class="pop-up layui-anim layui-anim-scale" id="change-name-box">
             <div class="pop-up-header">
                 <h6 class="pop-up-header-text">修改船名</h6>
                 <button class="pop-up-header-button close-button edit-name-close"><img src="./img/icon_close.png"
-                        height="75%" width="75%"></button>
+                    class="close_image"></button>
             </div>
 
             <div class="layui-form-item" id="new-name-form">
@@ -175,13 +172,13 @@
         </div>
 
         <!--  Ships observe -->
-        <div class="pop-up" id="observe-list-box">
+        <div class="pop-up layui-anim layui-anim-scale" id="observe-list-box">
             <div class="ship-info-header-bar">
                 <div class="pop-up-header">
                     <h6 class="pop-up-header-text"><img src="./img/icon_add_white.png" height="17px" width="17px">
                         我的关注</h6>
                     <button class="pop-up-header-button close-button" id="observe-close-button"><img
-                            src="./img/icon_close.png" height="75%" width="75%"></button>
+                            src="./img/icon_close.png" class="close_image"></button>
                 </div>
             </div>
             <form class="layui-form" action="">
@@ -223,13 +220,13 @@
         </div>
 
         <!-- Ship Filtrate  -->
-        <div class="pop-up" id="ship-filtrate-box">
+        <div class="pop-up layui-anim layui-anim-scale" id="ship-filtrate-box">
             <div class="ship-filtrate-header-bar">
                 <div class="pop-up-header">
                     <h6 class="pop-up-header-text"><img src="./img/icon_flitrate_ship.png" height="17px" width="17px">
                         船舶筛选</h6>
                     <button class="pop-up-header-button close-button" id="filtrate-close-button"><img
-                            src="./img/icon_close.png" height="75%" width="75%"></button>
+                            src="./img/icon_close.png" class="close_image"></button>
                 </div>
             </div>
             <div id="ship-filtrate-inner-box">
@@ -345,13 +342,13 @@
         </div>
 
         <!-- Ship Group info box  -->
-        <div class="pop-up" id="group-info-box">
+        <div class="pop-up layui-anim layui-anim-scale" id="group-info-box">
             <div class="ship-filtrate-header-bar">
                 <div class="pop-up-header">
                     <h6 class="pop-up-header-text">
                         船舶列表</h6>
                     <button class="pop-up-header-button close-button" id="group-info-close-button"><img
-                            src="./img/icon_close.png" height="75%" width="75%"></button>
+                            src="./img/icon_close.png"class="close_image"></button>
                 </div>
             </div>
 
@@ -472,7 +469,6 @@
         </div>
         <!--工具箱-坐标定位-->
         <div id="coordinate" style="display: none;">
-
             <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                 <ul class="layui-tab-title">
                     <li class="layui-this">度分</li>
@@ -617,8 +613,10 @@
                             layer.close(index);
                         })
                     }
+
                 });
             }
+
         };
         $('.demo').on('click', function () {
             var type = $(this).data('type');
@@ -631,7 +629,7 @@
 <!--页面加载完成-->
 <script>
     function close_load() {
-       $(".onload_box").hide();
+        $(".onload_box").hide();
     }
 </script>
 

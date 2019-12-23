@@ -4,6 +4,5 @@ $(document).ready(function () {
         containment:"#ship-map",
         stack: ".pop-up",
         cursor:"move",
-        opacity: 0.8,
     });
 });
