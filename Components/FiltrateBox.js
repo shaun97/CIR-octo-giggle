@@ -208,7 +208,10 @@ $(document).ready(function () {
 function filterShips(boo) {
   var data = [];
   var img = new Image();
-  img.src = './img/boat_m.png';
+  img.src = './img/tankers.png';
+  console.log(img.width);
+  console.log(img.height);
+  
 
   if (boo) { // No filter
     // console.log(ALL_SHIPS.length);
