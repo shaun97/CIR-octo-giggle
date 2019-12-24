@@ -426,6 +426,7 @@ body {
   border: 0;
   width: 15px;
   margin: 0px 2px 0px 2px;
+  cursor: pointer;
 }
 #observe-list-box .my-ship-list .tree-buttons .tree-button:hover {
   filter: sepia(100%) hue-rotate(190deg) saturate(500%);

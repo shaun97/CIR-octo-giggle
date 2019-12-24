@@ -1,3 +1,5 @@
+var FLEET = {};
+
 $(document).ready(function () {
   $("#observe-close-button").click(function () {
     $("#observe-list-box").hide();
@@ -7,7 +9,7 @@ $(document).ready(function () {
     $("#observe-read").hide();
   });
   $("#add-fleet-btn").click(function () {
-    let newFleetName = $("#add-ship-fleet-name").val();
+    let newFleetName = $("#add-ship-fleet-name").val().trim();
     if (newFleetName == "") { return; }
 
     if (!$(`#content-list-${newFleetName.replace(" ", "-")}`).length) {
@@ -44,18 +46,27 @@ $(document).ready(function () {
       });
 
       tableF.click(() => {
-        $("#group-info-box").show();
+        var history_data = [
+              { MMSI: 565731000, TIME: "2019-12-20 08:28:04 GMT", LONGITUDE: 131.2823, LATITUDE: 28.84995 },
+              { MMSI: 565731000, TIME: "2019-12-20 08:29:04 GMT", LONGITUDE: 130.7823, LATITUDE: 28.44995 },
+              { MMSI: 565731000, TIME: "2019-12-20 08:25:04 GMT", LONGITUDE: 132.7823, LATITUDE: 28.94995 },
+              { MMSI: 565731000, TIME: "2019-12-20 08:26:04 GMT", LONGITUDE: 132.2823, LATITUDE: 29.54995 },
+              { MMSI: 565731000, TIME: "2019-12-20 08:27:04 GMT", LONGITUDE: 131.7823, LATITUDE: 29.44995 },
+            ]
+        showTable(history_data);
+        $("#group-info-box").show(
+        );
       });
 
       //-------------- END FUNCTIONALITY FOR FLEET TREE-BUTTONS --------------//
 
-    } 
+    }
 
     $(".tree-button").click(function (e) {
       e.stopPropagation();
     });
   });
-  $("#add-ship-to-fleet-btn").click(function() {
+  $("#add-ship-to-fleet-btn").click(function () {
     const fleetName = $("#add-ship-fleet-name").val();
     if (!fleetName) {
       alert("Choose or add a fleet name");
