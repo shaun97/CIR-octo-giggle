@@ -11,18 +11,18 @@ function mapLayersInit() {
 }
 
 function resetView() {
-  var ZoomNum = map.getZoom();
-  if (ZoomNum > 8 && MAP_VIEW) {
-    MAPV_LAYER.hide();
-    map.clearOverlays();
-    showShipsInView();
-  } else if (MAP_VIEW) {
-    if (map.getOverlays().length > 1) {
-      map.clearOverlays();
-    }
-    map.clearOverlays();
-    MAPV_LAYER.show();
-  }
+  // var ZoomNum = map.getZoom();
+  // if (ZoomNum > 8 && MAP_VIEW) {
+  //   MAPV_LAYER.hide();
+  //   map.clearOverlays();
+  //   showShipsInView();
+  // } else if (MAP_VIEW) {
+  //   if (map.getOverlays().length > 1) {
+  //     map.clearOverlays();
+  //   }
+  //   map.clearOverlays();
+  //   MAPV_LAYER.show();
+  // }
 }
 
 function addFunctionality() {
@@ -35,68 +35,66 @@ function addFunctionality() {
   });
 }
 
-function drawBoatMarker(boatMarker, data, boo) {
-  boatMarker.data = data;
-  boatMarker.setRotation(data.HEADING);
-  map.addOverlay(boatMarker);
+// function drawBoatMarker(boatMarker, data, boo) {
+//   boatMarker.data = data;
+//   boatMarker.setRotation(data.HEADING);
+//   map.addOverlay(boatMarker);
 
-  var label_dot = new BMap.Label(data.NAME, { offset: new BMap.Size(25, 0) });
-  var style_info = {
-    border: "0px solid rgba(6, 28, 44, 0.51)",
-    fontFamily: "微软雅黑",
-    padding: '0px 5px',
-  };
-  var style_info2 = {
-    border: "0px solid rgba(6, 28, 44, 0.51)",
-    fontFamily: "微软雅黑",
-    padding: '0px 5px',
-    background: 'red',
-    color: '#fff',
-  };
-  var style_info3 = {
-    border: "0px solid rgba(6, 28, 44, 0.51)",
-    fontFamily: "微软雅黑",
-    padding: '0px 5px',
-    background: '#fff',
-    color: '#000',
-  };
-  // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER -----START------
-  if (boo) {
-    label_dot.setStyle(style_info2);
-    boatMarker.setTop(true);
-  } else {
-    label_dot.setStyle(style_info);
-    addMouseHandler_dot_over(boatMarker, style_info3, label_dot);
-    addMouseHandler_dot_out(boatMarker, style_info, label_dot);
-  }
-  // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER ------END-------
-  boatMarker.setLabel(label_dot);
+//   var label_dot = new BMap.Label(data.NAME, { offset: new BMap.Size(25, 0) });
+//   var style_info = {
+//     border: "0px solid rgba(6, 28, 44, 0.51)",
+//     fontFamily: "微软雅黑",
+//     padding: '0px 5px',
+//   };
+//   var style_info2 = {
+//     border: "0px solid rgba(6, 28, 44, 0.51)",
+//     fontFamily: "微软雅黑",
+//     padding: '0px 5px',
+//     background: 'red',
+//     color: '#fff',
+//   };
+//   var style_info3 = {
+//     border: "0px solid rgba(6, 28, 44, 0.51)",
+//     fontFamily: "微软雅黑",
+//     padding: '0px 5px',
+//     background: '#fff',
+//     color: '#000',
+//   };
+//   // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER -----START------
+//   if (boo) {
+//     label_dot.setStyle(style_info2);
+//     boatMarker.setTop(true);
+//   } else {
+//     label_dot.setStyle(style_info);
+//     addMouseHandler_dot_over(boatMarker, style_info3, label_dot);
+//     addMouseHandler_dot_out(boatMarker, style_info, label_dot);
+//   }
+//   // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER ------END-------
+//   boatMarker.setLabel(label_dot);
 
-  addClickHandler_dot_click(boatMarker);
+//   addClickHandler_dot_click(boatMarker);
 
-  function addClickHandler_dot_click(marker) {
-    marker.addEventListener("click", function () {
-      showData(marker);
-    });
+  function addClickHandler_dot_click(item) {
+    showData(item);
   }
 
-  function addMouseHandler_dot_over(marker, style, label_dot2) {
-    marker.addEventListener("mouseover", function (e) {
-      return label_dot2.setStyle(style_info2);
-    });
-  }
-  function addMouseHandler_dot_out(marker, style, label_dot2) {
-    marker.addEventListener("mouseout", function (e) {
-      return label_dot2.setStyle(style_info3);
-    });
-  }
-}
+//   function addMouseHandler_dot_over(marker, style, label_dot2) {
+//     marker.addEventListener("mouseover", function (e) {
+//       return label_dot2.setStyle(style_info2);
+//     });
+//   }
+//   function addMouseHandler_dot_out(marker, style, label_dot2) {
+//     marker.addEventListener("mouseout", function (e) {
+//       return label_dot2.setStyle(style_info3);
+//     });
+//   }
+// }
 
-function showData(marker) {
-  marker.setTop(true);
-  THIS_SHIP_MARKER = marker;
+function showData(item) {
+  // item.setTop(true);
+  THIS_SHIP_MARKER = item;
   // others DRAUGHT, B, C, NAVSTAT, D, SOG, HEADING, ETA, ROT, COG
-  let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST } = marker.data;
+  let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST } = item.data;
   $("#ship-info-box").show();
   $("#ship-info-nknm").text(NAME == null ? "-" : NAME);
   $("#ship-info-name").text(NAME == null ? "-" : NAME);
@@ -110,7 +108,7 @@ function showData(marker) {
   $("#ship-info-lng").text(LONGITUDE == null ? "-" : LONGITUDE);
   $("#ship-info-lat").text(LATITUDE == null ? "-" : LATITUDE);
   cha_info(MMSI);
-  map.panTo(marker.getPosition(), true);
+  map.panTo(item.getPosition(), true);
 }
 
 function showShipsInView() {
