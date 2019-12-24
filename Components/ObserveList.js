@@ -9,7 +9,7 @@ $(document).ready(function () {
     $("#observe-read").hide();
   });
   $("#add-fleet-btn").click(function () {
-    let newFleetName = $("#add-ship-fleet-name").val();
+    let newFleetName = $("#add-ship-fleet-name").val().trim();
     const fleetNameId = newFleetName.replace(" ", "_");
     if (newFleetName == "" || $(`#content-list-${fleetNameId}`).length != 0) { return; }
 
@@ -49,8 +49,17 @@ $(document).ready(function () {
       newItem.remove();
     });
 
-    tableF.click(() => {
+    tableF.click((e) => {
+      // var history_data = [
+      //       { MMSI: 565731000, TIME: "2019-12-20 08:28:04 GMT", LONGITUDE: 131.2823, LATITUDE: 28.84995 },
+      //       { MMSI: 565731000, TIME: "2019-12-20 08:29:04 GMT", LONGITUDE: 130.7823, LATITUDE: 28.44995 },
+      //       { MMSI: 565731000, TIME: "2019-12-20 08:25:04 GMT", LONGITUDE: 132.7823, LATITUDE: 28.94995 },
+      //       { MMSI: 565731000, TIME: "2019-12-20 08:26:04 GMT", LONGITUDE: 132.2823, LATITUDE: 29.54995 },
+      //       { MMSI: 565731000, TIME: "2019-12-20 08:27:04 GMT", LONGITUDE: 131.7823, LATITUDE: 29.44995 },
+      //     ]
+      showTable(FLEETS[fleetNameId], newFleetName);
       $("#group-info-box").show();
+      e.stopPropagation();
     });
 
     //-------------- END FUNCTIONALITY FOR FLEET TREE-BUTTONS --------------//
@@ -58,6 +67,7 @@ $(document).ready(function () {
     $(".tree-button").click(function (e) {
       e.stopPropagation();
     });
+
   });
   $("#add-ship-to-fleet-btn").click(function () {
     const fleetName = $("#add-ship-fleet-name").val();
@@ -89,7 +99,7 @@ $(document).ready(function () {
       map.centerAndZoom(marker.getPosition(), 10);
       THIS_SHIP_MARKER = marker;
       resetView();
-      showData(marker);
+      showData(marker, fleetName);
     })
 
     close.click(function () {

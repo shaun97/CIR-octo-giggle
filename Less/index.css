@@ -11,15 +11,16 @@ body {
   height: 100vh;
 }
 #ship-map {
-  position: absolute;
   width: 100%;
-  height: 93%;
+  height: 100%;
 }
 .ship_head {
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1;
+  height: 7%;
 }
 .ship_head .layui-nav-bar,
 .ship_head .layui-nav .layui-this:after,
@@ -425,6 +426,7 @@ body {
   border: 0;
   width: 15px;
   margin: 0px 2px 0px 2px;
+  cursor: pointer;
 }
 #observe-list-box .my-ship-list .tree-buttons .tree-button:hover {
   filter: sepia(100%) hue-rotate(190deg) saturate(500%);
@@ -1133,120 +1135,101 @@ button:focus {
     -moz-transform: rotate(900deg);
   }
 }
-/*--------------------------------------登录注册界面--zj--------------------------------------------------*/
-.LR_box {
-  margin-top: 60px;
-  position: relative;
-  height: 100%;
+/*--------------------------------------个人中心界面--zj--------------------------------------------------*/
+.personal_center_box {
+  margin-top: 150px;
+  width: 50%;
+}
+.personal_center_box .change_img {
+  width: 159px;
+  height: 159px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #DBDBDB;
+}
+.personal_center_box .change_img img {
   width: 100%;
-  background: url("../img/login_bg.png") no-repeat;
-  background-size: 100% auto;
 }
-.LR_box .LR_zhe {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0.7);
-}
-.LR_box .loginRegister_box {
-  width: 40%;
-  min-height: 100px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  position: absolute;
-  margin: auto;
-}
-.LR_box .loginRegister_box .LR_right {
-  background: white;
-  border-radius: 5px;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab {
-  margin: 30px 25px;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab-title {
+.personal_center_box .a_width {
+  width: 159px;
   text-align: center;
-  border-bottom-style: none;
-  font-weight: bold;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab-title li {
-  font-size: 24px;
-  color: #999999;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab-brief > .layui-tab-title .layui-this {
-  color: #006CE8;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab-brief > .layui-tab-title .layui-this:after,
-.LR_box .loginRegister_box .LR_right .layui-tab-brief > .layui-tab-more li.layui-this:after {
-  border-bottom: 3px solid #006CE8;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab-title .layui-this:after {
-  right: 0;
-  width: 50px;
-  margin: auto;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab-content {
-  height: auto !important;
-}
-.LR_box .loginRegister_box .LR_right .register_content {
   margin-top: 30px;
 }
-.LR_box .loginRegister_box .label_span {
+.personal_center_box .a_width .change_link {
+  display: inline-block;
+  padding: 14px 30px;
+  border: 2px solid #006CE8;
+  color: black;
+}
+.personal_center_box .a_width .change_link:hover {
+  color: black;
+}
+.personal_center_box .personal_center_right .account_tittle_like {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #E5E5E5;
+}
+.personal_center_box .personal_center_right .like_content {
+  margin-top: 25px;
+  font-size: 16px;
+  color: black;
   position: relative;
 }
-.LR_box .loginRegister_box .label_span span {
-  position: absolute;
-  height: 25px;
-  width: 30px;
-  top: -2px;
-  left: 0;
-  z-index: 1;
+.personal_center_box .personal_center_right .like_content p {
+  line-height: 28px;
 }
-.LR_box .loginRegister_box .label_span .span1 {
-  background: url("../img/login_phone.png") no-repeat;
-  background-size: auto 100%;
+.personal_center_box .personal_center_right .like_margin_top {
+  margin-top: 30px;
 }
-.LR_box .loginRegister_box .label_span .span2 {
-  background: url("../img/login_code.png") no-repeat;
-  background-size: auto 100%;
-}
-.LR_box .loginRegister_box .label_span .span3 {
-  background: url("../img/login_code.png") no-repeat;
-  background-size: auto 100%;
-}
-.LR_box .loginRegister_box .like_innput {
-  display: block;
-  width: 100%;
-  line-height: 25px;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #C3C3C3;
-  margin-bottom: 30px;
-  padding-left: 30px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.LR_box .loginRegister_box .yan_input_like {
-  margin-bottom: 30px;
-}
-.LR_box .loginRegister_box .yan_input_like input {
+.personal_center_box .personal_center_right .like_link_change {
   display: inline-block;
-  width: 30px;
-  line-height: 25px;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #C3C3C3;
-  text-align: center;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  margin-right: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  background: #0169EB;
+  color: white;
+  font-size: 14px;
+}
+.personal_center_box .personal_center_right .like_link_change:hover {
+  color: white;
+}
+.personal_center_box .personal_center_right .link_margin_right {
+  margin-right: 27px;
+}
+.change_like_siblings {
+  boxShadow: 0 2px 2px rgba(0, 0, 0, 0.25) !important;
+  border: 0 solid rgba(0, 0, 0, 0.3) !important;
+}
+.change_like_siblings .layui-layer-title {
+  background: #006CE8;
+  color: white;
+  height: 50px;
+  line-height: 50px;
+}
+.change_like_siblings .layui-layer-close {
+  display: none;
+}
+.change_like_content {
+  padding: 25px 95px 0 0;
+  display: none;
+}
+.change_like_content .layui-form-label {
+  font-weight: bold;
+}
+.change_like_content .btn_like_box {
+  text-align: right;
+  margin-top: 35px;
+}
+.change_like_content .btn_like_box .btn_link {
+  display: inline-block;
+  padding: 10px 25px;
+  background: #E5E5E5;
+  color: black;
+  margin-left: 20px;
+}
+.change_like_content .btn_like_box .btn_link:hover {
+  color: white;
+  background: #006CE8;
 }
