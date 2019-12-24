@@ -74,6 +74,7 @@ function drawBoatMarker(boatMarker, data, boo) {
 
   function addClickHandler_dot_click(marker) {
     marker.addEventListener("click", function () {
+      marker.setTop(true);
       // others DRAUGHT, B, C, NAVSTAT, D, SOG, HEADING, ETA, ROT, COG
       let { A,  LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST } = marker.data;
       $("#ship-info-box").show();
@@ -112,11 +113,15 @@ function showShipsInView() {
     if (!map.getBounds().containsPoint(point) || !ALL_SHIPS[i].show) {
       continue;
     }
-    if (boatCount > 50) return; // TEMPORARY SOLUTION!!!
+    if (boatCount > 100) { // TEMPORARY SOLUTION!!!
+      // console.log('100 maxed');
+      return;
+    } 
     var myIcon = new BMap.Icon("img/boat_m.png", new BMap.Size(15, 39), {
       offset: new BMap.Size(5, 5),
     });
     drawBoatMarker(new BMap.Marker(point, { icon: myIcon }), ALL_SHIPS[i], false);
+    boatCount++;
   }
 }
 
