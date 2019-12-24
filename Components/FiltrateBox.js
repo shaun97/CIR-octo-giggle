@@ -45,16 +45,6 @@ $(document).ready(function () {
   });
 
   //Ship type buttons
-  $("#option-type-freighter-btn").click(function () {
-    $(this).toggleClass("grey-button");
-    if ($(this).hasClass("grey-button")) {
-      $("#selector-all-button").addClass("grey-button");
-    } else {
-      $("#selector-clear-button").addClass("grey-button");
-    };
-  })
-
-
   $("#option-type-container-btn").click(function () {
     $(this).toggleClass("grey-button");
     if ($(this).hasClass("grey-button")) {
@@ -74,23 +64,6 @@ $(document).ready(function () {
     };
   })
 
-  $("#option-type-tugboat-btn").click(function () {
-    $(this).toggleClass("grey-button");
-    if ($(this).hasClass("grey-button")) {
-      $("#selector-all-button").addClass("grey-button");
-    } else {
-      $("#selector-clear-button").addClass("grey-button");
-    };
-  })
-
-  $("#option-type-fish-btn").click(function () {
-    $(this).toggleClass("grey-button");
-    if ($(this).hasClass("grey-button")) {
-      $("#selector-all-button").addClass("grey-button");
-    } else {
-      $("#selector-clear-button").addClass("grey-button");
-    };
-  })
 
   $("#option-type-passenger-btn").click(function () {
     $(this).toggleClass("grey-button");
@@ -101,7 +74,53 @@ $(document).ready(function () {
     };
   })
 
+  $("#option-type-fastcraft-btn").click(function () {
+    $(this).toggleClass("grey-button");
+    if ($(this).hasClass("grey-button")) {
+      $("#selector-all-button").addClass("grey-button");
+    } else {
+      $("#selector-clear-button").addClass("grey-button");
+    };
+  })
+
+  $("#option-type-yacht-btn").click(function () {
+    $(this).toggleClass("grey-button");
+    if ($(this).hasClass("grey-button")) {
+      $("#selector-all-button").addClass("grey-button");
+    } else {
+      $("#selector-clear-button").addClass("grey-button");
+    };
+  })
+
+  $("#option-type-fishing-btn").click(function () {
+    $(this).toggleClass("grey-button");
+    if ($(this).hasClass("grey-button")) {
+      $("#selector-all-button").addClass("grey-button");
+    } else {
+      $("#selector-clear-button").addClass("grey-button");
+    };
+  })
+
+
+  $("#option-type-military-btn").click(function () {
+    $(this).toggleClass("grey-button");
+    if ($(this).hasClass("grey-button")) {
+      $("#selector-all-button").addClass("grey-button");
+    } else {
+      $("#selector-clear-button").addClass("grey-button");
+    };
+  })
+
   $("#option-type-others-btn").click(function () {
+    $(this).toggleClass("grey-button");
+    if ($(this).hasClass("grey-button")) {
+      $("#selector-all-button").addClass("grey-button");
+    } else {
+      $("#selector-clear-button").addClass("grey-button");
+    };
+  })
+  
+  $("#option-type-unknown-btn").click(function () {
     $(this).toggleClass("grey-button");
     if ($(this).hasClass("grey-button")) {
       $("#selector-all-button").addClass("grey-button");
@@ -179,7 +198,7 @@ $(document).ready(function () {
     TYPE_ARR[4] = $('#option-type-fish-btn').hasClass("grey-button") ? false : true;
     TYPE_ARR[5] = $('#option-type-passenger-btn').hasClass("grey-button") ? false : true;
     TYPE_ARR[6] = $('#option-type-others-btn').hasClass("grey-button") ? false : true;
-    let boo = TYPE_ARR.reduce((x,y) => x && y, true);
+    let boo = TYPE_ARR.reduce((x, y) => x && y, true);
     console.log(boo, TYPE_ARR);
     filterShips(boo);
     resetView();
@@ -248,24 +267,24 @@ function customPred(ship) {
   let type = ship.TYPE;
   if (!TYPE_ARR[0] && type < 80 && type > 69) {
     return false;
-  } 
+  }
   if (!TYPE_ARR[1] && type < 80 && type > 69) {
     return false;
-  } 
+  }
   if (!TYPE_ARR[2] && type < 90 && type > 79) {
     return false;
-  } 
+  }
   if (!TYPE_ARR[3] && type == 52) {
     return false;
-  } 
+  }
   if (!TYPE_ARR[4] && type == 30) {
     return false;
   } else if (!TYPE_ARR[5] && type < 70 && type > 59) {
     return false;
-  } 
+  }
   // if (!TYPE_ARR[6] && type != 30 && type != 52 && type < 60 && type >= 90) {
   if (!TYPE_ARR[6]) {
-    return false;  
+    return false;
   }
   return true;
 }
