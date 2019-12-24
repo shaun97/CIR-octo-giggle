@@ -59,7 +59,6 @@ $(document).ready(function () {
       //     ]
       showTable(FLEETS[fleetNameId], newFleetName);
       $("#group-info-box").show();
-      e.stopPropagation();
     });
 
     //-------------- END FUNCTIONALITY FOR FLEET TREE-BUTTONS --------------//
@@ -85,7 +84,7 @@ $(document).ready(function () {
     let treeButtons = $('<div/>').addClass("tree-buttons").append(eye, track, edit, close);
     let ship = $('<div/>').addClass("ship-in-list").html(nickname ? nickname : marker.data.NAME).append(treeButtons);
     $(`#content-list-${fleetName.replace(" ", "_")}`).append(ship);
-    FLEETS[fleetName.replace(" ", "_")].push(THIS_SHIP_MARKER);
+    FLEETS[fleetName.replace(" ", "_")].push(marker);
     // console.log("FLEETS after add ship", FLEETS);
     //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
 
@@ -99,10 +98,12 @@ $(document).ready(function () {
       map.centerAndZoom(marker.getPosition(), 10);
       THIS_SHIP_MARKER = marker;
       resetView();
-      showData(marker, fleetName);
+      showData(marker);
     })
 
     close.click(function () {
+      console.log(FLEETS[fleetName.replace(" ", "_")]);
+      FLEETS[fleetName.replace(" ", "_")] = FLEETS[fleetName.replace(" ", "_")].filter(x => x != marker);
       ship.remove();
     });
 
