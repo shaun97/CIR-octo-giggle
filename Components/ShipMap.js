@@ -73,8 +73,8 @@ function drawBoatMarker(boatMarker, data, boo) {
 
   function addClickHandler_dot_click(marker) {
     marker.addEventListener("click", function () {
-      let { A, DRAUGHT, B, C, NAVSTAT, D, LONGITUDE, TIME, SOG, IMO, NAME, HEADING,
-        MMSI, CALLSIGN, ETA, ROT, COG, LATITUDE, TYPE, DEST } = marker.data;
+      // others DRAUGHT, B, C, NAVSTAT, D, SOG, HEADING, ETA, ROT, COG
+      let { A,  LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST } = marker.data;
       $("#ship-info-box").show();
       $("#ship-info-nknm").text(NAME == null ? "-" : NAME);
       $("#ship-info-name").text(NAME == null ? "-" : NAME);

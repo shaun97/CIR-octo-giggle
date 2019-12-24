@@ -21,6 +21,12 @@ $('.se_btn').click(function () {
             // }
             // Mock! -----------------------------------------
 
+            // console.log(data.data);
+            if (data.data.length == 0) {
+                alert('This ship does not exist');
+                return;
+            }
+
             // Uncomment this! -----------------------------------------
             var latestPoint = data.data[0];
             data.data.forEach(point => {
