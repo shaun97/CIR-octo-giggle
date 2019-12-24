@@ -7,7 +7,7 @@ map.addControl(new BMap.MapTypeControl({
     BMAP_NORMAL_MAP
   ]
 }));
-// map.setMapType(BMAP_HYBRID_MAP);
+map.setMapType(BMAP_SATELLITE_MAP);
 
 // 自定义控件---放大缩小
 function ZoomControl() {
