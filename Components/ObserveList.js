@@ -33,9 +33,9 @@ $(document).ready(function () {
       })
 
       eyeF.click(function () {
-        eyeF.html() == '<img src="./Images/icon_open.png" class="tree-button-icon">'
-          ? eyeF.html('<img src="./Images/icon_hide.png" class="tree-button-icon">')
-          : eyeF.html('<img src="./Images/icon_open.png" class="tree-button-icon">');
+        eyeF.html() == '<img src="./img/icon_open.png" class="tree-button-icon">'
+          ? eyeF.html('<img src="./img/icon_hide.png" class="tree-button-icon">')
+          : eyeF.html('<img src="./img/icon_open.png" class="tree-button-icon">');
       });
 
       closeF.click(function () {
@@ -63,19 +63,19 @@ $(document).ready(function () {
     }
     $("#add-fleet-btn").click();
     let nickname = $("#add-ship-to-fleet-inputbar").val();
-    let eye = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_hide.png" class="tree-button-icon">');
-    let track = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_track_myship_track.png" class="tree-button-icon">');
-    let edit = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_edit_myship_track.png" class="tree-button-icon">');
-    let close = $('<button/>').addClass("tree-button").html('<img src="./Images/icon_delt_myship_track.png" class="tree-button-icon">');
+    let eye = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
+    let track = $('<button/>').addClass("tree-button").html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
+    let edit = $('<button/>').addClass("tree-button").html('<img src="./img/icon_edit_myship_track.png" class="tree-button-icon">');
+    let close = $('<button/>').addClass("tree-button").html('<img src="./img/icon_delt_myship_track.png" class="tree-button-icon">');
     let treeButtons = $('<div/>').addClass("tree-buttons").append(eye, track, edit, close);
     let ship = $('<div/>').addClass("ship-in-list").html(nickname ? nickname : $("#ship-info-name").text()).append(treeButtons);
     $(`#content-list-${fleetName.replace(" ", "-")}`).append(ship);
     //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
 
     eye.click(function () {
-      eye.html() == '<img src="./Images/icon_open.png" class="tree-button-icon">'
-        ? eye.html('<img src="./Images/icon_hide.png" class="tree-button-icon">')
-        : eye.html('<img src="./Images/icon_open.png" class="tree-button-icon">');
+      eye.html() == '<img src="./img/icon_open.png" class="tree-button-icon">'
+        ? eye.html('<img src="./img/icon_hide.png" class="tree-button-icon">')
+        : eye.html('<img src="./img/icon_open.png" class="tree-button-icon">');
     });
 
     close.click(function () {
