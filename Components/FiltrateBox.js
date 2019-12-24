@@ -236,13 +236,15 @@ function filterShips(boo) {
           id: i,
         },
         icon: img,
-        deg: ALL_SHIPS[i].HEADING,
+        deg: ALL_SHIPS[i].HEADING - 90,
         data: ALL_SHIPS[i],
       });
     }
   } else {
     for (var i = 0; i < ALL_SHIPS.length; i++) {
       if (customPred(ALL_SHIPS[i])) {
+        var img = new Image(0.1, 0.05);
+        img.src = getShipIcon(ALL_SHIPS[i].TYPE);
         data.push({
           geometry: {
             type: 'Point',
@@ -250,7 +252,8 @@ function filterShips(boo) {
             id: i,
           },
           icon: img,
-          data: ALL_SHIPS[i],
+          deg: ALL_SHIPS[i].HEADING - 90,
+        data: ALL_SHIPS[i],
         });
         // FILTERED_SHIPS.push(ALL_SHIPS[i]);
       } 
@@ -276,14 +279,16 @@ function filterShips(boo) {
         if (item == null) return;
         // console.log(item);
         addClickHandler_dot_click(item);
+      },
+      mousemove: function (item) { // 点击事件，返回对应点击元素的对象值
+        if (item != null) {
+         console.log(item);
+        }
       }
     },
     draw: 'icon',
-    width: 21, // 规定图像的宽度
-    height: 10,
-    size: 10,
-    swidth: 21, 
-    sheight: 10,
+    width: 15.75, // 规定图像的宽度
+    height: 7.5,
   };
   // map.clearOverlays();
   MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
