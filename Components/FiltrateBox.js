@@ -119,7 +119,7 @@ $(document).ready(function () {
       $("#selector-clear-button").addClass("grey-button");
     };
   })
-  
+
   $("#option-type-unknown-btn").click(function () {
     $(this).toggleClass("grey-button");
     if ($(this).hasClass("grey-button")) {
@@ -207,16 +207,22 @@ $(document).ready(function () {
 
 function filterShips(boo) {
   var data = [];
+  var img = new Image();
+  img.src = './img/boat_m.png';
+
   if (boo) { // No filter
     // console.log(ALL_SHIPS.length);
     for (var i = 0; i < ALL_SHIPS.length; i++) {
+    
       ALL_SHIPS[i].show = true;
       data.push({
         geometry: {
           type: 'Point',
           coordinates: [ALL_SHIPS[i].LONGITUDE, ALL_SHIPS[i].LATITUDE],
           id: i,
-        }
+        },
+        icon: img,
+        deg: ALL_SHIPS[i].HEADING
       });
     }
   } else {
@@ -227,7 +233,9 @@ function filterShips(boo) {
             type: 'Point',
             coordinates: [ALL_SHIPS[i].LONGITUDE, ALL_SHIPS[i].LATITUDE],
             id: i,
-          }
+          },
+          icon: img,
+          data: ALL_SHIPS[i],
         });
         // FILTERED_SHIPS.push(ALL_SHIPS[i]);
       } else {
@@ -243,22 +251,22 @@ function filterShips(boo) {
   var options = {
     // zIndex: 0, // 层级
     // unit:'px',
-    fillStyle: '#df4c06',
+    //fillStyle: '#df4c06',
     // shadowColor: 'rgba(255, 50, 50, 1)',
     // shadowBlur: 80,
     // styleType: 'stroke',
-    globalCompositeOperation: 'darker',
+    //globalCompositeOperation: 'darker',
     // lineWidth: 0,
     methods: { // 一些事件回调函数
       click: function (item) { // 点击事件，返回对应点击元素的对象值
+
         // console.log(item);
         // var localtion=item.geometry.coordinates;
         // //BMap.Point(localtion)会报错，需要分开写
         // map.centerAndZoom(new BMap.Point(localtion[0],localtion[1]),5);
       }
     },
-    draw: 'simple',
-    size: 2,
+    draw: 'icon', 
   };
   MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
 }
