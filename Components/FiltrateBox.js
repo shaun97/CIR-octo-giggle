@@ -208,23 +208,23 @@ $(document).ready(function () {
 function getShipIcon(typeID) {
 
   if (70 <= typeID && typeID <= 79) {
-    return './img/cargoships.png';
+    return './img/cargoships.svg';
   } else if (80 <= typeID && typeID <= 89) {
-    return './img/tankers.png'
+    return './img/tankers.svg'
   } else if (60 <= typeID && typeID <= 69) {
-    return './img/passengers.png'
+    return './img/passengers.svg'
   } else if (40 <= typeID && typeID <= 49) {
-    return './img/highspeedcrafts.png'
+    return './img/highspeedcrafts.svg'
   } else if (36 <= typeID && typeID <= 37) {
-    return './img/Yachts.png'
+    return './img/Yachts.svg'
   } else if (typeID == 30) {
-    return './img/fishingship.png'
+    return './img/fishingship.svg'
   } else if (typeID == 35) {
-    return './img/militar.png'
+    return './img/militar.svg'
   } else if (0 <= typeID && typeID <= 19 || 38 <= typeID && typeID <= 39) {
-    return './img/unknown.png'
+    return './img/unknown.svg'
   } else {
-    return './img/othertype.png'
+    return './img/othertype.svg'
   }
 }
 
