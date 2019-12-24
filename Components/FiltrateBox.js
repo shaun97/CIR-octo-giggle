@@ -231,7 +231,6 @@ function getShipIcon(typeID) {
 function filterShips(boo) {
   var data = [];
 
-
   if (boo) { // No filter
     // console.log(ALL_SHIPS.length);
     for (var i = 0; i < ALL_SHIPS.length; i++) {
@@ -279,7 +278,7 @@ function filterShips(boo) {
     // shadowColor: 'rgba(255, 50, 50, 1)',
     // shadowBlur: 80,
     // styleType: 'stroke',
-    //globalCompositeOperation: 'darker',
+    // globalCompositeOperation: 'darker',
     // lineWidth: 0,
     methods: { // 一些事件回调函数
       click: function (item) { // 点击事件，返回对应点击元素的对象值
