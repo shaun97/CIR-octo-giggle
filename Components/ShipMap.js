@@ -61,6 +61,7 @@ function drawBoatMarker(boatMarker, data, boo) {
   // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER -----START------
   if (boo) {
     label_dot.setStyle(style_info2);
+    boatMarker.setTop(true);
   } else {
     label_dot.setStyle(style_info);
     addMouseHandler_dot_over(boatMarker, style_info3, label_dot);
