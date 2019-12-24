@@ -1,5 +1,4 @@
 var ALL_SHIPS = [];
-var FILTERED_SHIPS = [];
 var MAPV_LAYER;
 var BOAT_MARKERS = [];
 var MAP_VIEW = true;
@@ -128,22 +127,28 @@ function cha_info(id) {
 
     MAP_VIEW = false;
     $.ajax({
-      // url: 'http://192.168.0.121:8761/shipsController/getMMSI?MmsiIorName=' + id,
-      url: 'http://localhost:3000/data',
+      url: 'http://192.168.0.121:8761/shipsController/getMMSI?MmsiIorName=' + id,
+      // url: 'http://localhost:3000/data',
       type: "GET",//请求方式为get
       dataType: "json", //返回数据格式为json
       success: function (data) {
-        // console.log(data, id); // Will need to change this to data.data
+        // console.log(data.data, id); // Will need to change this to data.data
         try {
-          var history_data = [
-            { MMSI: 565731000, TIME: "2019-12-20 08:28:04 GMT", LONGITUDE: 131.2823, LATITUDE: 28.84995 },
-            { MMSI: 565731000, TIME: "2019-12-20 08:29:04 GMT", LONGITUDE: 130.7823, LATITUDE: 28.44995 },
-            { MMSI: 565731000, TIME: "2019-12-20 08:25:04 GMT", LONGITUDE: 132.7823, LATITUDE: 28.94995 },
-            { MMSI: 565731000, TIME: "2019-12-20 08:26:04 GMT", LONGITUDE: 132.2823, LATITUDE: 29.54995 },
-            { MMSI: 565731000, TIME: "2019-12-20 08:27:04 GMT", LONGITUDE: 131.7823, LATITUDE: 29.44995 },
-          ]
-          // history_data = data.data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1); // Slice first 
-          history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1);
+          //   var history_data = [
+          //     { MMSI: 565731000, TIME: "2019-12-20 08:28:04 GMT", LONGITUDE: 131.2823, LATITUDE: 28.84995 },
+          //     { MMSI: 565731000, TIME: "2019-12-20 08:29:04 GMT", LONGITUDE: 130.7823, LATITUDE: 28.44995 },
+          //     { MMSI: 565731000, TIME: "2019-12-20 08:25:04 GMT", LONGITUDE: 132.7823, LATITUDE: 28.94995 },
+          //     { MMSI: 565731000, TIME: "2019-12-20 08:26:04 GMT", LONGITUDE: 132.2823, LATITUDE: 29.54995 },
+          //     { MMSI: 565731000, TIME: "2019-12-20 08:27:04 GMT", LONGITUDE: 131.7823, LATITUDE: 29.44995 },
+          //   ]
+          history_data = data.data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
+          console.log(history_data);
+          history_data = history_data.slice(Math.max(history_data.length - 7, 0)); // Slice first 
+          console.log(history_data);
+          if (history_data.length == 0) {
+            throw new Error('No data')
+          }
+          // history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1);
           dynamicLine(history_data);
           get_track(history_data); //开始和结束的图标
         } catch (error) {
@@ -330,13 +335,13 @@ function openInfo(content, e) {
 
 $(function () {
   $.ajax({
-    // url: "http://192.168.0.121:8761/shipsController/getDateJson",
-    url: "http://localhost:3000/data",
+    url: "http://192.168.0.121:8761/shipsController/getDateJson",
+    // url: "http://localhost:3000/data",
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
-      // ALL_SHIPS = data.data; // Change back
-      ALL_SHIPS = data;
+      ALL_SHIPS = data.data; // Change back
+      // ALL_SHIPS = data;
       mapLayersInit();
     },
     error: function () {
