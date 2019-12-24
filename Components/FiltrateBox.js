@@ -208,6 +208,7 @@ $(document).ready(function () {
 function filterShips(boo) {
   var data = [];
   if (boo) { // No filter
+    // console.log(ALL_SHIPS.length);
     for (var i = 0; i < ALL_SHIPS.length; i++) {
       ALL_SHIPS[i].show = true;
       data.push({
@@ -246,7 +247,7 @@ function filterShips(boo) {
     // shadowColor: 'rgba(255, 50, 50, 1)',
     // shadowBlur: 80,
     // styleType: 'stroke',
-    globalCompositeOperation: 'lighter',
+    globalCompositeOperation: 'darker',
     // lineWidth: 0,
     methods: { // 一些事件回调函数
       click: function (item) { // 点击事件，返回对应点击元素的对象值
@@ -254,7 +255,6 @@ function filterShips(boo) {
         // var localtion=item.geometry.coordinates;
         // //BMap.Point(localtion)会报错，需要分开写
         // map.centerAndZoom(new BMap.Point(localtion[0],localtion[1]),5);
-
       }
     },
     draw: 'simple',

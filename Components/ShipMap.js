@@ -2,10 +2,11 @@ var ALL_SHIPS = [];
 var MAPV_LAYER;
 var BOAT_MARKERS = [];
 var MAP_VIEW = true;
+var THIS_SHIP_MARKER = null;
 
 function mapLayersInit() {
   filterShips(true);
-  close_load();
+  // close_load();
   addFunctionality();
 }
 
@@ -19,6 +20,7 @@ function resetView() {
     if (map.getOverlays().length > 1) {
       map.clearOverlays();
     }
+    map.clearOverlays();
     MAPV_LAYER.show();
   }
 }
@@ -74,25 +76,10 @@ function drawBoatMarker(boatMarker, data, boo) {
 
   function addClickHandler_dot_click(marker) {
     marker.addEventListener("click", function () {
-      marker.setTop(true);
-      // others DRAUGHT, B, C, NAVSTAT, D, SOG, HEADING, ETA, ROT, COG
-      let { A,  LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST } = marker.data;
-      $("#ship-info-box").show();
-      $("#ship-info-nknm").text(NAME == null ? "-" : NAME);
-      $("#ship-info-name").text(NAME == null ? "-" : NAME);
-      $("#ship-info-id-m").text(IMO == null ? "-" : IMO);
-      $("#ship-info-length").text(A == null ? "-" : A);
-      $("#ship-info-dest").text(DEST == null ? "-" : DEST);
-      $("#ship-info-time").text(TIME == null ? "-" : TIME);
-      $("#ship-info-id-l").text(MMSI == null ? "-" : MMSI);
-      $("#ship-info-id-s").text(CALLSIGN == null ? "-" : CALLSIGN);
-      $("#ship-info-type").text(TYPE == null ? "-" : TYPE);
-      $("#ship-info-lng").text(LONGITUDE == null ? "-" : LONGITUDE);
-      $("#ship-info-lat").text(LATITUDE == null ? "-" : LATITUDE);
-      cha_info(MMSI);
-      map.panTo(marker.getPosition(), true);
+      showData(marker);
     });
   }
+
   function addMouseHandler_dot_over(marker, style, label_dot2) {
     marker.addEventListener("mouseover", function (e) {
       return label_dot2.setStyle(style_info2);
@@ -103,6 +90,27 @@ function drawBoatMarker(boatMarker, data, boo) {
       return label_dot2.setStyle(style_info3);
     });
   }
+}
+
+function showData(marker) {
+  marker.setTop(true);
+  THIS_SHIP_MARKER = marker;
+  // others DRAUGHT, B, C, NAVSTAT, D, SOG, HEADING, ETA, ROT, COG
+  let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST } = marker.data;
+  $("#ship-info-box").show();
+  $("#ship-info-nknm").text(NAME == null ? "-" : NAME);
+  $("#ship-info-name").text(NAME == null ? "-" : NAME);
+  $("#ship-info-id-m").text(IMO == null ? "-" : IMO);
+  $("#ship-info-length").text(A == null ? "-" : A);
+  $("#ship-info-dest").text(DEST == null ? "-" : DEST);
+  $("#ship-info-time").text(TIME == null ? "-" : TIME);
+  $("#ship-info-id-l").text(MMSI == null ? "-" : MMSI);
+  $("#ship-info-id-s").text(CALLSIGN == null ? "-" : CALLSIGN);
+  $("#ship-info-type").text(TYPE == null ? "-" : TYPE);
+  $("#ship-info-lng").text(LONGITUDE == null ? "-" : LONGITUDE);
+  $("#ship-info-lat").text(LATITUDE == null ? "-" : LATITUDE);
+  cha_info(MMSI);
+  map.panTo(marker.getPosition(), true);
 }
 
 function showShipsInView() {
@@ -133,7 +141,7 @@ function cha_info(id) {
 
     MAP_VIEW = false;
     $.ajax({
-      url: 'http://192.168.0.121:8761/shipsController/getMMSI?MmsiIorName=' + id,
+      url: `http://${IP_ADDRESS}/shipsController/getMMSI?MmsiIorName=` + id,
       // url: 'http://localhost:3000/data',
       type: "GET",//请求方式为get
       dataType: "json", //返回数据格式为json
@@ -341,7 +349,7 @@ function openInfo(content, e) {
 
 $(function () {
   $.ajax({
-    url: "http://192.168.0.121:8761/shipsController/getDateJson",
+    url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
     // url: "http://localhost:3000/data",
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
@@ -362,6 +370,6 @@ $(function () {
 });
 
 var map = new BMap.Map("ship-map"); //初始化地图
-map.setMaxZoom(10);
+// map.setMaxZoom(10);
 map.centerAndZoom(new BMap.Point(106.5584370000, 29.5689960000), 4);//设置中心点和显示级别。中国。
 map.enableScrollWheelZoom();//滚轮放大缩小。

@@ -4,7 +4,7 @@ $('.se_btn').click(function () {
     var MmsiIorName = $('.search_box2_child').val().trim();
 
     $.ajax({
-        url: 'http://192.168.0.121:8761/shipsController/getMMSI?MmsiIorName=' + MmsiIorName,
+        url: `http://${IP_ADDRESS}/shipsController/getMMSI?MmsiIorName=` + MmsiIorName,
         // url: 'http://localhost:3000/data',
         type: "GET",//请求方式为get
         dataType: "json", //返回数据格式为json
@@ -50,22 +50,22 @@ $('.se_btn').click(function () {
             let marker = new BMap.Marker(point, { icon: myIcon });
             drawBoatMarker(marker, latestPoint, true);
             
-            let { A, DRAUGHT, B, C, NAVSTAT, D, LONGITUDE, TIME, SOG, IMO, NAME, HEADING,
-                MMSI, CALLSIGN, ETA, ROT, COG, LATITUDE, TYPE, DEST } = marker.data;
-            $("#ship-info-box").show();
-            $("#ship-info-nknm").text(NAME == null ? "-" : NAME);
-            $("#ship-info-name").text(NAME == null ? "-" : NAME);
-            $("#ship-info-id-m").text(IMO == null ? "-" : IMO);
-            $("#ship-info-length").text(A == null ? "-" : A);
-            $("#ship-info-dest").text(DEST == null ? "-" : DEST);
-            $("#ship-info-time").text(TIME == null ? "-" : TIME);
-            $("#ship-info-id-l").text(MMSI == null ? "-" : MMSI);
-            $("#ship-info-id-s").text(CALLSIGN == null ? "-" : CALLSIGN);
-            $("#ship-info-type").text(TYPE == null ? "-" : TYPE);
-            $("#ship-info-lng").text(LONGITUDE == null ? "-" : LONGITUDE);
-            $("#ship-info-lat").text(LATITUDE == null ? "-" : LATITUDE);
-            cha_info(MMSI);
-
+            showData(marker);
+            // let { A, DRAUGHT, B, C, NAVSTAT, D, LONGITUDE, TIME, SOG, IMO, NAME, HEADING,
+            //     MMSI, CALLSIGN, ETA, ROT, COG, LATITUDE, TYPE, DEST } = marker.data;
+            // $("#ship-info-box").show();
+            // $("#ship-info-nknm").text(NAME == null ? "-" : NAME);
+            // $("#ship-info-name").text(NAME == null ? "-" : NAME);
+            // $("#ship-info-id-m").text(IMO == null ? "-" : IMO);
+            // $("#ship-info-length").text(A == null ? "-" : A);
+            // $("#ship-info-dest").text(DEST == null ? "-" : DEST);
+            // $("#ship-info-time").text(TIME == null ? "-" : TIME);
+            // $("#ship-info-id-l").text(MMSI == null ? "-" : MMSI);
+            // $("#ship-info-id-s").text(CALLSIGN == null ? "-" : CALLSIGN);
+            // $("#ship-info-type").text(TYPE == null ? "-" : TYPE);
+            // $("#ship-info-lng").text(LONGITUDE == null ? "-" : LONGITUDE);
+            // $("#ship-info-lat").text(LATITUDE == null ? "-" : LATITUDE);
+            // cha_info(MMSI);
         },
         error: function () {
             alert("Ship not found");
