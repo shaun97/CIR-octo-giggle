@@ -1,11 +1,4 @@
-// let TYPE_FREIGHTER = true; // 70 - 79
-// let TYPE_CONTAINER = true; // 70 - 79
-// let TYPE_OIL = true; // 80 - 89
-// let TYPE_TUGBOAT = true; // 52 
-// let TYPE_FISH = true; // 30
-// let TYPE_PASSENGER = true; // 60 - 69
-// let TYPE_OTHERS = true; // Others 
-let TYPE_ARR = Array(7).fill(true);
+let TYPE_ARR = Array(9).fill(true);
 
 let SIZE_40 = true;
 let SIZE_80 = true;
@@ -191,22 +184,22 @@ $(document).ready(function () {
   })
 
   $('#filter-btn').click(function () {
-    TYPE_ARR[0] = $('#option-type-freighter-btn').hasClass("grey-button") ? false : true;
-    TYPE_ARR[1] = $('#option-type-container-btn').hasClass("grey-button") ? false : true;
-    TYPE_ARR[2] = $('#option-type-oil-btn').hasClass("grey-button") ? false : true;
-    TYPE_ARR[3] = $('#option-type-tugboat-btn').hasClass("grey-button") ? false : true;
-    TYPE_ARR[4] = $('#option-type-fish-btn').hasClass("grey-button") ? false : true;
-    TYPE_ARR[5] = $('#option-type-passenger-btn').hasClass("grey-button") ? false : true;
-    TYPE_ARR[6] = $('#option-type-others-btn').hasClass("grey-button") ? false : true;
+    TYPE_ARR[0] = $('#option-type-container-btn').hasClass("grey-button") ? false : true;
+    TYPE_ARR[1] = $('#option-type-oil-btn').hasClass("grey-button") ? false : true;
+    TYPE_ARR[2] = $("#option-type-passenger-btn").hasClass("grey-button") ? false : true;
+    TYPE_ARR[3] = $("#option-type-fastcraft-btn").hasClass("grey-button") ? false : true;
+    TYPE_ARR[4] = $("#option-type-yacht-btn").hasClass("grey-button") ? false : true;
+    TYPE_ARR[5] = $("#option-type-fishing-btn").hasClass("grey-button") ? false : true;
+    TYPE_ARR[6] = $("#option-type-military-btn").hasClass("grey-button") ? false : true;
+    TYPE_ARR[7] = $("#option-type-others-btn").hasClass("grey-button") ? false : true;
+    TYPE_ARR[8] = $("#option-type-unknown-btn").hasClass("grey-button") ? false : true;
     let boo = TYPE_ARR.reduce((x, y) => x && y, true);
     console.log(boo, TYPE_ARR);
     filterShips(boo);
-    resetView();
   })
 });
 
 function getShipIcon(typeID) {
-
   if (70 <= typeID && typeID <= 79) {
     return './img/cargoships.png';
   } else if (80 <= typeID && typeID <= 89) {
@@ -232,7 +225,6 @@ function filterShips(boo) {
   var data = [];
 
   if (boo) { // No filter
-    // console.log(ALL_SHIPS.length);
     for (var i = 0; i < ALL_SHIPS.length; i++) {
       var img = new Image(0.1, 0.05);
       img.src = getShipIcon(ALL_SHIPS[i].TYPE);
@@ -261,10 +253,9 @@ function filterShips(boo) {
           data: ALL_SHIPS[i],
         });
         // FILTERED_SHIPS.push(ALL_SHIPS[i]);
-      } else {
-        ALL_SHIPS[i].show = false;
-      }
+      } 
     }
+    // console.log(data.length);
   }
   // 船只
   // 第一步创建mapv示例 -船只数开始
@@ -283,7 +274,7 @@ function filterShips(boo) {
     methods: { // 一些事件回调函数
       click: function (item) { // 点击事件，返回对应点击元素的对象值
         if (item == null) return;
-        console.log(item);
+        // console.log(item);
         addClickHandler_dot_click(item);
       }
     },
@@ -294,31 +285,31 @@ function filterShips(boo) {
     swidth: 21, 
     sheight: 10,
   };
+  // map.clearOverlays();
   MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
 }
 
 function customPred(ship) {
-  let type = ship.TYPE;
-  if (!TYPE_ARR[0] && type < 80 && type > 69) {
+  const typeID = ship.TYPE;
+  if (!TYPE_ARR[0] && 70 <= typeID && typeID <= 79) {
     return false;
+  } else if (!TYPE_ARR[1] && 80 <= typeID && typeID <= 89) {
+    return false;
+  } else if (!TYPE_ARR[2] && 60 <= typeID && typeID <= 69) {
+    return false;
+  } else if (!TYPE_ARR[3] && 40 <= typeID && typeID <= 49) {
+    return false;
+  } else if (!TYPE_ARR[4] && 36 <= typeID && typeID <= 37) {
+    return false;
+  } else if (!TYPE_ARR[5] && typeID == 30) {
+    return false;
+  } else if (!TYPE_ARR[6] && typeID == 35) {
+    return false;
+  } else if (!TYPE_ARR[7] && 0 <= typeID && typeID <= 19 || 38 <= typeID && typeID <= 39) {
+    return false;
+  } else if (!TYPE_ARR[8]) {
+    return false;
+  } else {
+    return true;
   }
-  if (!TYPE_ARR[1] && type < 80 && type > 69) {
-    return false;
-  }
-  if (!TYPE_ARR[2] && type < 90 && type > 79) {
-    return false;
-  }
-  if (!TYPE_ARR[3] && type == 52) {
-    return false;
-  }
-  if (!TYPE_ARR[4] && type == 30) {
-    return false;
-  } else if (!TYPE_ARR[5] && type < 70 && type > 59) {
-    return false;
-  }
-  // if (!TYPE_ARR[6] && type != 30 && type != 52 && type < 60 && type >= 90) {
-  if (!TYPE_ARR[6]) {
-    return false;
-  }
-  return true;
 }

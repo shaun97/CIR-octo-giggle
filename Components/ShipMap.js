@@ -3,6 +3,21 @@ var MAPV_LAYER;
 var BOAT_MARKERS = [];
 var MAP_VIEW = true;
 var THIS_SHIP_ITEM = null;
+var THIS_SHIP_LABEL = null;
+
+function setThisShip(item) {
+  if (THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
+  
+  var point = new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE);
+  var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
+  label_dot.setStyle(style_this_ship_label);
+  var blank = new BMap.Icon("img/boat_m.png", new BMap.Size(0, 0), {});
+  var marker = new BMap.Marker(point, { icon: blank });
+  marker.setLabel(label_dot);
+  map.addOverlay(marker);
+  THIS_SHIP_LABEL = marker;
+  THIS_SHIP_ITEM = item;
+}
 
 function mapLayersInit() {
   filterShips(true);
@@ -28,13 +43,13 @@ function addFunctionality() {
 //     fontFamily: "微软雅黑",
 //     padding: '0px 5px',
 //   };
-//   var style_info2 = {
-//     border: "0px solid rgba(6, 28, 44, 0.51)",
-//     fontFamily: "微软雅黑",
-//     padding: '0px 5px',
-//     background: 'red',
-//     color: '#fff',
-//   };
+var style_this_ship_label = {
+  border: "0px solid rgba(6, 28, 44, 0.51)",
+  fontFamily: "微软雅黑",
+  padding: '0px 5px',
+  background: 'red',
+  color: '#fff',
+};
 //   var style_info3 = {
 //     border: "0px solid rgba(6, 28, 44, 0.51)",
 //     fontFamily: "微软雅黑",
@@ -58,7 +73,7 @@ function addFunctionality() {
 
 function addClickHandler_dot_click(item) {
   map.panTo(new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE), true);
-  THIS_SHIP_ITEM = item;
+  setThisShip(item)
   showData(item);
 }
 
