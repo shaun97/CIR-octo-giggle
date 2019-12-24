@@ -7,15 +7,20 @@ body {
   padding: 0px;
   overflow: hidden;
 }
+#body {
+  height: 100vh;
+}
 #ship-map {
   width: 100%;
-  height: 93%;
+  height: 100%;
 }
 .ship_head {
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1;
+  height: 7%;
 }
 .ship_head .layui-nav-bar,
 .ship_head .layui-nav .layui-this:after,
@@ -1225,121 +1230,4 @@ button:focus {
 .change_like_content .btn_like_box .btn_link:hover {
   color: white;
   background: #006CE8;
-}
-/*--------------------------------------登录注册界面--zj--------------------------------------------------*/
-.LR_box {
-  margin-top: 60px;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background: url("../img/login_bg.png") no-repeat;
-  background-size: 100% auto;
-}
-.LR_box .LR_zhe {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0.7);
-}
-.LR_box .loginRegister_box {
-  width: 40%;
-  min-height: 100px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  position: absolute;
-  margin: auto;
-}
-.LR_box .loginRegister_box .LR_right {
-  background: white;
-  border-radius: 5px;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab {
-  margin: 30px 25px;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab-title {
-  text-align: center;
-  border-bottom-style: none;
-  font-weight: bold;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab-title li {
-  font-size: 24px;
-  color: #999999;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab-brief > .layui-tab-title .layui-this {
-  color: #006CE8;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab-brief > .layui-tab-title .layui-this:after,
-.LR_box .loginRegister_box .LR_right .layui-tab-brief > .layui-tab-more li.layui-this:after {
-  border-bottom: 3px solid #006CE8;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab-title .layui-this:after {
-  right: 0;
-  width: 50px;
-  margin: auto;
-}
-.LR_box .loginRegister_box .LR_right .layui-tab-content {
-  height: auto !important;
-}
-.LR_box .loginRegister_box .LR_right .register_content {
-  margin-top: 30px;
-}
-.LR_box .loginRegister_box .label_span {
-  position: relative;
-}
-.LR_box .loginRegister_box .label_span span {
-  position: absolute;
-  height: 25px;
-  width: 30px;
-  top: -2px;
-  left: 0;
-  z-index: 1;
-}
-.LR_box .loginRegister_box .label_span .span1 {
-  background: url("../img/login_phone.png") no-repeat;
-  background-size: auto 100%;
-}
-.LR_box .loginRegister_box .label_span .span2 {
-  background: url("../img/login_code.png") no-repeat;
-  background-size: auto 100%;
-}
-.LR_box .loginRegister_box .label_span .span3 {
-  background: url("../img/login_code.png") no-repeat;
-  background-size: auto 100%;
-}
-.LR_box .loginRegister_box .like_innput {
-  display: block;
-  width: 100%;
-  line-height: 25px;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #C3C3C3;
-  margin-bottom: 30px;
-  padding-left: 30px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.LR_box .loginRegister_box .yan_input_like {
-  margin-bottom: 30px;
-}
-.LR_box .loginRegister_box .yan_input_like input {
-  display: inline-block;
-  width: 30px;
-  line-height: 25px;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #C3C3C3;
-  text-align: center;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  margin-right: 10px;
 }

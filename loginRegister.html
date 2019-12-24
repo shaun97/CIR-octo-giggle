@@ -1,62 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
     <link rel="stylesheet" href="Less/index.css">
+    <link rel="stylesheet" href="Less/loginRegister.css">
 
     <!-- JQuery -->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
+
 <body onload="close_load()">
-<!--界面加载-->
-<div class="onload_box">
-    <div class="onload_table">
-        <div class="windows8">
-            <div class="wBall" id="wBall_1">
-                <div class="wInnerBall"></div>
-            </div>
-            <div class="wBall" id="wBall_2">
-                <div class="wInnerBall"></div>
-            </div>
-            <div class="wBall" id="wBall_3">
-                <div class="wInnerBall"></div>
-            </div>
-            <div class="wBall" id="wBall_4">
-                <div class="wInnerBall"></div>
-            </div>
-            <div class="wBall" id="wBall_5">
-                <div class="wInnerBall"></div>
+    <!--界面加载-->
+    <div class="onload_box">
+        <div class="onload_table">
+            <div class="windows8">
+                <div class="wBall" id="wBall_1">
+                    <div class="wInnerBall"></div>
+                </div>
+                <div class="wBall" id="wBall_2">
+                    <div class="wInnerBall"></div>
+                </div>
+                <div class="wBall" id="wBall_3">
+                    <div class="wInnerBall"></div>
+                </div>
+                <div class="wBall" id="wBall_4">
+                    <div class="wInnerBall"></div>
+                </div>
+                <div class="wBall" id="wBall_5">
+                    <div class="wInnerBall"></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!--界面加载end-->
+    <!--界面加载end-->
 
-<!--登录注册-->
-<div class="LR_box">
-    <div class="LR_zhe"></div>
+   
 
+    <!--登录注册-->
+    <div class="LR_box">
+        <div class="LR_zhe"></div>
+        <div class="welcome-message-words">
+            <h1 class="LR_zhe_words" id="welcome"><b><u>We</u>lcome</b></h1>
+            <h1 class="LR_zhe_words" id="welcome_ch"><b>欢迎登录<u>陆海新通道</u></b></h1>
+            <img id="login-cir-logo" src="img/CIR-logo_login.png">
+        </div>
         <div class="layui-container loginRegister_box">
             <div class="layui-row">
-                <div class="layui-col-xs6">
-                   6666
+                <div class="layui-col-xs6 LR_left">
+
+                    <img id="bg-image1" src="img/lgoin_bg_1.png">
                 </div>
                 <div class="layui-col-xs6 LR_right">
                     <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                         <ul class="layui-tab-title">
                             <li class="layui-this">注册</li>
                             <li>登录</li>
-
                         </ul>
                         <div class="layui-tab-content" style="height: 100px;">
                             <div class="layui-tab-item layui-show register_content">
                                 <form action="#" id="register">
-                                    <label class="label_span ">
-                                       <span class="span1"></span> <input type="text" name="phone" class="like_innput" placeholder="请输入手机号码">
+                                    <label class="label_span">
+                                        <span class="span1"></span> <input type="text" name="phone" class="like_innput"
+                                            placeholder="请输入手机号码">
                                     </label>
 
                                     <div class="yan_input_like">
@@ -64,89 +75,114 @@
                                         <input type="text" maxlength="1" class="input_key">
                                         <input type="text" maxlength="1" class="input_key">
                                         <input type="text" maxlength="1" class="input_key">
-                                        <a href="javascript:void(0);" >获取验证码</a>
+                                        <input type="text" maxlength="1" class="input_key">
+                                        <button type="button" class="layui-btn layui-btn-sm"
+                                            id="code-btn">获取验证码</button>
+
                                     </div>
                                     <label class="label_span label_span2">
-                                        <span class="span2"></span><input type="password" name="pwd" class="like_innput" placeholder="请设置密码">
+                                        <span class="span2"></span><input type="password" name="pwd" class="like_innput"
+                                            placeholder="请设置密码">
                                     </label>
                                     <label class="label_span label_span3">
-                                        <span class="span3"></span><input type="password" name="pwd_ok" class="like_innput" placeholder="请再一次确认密码">
+                                        <span class="span3"></span><input type="password" name="pwd_ok"
+                                            class="like_innput" placeholder="请再一次确认密码">
                                     </label>
-
-
+                                    <div class="login-btn-flex">
+                                        <button type="button" class="layui-btn layui-btn-radius"
+                                            id="login-btn">注册</button>
+                                    </div>
                                 </form>
                             </div>
-                            <div class="layui-tab-item">内容2</div>
+                            <div class="layui-tab-item login_content">
+                                <form class="layui-form" action="#" id="login_content">
+                                    <label class="label_span">
+                                        <span class="span1"></span> <input type="text" name="phone" class="like_innput"
+                                            placeholder="请输入手机号码">
+                                    </label>
+                                    <label class="label_span label_span2">
+                                        <span class="span2"></span><input type="password" id="login-pwd" name="pwd"
+                                            class="like_innput" placeholder="请设置密码">
+                                    </label>
+                                    <div class="store_acc_forget">
+                                        <div class="layui-form-item">
+                                            <input type="checkbox" name="" id="remember-pwd" title="记住密码"
+                                                lay-skin="primary">
+                                        </div>
+                                        <a href="" id="forget-pwd">忘记密码？</a>
+                                </form>
+                            </div>
+                            <div class="login-btn-flex">
+                                <button type="button" class="layui-btn layui-btn-radius" id="login-btn">注册</button>
+                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-</div>
-<!--登录注册end-->
+    <!--登录注册end-->
 
-<!-- 导航-->
-<div class="ship_head">
-    <ul class="layui-nav " lay-filter="">
-        <li class="layui-nav-item  layui-col-md-offset1 logo"><a href="">
-                <img src="img/CIR-logo.png" alt="" style="vertical-align: middle"><span
-                    class="logo_font">陆海新通道</span>
-            </a></li>
-        <li class="layui-nav-item layui-this layui-col-md-offset5"><a href="" class="nav_color">船位</a></li>
-        <li class="layui-nav-item layui-col-md-offset3"><a href=""><img src="img/icon_user.png" alt=""></a></li>
-    </ul>
-</div>
-<!--导航end -->
-
+     <!-- 导航-->
+     <div class="ship_head">
+        <ul class="layui-nav " lay-filter="">
+            <li class="layui-nav-item  layui-col-md-offset1 logo"><a href="">
+                    <img src="img/CIR-logo.png" alt="" style="vertical-align: middle"><span
+                        class="logo_font">陆海新通道</span>
+                </a></li>
+            <li class="layui-nav-item layui-this layui-col-md-offset5"><a href="" class="nav_color">船位</a></li>
+            <li class="layui-nav-item layui-col-md-offset3"><a href=""><img src="img/icon_user.png" alt=""></a></li>
+        </ul>
+    </div>
+    <!--导航end -->
 
 
-<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-<!--[if lt IE 9]>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
 <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
 <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-<!-- <script src="js/jquery.min.js"></script> -->
-<!--<script src="js/base2.js"></script>-->
-<!--layuiStart-->
-<script src="layui/layui.js"></script>
-<script>
-
-    //注意：导航/选项卡 依赖 element 模块，否则无法进行功能性操作
-    layui.use('element', function(){
-        var element = layui.element;
-
-    });
-
-
-</script>
-<!--layuiEnd-->
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <!--<script src="js/base2.js"></script>-->
+    <!--layuiStart-->
+    <script src="layui/layui.js"></script>
+    <script>
+        //注意：导航/选项卡 依赖 element 模块，否则无法进行功能性操作
+        layui.use(['element', 'form'], function () {
+            var element = layui.element;
+            var form = layui.form;
+        });
+    </script>
+    <!--layuiEnd-->
 
 
-<!--页面加载完成-->
-<script>
-    function close_load() {
-        $(".onload_box").hide();
-    }
-</script>
-
-<!--验证码-->
-<script>
-    $('.input_key').on('keyup', function(event) {
-        if ($(this).val() != ''){
-            // 如果不为空
-            $(this).next('input').focus();
+    <!--页面加载完成-->
+    <script>
+        function close_load() {
+            $(".onload_box").hide();
         }
-    });
-    $('.input_key').on('keydown', function(event) {
-        var evt =  event || window.event;
+    </script>
 
-        if ($(this).val() == '' && evt.keyCode == 8){
-            // 如果为空且按下退回键
-            $(this).prev('input').focus();
-        }
-    });
-</script>
+    <!--验证码-->
+    <script>
+        $('.input_key').on('keyup', function (event) {
+            if ($(this).val() != '') {
+                // 如果不为空
+                $(this).next('input').focus();
+            }
+        });
+        $('.input_key').on('keydown', function (event) {
+            var evt = event || window.event;
+
+            if ($(this).val() == '' && evt.keyCode == 8) {
+                // 如果为空且按下退回键
+                $(this).prev('input').focus();
+            }
+        });
+    </script>
 
 </body>
+
 </html>

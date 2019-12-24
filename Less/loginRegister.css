@@ -1,0 +1,195 @@
+/*--------------------------------------登录注册界面--zj--------------------------------------------------*/
+.LR_box {
+  margin-top: 60px;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: url("../img/login_bg.png") no-repeat;
+  background-size: 100% auto;
+}
+.LR_box .LR_zhe {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+.LR_box .welcome-message-words {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 28%;
+  left: 22%;
+  height: 34%;
+  width: 23%;
+  justify-content: space-between;
+  z-index: 2;
+}
+.LR_box .welcome-message-words .LR_zhe_words {
+  z-index: 1;
+  color: white;
+}
+.LR_box .welcome-message-words #welcome {
+  align-self: center;
+  margin-left: 25%;
+  font-size: 45px;
+}
+.LR_box .welcome-message-words #welcome_ch {
+  font-size: 42px;
+}
+.LR_box .welcome-message-words #login-cir-logo {
+  align-self: flex-end;
+  height: 20%;
+  width: auto;
+}
+.LR_box .loginRegister_box {
+  width: 40%;
+  min-height: 100px;
+  left: 26.8%;
+  top: 20%;
+  position: absolute;
+  margin: auto;
+}
+.LR_box .loginRegister_box .LR_left #bg-image1 {
+  margin-top: 45px;
+  height: 100%;
+  width: 100%;
+}
+.LR_box .loginRegister_box .LR_right {
+  background: white;
+  border-radius: 5px;
+}
+.LR_box .loginRegister_box .LR_right .layui-tab {
+  margin: 30px 25px;
+}
+.LR_box .loginRegister_box .LR_right .layui-tab-title {
+  text-align: center;
+  border-bottom-style: none;
+  font-weight: bold;
+}
+.LR_box .loginRegister_box .LR_right .layui-tab-title li {
+  font-size: 24px;
+  color: #999999;
+}
+.LR_box .loginRegister_box .LR_right .layui-tab-brief > .layui-tab-title .layui-this {
+  color: #006CE8;
+}
+.LR_box .loginRegister_box .LR_right .layui-tab-brief > .layui-tab-title .layui-this:after,
+.LR_box .loginRegister_box .LR_right .layui-tab-brief > .layui-tab-more li.layui-this:after {
+  border-bottom: 3px solid #006CE8;
+}
+.LR_box .loginRegister_box .LR_right .layui-tab-title .layui-this:after {
+  right: 0;
+  width: 50px;
+  margin: auto;
+}
+.LR_box .loginRegister_box .LR_right .layui-tab-content {
+  height: auto !important;
+}
+.LR_box .loginRegister_box .LR_right .register_content {
+  margin-top: 30px;
+  min-height: 240px;
+}
+.LR_box .loginRegister_box .LR_right .login_content {
+  margin-top: 60px;
+  min-height: 235.556px;
+}
+.LR_box .loginRegister_box .LR_right .login_content #login-pwd {
+  margin-bottom: 8%;
+}
+.LR_box .loginRegister_box .LR_right .login_content .store_acc_forget {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10%;
+}
+.LR_box .loginRegister_box .LR_right .login_content .store_acc_forget .layui-form-checkbox[lay-skin=primary] i {
+  border-radius: 0px;
+}
+.LR_box .loginRegister_box .LR_right .login_content .store_acc_forget .layui-form-checkbox[lay-skin=primary]:hover i {
+  border-color: grey;
+  border-radius: 0px;
+}
+.LR_box .loginRegister_box .LR_right .login_content .store_acc_forget .layui-form-checked[lay-skin=primary] i {
+  background-color: #006ce7;
+  border-color: #006ce7 !important;
+  border-radius: 0px;
+  color: #fff;
+}
+.LR_box .loginRegister_box .LR_right .login_content .store_acc_forget .layui-form-checkbox[lay-skin=primary] {
+  margin-top: 0px;
+}
+.LR_box .loginRegister_box .LR_right .login_content .store_acc_forget #forget-pwd {
+  color: #006ce7;
+  margin-top: -13px;
+}
+.LR_box .loginRegister_box .label_span {
+  position: relative;
+}
+.LR_box .loginRegister_box .label_span span {
+  position: absolute;
+  height: 25px;
+  width: 30px;
+  top: -2px;
+  left: 0;
+  z-index: 1;
+}
+.LR_box .loginRegister_box .label_span .span1 {
+  background: url("../img/login_phone.png") no-repeat;
+  background-size: auto 100%;
+}
+.LR_box .loginRegister_box .label_span .span2 {
+  background: url("../img/login_code.png") no-repeat;
+  background-size: auto 100%;
+}
+.LR_box .loginRegister_box .label_span .span3 {
+  background: url("../img/login_code.png") no-repeat;
+  background-size: auto 100%;
+}
+.LR_box .loginRegister_box .login-btn-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.LR_box .loginRegister_box .login-btn-flex .layui-btn {
+  width: 80%;
+  background-color: #006ce7;
+}
+.LR_box .loginRegister_box .like_innput {
+  display: block;
+  width: 100%;
+  line-height: 25px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #C3C3C3;
+  margin-bottom: 30px;
+  padding-left: 30px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.LR_box .loginRegister_box .yan_input_like {
+  margin-bottom: 30px;
+}
+.LR_box .loginRegister_box .yan_input_like input {
+  display: inline-block;
+  width: 20px;
+  line-height: 25px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #C3C3C3;
+  text-align: center;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-right: 10px;
+}
+.LR_box .loginRegister_box .yan_input_like #code-btn {
+  background-color: #006ce7;
+}
