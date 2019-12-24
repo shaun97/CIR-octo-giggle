@@ -2,7 +2,7 @@ var ALL_SHIPS = [];
 var MAPV_LAYER;
 var BOAT_MARKERS = [];
 var MAP_VIEW = true;
-var THIS_SHIP_MARKER = null;
+var THIS_SHIP_ITEM = null;
 
 function mapLayersInit() {
   filterShips(true);
@@ -11,28 +11,10 @@ function mapLayersInit() {
 }
 
 function resetView() {
-  // var ZoomNum = map.getZoom();
-  // if (ZoomNum > 8 && MAP_VIEW) {
-  //   MAPV_LAYER.hide();
-  //   map.clearOverlays();
-  //   showShipsInView();
-  // } else if (MAP_VIEW) {
-  //   if (map.getOverlays().length > 1) {
-  //     map.clearOverlays();
-  //   }
-  //   map.clearOverlays();
-  //   MAPV_LAYER.show();
-  // }
+  MAPV_LAYER.show();
 }
 
 function addFunctionality() {
-  // 点击时的监听事件
-  map.addEventListener("zoomend", function (e) {
-    resetView();
-  });
-  map.addEventListener("dragend", () => {
-    resetView();
-  });
 }
 
 // function drawBoatMarker(boatMarker, data, boo) {
@@ -74,25 +56,24 @@ function addFunctionality() {
 
 //   addClickHandler_dot_click(boatMarker);
 
-  function addClickHandler_dot_click(item) {
-    showData(item);
-  }
+function addClickHandler_dot_click(item) {
+  map.panTo(new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE), true);
+  THIS_SHIP_ITEM = item;
+  showData(item);
+}
 
-//   function addMouseHandler_dot_over(marker, style, label_dot2) {
-//     marker.addEventListener("mouseover", function (e) {
-//       return label_dot2.setStyle(style_info2);
-//     });
-//   }
-//   function addMouseHandler_dot_out(marker, style, label_dot2) {
-//     marker.addEventListener("mouseout", function (e) {
-//       return label_dot2.setStyle(style_info3);
-//     });
-//   }
+// function addMouseHandler_dot_over(marker, style, label_dot2) {
+//   marker.addEventListener("mouseover", function (e) {
+//     return label_dot2.setStyle(style_info2);
+//   });
+// }
+// function addMouseHandler_dot_out(marker, style, label_dot2) {
+//   marker.addEventListener("mouseout", function (e) {
+//     return label_dot2.setStyle(style_info3);
+//   });
 // }
 
 function showData(item) {
-  // item.setTop(true);
-  THIS_SHIP_MARKER = item;
   // others DRAUGHT, B, C, NAVSTAT, D, SOG, HEADING, ETA, ROT, COG
   let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST } = item.data;
   $("#ship-info-box").show();
@@ -108,35 +89,32 @@ function showData(item) {
   $("#ship-info-lng").text(LONGITUDE == null ? "-" : LONGITUDE);
   $("#ship-info-lat").text(LATITUDE == null ? "-" : LATITUDE);
   cha_info(MMSI);
-  map.panTo(item.getPosition(), true);
 }
 
-function showShipsInView() {
-  let boatCount = 0;
-  for (var i = 0; i < ALL_SHIPS.length; i++) {
-    //添加船标注
-    var point = new BMap.Point(ALL_SHIPS[i].LONGITUDE, ALL_SHIPS[i].LATITUDE);
-    if (!map.getBounds().containsPoint(point) || !ALL_SHIPS[i].show) {
-      continue;
-    }
-    if (boatCount > 100) { // TEMPORARY SOLUTION!!!
-      // console.log('100 maxed');
-      return;
-    } 
-    var myIcon = new BMap.Icon("img/boat_m.png", new BMap.Size(15, 39), {
-      offset: new BMap.Size(5, 5),
-    });
-    drawBoatMarker(new BMap.Marker(point, { icon: myIcon }), ALL_SHIPS[i], false);
-    boatCount++;
-  }
-}
+// function showShipsInView() {
+//   let boatCount = 0;
+//   for (var i = 0; i < ALL_SHIPS.length; i++) {
+//     //添加船标注
+//     var point = new BMap.Point(ALL_SHIPS[i].LONGITUDE, ALL_SHIPS[i].LATITUDE);
+//     if (!map.getBounds().containsPoint(point) || !ALL_SHIPS[i].show) {
+//       continue;
+//     }
+//     if (boatCount > 100) { // TEMPORARY SOLUTION!!!
+//       // console.log('100 maxed');
+//       return;
+//     } 
+//     var myIcon = new BMap.Icon("img/boat_m.png", new BMap.Size(15, 39), {
+//       offset: new BMap.Size(5, 5),
+//     });
+//     drawBoatMarker(new BMap.Marker(point, { icon: myIcon }), ALL_SHIPS[i], false);
+//     boatCount++;
+//   }
+// }
 
 function cha_info(id) {
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
   $('#inq-track-btn').click(function () {
-
     map.clearOverlays();
-
     MAP_VIEW = false;
     $.ajax({
       url: `http://${IP_ADDRESS}/shipsController/getMMSI?MmsiIorName=` + id,
@@ -154,11 +132,11 @@ function cha_info(id) {
           //     { MMSI: 565731000, TIME: "2019-12-20 08:27:04 GMT", LONGITUDE: 131.7823, LATITUDE: 29.44995 },
           //   ]
           history_data = data.data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
-          console.log(history_data);
+          // console.log(history_data);
           history_data = history_data.slice(Math.max(history_data.length - 7, 0)); // Slice first 
-          console.log(history_data);
+          // console.log(history_data);
           if (history_data.length == 0) {
-            throw new Error('No data')
+            throw new Error('No data on this ship')
           }
           // history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1);
           dynamicLine(history_data);

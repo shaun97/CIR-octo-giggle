@@ -224,7 +224,8 @@ function filterShips(boo) {
           id: i,
         },
         icon: img,
-        deg: ALL_SHIPS[i].HEADING
+        deg: ALL_SHIPS[i].HEADING,
+        data: ALL_SHIPS[i],
       });
     }
   } else {
@@ -261,11 +262,9 @@ function filterShips(boo) {
     // lineWidth: 0,
     methods: { // 一些事件回调函数
       click: function (item) { // 点击事件，返回对应点击元素的对象值
+        if (item == null) return;
+        console.log(item);
         addClickHandler_dot_click(item);
-        // console.log(item);
-        // var localtion=item.geometry.coordinates;
-        // //BMap.Point(localtion)会报错，需要分开写
-        // map.centerAndZoom(new BMap.Point(localtion[0],localtion[1]),5);
       }
     },
     draw: 'icon', 

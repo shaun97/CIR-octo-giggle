@@ -68,13 +68,14 @@ $(document).ready(function () {
     });
 
   });
+
   $("#add-ship-to-fleet-btn").click(function () {
-    const fleetName = $("#add-ship-fleet-name").val();
+    const fleetName = $("#add-ship-fleet-name").val().trim();
     if (!fleetName) {
       alert("Choose or add a fleet name");
       return;
     }
-    const marker = THIS_SHIP_MARKER;
+    const item = THIS_SHIP_ITEM;
     $("#add-fleet-btn").click();
     let nickname = $("#add-ship-to-fleet-inputbar").val();
     let eye = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
@@ -82,9 +83,9 @@ $(document).ready(function () {
     let edit = $('<button/>').addClass("tree-button").html('<img src="./img/icon_edit_myship_track.png" class="tree-button-icon">');
     let close = $('<button/>').addClass("tree-button").html('<img src="./img/icon_delt_myship_track.png" class="tree-button-icon">');
     let treeButtons = $('<div/>').addClass("tree-buttons").append(eye, track, edit, close);
-    let ship = $('<div/>').addClass("ship-in-list").html(nickname ? nickname : marker.data.NAME).append(treeButtons);
+    let ship = $('<div/>').addClass("ship-in-list").html(nickname ? nickname : item.data.NAME).append(treeButtons);
     $(`#content-list-${fleetName.replace(" ", "_")}`).append(ship);
-    FLEETS[fleetName.replace(" ", "_")].push(marker);
+    FLEETS[fleetName.replace(" ", "_")].push(item);
     // console.log("FLEETS after add ship", FLEETS);
     //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
 
@@ -95,15 +96,15 @@ $(document).ready(function () {
     });
 
     track.click(function () {
-      map.centerAndZoom(marker.getPosition(), 10);
-      THIS_SHIP_MARKER = marker;
+      map.centerAndZoom(new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE), 11);
+      THIS_SHIP_ITEM = item;
       resetView();
-      showData(marker);
+      showData(item);
     })
 
     close.click(function () {
       console.log(FLEETS[fleetName.replace(" ", "_")]);
-      FLEETS[fleetName.replace(" ", "_")] = FLEETS[fleetName.replace(" ", "_")].filter(x => x != marker);
+      FLEETS[fleetName.replace(" ", "_")] = FLEETS[fleetName.replace(" ", "_")].filter(x => x != item);
       ship.remove();
     });
 
