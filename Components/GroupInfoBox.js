@@ -1,5 +1,5 @@
 
-function showTable(fleet) {
+function showTable(fleet, fleetName) {
     for (var i = 0; i < fleet.length; i++) {
         let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST } = fleet[i]; //.data;
         A = '<td>' + A + '</td>';
@@ -16,10 +16,11 @@ function showTable(fleet) {
 
         $('#observe-list-table').append(
             '<tr>' +
+            fleetName +
+            NAME +
             LONGITUDE +
             TIME +
             IMO +
-            NAME +
             MMSI +
             CALLSIGN +
             LATITUDE +
