@@ -205,18 +205,38 @@ $(document).ready(function () {
   })
 });
 
+function getShipIcon(typeID) {
+
+  if (70 <= typeID && typeID <= 79) {
+    return './img/cargoships.png';
+  } else if (80 <= typeID && typeID <= 89) {
+    return './img/tankers.png'
+  } else if (60 <= typeID && typeID <= 69) {
+    return './img/passengers.png'
+  } else if (40 <= typeID && typeID <= 49) {
+    return './img/highspeedcrafts.png'
+  } else if (36 <= typeID && typeID <= 37) {
+    return './img/Yachts.png'
+  } else if (typeID == 30) {
+    return './img/fishingship.png'
+  } else if (typeID == 35) {
+    return './img/militar.png'
+  } else if (0 <= typeID && typeID <= 19 || 38 <= typeID && typeID <= 39) {
+    return './img/unknown.png'
+  } else {
+    return './img/othertype.png'
+  }
+}
+
 function filterShips(boo) {
   var data = [];
-  var img = new Image();
-  img.src = './img/tankers.png';
-  console.log(img.width);
-  console.log(img.height);
-  
+
 
   if (boo) { // No filter
     // console.log(ALL_SHIPS.length);
     for (var i = 0; i < ALL_SHIPS.length; i++) {
-    
+      var img = new Image(10, 5);
+      img.src = getShipIcon(ALL_SHIPS[i].TYPE);
       ALL_SHIPS[i].show = true;
       data.push({
         geometry: {
@@ -269,7 +289,7 @@ function filterShips(boo) {
         // map.centerAndZoom(new BMap.Point(localtion[0],localtion[1]),5);
       }
     },
-    draw: 'icon', 
+    draw: 'icon',
   };
   MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
 }
