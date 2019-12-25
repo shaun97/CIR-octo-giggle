@@ -291,13 +291,11 @@ function filterShips(boo) {
         addClickHandler_dot_click(item);
       },
       mousemove: function (item) { // 点击事件，返回对应点击元素的对象值
-        // if (item == null) {
-        //   // if (THIS_SHIP_LABEL_HOVER != null) {
-        //   //   map.removeOverlay(THIS_SHIP_LABEL_HOVER);
-        //   //   THIS_SHIP_LABEL_HOVER = null;
-
-        //   return;
-        // }
+        if (item != null) {
+          map.setDefaultCursor('pointer');
+        } else {
+          map.setDefaultCursor('default');
+        }
         setThisShipHover(item);
       }
     },

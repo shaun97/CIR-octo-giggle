@@ -1,4 +1,5 @@
 const FLEETS = {};
+let FLEET_NAME_LIST = [];
 
 $(document).ready(function () {
   $("#observe-close-button").click(function () {
@@ -12,7 +13,7 @@ $(document).ready(function () {
     let newFleetName = $("#add-ship-fleet-name").val().trim();
     const fleetNameId = newFleetName.replace(" ", "_");
     if (newFleetName == "" || $(`#content-list-${fleetNameId}`).length != 0) { return; }
-
+    FLEET_NAME_LIST.push(newFleetName);
     let newFleet = $('<h2/>').addClass("layui-colla-title").text(newFleetName);
     let icon = $('<i/>').addClass("layui-icon").addClass("layui-colla-icon").html("");
     let eyeF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
@@ -47,6 +48,8 @@ $(document).ready(function () {
     closeF.click(function () {
       newItem.empty();
       newItem.remove();
+      FLEET_NAME_LIST = FLEET_NAME_LIST.filter(x => x != newFleetName);
+      setFleetAutoComplete();
     });
 
     tableF.click((e) => {
@@ -68,7 +71,7 @@ $(document).ready(function () {
     });
   });
 
-  $("#observe-add-ship-cancel-btn").click(function() {
+  $("#observe-add-ship-cancel-btn").click(function () {
     $("#observe-write").hide();
     $("#observe-read").show();
   })
@@ -85,6 +88,12 @@ $(document).ready(function () {
     }
     const item = THIS_SHIP_ITEM;
     $("#add-fleet-btn").click();
+    console.log(FLEETS[fleetName.replace(" ", "_")]);
+    const unique = FLEETS[fleetName.replace(" ", "_")].reduce((x, y) => x && (y.data.MMSI != item.data.MMSI), true);
+    if (!unique) {
+      alert('This ship is already in fleet');
+      return;
+    }
     item.data.NICKNAME = ($("#add-ship-to-fleet-inputbar").val() == "") ? item.data.NICKNAME : $("#add-ship-to-fleet-inputbar").val();
     let eye = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
     let track = $('<button/>').addClass("tree-button").html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
@@ -95,6 +104,7 @@ $(document).ready(function () {
     $(`#content-list-${fleetName.replace(" ", "_")}`).append(ship);
     FLEETS[fleetName.replace(" ", "_")].push(item);
     showData(item);
+
     // console.log("FLEETS after add ship", FLEETS);
     //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
 
@@ -119,8 +129,14 @@ $(document).ready(function () {
     //-------------- END FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
 
   })
-});
 
+  function setFleetAutoComplete() {
+    $("#add-ship-fleet-name").autocomplete({
+      source: FLEET_NAME_LIST
+    });
+  }
+  setFleetAutoComplete();
+});
 // Needed for checkbox 
 layui.use(['element', 'layer', 'form'], function () {
   var element = layui.element;

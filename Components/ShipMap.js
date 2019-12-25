@@ -59,17 +59,6 @@ function resetView() {
 function addFunctionality() {
 }
 
-// function drawBoatMarker(boatMarker, data, boo) {
-//   boatMarker.data = data;
-//   boatMarker.setRotation(data.HEADING);
-//   map.addOverlay(boatMarker);
-
-//   var label_dot = new BMap.Label(data.NAME, { offset: new BMap.Size(25, 0) });
-//   var style_info = {
-//     border: "0px solid rgba(6, 28, 44, 0.51)",
-//     fontFamily: "微软雅黑",
-//     padding: '0px 5px',
-//   };
 var style_this_ship_label = {
   border: "0px solid rgba(6, 28, 44, 0.51)",
   fontFamily: "微软雅黑",
@@ -85,43 +74,12 @@ var style_this_ship_label_hover = {
   background: 'white',
   color: '#000',
 };
-//   var style_info3 = {
-//     border: "0px solid rgba(6, 28, 44, 0.51)",
-//     fontFamily: "微软雅黑",
-//     padding: '0px 5px',
-//     background: '#fff',
-//     color: '#000',
-//   };
-//   // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER -----START------
-//   if (boo) {
-//     label_dot.setStyle(style_info2);
-//     boatMarker.setTop(true);
-//   } else {
-//     label_dot.setStyle(style_info);
-//     addMouseHandler_dot_over(boatMarker, style_info3, label_dot);
-//     addMouseHandler_dot_out(boatMarker, style_info, label_dot);
-//   }
-//   // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER ------END-------
-//   boatMarker.setLabel(label_dot);
-
-//   addClickHandler_dot_click(boatMarker);
 
 function addClickHandler_dot_click(item) {
   map.panTo(new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE), true);
   setThisShipSel(item)
   showData(item);
 }
-
-// function addMouseHandler_dot_over(marker, style, label_dot2) {
-//   marker.addEventListener("mouseover", function (e) {
-//     return label_dot2.setStyle(style_info2);
-//   });
-// }
-// function addMouseHandler_dot_out(marker, style, label_dot2) {
-//   marker.addEventListener("mouseout", function (e) {
-//     return label_dot2.setStyle(style_info3);
-//   });
-// }
 
 function showData(item) {
   // others DRAUGHT, B, C, NAVSTAT, D, SOG, HEADING, ETA, ROT, COG
@@ -140,26 +98,6 @@ function showData(item) {
   $("#ship-info-lat").text(LATITUDE == null ? "-" : LATITUDE);
   cha_info(MMSI);
 }
-
-// function showShipsInView() {
-//   let boatCount = 0;
-//   for (var i = 0; i < ALL_SHIPS.length; i++) {
-//     //添加船标注
-//     var point = new BMap.Point(ALL_SHIPS[i].LONGITUDE, ALL_SHIPS[i].LATITUDE);
-//     if (!map.getBounds().containsPoint(point) || !ALL_SHIPS[i].show) {
-//       continue;
-//     }
-//     if (boatCount > 100) { // TEMPORARY SOLUTION!!!
-//       // console.log('100 maxed');
-//       return;
-//     } 
-//     var myIcon = new BMap.Icon("img/boat_m.png", new BMap.Size(15, 39), {
-//       offset: new BMap.Size(5, 5),
-//     });
-//     drawBoatMarker(new BMap.Marker(point, { icon: myIcon }), ALL_SHIPS[i], false);
-//     boatCount++;
-//   }
-// }
 
 function cha_info(id) {
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
