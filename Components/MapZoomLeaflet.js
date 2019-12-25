@@ -1,12 +1,19 @@
 
 
 //添加地图类型控件-卫星地图
-map.addControl(new BMap.MapTypeControl({
+var mapTypeOps = {
   mapTypes: [
     BMAP_HYBRID_MAP,
     BMAP_NORMAL_MAP
-  ]
-}));
+  ], 
+  offset: new BMap.Size(20, 85)
+}
+
+var MapType = new BMap.MapTypeControl(
+  mapTypeOps
+);
+
+map.addControl(MapType);
 // map.setMapType(BMAP_SATELLITE_MAP);
 
 // 自定义控件---放大缩小

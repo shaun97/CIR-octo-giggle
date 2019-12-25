@@ -228,7 +228,6 @@ function filterShips(boo) {
     for (var i = 0; i < ALL_SHIPS.length; i++) {
       var img = new Image(0.1, 0.05);
       img.src = getShipIcon(ALL_SHIPS[i].TYPE);
-      ALL_SHIPS[i].show = true;
       data.push({
         geometry: {
           type: 'Point',
@@ -253,10 +252,10 @@ function filterShips(boo) {
           },
           icon: img,
           deg: ALL_SHIPS[i].HEADING - 90,
-        data: ALL_SHIPS[i],
+          data: ALL_SHIPS[i],
         });
         // FILTERED_SHIPS.push(ALL_SHIPS[i]);
-      } 
+      }
     }
     // console.log(data.length);
   }
@@ -292,6 +291,7 @@ function filterShips(boo) {
   };
   // map.clearOverlays();
   MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
+  close_load();
 }
 
 function customPred(ship) {
