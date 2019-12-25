@@ -8,6 +8,7 @@ $(document).ready(function () {
         $("#edit-name-input").val()
       );
       THIS_SHIP_ITEM.data['NICKNAME'] = $("#edit-name-input").val();
+      $("#edit-name-input").val("");
       $("#change-name-box").hide();
     }
   })
