@@ -20,12 +20,15 @@ function setThisShipSel(item) {
   map.addOverlay(marker);
   THIS_SHIP_LABEL = marker;
   THIS_SHIP_ITEM = item;
+  console.log(item.data.nickname);
 }
 
 function setThisShipHover(item) {
   if (item == null) {
     if (THIS_SHIP_LABEL_HOVER != null) map.removeOverlay(THIS_SHIP_LABEL_HOVER);
     return;
+  } else if (THIS_SHIP_ITEM == item) {
+    return
   } else if (THIS_SHIP_ITEM_HOVER != item) {
     map.removeOverlay(THIS_SHIP_LABEL_HOVER);
   } else { //item == THIS_SHIP_LABEL_ITEM
