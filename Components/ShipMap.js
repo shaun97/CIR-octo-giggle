@@ -34,7 +34,7 @@ function setThisShipHover(item) {
 
   var point = new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
-  label_dot.setStyle(style_this_ship_label);
+  label_dot.setStyle(style_this_ship_label_hover);
   var blank = new BMap.Icon("img/boat_m.png", new BMap.Size(0, 0), {});
   var marker = new BMap.Marker(point, { icon: blank });
   marker.setLabel(label_dot);

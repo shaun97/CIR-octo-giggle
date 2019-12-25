@@ -205,7 +205,7 @@ function getShipIcon(typeID) {
   } else if (80 <= typeID && typeID <= 89) {
     return './img/tankers.png';
   } else if (60 <= typeID && typeID <= 69) {
-    return './img/passengers.png';
+    return './img/passenger.png';
   } else if (40 <= typeID && typeID <= 49) {
     return './img/highspeedcrafts.png';
   } else if (36 <= typeID && typeID <= 37) {
@@ -213,7 +213,7 @@ function getShipIcon(typeID) {
   } else if (typeID == 30) {
     return './img/fishingship.png';
   } else if (typeID == 35) {
-    return './img/militar.png';
+    return './img/military.png';
   } else if (0 <= typeID && typeID <= 19 || 38 <= typeID && typeID <= 39) {
     return './img/unknown.png';
   } else {
@@ -290,8 +290,8 @@ function filterShips(boo) {
       }
     },
     draw: 'icon',
-    width: 15.75, // 规定图像的宽度
-    height: 7.5,
+    width: 21, // 规定图像的宽度
+    height: 10,
   };
   // map.clearOverlays();
   MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
