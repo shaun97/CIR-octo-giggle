@@ -105,7 +105,7 @@ $(document).ready(function () {
 
     track.click(function () {
       map.centerAndZoom(new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE), 12);
-      setThisShip(item);
+      setThisShipSel(item);
       showData(item);
     })
 

@@ -257,6 +257,7 @@ function filterShips(boo) {
         // FILTERED_SHIPS.push(ALL_SHIPS[i]);
       }
     }
+    // console.log()
     // console.log(data.length);
   }
   // 船只

@@ -391,7 +391,7 @@ $(function () {
     resetView();
     let item = THIS_SHIP_ITEM;
     THIS_SHIP_ITEM = null; // Cheat
-    setThisShip(item);
+    setThisShipSel(item);
   });
 });
 

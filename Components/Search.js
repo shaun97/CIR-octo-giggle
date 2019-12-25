@@ -41,7 +41,8 @@ $('.se_btn').click(function () {
             map.centerAndZoom(point, 11);//设置中心点和显示级别。中国
             
             let item = {data: latestPoint};
-            setThisShip(item);
+            setThisShipSel(item);
+            console.log(item);
             showData(item);
         },
         error: function () {
