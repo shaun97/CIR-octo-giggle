@@ -1,6 +1,7 @@
 let SEARCH_SHIP = null;
 
 $('.se_btn').click(function () {
+    map.setDefaultCursor('wait');
     var MmsiIorName = $('.search_box2_child').val().trim();
 
     $.ajax({
@@ -20,6 +21,8 @@ $('.se_btn').click(function () {
             //     TIME: '2019-12-20 08:55:25 GMT',
             // }
             // Mock! -----------------------------------------
+
+            map.setDefaultCursor('default');
 
             // Uncomment this! -----------------------------------------
             if (data.data.length == 0) {
@@ -44,9 +47,11 @@ $('.se_btn').click(function () {
             setThisShipSel(item);
             console.log(item);
             showData(item);
+            
         },
         error: function () {
-            alert("Ship not found");
+            map.setDefaultCursor('default');
+            alert("API call error, check your connection.");
         }
     });
 });
