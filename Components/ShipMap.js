@@ -11,7 +11,7 @@ function setThisShipSel(item) {
   if (THIS_SHIP_ITEM == item) return;
   if (THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
 
-  var point = new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE);
+  var point = new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
   label_dot.setStyle(style_this_ship_label);
   var blank = new BMap.Icon("img/boat_m.png", new BMap.Size(0, 0), {});
@@ -20,12 +20,15 @@ function setThisShipSel(item) {
   map.addOverlay(marker);
   THIS_SHIP_LABEL = marker;
   THIS_SHIP_ITEM = item;
-  console.log(item.data.nickname);
+  console.log('this ship', item.data.NAME);
 }
 
 function setThisShipHover(item) {
   if (item == null) {
-    if (THIS_SHIP_LABEL_HOVER != null) map.removeOverlay(THIS_SHIP_LABEL_HOVER);
+    if (THIS_SHIP_LABEL_HOVER != null) {
+      map.removeOverlay(THIS_SHIP_LABEL_HOVER);
+      THIS_SHIP_ITEM_HOVER = null;
+    }
     return;
   } else if (THIS_SHIP_ITEM == item) {
     return
@@ -35,7 +38,7 @@ function setThisShipHover(item) {
     return;
   }
 
-  var point = new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE);
+  var point = new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
   label_dot.setStyle(style_this_ship_label_hover);
   var blank = new BMap.Icon("img/boat_m.png", new BMap.Size(0, 0), {});
@@ -44,6 +47,7 @@ function setThisShipHover(item) {
   map.addOverlay(marker);
   THIS_SHIP_LABEL_HOVER = marker;
   THIS_SHIP_ITEM_HOVER = item;
+  console.log('this label', item.data.NAME);
 }
 
 function mapLayersInit() {
@@ -76,7 +80,7 @@ var style_this_ship_label_hover = {
 };
 
 function addClickHandler_dot_click(item) {
-  map.panTo(new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE), true);
+  map.panTo(new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE']), true);
   setThisShipSel(item)
   showData(item);
 }
@@ -146,7 +150,7 @@ function cha_info(id) {
 //在轨迹点上创建图标，并添加点击事件，显示轨迹点信息。points,数组。
 function addMarker(point) {
   //添加标注
-  var point_track0 = new BMap.Point(point.LONGITUDE, point.LATITUDE);
+  var point_track0 = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
   // map.centerAndZoom(point_track0, 15);
   var myIcon = new BMap.Icon("img/dot.png", new BMap.Size(15, 15), {
     offset: new BMap.Size(5, 5),
@@ -157,7 +161,7 @@ function addMarker(point) {
 
   // 添加标签
   var time = point.TIME;
-  var point_label = new BMap.Point(point.LONGITUDE, point.LATITUDE);
+  var point_label = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
   var opts = {
     position: point_label,    // 指定文本标注所在的地理位置
     offset: new BMap.Size(20, -10)    //设置文本偏移量
@@ -199,8 +203,8 @@ function addLine(history_data) {
   var linePoints = [];
   for (var i = 0; i < history_data.length; i++) {
     var point = history_data[i];
-    var lng = point.LONGITUDE;
-    var lat = point.LATITUDE;
+    var lng = point['LONGITUDE1'];
+    var lat = point['LATITUDE1'];
     linePoints.push(new BMap.Point(lng, lat));
   }
   var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
@@ -226,8 +230,8 @@ function dynamicLine(history_data) {
   addLine(history_data);//增加轨迹线
   for (var i = 0; i < history_data.length; i++) {
     var point = history_data[i];
-    lng = point.LONGITUDE;
-    lat = point.LATITUDE;
+    lng = point['LONGITUDE1'];
+    lat = point['LATITUDE1'];
     addMarker(point);//增加对应该的轨迹点
   }
   // 重新调整视野中心和缩放大小
@@ -238,7 +242,7 @@ function dynamicLine(history_data) {
 function get_track(history_data) {
   // console.log("get_track");
   // 开始标签
-  var point_label = new BMap.Point(history_data[0].LONGITUDE, history_data[0].LATITUDE);
+  var point_label = new BMap.Point(history_data[0]['LONGITUDE1'], history_data[0]['LATITUDE1']);
   // console.log("start point", history_data[0].TIME);
   var opts = {
     position: point_label,    // 指定文本标注所在的地理位置
@@ -313,12 +317,12 @@ function openInfo(content, e) {
 
 $(function () {
   $.ajax({
-    url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
-    // url: "http://localhost:3000/data",
+    // url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
+    url: "http://localhost:3000/data",
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
-      ALL_SHIPS = data.data; // Change back
+      ALL_SHIPS = data.data;
       // ALL_SHIPS = data;
       mapLayersInit();
     },

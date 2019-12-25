@@ -241,7 +241,7 @@ function filterShips(boo) {
       data.push({
         geometry: {
           type: 'Point',
-          coordinates: [ALL_SHIPS[i].LONGITUDE, ALL_SHIPS[i].LATITUDE],
+          coordinates: [ALL_SHIPS[i]['LONGITUDE1'], ALL_SHIPS[i]['LATITUDE1']],
           id: i,
         },
         icon: img,
@@ -249,7 +249,6 @@ function filterShips(boo) {
         data: ALL_SHIPS[i],
       });
     }
-    console.log('num ships no filter', data.length);
   } else {
     for (var i = 0; i < ALL_SHIPS.length; i++) {
       if (customPred(ALL_SHIPS[i])) {
@@ -258,18 +257,15 @@ function filterShips(boo) {
         data.push({
           geometry: {
             type: 'Point',
-            coordinates: [ALL_SHIPS[i].LONGITUDE, ALL_SHIPS[i].LATITUDE],
+            coordinates: [ALL_SHIPS[i]['LONGITUDE1'], ALL_SHIPS[i]['LATITUDE1']],
             id: i,
           },
           icon: img,
           deg: ALL_SHIPS[i].HEADING - 90,
           data: ALL_SHIPS[i],
         });
-        // FILTERED_SHIPS.push(ALL_SHIPS[i]);
       }
     }
-    // console.log()
-    console.log('num ships after filter', data.length);
   }
   // 船只
   // 第一步创建mapv示例 -船只数开始
@@ -279,7 +275,7 @@ function filterShips(boo) {
   var options = {
     // zIndex: 0, // 层级
     // unit:'px',
-    //fillStyle: '#df4c06',
+    // fillStyle: '#df4c06',
     // shadowColor: 'rgba(255, 50, 50, 1)',
     // shadowBlur: 80,
     // styleType: 'stroke',
@@ -309,7 +305,6 @@ function filterShips(boo) {
 }
 
 function customPred(ship) {
-  const typeID = ship.TYPE;
   const typeIdx = ship.TYPE_IDX;
   if (!TYPE_ARR[0] && typeIdx == 0) {
     return false;
