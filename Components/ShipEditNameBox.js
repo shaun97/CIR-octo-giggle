@@ -7,7 +7,7 @@ $(document).ready(function () {
       $("#ship-info-nknm").text(
         $("#edit-name-input").val()
       );
-      THIS_SHIP_ITEM.data['nickname'] = $("#edit-name-input").val();
+      THIS_SHIP_ITEM.data['NICKNAME'] = $("#edit-name-input").val();
       $("#change-name-box").hide();
     }
   })
