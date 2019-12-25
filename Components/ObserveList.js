@@ -88,7 +88,8 @@ $(document).ready(function () {
     }
     const item = THIS_SHIP_ITEM;
     $("#add-fleet-btn").click();
-    const unique = FLEETS[fleetName.replace(" ", "_")].reduce((x, y) => x && (y.MMSI != item.MMSI), true);
+    console.log(FLEETS[fleetName.replace(" ", "_")]);
+    const unique = FLEETS[fleetName.replace(" ", "_")].reduce((x, y) => x && (y.data.MMSI != item.data.MMSI), true);
     if (!unique) {
       alert('This ship is already in fleet');
       return;
