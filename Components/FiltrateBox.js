@@ -228,7 +228,6 @@ function filterShips(boo) {
     for (var i = 0; i < ALL_SHIPS.length; i++) {
       var img = new Image(0.1, 0.05);
       img.src = getShipIcon(ALL_SHIPS[i].TYPE);
-      ALL_SHIPS[i].show = true;
       data.push({
         geometry: {
           type: 'Point',
@@ -296,6 +295,7 @@ function filterShips(boo) {
   };
   // map.clearOverlays();
   MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
+  close_load();
 }
 
 function customPred(ship) {
