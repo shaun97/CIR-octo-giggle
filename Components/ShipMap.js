@@ -127,7 +127,7 @@ function showData(item) {
   // others DRAUGHT, B, C, NAVSTAT, D, SOG, HEADING, ETA, ROT, COG
   let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST, NICKNAME } = item.data;
   $("#ship-info-box").show();
-  $("#ship-info-nknm").text(NICKNAME == null ? NAME : NICKNAME);
+  $("#ship-info-nknm").text(NICKNAME == null ? (NAME == null ? "-" : NAME) : NICKNAME);
   $("#ship-info-name").text(NAME == null ? "-" : NAME);
   $("#ship-info-id-m").text(IMO == null ? "-" : IMO);
   $("#ship-info-length").text(A == null ? "-" : A);
@@ -164,6 +164,9 @@ function showData(item) {
 function cha_info(id) {
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
   $('#inq-track-btn').click(function () {
+    var dateRange = $('#ship-date-range').val("");
+    //$('#ship-date-range').val("");
+    console.log(dateRange);
     map.clearOverlays();
     MAP_VIEW = false;
     $.ajax({
@@ -181,7 +184,8 @@ function cha_info(id) {
           //     { MMSI: 565731000, TIME: "2019-12-20 08:26:04 GMT", LONGITUDE: 132.2823, LATITUDE: 29.54995 },
           //     { MMSI: 565731000, TIME: "2019-12-20 08:27:04 GMT", LONGITUDE: 131.7823, LATITUDE: 29.44995 },
           //   ]
-          history_data = data.data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
+          history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > new Date(x) && new Date(ship_point.TIME) < new Date(y))
+          history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
           history_data = history_data.slice(Math.max(history_data.length - 15, 0)); // Slice first 
 
           if (history_data.length == 0) {
@@ -218,13 +222,16 @@ function addMarker(point) {
   // var content_track0 ="到港时间:***离岗时间:***港口名字***";
 
   // 添加标签
-  var time = point.TIME;
+  var localTime = point.TIME;te
+
+//HERE  var localTime = new Date(point.TIME);
+  //console.log(localTime);
   var point_label = new BMap.Point(point.LONGITUDE, point.LATITUDE);
   var opts = {
     position: point_label,    // 指定文本标注所在的地理位置
     offset: new BMap.Size(20, -10)    //设置文本偏移量
   };
-  var label = new BMap.Label(time, opts);  // 创建文本标注对象
+  var label = new BMap.Label(localTime, opts);  // 创建文本标注对象
   label.setStyle({
     color: "#fff",
     fontSize: "16px",

@@ -19,6 +19,11 @@ layui.use('laydate', function () {
   laydate.render({
     elem: '#ship-date-range'
     , range: true
-    , theme: '#006ce7'
+    , theme: '#006ce7',
+    success : function(layero, index) {
+      console.log("hello");
+      
+      
+    }
   });
 });
