@@ -7,31 +7,38 @@ $(document).ready(function () {
 function showTable(fleet, fleetName) {
   $('#observe-list-table tr').slice(1).remove();
   for (var i = 0; i < fleet.length; i++) {
-      let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST } = fleet[i].data; //.data;
-      A = '<td>' + A + '</td>';
-      LONGITUDE = '<td>' + LONGITUDE + '</td>';
-      TIME = '<td>' + TIME + '</td>';
-      IMO = '<td>' + IMO + '</td>';
-      NAME = '<td>' + NAME + '</td>';
-      MMSI = '<td>' + MMSI + '</td>';
-      CALLSIGN = '<td>' + CALLSIGN + '</td>';
-      LATITUDE = '<td>' + LATITUDE + '</td>';
-      TYPE = '<td>' + TYPE + '</td>';
-      DEST = '<td>' + DEST + '</td>';
-      FLEETNAME = '<td>' + fleetName + '</td>';
+      let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST, SOG, DRAUGHT, ETA} = fleet[i].data; //.data;
+      let o = '<td>';
+      let c = '</td>';
+      // A = o + A + c;
+      // IMO = o + IMO + c;
+      // TYPE = o + TYPE + c;
+
+      FLEETNAME = o + fleetName + c;
+      NAME = o + NAME + c;
+      MMSI = o + MMSI + c;
+      CALLSIGN = o + CALLSIGN + c;
+      LONGITUDE = o + LONGITUDE + c;
+      LATITUDE = o + LATITUDE + c;
+      SOG = o + SOG + c;
+      DRAUGHT = o + DRAUGHT + c;
+      DEST = o + DEST + c;
+      ETA = o + ETA + c;
+      TIME = o + TIME + c;
 
       $('#observe-list-table').append(
           '<tr>' +
           FLEETNAME +
           NAME +
-          LONGITUDE +
-          TIME +
-          IMO +
           MMSI +
           CALLSIGN +
+          LONGITUDE + 
           LATITUDE +
-          TYPE +
+          SOG +
+          DRAUGHT + 
           DEST +
+          ETA +
+          TIME +
           '</tr>'
       )
   }

@@ -74,6 +74,10 @@ $(document).ready(function () {
   })
 
   $("#add-ship-to-fleet-btn").click(function () {
+    if (THIS_SHIP_ITEM == null) {
+      alert('Please select a ship and try again');
+      return;
+    }
     const fleetName = $("#add-ship-fleet-name").val().trim();
     if (!fleetName) {
       alert("Choose or add a fleet name");
@@ -102,7 +106,7 @@ $(document).ready(function () {
 
     track.click(function () {
       map.centerAndZoom(new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE), 12);
-      setThisShip(item);
+      setThisShipSel(item);
       showData(item);
     })
 

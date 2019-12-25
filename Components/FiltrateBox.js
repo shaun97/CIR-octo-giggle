@@ -199,24 +199,34 @@ $(document).ready(function () {
   })
 });
 
-function getShipIcon(typeID) {
+function getShipIcon(ship) {
+  var typeID = ship.TYPE;
   if (70 <= typeID && typeID <= 79) {
+    ship.TYPE_IDX = 0;
     return './img/cargoships.png';
   } else if (80 <= typeID && typeID <= 89) {
+    ship.TYPE_IDX = 1;
     return './img/tankers.png';
   } else if (60 <= typeID && typeID <= 69) {
+    ship.TYPE_IDX = 2;
     return './img/passenger.png';
   } else if (40 <= typeID && typeID <= 49) {
+    ship.TYPE_IDX = 3;
     return './img/highspeedcrafts.png';
   } else if (36 <= typeID && typeID <= 37) {
+    ship.TYPE_IDX = 4;
     return './img/Yachts.png';
   } else if (typeID == 30) {
+    ship.TYPE_IDX = 5;
     return './img/fishingship.png';
   } else if (typeID == 35) {
+    ship.TYPE_IDX = 6;
     return './img/military.png';
   } else if (0 <= typeID && typeID <= 19 || 38 <= typeID && typeID <= 39) {
+    ship.TYPE_IDX = 7;
     return './img/unknown.png';
   } else {
+    ship.TYPE_IDX = 8;
     return './img/othertype.png';
   }
 }
@@ -227,7 +237,7 @@ function filterShips(boo) {
   if (boo) { // No filter
     for (var i = 0; i < ALL_SHIPS.length; i++) {
       var img = new Image(0.1, 0.05);
-      img.src = getShipIcon(ALL_SHIPS[i].TYPE);
+      img.src = getShipIcon(ALL_SHIPS[i]);
       data.push({
         geometry: {
           type: 'Point',
@@ -239,11 +249,12 @@ function filterShips(boo) {
         data: ALL_SHIPS[i],
       });
     }
+    console.log('num ships no filter', data.length);
   } else {
     for (var i = 0; i < ALL_SHIPS.length; i++) {
       if (customPred(ALL_SHIPS[i])) {
         var img = new Image(0.1, 0.05);
-        img.src = getShipIcon(ALL_SHIPS[i].TYPE);
+        img.src = getShipIcon(ALL_SHIPS[i]);
         data.push({
           geometry: {
             type: 'Point',
@@ -257,7 +268,8 @@ function filterShips(boo) {
         // FILTERED_SHIPS.push(ALL_SHIPS[i]);
       }
     }
-    // console.log(data.length);
+    // console.log()
+    console.log('num ships after filter', data.length);
   }
   // 船只
   // 第一步创建mapv示例 -船只数开始
@@ -293,30 +305,31 @@ function filterShips(boo) {
     width: 21, // 规定图像的宽度
     height: 10,
   };
-  // map.clearOverlays();
+  map.clearOverlays();
   MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
   close_load();
 }
 
 function customPred(ship) {
   const typeID = ship.TYPE;
-  if (!TYPE_ARR[0] && 70 <= typeID && typeID <= 79) {
+  const typeIdx = ship.TYPE_IDX;
+  if (!TYPE_ARR[0] && typeIdx == 0) {
     return false;
-  } else if (!TYPE_ARR[1] && 80 <= typeID && typeID <= 89) {
+  } else if (!TYPE_ARR[1] && typeIdx == 1) {
     return false;
-  } else if (!TYPE_ARR[2] && 60 <= typeID && typeID <= 69) {
+  } else if (!TYPE_ARR[2] && typeIdx == 2) {
     return false;
-  } else if (!TYPE_ARR[3] && 40 <= typeID && typeID <= 49) {
+  } else if (!TYPE_ARR[3] && typeIdx == 3) {
     return false;
-  } else if (!TYPE_ARR[4] && 36 <= typeID && typeID <= 37) {
+  } else if (!TYPE_ARR[4] && typeIdx == 4) {
     return false;
-  } else if (!TYPE_ARR[5] && typeID == 30) {
+  } else if (!TYPE_ARR[5] && typeIdx == 5) {
     return false;
-  } else if (!TYPE_ARR[6] && typeID == 35) {
+  } else if (!TYPE_ARR[6] && typeIdx == 6) {
     return false;
-  } else if (!TYPE_ARR[7] && 0 <= typeID && typeID <= 19 || 38 <= typeID && typeID <= 39) {
+  } else if (!TYPE_ARR[7] && typeIdx == 7) {
     return false;
-  } else if (!TYPE_ARR[8]) {
+  } else if (!TYPE_ARR[8] && typeIdx == 8) {
     return false;
   } else {
     return true;
