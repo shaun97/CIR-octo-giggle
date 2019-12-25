@@ -85,15 +85,16 @@ $(document).ready(function () {
     }
     const item = THIS_SHIP_ITEM;
     $("#add-fleet-btn").click();
-    let nickname = $("#add-ship-to-fleet-inputbar").val();
+    item.data.NICKNAME = ($("#add-ship-to-fleet-inputbar").val() == "") ? item.data.NICKNAME : $("#add-ship-to-fleet-inputbar").val();
     let eye = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
     let track = $('<button/>').addClass("tree-button").html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
     let edit = $('<button/>').addClass("tree-button").html('<img src="./img/icon_edit_myship_track.png" class="tree-button-icon">');
     let close = $('<button/>').addClass("tree-button").html('<img src="./img/icon_delt_myship_track.png" class="tree-button-icon">');
     let treeButtons = $('<div/>').addClass("tree-buttons").append(eye, track, edit, close);
-    let ship = $('<div/>').addClass("ship-in-list").html(nickname ? nickname : item.data.NAME).append(treeButtons);
+    let ship = $('<div/>').addClass("ship-in-list").html(item.data.NICKNAME == null ? item.data.NAME : item.data.NICKNAME).append(treeButtons);
     $(`#content-list-${fleetName.replace(" ", "_")}`).append(ship);
     FLEETS[fleetName.replace(" ", "_")].push(item);
+    showData(item);
     // console.log("FLEETS after add ship", FLEETS);
     //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
 
