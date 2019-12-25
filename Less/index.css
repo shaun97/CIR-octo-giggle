@@ -183,6 +183,17 @@ body {
   padding-left: 7px;
   padding-right: 7px;
 }
+body .layui-laydate-content td.laydate-selected {
+  background-color: lightblue;
+}
+body .laydate-selected:hover {
+  background-color: #006ce7 !important;
+}
+body .layui-laydate-content td:hover,
+.layui-laydate-list li:hover {
+  background-color: #eaeaea;
+  color: white;
+}
 #change-name-box {
   left: 29%;
   top: 20%;

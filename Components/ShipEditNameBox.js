@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $(".edit-name-close").click(function () {
+  $(".edit-name-close, #change-name-cancel").click(function () {
     $("#change-name-box").hide();
   });
   $("#edit-name-change").click(function () {
