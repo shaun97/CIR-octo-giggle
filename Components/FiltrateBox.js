@@ -253,10 +253,10 @@ function filterShips(boo) {
           },
           icon: img,
           deg: ALL_SHIPS[i].HEADING - 90,
-        data: ALL_SHIPS[i],
+          data: ALL_SHIPS[i],
         });
         // FILTERED_SHIPS.push(ALL_SHIPS[i]);
-      } 
+      }
     }
     // console.log(data.length);
   }
@@ -277,13 +277,17 @@ function filterShips(boo) {
     methods: { // 一些事件回调函数
       click: function (item) { // 点击事件，返回对应点击元素的对象值
         if (item == null) return;
-        // console.log(item);
         addClickHandler_dot_click(item);
       },
       mousemove: function (item) { // 点击事件，返回对应点击元素的对象值
-        if (item != null) {
-         console.log(item);
-        }
+        // if (item == null) {
+        //   // if (THIS_SHIP_LABEL_HOVER != null) {
+        //   //   map.removeOverlay(THIS_SHIP_LABEL_HOVER);
+        //   //   THIS_SHIP_LABEL_HOVER = null;
+
+        //   return;
+        // }
+        setThisShipHover(item);
       }
     },
     draw: 'icon',
