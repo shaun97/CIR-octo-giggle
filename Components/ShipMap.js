@@ -20,7 +20,7 @@ function setThisShipSel(item) {
   map.addOverlay(marker);
   THIS_SHIP_LABEL = marker;
   THIS_SHIP_ITEM = item;
-  console.log('this ship', item.data.NAME);
+  // console.log('this ship', item.data.NAME);
 }
 
 function setThisShipHover(item) {
@@ -47,7 +47,7 @@ function setThisShipHover(item) {
   map.addOverlay(marker);
   THIS_SHIP_LABEL_HOVER = marker;
   THIS_SHIP_ITEM_HOVER = item;
-  console.log('this label', item.data.NAME);
+  // console.log('this label', item.data.NAME);
 }
 
 function mapLayersInit() {
@@ -61,6 +61,11 @@ function resetView() {
 }
 
 function addFunctionality() {
+  map.addEventListener('zoomend', () => {
+    if (map.getZoom() > 13) {
+      // ADD FUNCTIONALITY
+    }
+  })
 }
 
 var style_this_ship_label = {
@@ -80,7 +85,8 @@ var style_this_ship_label_hover = {
 };
 
 function addClickHandler_dot_click(item) {
-  map.panTo(new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE']), true);
+  if (map.getZoom() < 12) map.setZoom(12);
+  map.panTo(new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']), true);
   setThisShipSel(item)
   showData(item);
 }
@@ -116,14 +122,31 @@ function cha_info(id) {
       success: function (data) {
         // console.log(data.data, id); // Will need to change this to data.data
         try {
-          //   var history_data = [
-          //     { MMSI: 565731000, TIME: "2019-12-20 08:28:04 GMT", LONGITUDE: 131.2823, LATITUDE: 28.84995 },
-          //     { MMSI: 565731000, TIME: "2019-12-20 08:29:04 GMT", LONGITUDE: 130.7823, LATITUDE: 28.44995 },
-          //     { MMSI: 565731000, TIME: "2019-12-20 08:25:04 GMT", LONGITUDE: 132.7823, LATITUDE: 28.94995 },
-          //     { MMSI: 565731000, TIME: "2019-12-20 08:26:04 GMT", LONGITUDE: 132.2823, LATITUDE: 29.54995 },
-          //     { MMSI: 565731000, TIME: "2019-12-20 08:27:04 GMT", LONGITUDE: 131.7823, LATITUDE: 29.44995 },
-          //   ]
+
           history_data = data.data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
+
+          // ----------------------------------- MOCK
+          // var history_data = [
+          //   {
+          //     NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63228361228394,
+          //     LATITUDE1: 29.61557934824466, TIME: '2019-12-20 08:25:25 GMT'
+          //   },
+          //   {
+          //     NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.637038768093,
+          //     LATITUDE1: 29.60663977276527, TIME: '2019-12-20 08:35:25 GMT'
+          //   },
+          //   {
+          //     NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63709427282245,
+          //     LATITUDE1: 29.603097542389676, TIME: '2019-12-20 08:45:25 GMT'
+          //   },
+          //   {
+          //     NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63787160112857,
+          //     LATITUDE1: 29.599258851919817, TIME: '2019-12-20 08:55:25 GMT'
+          //   },
+          // ]
+          // ----------------------------------- MOCK
+
+
           history_data = history_data.slice(Math.max(history_data.length - 15, 0)); // Slice first 
 
           if (history_data.length == 0) {
@@ -151,7 +174,6 @@ function cha_info(id) {
 function addMarker(point) {
   //添加标注
   var point_track0 = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
-  // map.centerAndZoom(point_track0, 15);
   var myIcon = new BMap.Icon("img/dot.png", new BMap.Size(15, 15), {
     offset: new BMap.Size(5, 5),
   });
@@ -200,19 +222,20 @@ function addMarker(point) {
 function addLine(history_data) {
   // 创建标注对象并添加到地图
   if (history_data.length < 2) return;
+
   var linePoints = [];
+
   for (var i = 0; i < history_data.length; i++) {
     var point = history_data[i];
-    var lng = point['LONGITUDE1'];
-    var lat = point['LATITUDE1'];
-    linePoints.push(new BMap.Point(lng, lat));
+    linePoints.push(new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']));
   }
+
   var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
     scale: 0.3,//图标缩放大小
     strokeColor: '#fff',//设置矢量图标的线填充颜色
     strokeWeight: '1',//设置线宽
   });
-  var icons = new BMap.IconSequence(sy, '10', '30');
+  var icons = new BMap.IconSequence(sy, '10', '30', true);
   var polyline = new BMap.Polyline(linePoints, {
     enableEditing: false,//是否启用线编辑，默认为false
     enableClicking: true,//是否响应点击事件，默认为true
@@ -221,7 +244,7 @@ function addLine(history_data) {
     strokeWeight: 2,
     strokeOpacity: 0.5,
   });
-  map.addOverlay(polyline);   //增加折线
+  map.addOverlay(polyline); //增加折线
 }
 
 //轨迹点加入到轨迹中。
@@ -235,7 +258,8 @@ function dynamicLine(history_data) {
     addMarker(point);//增加对应该的轨迹点
   }
   // 重新调整视野中心和缩放大小
-  map.centerAndZoom(new BMap.Point(lng, lat), 9);
+  if (map.getZoom() < 12) map.setZoom(12);
+  map.panTo(new BMap.Point(lng, lat), true);
 }
 
 // 开始和结束图片 FOR START AND END MARKERS
@@ -262,7 +286,7 @@ function get_track(history_data) {
   map.addOverlay(label1);
 
   // 结束标签
-  var point_label = new BMap.Point(history_data[history_data.length - 1].LONGITUDE, history_data[history_data.length - 1].LATITUDE);
+  var point_label = new BMap.Point(history_data[history_data.length - 1]['LONGITUDE1'], history_data[history_data.length - 1]['LATITUDE1']);
   // console.log("end point", history_data[history_data.length - 1].TIME);
   var opts = {
     position: point_label,    // 指定文本标注所在的地理位置
@@ -317,13 +341,12 @@ function openInfo(content, e) {
 
 $(function () {
   $.ajax({
-    // url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
-    url: "http://localhost:3000/data",
+    url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
+    // url: "http://localhost:3000/data",
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
       ALL_SHIPS = data.data;
-      // ALL_SHIPS = data;
       mapLayersInit();
     },
     error: function () {

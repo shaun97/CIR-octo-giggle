@@ -194,7 +194,7 @@ $(document).ready(function () {
     TYPE_ARR[7] = $("#option-type-others-btn").hasClass("grey-button") ? false : true;
     TYPE_ARR[8] = $("#option-type-unknown-btn").hasClass("grey-button") ? false : true;
     let boo = TYPE_ARR.reduce((x, y) => x && y, true);
-    console.log(boo, TYPE_ARR);
+    // console.log(boo, TYPE_ARR);
     filterShips(boo);
   })
 });

@@ -10,17 +10,6 @@ $('.se_btn').click(function () {
         type: "GET",//请求方式为get
         dataType: "json", //返回数据格式为json
         success: function (data) {
-            // console.log(data);
-
-            // Mock! -----------------------------------------
-            // var latestPoint = {
-            //     NAME: 'EBISU MARU',
-            //     MMSI: 431003062,
-            //     LONGITUDE: 135.20725,
-            //     LATITUDE: 34.4663,
-            //     TIME: '2019-12-20 08:55:25 GMT',
-            // }
-            // Mock! -----------------------------------------
 
             map.setDefaultCursor('default');
 
@@ -39,13 +28,26 @@ $('.se_btn').click(function () {
             });
             // Uncomment this! -----------------------------------------
 
-            let point = new BMap.Point(latestPoint.LONGITUDE, latestPoint.LATITUDE);
+            // Mock! -----------------------------------------
+            // var latestPoint = {
+            //     NAME: 'CHANGRAN61',
+            //     MMSI: 413821923,
+            //     LONGITUDE: 106.62659,
+            //     LATITUDE: 34.4663,
+            //     LONGITUDE1: 106.63787160112857,
+            //     LATITUDE1: 29.599258851919817,
+            //     TIME: '2019-12-20 08:55:25 GMT',
+            // }
+            // Mock! -----------------------------------------
 
-            map.centerAndZoom(point, 11);//设置中心点和显示级别。中国
+            let point = new BMap.Point(latestPoint['LONGITUDE1'], latestPoint['LATITUDE1']);
+
+            if (map.getZoom() < 12) map.setZoom(12);
+            map.panTo(point, true);//设置中心点和显示级别。中国
             
             let item = {data: latestPoint};
             setThisShipSel(item);
-            console.log(item);
+            // console.log(item);
             showData(item);
             
         },

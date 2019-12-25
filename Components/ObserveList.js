@@ -88,7 +88,7 @@ $(document).ready(function () {
     }
     const item = THIS_SHIP_ITEM;
     $("#add-fleet-btn").click();
-    console.log(FLEETS[fleetName.replace(" ", "_")]);
+    // console.log(FLEETS[fleetName.replace(" ", "_")]);
     const unique = FLEETS[fleetName.replace(" ", "_")].reduce((x, y) => x && (y.data.MMSI != item.data.MMSI), true);
     if (!unique) {
       alert('This ship is already in fleet');
@@ -115,7 +115,7 @@ $(document).ready(function () {
     });
 
     track.click(function () {
-      map.centerAndZoom(new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE), 12);
+      map.centerAndZoom(new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']), 12);
       setThisShipSel(item);
       showData(item);
     })
