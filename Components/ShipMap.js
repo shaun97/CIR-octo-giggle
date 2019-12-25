@@ -7,7 +7,7 @@ var THIS_SHIP_LABEL = null;
 
 function setThisShip(item) {
   if (THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
-  
+
   var point = new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
   label_dot.setStyle(style_this_ship_label);
@@ -147,9 +147,8 @@ function cha_info(id) {
           //     { MMSI: 565731000, TIME: "2019-12-20 08:27:04 GMT", LONGITUDE: 131.7823, LATITUDE: 29.44995 },
           //   ]
           history_data = data.data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
-          // console.log(history_data);
-          history_data = history_data.slice(Math.max(history_data.length - 7, 0)); // Slice first 
-          // console.log(history_data);
+          history_data = history_data.slice(Math.max(history_data.length - 15, 0)); // Slice first 
+
           if (history_data.length == 0) {
             throw new Error('No data on this ship')
           }
@@ -159,6 +158,7 @@ function cha_info(id) {
         } catch (error) {
           alert("Cannot load this ship's ship data");
           console.log(error);
+
           $('#clr-track-btn').click();
         }
       },
@@ -357,6 +357,9 @@ $(function () {
     MAP_VIEW = true;
     map.clearOverlays();
     resetView();
+    let item = THIS_SHIP_ITEM;
+    THIS_SHIP_ITEM = null; // Cheat
+    setThisShip(item);
   });
 });
 

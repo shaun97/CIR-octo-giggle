@@ -70,6 +70,10 @@ $(document).ready(function () {
   });
 
   $("#add-ship-to-fleet-btn").click(function () {
+    if (THIS_SHIP_ITEM == null) {
+      alert('Please select a ship and try again');
+      return;
+    }
     const fleetName = $("#add-ship-fleet-name").val().trim();
     if (!fleetName) {
       alert("Choose or add a fleet name");

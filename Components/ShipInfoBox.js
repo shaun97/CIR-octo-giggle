@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $("#info-close-button").click(function () {
     $("#ship-info-box").hide();
-    $("#clr-track-btn").click();
+    if (!MAP_VIEW) $("#clr-track-btn").click();
   });
   $("#info-edit-button").click(function () {
     $("#change-name-box").show();
