@@ -66,8 +66,12 @@ $(document).ready(function () {
     $(".tree-button").click(function (e) {
       e.stopPropagation();
     });
-
   });
+
+  $("#observe-add-ship-cancel-btn").click(function() {
+    $("#observe-write").hide();
+    $("#observe-read").show();
+  })
 
   $("#add-ship-to-fleet-btn").click(function () {
     if (THIS_SHIP_ITEM == null) {
