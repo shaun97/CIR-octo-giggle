@@ -11,7 +11,7 @@ function setThisShipSel(item) {
   if (THIS_SHIP_ITEM == item) return;
   if (THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
 
-  var point = new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE);
+  var point = new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
   label_dot.setStyle(style_this_ship_label);
   var blank = new BMap.Icon("img/boat_m.png", new BMap.Size(0, 0), {});
@@ -20,7 +20,6 @@ function setThisShipSel(item) {
   map.addOverlay(marker);
   THIS_SHIP_LABEL = marker;
   THIS_SHIP_ITEM = item;
-  console.log(item.data.nickname);
 }
 
 function setThisShipHover(item) {
@@ -35,7 +34,7 @@ function setThisShipHover(item) {
     return;
   }
 
-  var point = new BMap.Point(item.data.LONGITUDE, item.data.LATITUDE);
+  var point = new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
   label_dot.setStyle(style_this_ship_label_hover);
   var blank = new BMap.Icon("img/boat_m.png", new BMap.Size(0, 0), {});
