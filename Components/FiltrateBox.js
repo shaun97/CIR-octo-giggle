@@ -224,10 +224,11 @@ function getShipIcon(ship) {
     return './img/military.png';
   } else if (0 <= typeID && typeID <= 19 || 38 <= typeID && typeID <= 39) {
     ship.TYPE_IDX = 7;
-    return './img/unknown.png';
+    return './img/othertype.png';
   } else {
     ship.TYPE_IDX = 8;
-    return './img/othertype.png';
+    
+    return './img/unknown.png';
   }
 }
 
