@@ -48,6 +48,9 @@ $('.se_btn').click(function () {
             if (boundary.containsPoint(point)) {
                 console.log('hello');
                 point = new BMap.Point(latestPoint['LONGITUDE1'], latestPoint['LATITUDE1']);
+            } else {
+                latestPoint.LATITUDE1 = latestPoint.LATITUDE;
+                latestPoint.LONGITUDE1 = latestPoint.LONGITUDE;
             }
 
             if (map.getZoom() < 12) map.setZoom(12);
