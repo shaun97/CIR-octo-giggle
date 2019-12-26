@@ -488,14 +488,12 @@ body .layui-laydate-content td:hover,
 }
 #ship-filtrate-box .filtrate-sub-box .filtrate-filters-options .filtrate-option-li .filtrate-type-button .filtrate-type-icon {
   background-color: white;
-  padding: 7px 4px 7px 4px;
+  padding: 7.5px 4px 7.5px 4px;
   border-radius: 2px 0px 0px 2px;
-  border-width: 1.5px;
-  border-style: solid;
-  border-color: #006ce7;
   height: 13px;
   line-height: 20px;
   margin-bottom: 1px;
+  margin-left: 1px;
   margin-right: 8px;
 }
 #ship-filtrate-box .filtrate-sub-box .filtrate-filters-options #option-size-custom {
@@ -657,6 +655,7 @@ body .layui-laydate-content td:hover,
 .grey-button {
   background-color: #e5e5e5;
   color: #333333;
+  border-color: #e5e5e5;
 }
 .grey-button:hover {
   color: black;
