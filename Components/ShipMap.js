@@ -219,7 +219,6 @@ function cha_info(id) {
           if (history_data.length == 0) {
             throw new Error('No data on this ship');
           }
-
           dynamicLine(history_data);
           get_track(history_data); //开始和结束的图标
         } catch (error) {
@@ -230,6 +229,7 @@ function cha_info(id) {
         }
       },
       error: function () {
+        alert("Error please try again");
         $('#clr-track-btn').click();
       }
     });
@@ -437,5 +437,5 @@ map.centerAndZoom(new BMap.Point(106.5584370000, 29.5689960000), 4);//设置中�
 map.enableScrollWheelZoom();//滚轮放大缩小。
 
 // CHINA Boundary 
-let boundary = new BMap.Bounds(new BMap.Point(100.57972, 13.41697), new BMap.Point(121.99762, 40.68411));
+let boundary = new BMap.Bounds(new BMap.Point(100.57972, 17.41697), new BMap.Point(124.99762, 40.68411));
 

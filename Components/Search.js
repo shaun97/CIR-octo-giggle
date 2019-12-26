@@ -43,8 +43,12 @@ $('.se_btn').click(function () {
             }
             // */
             // ----------------------------------- MOCK ----------------------------------- //
+            let point = new BMap.Point(latestPoint['LONGITUDE'], latestPoint['LATITUDE']);
 
-            let point = new BMap.Point(latestPoint['LONGITUDE1'], latestPoint['LATITUDE1']);
+            if (boundary.containsPoint(point)) {
+                console.log('hello');
+                point = new BMap.Point(latestPoint['LONGITUDE1'], latestPoint['LATITUDE1']);
+            }
 
             if (map.getZoom() < 12) map.setZoom(12);
             map.panTo(point, true);//设置中心点和显示级别。中国

@@ -22,8 +22,6 @@ layui.use('laydate', function () {
     , theme: '#006ce7',
     success : function(layero, index) {
       console.log("hello");
-      
-      
     }
   });
 });
