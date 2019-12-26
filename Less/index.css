@@ -448,7 +448,7 @@ body .layui-laydate-content td:hover,
 #ship-filtrate-box {
   left: 70%;
   top: 21%;
-  height: 580px;
+  height: auto;
   width: 440px;
 }
 #ship-filtrate-box #ship-filtrate-inner-box {
@@ -482,6 +482,21 @@ body .layui-laydate-content td:hover,
 }
 #ship-filtrate-box .filtrate-sub-box .filtrate-filters-options .filtrate-option-li {
   margin: 1% 4% 1% 0%;
+}
+#ship-filtrate-box .filtrate-sub-box .filtrate-filters-options .filtrate-option-li .filtrate-type-button {
+  padding-left: 0px;
+}
+#ship-filtrate-box .filtrate-sub-box .filtrate-filters-options .filtrate-option-li .filtrate-type-button .filtrate-type-icon {
+  background-color: white;
+  padding: 7px 4px 7px 4px;
+  border-radius: 2px 0px 0px 2px;
+  border-width: 1.5px;
+  border-style: solid;
+  border-color: #006ce7;
+  height: 13px;
+  line-height: 20px;
+  margin-bottom: 1px;
+  margin-right: 8px;
 }
 #ship-filtrate-box .filtrate-sub-box .filtrate-filters-options #option-size-custom {
   background-color: #e5e5e5;
