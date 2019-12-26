@@ -174,8 +174,8 @@ function cha_info(id) {
     map.clearOverlays();
     MAP_VIEW = false;
     $.ajax({
-      // url: `http://${IP_ADDRESS}/shipsController/getMMSI?MmsiIorName=` + id,
-      url: 'http://localhost:3000/data',
+      url: `http://${IP_ADDRESS}/shipsController/getMMSI?MmsiIorName=` + id,
+      // url: 'http://localhost:3000/data',
       type: "GET",//请求方式为get
       dataType: "json", //返回数据格式为json
       success: function (data) {
@@ -183,10 +183,10 @@ function cha_info(id) {
         try {
           console.log(data.data);
 
-          // if (data.data == null) throw new Error('No data on this ship');
+          if (data.data == null) throw new Error('No data on this ship');
 
           // ----------------------------------- MOCK ----------------------------------- //
-          
+          /*
           let history_data = [
             {
               NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63228361228394,
@@ -211,7 +211,7 @@ function cha_info(id) {
 
 
 
-          // var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
+          var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
 
           history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
           history_data = history_data.slice(Math.max(history_data.length - 15, 0)); // Slice first 
@@ -408,8 +408,8 @@ function openInfo(content, e) {
 
 $(function () {
   $.ajax({
-    // url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
-    url: "http://localhost:3000/data",
+    url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
+    // url: "http://localhost:3000/data",
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
@@ -435,3 +435,7 @@ var map = new BMap.Map("ship-map"); //初始化地图
 // map.setMaxZoom(10);
 map.centerAndZoom(new BMap.Point(106.5584370000, 29.5689960000), 4);//设置中心点和显示级别。中国。
 map.enableScrollWheelZoom();//滚轮放大缩小。
+
+// CHINA Boundary 
+let boundary = new BMap.Bounds(new BMap.Point(100.57972, 13.41697), new BMap.Point(121.99762, 40.68411));
+
