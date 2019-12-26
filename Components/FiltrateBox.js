@@ -234,6 +234,10 @@ function getShipIcon(ship) {
 
 function filterShips(boo) {
   var data = [];
+  if (!ALL_SHIPS) {
+    alert("Please refresh page");
+    return;
+  }
 
   if (boo) { // No filter
     for (var i = 0; i < ALL_SHIPS.length; i++) {
