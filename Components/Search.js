@@ -5,8 +5,8 @@ $('.se_btn').click(function () {
     var MmsiIorName = $('.search_box2_child').val().trim();
 
     $.ajax({
-        url: `http://${IP_ADDRESS}/shipsController/getMMSI?MmsiIorName=` + MmsiIorName,
-        // url: 'http://localhost:3000/data',
+        // url: `http://${IP_ADDRESS}/shipsController/getMMSI?MmsiIorName=` + MmsiIorName,
+        url: 'http://localhost:3000/data',
         type: "GET",//请求方式为get
         dataType: "json", //返回数据格式为json
         success: function (data) {
@@ -15,23 +15,23 @@ $('.se_btn').click(function () {
 
             // Uncomment this! -----------------------------------------
             
-            if (data.data.length == 0) {
-                alert('This ship does not exist');
-                return;
-            }
-            var latestPoint = data.data[0];
-            data.data.forEach(point => {
-                latestTime = new Date(latestPoint.TIME).getTime();
-                currTime = new Date(point.TIME).getTime();
-                if (currTime > latestTime) {
-                    latestPoint = point;
-                }
-            });
-            // */
+            // if (data.data.length == 0) {
+            //     alert('This ship does not exist');
+            //     return;
+            // }
+            // var latestPoint = data.data[0];
+            // data.data.forEach(point => {
+            //     latestTime = new Date(latestPoint.TIME).getTime();
+            //     currTime = new Date(point.TIME).getTime();
+            //     if (currTime > latestTime) {
+            //         latestPoint = point;
+            //     }
+            // });
+            // // */
             // Uncomment this! -----------------------------------------
 
             // ----------------------------------- MOCK ----------------------------------- //
-            /*
+            
             var latestPoint = {
                 NAME: 'CHANGRAN61',
                 MMSI: 413821923,

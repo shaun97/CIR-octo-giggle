@@ -174,8 +174,8 @@ function cha_info(id) {
     map.clearOverlays();
     MAP_VIEW = false;
     $.ajax({
-      url: `http://${IP_ADDRESS}/shipsController/getMMSI?MmsiIorName=` + id,
-      // url: 'http://localhost:3000/data',
+      // url: `http://${IP_ADDRESS}/shipsController/getMMSI?MmsiIorName=` + id,
+      url: 'http://localhost:3000/data',
       type: "GET",//请求方式为get
       dataType: "json", //返回数据格式为json
       success: function (data) {
@@ -183,10 +183,10 @@ function cha_info(id) {
         try {
           console.log(data.data);
 
-          if (data.data == null) throw new Error('No data on this ship');
+          // if (data.data == null) throw new Error('No data on this ship');
 
           // ----------------------------------- MOCK ----------------------------------- //
-          /*
+          
           let history_data = [
             {
               NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63228361228394,
@@ -205,12 +205,14 @@ function cha_info(id) {
               LATITUDE1: 29.599258851919817, TIME: '2019-12-20 08:55:25 GMT'
             },
           ]
+          history_data = history_data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
           // */
           // ----------------------------------- MOCK ----------------------------------- // 
 
 
 
-          var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
+          // var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
+
           history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
           history_data = history_data.slice(Math.max(history_data.length - 15, 0)); // Slice first 
 
@@ -301,7 +303,7 @@ function addLine(history_data) {
     strokeColor: '#fff',//设置矢量图标的线填充颜色
     strokeWeight: '1',//设置线宽
   });
-  var icons = new BMap.IconSequence(sy, '10', '30');
+  var icons = new BMap.IconSequence(sy, '10', '30', true);
   var polyline = new BMap.Polyline(linePoints, {
     enableEditing: false,//是否启用线编辑，默认为false
     enableClicking: true,//是否响应点击事件，默认为true
@@ -406,8 +408,8 @@ function openInfo(content, e) {
 
 $(function () {
   $.ajax({
-    url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
-    // url: "http://localhost:3000/data",
+    // url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
+    url: "http://localhost:3000/data",
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
