@@ -14,6 +14,7 @@ $('.se_btn').click(function () {
             map.setDefaultCursor('default');
 
             // Uncomment this! -----------------------------------------
+            
             if (data.data.length == 0) {
                 alert('This ship does not exist');
                 return;
@@ -26,19 +27,22 @@ $('.se_btn').click(function () {
                     latestPoint = point;
                 }
             });
+            // */
             // Uncomment this! -----------------------------------------
 
-            // Mock! -----------------------------------------
-            // var latestPoint = {
-            //     NAME: 'CHANGRAN61',
-            //     MMSI: 413821923,
-            //     LONGITUDE: 106.62659,
-            //     LATITUDE: 34.4663,
-            //     LONGITUDE1: 106.63787160112857,
-            //     LATITUDE1: 29.599258851919817,
-            //     TIME: '2019-12-20 08:55:25 GMT',
-            // }
-            // Mock! -----------------------------------------
+            // ----------------------------------- MOCK ----------------------------------- //
+            /*
+            var latestPoint = {
+                NAME: 'CHANGRAN61',
+                MMSI: 413821923,
+                LONGITUDE: 106.62659,
+                LATITUDE: 34.4663,
+                LONGITUDE1: 106.63787160112857,
+                LATITUDE1: 29.599258851919817,
+                TIME: '2019-12-20 08:55:25 GMT',
+            }
+            // */
+            // ----------------------------------- MOCK ----------------------------------- //
 
             let point = new BMap.Point(latestPoint['LONGITUDE1'], latestPoint['LATITUDE1']);
 

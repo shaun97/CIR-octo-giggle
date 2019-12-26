@@ -114,7 +114,7 @@ function cha_info(id) {
   $('#inq-track-btn').click(function () {
     var dateRange = $('#ship-date-range').val("");
     //$('#ship-date-range').val("");
-    console.log(dateRange);
+    // console.log(dateRange);
     map.clearOverlays();
     MAP_VIEW = false;
     $.ajax({
@@ -125,38 +125,42 @@ function cha_info(id) {
       success: function (data) {
         // console.log(data.data, id); // Will need to change this to data.data
         try {
+          console.log(data.data);
 
-          let history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > new Date(x) && new Date(ship_point.TIME) < new Date(y))
-          history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
+          if (data.data == null) throw new Error('No data on this ship')
 
-          // ----------------------------------- MOCK
-          // var history_data = [
-          //   {
-          //     NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63228361228394,
-          //     LATITUDE1: 29.61557934824466, TIME: '2019-12-20 08:25:25 GMT'
-          //   },
-          //   {
-          //     NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.637038768093,
-          //     LATITUDE1: 29.60663977276527, TIME: '2019-12-20 08:35:25 GMT'
-          //   },
-          //   {
-          //     NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63709427282245,
-          //     LATITUDE1: 29.603097542389676, TIME: '2019-12-20 08:45:25 GMT'
-          //   },
-          //   {
-          //     NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63787160112857,
-          //     LATITUDE1: 29.599258851919817, TIME: '2019-12-20 08:55:25 GMT'
-          //   },
-          // ]
-          // ----------------------------------- MOCK
+          let history_data = data.data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
+
+          // ----------------------------------- MOCK ----------------------------------- //
+          /*
+          let history_data = [
+            {
+              NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63228361228394,
+              LATITUDE1: 29.61557934824466, TIME: '2019-12-20 08:25:25 GMT'
+            },
+            {
+              NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.637038768093,
+              LATITUDE1: 29.60663977276527, TIME: '2019-12-20 08:35:25 GMT'
+            },
+            {
+              NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63709427282245,
+              LATITUDE1: 29.603097542389676, TIME: '2019-12-20 08:45:25 GMT'
+            },
+            {
+              NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63787160112857,
+              LATITUDE1: 29.599258851919817, TIME: '2019-12-20 08:55:25 GMT'
+            },
+          ]
+          // */
+          // ----------------------------------- MOCK ----------------------------------- // 
 
 
           history_data = history_data.slice(Math.max(history_data.length - 15, 0)); // Slice first 
-
+          
           if (history_data.length == 0) {
-            throw new Error('No data on this ship')
+            throw new Error('No data on this ship');
           }
-          // history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1);
+          
           dynamicLine(history_data);
           get_track(history_data); //开始和结束的图标
         } catch (error) {
