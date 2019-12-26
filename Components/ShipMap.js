@@ -11,7 +11,7 @@ function setThisShipSel(item) {
   if (THIS_SHIP_ITEM == item) return;
   if (THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
 
-  var point = new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1);
+  var point = new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
   label_dot.setStyle(style_this_ship_label);
   var blank = new BMap.Icon("img/boat_m.png", new BMap.Size(0, 0), {});
@@ -34,7 +34,7 @@ function setThisShipHover(item) {
     return;
   }
 
-  var point = new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1);
+  var point = new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
   label_dot.setStyle(style_this_ship_label_hover);
   var blank = new BMap.Icon("img/boat_m.png", new BMap.Size(0, 0), {});
@@ -106,7 +106,8 @@ var style_this_ship_label_hover = {
 //   addClickHandler_dot_click(boatMarker);
 
 function addClickHandler_dot_click(item) {
-  map.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
+  map.panTo(new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']), true);
+  // map.addOverlay(new BMap.Marker(new BMap.Point(item.data['LONGITUDE'], item.data['LATITUDE'])));
   setThisShipSel(item)
   showData(item);
 }
@@ -144,7 +145,7 @@ function showData(item) {
 //   let boatCount = 0;
 //   for (var i = 0; i < ALL_SHIPS.length; i++) {
 //     //添加船标注
-//     var point = new BMap.Point(ALL_SHIPS[i].LONGITUDE, ALL_SHIPS[i].LATITUDE);
+//     var point = new BMap.Point(ALL_SHIPS[i]['LONGITUDE1'], ALL_SHIPS[i]['LATITUDE1']);
 //     if (!map.getBounds().containsPoint(point) || !ALL_SHIPS[i].show) {
 //       continue;
 //     }
@@ -180,23 +181,43 @@ function cha_info(id) {
       success: function (data) {
         // console.log(data.data, id); // Will need to change this to data.data
         try {
-          //   var history_data = [
-          //     { MMSI: 565731000, TIME: "2019-12-20 08:28:04 GMT", LONGITUDE: 131.2823, LATITUDE: 28.84995 },
-          //     { MMSI: 565731000, TIME: "2019-12-20 08:29:04 GMT", LONGITUDE: 130.7823, LATITUDE: 28.44995 },
-          //     { MMSI: 565731000, TIME: "2019-12-20 08:25:04 GMT", LONGITUDE: 132.7823, LATITUDE: 28.94995 },
-          //     { MMSI: 565731000, TIME: "2019-12-20 08:26:04 GMT", LONGITUDE: 132.2823, LATITUDE: 29.54995 },
-          //     { MMSI: 565731000, TIME: "2019-12-20 08:27:04 GMT", LONGITUDE: 131.7823, LATITUDE: 29.44995 },
-          //   ]
+          console.log(data.data);
+
+          if (data.data == null) throw new Error('No data on this ship');
+
+          // ----------------------------------- MOCK ----------------------------------- //
+          /*
+          let history_data = [
+            {
+              NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63228361228394,
+              LATITUDE1: 29.61557934824466, TIME: '2019-12-20 08:25:25 GMT'
+            },
+            {
+              NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.637038768093,
+              LATITUDE1: 29.60663977276527, TIME: '2019-12-20 08:35:25 GMT'
+            },
+            {
+              NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63709427282245,
+              LATITUDE1: 29.603097542389676, TIME: '2019-12-20 08:45:25 GMT'
+            },
+            {
+              NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63787160112857,
+              LATITUDE1: 29.599258851919817, TIME: '2019-12-20 08:55:25 GMT'
+            },
+          ]
+          // */
+          // ----------------------------------- MOCK ----------------------------------- // 
+
+
 
           var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
-          
           history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
           history_data = history_data.slice(Math.max(history_data.length - 15, 0)); // Slice first 
 
           if (history_data.length == 0) {
-            throw new Error('No data on this ship')
+            throw new Error('No data on this ship');
           }
-          // history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1);
+
           dynamicLine(history_data);
           get_track(history_data); //开始和结束的图标
         } catch (error) {
@@ -217,7 +238,7 @@ function cha_info(id) {
 //在轨迹点上创建图标，并添加点击事件，显示轨迹点信息。points,数组。
 function addMarker(point) {
   //添加标注
-  var point_track0 = new BMap.Point(point.LONGITUDE1, point.LATITUDE1);
+  var point_track0 = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
   // map.centerAndZoom(point_track0, 15);
   var myIcon = new BMap.Icon("img/dot.png", new BMap.Size(15, 15), {
     offset: new BMap.Size(5, 5),
@@ -228,8 +249,8 @@ function addMarker(point) {
 
   // 添加标签
   var localTime = new Date(point.TIME).toLocaleString().replace(/\//g, '-');
-//HERE
-  var point_label = new BMap.Point(point.LONGITUDE1, point.LATITUDE1);
+  //HERE
+  var point_label = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
   var opts = {
     position: point_label,    // 指定文本标注所在的地理位置
     offset: new BMap.Size(20, -10)    //设置文本偏移量
@@ -271,8 +292,8 @@ function addLine(history_data) {
   var linePoints = [];
   for (var i = 0; i < history_data.length; i++) {
     var point = history_data[i];
-    var lng = point.LONGITUDE1;
-    var lat = point.LATITUDE1;
+    var lng = point['LONGITUDE1'];
+    var lat = point['LATITUDE1'];
     linePoints.push(new BMap.Point(lng, lat));
   }
   var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
@@ -298,8 +319,8 @@ function dynamicLine(history_data) {
   addLine(history_data);//增加轨迹线
   for (var i = 0; i < history_data.length; i++) {
     var point = history_data[i];
-    lng = point.LONGITUDE1;
-    lat = point.LATITUDE1;
+    lng = point['LONGITUDE1'];
+    lat = point['LATITUDE1'];
     addMarker(point);//增加对应该的轨迹点
   }
   // 重新调整视野中心和缩放大小
@@ -310,7 +331,7 @@ function dynamicLine(history_data) {
 function get_track(history_data) {
   // console.log("get_track");
   // 开始标签
-  var point_label = new BMap.Point(history_data[0].LONGITUDE1, history_data[0].LATITUDE1);
+  var point_label = new BMap.Point(history_data[0]['LONGITUDE1'], history_data[0]['LATITUDE1']);
   // console.log("start point", history_data[0].TIME);
   var opts = {
     position: point_label,    // 指定文本标注所在的地理位置
@@ -330,7 +351,7 @@ function get_track(history_data) {
   map.addOverlay(label1);
 
   // 结束标签
-  var point_label = new BMap.Point(history_data[history_data.length - 1].LONGITUDE1, history_data[history_data.length - 1].LATITUDE1);
+  var point_label = new BMap.Point(history_data[history_data.length - 1]['LONGITUDE1'], history_data[history_data.length - 1]['LATITUDE1']);
   // console.log("end point", history_data[history_data.length - 1].TIME);
   var opts = {
     position: point_label,    // 指定文本标注所在的地理位置
