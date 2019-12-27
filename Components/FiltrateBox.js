@@ -199,9 +199,9 @@ $(document).ready(function () {
     MOVE_ARR[1] = $('#option-status-moving-btn').hasClass("grey-button") ? false : true;
 
     TYPE_FLTR = TYPE_ARR.reduce((x, y) => x && y, true);
-    // console.log(TYPE_FLTR, TYPE_ARR);
+    console.log(TYPE_FLTR, TYPE_ARR);
     SIZE_FLTR = SIZE_ARR.reduce((x, y) => x && y, true);
-    // console.log(SIZE_FLTR, SIZE_ARR);
+    console.log(SIZE_FLTR, SIZE_ARR);
     filterShips();
   })
 });
@@ -210,31 +210,39 @@ function getShipIcon(ship) {
   var typeID = ship.TYPE;
   if (70 <= typeID && typeID <= 79) {
     ship.TYPE_IDX = 0;
+    if (ship.HEADING == 511) return './img/cargoships_pt.png';
     return './img/cargoships.png';
   } else if (80 <= typeID && typeID <= 89) {
     ship.TYPE_IDX = 1;
+    if (ship.HEADING == 511) return './img/tankers_pt.png';
     return './img/tankers.png';
   } else if (60 <= typeID && typeID <= 69) {
     ship.TYPE_IDX = 2;
+    if (ship.HEADING == 511) return './img/passenger_pt.png';
     return './img/passenger.png';
   } else if (40 <= typeID && typeID <= 49) {
     ship.TYPE_IDX = 3;
+    if (ship.HEADING == 511) return './img/highspeedcrafts_pt.png';
     return './img/highspeedcrafts.png';
   } else if (36 <= typeID && typeID <= 37) {
     ship.TYPE_IDX = 4;
+    if (ship.HEADING == 511) return './img/Yatchs_pt.png';
     return './img/Yachts.png';
   } else if (typeID == 30) {
     ship.TYPE_IDX = 5;
+    if (ship.HEADING == 511) return './img/fishingship_pt.png';
     return './img/fishingship.png';
   } else if (typeID == 35) {
     ship.TYPE_IDX = 6;
+    if (ship.HEADING == 511) return './img/military_pt.png';
     return './img/military.png';
   } else if (0 <= typeID && typeID <= 19 || 38 <= typeID && typeID <= 39) {
     ship.TYPE_IDX = 7;
+    if (ship.HEADING == 511) return './img/othertype_pt.png';
     return './img/othertype.png';
   } else {
     ship.TYPE_IDX = 8;
-
+    if (ship.HEADING == 511) return './img/unknown_pt.png';
     return './img/unknown.png';
   }
 }
@@ -268,7 +276,7 @@ function filterShips() {
   for (var i = 0; i < ALL_SHIPS.length; i++) {
     thisShip = ALL_SHIPS[i];
     if (customPred(thisShip)) {
-      var img = new Image(0.1, 0.05);
+      var img = new Image(0.1, 0.1);
       img.src = getShipIcon(thisShip);
       setFilterProperties(thisShip);
       data.push({
@@ -329,25 +337,25 @@ function customPred(ship) {
 
   if (!TYPE_FLTR) {
     switch (typeIdx) {
-      case 0: if (!TYPE_ARR[0]) return false;
-      case 1: if (!TYPE_ARR[1]) return false;
-      case 2: if (!TYPE_ARR[2]) return false;
-      case 3: if (!TYPE_ARR[3]) return false;
-      case 4: if (!TYPE_ARR[4]) return false;
-      case 5: if (!TYPE_ARR[5]) return false;
-      case 6: if (!TYPE_ARR[6]) return false;
-      case 7: if (!TYPE_ARR[7]) return false;
+      case 0: if (!TYPE_ARR[0]) return false; else break;
+      case 1: if (!TYPE_ARR[1]) return false; else break;
+      case 2: if (!TYPE_ARR[2]) return false; else break;
+      case 3: if (!TYPE_ARR[3]) return false; else break;
+      case 4: if (!TYPE_ARR[4]) return false; else break;
+      case 5: if (!TYPE_ARR[5]) return false; else break;
+      case 6: if (!TYPE_ARR[6]) return false; else break;
+      case 7: if (!TYPE_ARR[7]) return false; else break;
       case 8: if (!TYPE_ARR[8]) return false;
     }
   }
   if (!SIZE_FLTR) {
     switch (sizeIdx) {
-      case 0: if (!SIZE_ARR[0]) return false;
-      case 1: if (!SIZE_ARR[1]) return false;
-      case 2: if (!SIZE_ARR[2]) return false;
-      case 3: if (!SIZE_ARR[3]) return false;
-      case 4: if (!SIZE_ARR[4]) return false;
-      case 5: if (!SIZE_ARR[5]) return false;
+      case 0: if (!SIZE_ARR[0]) return false; else break;
+      case 1: if (!SIZE_ARR[1]) return false; else break;
+      case 2: if (!SIZE_ARR[2]) return false; else break;
+      case 3: if (!SIZE_ARR[3]) return false; else break;
+      case 4: if (!SIZE_ARR[4]) return false; else break;
+      case 5: if (!SIZE_ARR[5]) return false; else break;
       case 6: if (!SIZE_ARR[6]) return false;
     }
   }
