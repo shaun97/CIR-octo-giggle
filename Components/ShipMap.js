@@ -47,7 +47,7 @@ function setThisShipHover(item) {
 
 function mapLayersInit() {
   filterShips(true);
-  // close_load();
+  close_load();
   addFunctionality();
 }
 
