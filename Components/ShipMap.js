@@ -14,7 +14,9 @@ function setThisShipSel(item) {
   var point = new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
   label_dot.setStyle(style_this_ship_label);
-  var blank = new BMap.Icon("img/boat_m.png", new BMap.Size(0, 0), {});
+  let icon = new Image(30,30);
+  icon.src = './img/square_focus.png';
+  var blank = new BMap.Icon('./img/square_focus.png', new BMap.Size(100, 100), {});
   var marker = new BMap.Marker(point, { icon: blank });
   marker.setLabel(label_dot);
   map.addOverlay(marker);
@@ -37,7 +39,7 @@ function setThisShipHover(item) {
   var point = new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
   label_dot.setStyle(style_this_ship_label_hover);
-  var blank = new BMap.Icon("img/boat_m.png", new BMap.Size(0, 0), {});
+  var blank = new BMap.Icon("img/square_focus.png", new BMap.Size(0, 0), {});
   var marker = new BMap.Marker(point, { icon: blank });
   marker.setLabel(label_dot);
   map.addOverlay(marker);
@@ -409,8 +411,8 @@ function openInfo(content, e) {
 
 $(function () {
   $.ajax({
-    url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
-    // url: "http://localhost:3000/data",
+    //url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
+     url: "http://localhost:3000/data",
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
