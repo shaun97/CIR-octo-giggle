@@ -241,7 +241,7 @@ function filterShips(boo) {
 
   if (boo) { // No filter
     for (var i = 0; i < ALL_SHIPS.length; i++) {
-      change(ALL_SHIPS[i]);
+      //change(ALL_SHIPS[i]);
       var img = new Image(0.1, 0.05);
       img.src = getShipIcon(ALL_SHIPS[i]);
       data.push({
@@ -258,7 +258,7 @@ function filterShips(boo) {
   } else {
     for (var i = 0; i < ALL_SHIPS.length; i++) {
       if (customPred(ALL_SHIPS[i])) {
-        change(ALL_SHIPS[i]);
+        //change(ALL_SHIPS[i]);
         var img = new Image(0.1, 0.05);
         img.src = getShipIcon(ALL_SHIPS[i]);
         data.push({
