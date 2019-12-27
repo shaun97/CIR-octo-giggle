@@ -241,7 +241,6 @@ function filterShips(boo) {
 
   if (boo) { // No filter
     for (var i = 0; i < ALL_SHIPS.length; i++) {
-      //change(ALL_SHIPS[i]);
       var img = new Image(0.1, 0.05);
       img.src = getShipIcon(ALL_SHIPS[i]);
       data.push({
@@ -258,7 +257,6 @@ function filterShips(boo) {
   } else {
     for (var i = 0; i < ALL_SHIPS.length; i++) {
       if (customPred(ALL_SHIPS[i])) {
-        //change(ALL_SHIPS[i]);
         var img = new Image(0.1, 0.05);
         img.src = getShipIcon(ALL_SHIPS[i]);
         data.push({
@@ -309,14 +307,6 @@ function filterShips(boo) {
   map.clearOverlays();
   MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
   close_load();
-}
-
-function change(item) {
-  // console.log(item);
-  if (!boundary.containsPoint(new BMap.Point(item.LONGITUDE, item.LATITUDE))) {
-    item.LONGITUDE1 = item.LONGITUDE;
-    item.LATITUDE1 = item.LATITUDE;
-  }
 }
 
 function customPred(ship) {

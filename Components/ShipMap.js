@@ -75,7 +75,7 @@ var style_this_ship_label = {
   padding: '0px 5px',
   background: 'red',
   color: '#fff',
-  opacity: "0.8"
+ //Test opacity: "0.8"
 };
 
 var style_this_ship_label_hover = {
