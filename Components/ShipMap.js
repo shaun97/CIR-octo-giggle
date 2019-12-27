@@ -12,12 +12,12 @@ function setThisShipSel(item) {
   if (THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
 
   var point = new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']);
-  var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
+  var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(34, 7) });
   label_dot.setStyle(style_this_ship_label);
-  let icon = new Image(30,30);
-  icon.src = './img/square_focus.png';
-  var blank = new BMap.Icon('./img/square_focus.png', new BMap.Size(100, 100), {});
-  var marker = new BMap.Marker(point, { icon: blank });
+  var square = new BMap.Icon('./img/square_focus.png',{}, {});
+  square.imageSize = new BMap.Size(30, 30);
+square.anchor = new BMap.Size(15,15);
+  var marker = new BMap.Marker(point, { icon: square });
   marker.setLabel(label_dot);
   map.addOverlay(marker);
   THIS_SHIP_LABEL = marker;
