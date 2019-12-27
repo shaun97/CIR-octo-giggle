@@ -408,8 +408,8 @@ function openInfo(content, e) {
 
 $(function () {
   $.ajax({
-    url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
-    // url: "http://localhost:3000/data",
+    // url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
+    url: "http://localhost:3000/data",
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {

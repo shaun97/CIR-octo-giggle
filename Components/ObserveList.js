@@ -115,7 +115,8 @@ $(document).ready(function () {
     });
 
     track.click(function () {
-      map.centerAndZoom(new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']), 12);
+      if (map.getZoom() < 12) map.setZoom(12);
+      map.panTo(new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']), true);
       setThisShipSel(item);
       showData(item);
     })
