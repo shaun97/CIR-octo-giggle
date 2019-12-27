@@ -359,7 +359,7 @@ function customPred(ship) {
       case 6: if (!SIZE_ARR[6]) return false;
     }
   }
-  
+
   if (!MOVE_ARR[0] && speed < 0.5 || !speed) return false;
   if (!MOVE_ARR[1] && speed >= 0.5) return false;
   // switch 
