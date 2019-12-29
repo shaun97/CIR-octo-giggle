@@ -48,7 +48,7 @@ function setThisShipHover(item) {
 }
 
 function mapLayersInit() {
-  filterShips(true);
+  filterShips();
   close_load();
   addFunctionality();
 }
@@ -190,7 +190,7 @@ function cha_info(id) {
       success: function (data) {
         // console.log(data.data, id); // Will need to change this to data.data
         try {
-          console.log(data.data);
+          // console.log(data.data);
 
           if (data.data == null) throw new Error('No data on this ship');
 
@@ -416,14 +416,17 @@ function openInfo(content, e) {
 }
 
 $(function () {
+  // console.log("1");
   $.ajax({
     url: `http://${IP_ADDRESS}/ships/getDateJson`,
     // url: "http://localhost:3000/data",
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
+      // console.log("1");
       ALL_SHIPS = data.data; // Change back
       // ALL_SHIPS = data;
+      // console.log(ALL_SHIPS);
       mapLayersInit();
     },
     error: function () {

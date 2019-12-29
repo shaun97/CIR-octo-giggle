@@ -268,18 +268,24 @@ function setFilterProperties(ship) {
 
 function filterShips() {
   var data = [];
+  // console.log(ALL_SHIPS);
   if (!ALL_SHIPS) {
     alert("Please refresh page");
     return;
   }
   let thisShip = null;
+  let check = 0;
   for (var i = 0; i < ALL_SHIPS.length; i++) {
     thisShip = ALL_SHIPS[i];
+    setFilterProperties(thisShip);
+    if (i == 0 )console.log(thisShip, thisShip['LONGITUDE1'], thisShip['LATITUDE1']);
     if (customPred(thisShip)) {
+      check++;
       var img = new Image(0.1, 0.1);
       img.src = getShipIcon(thisShip);
       // if (thisShip.MMSI = "413821923" && thisShip.NAME == "CHANGRAN61") console.log(thisShip);
-      setFilterProperties(thisShip);
+      // if (i == 0 ) console.log(thisShip);
+      // if (i == 0 ) console.log(thisShip.LONGITUDE1, thisShip.LATITUDE1);
       data.push({
         geometry: {
           type: 'Point',
@@ -292,6 +298,8 @@ function filterShips() {
       });
     }
   }
+  console.log("check:", check, "all:", ALL_SHIPS.length);
+  // console.log(data[0]);
   // 船只
   // 第一步创建mapv示例 -船只数开始
   // 数据集
@@ -335,6 +343,7 @@ function customPred(ship) {
   const typeIdx = ship.TYPE_IDX;
   const sizeIdx = ship.SIZE_IDX;
   const speed = ship.SOG;
+  // console.log("type", typeIdx, "size", sizeIdx, "move", MOVE_ARR);
 
   if (!TYPE_FLTR) {
     switch (typeIdx) {
@@ -361,7 +370,7 @@ function customPred(ship) {
     }
   }
 
-  if (!MOVE_ARR[0] && speed < 0.5 || !speed) return false;
+  if (!MOVE_ARR[0] && speed < 0.5) return false;
   if (!MOVE_ARR[1] && speed >= 0.5) return false;
   // switch 
   return true;

@@ -19,8 +19,8 @@ map.addControl(MapType);
 // 自定义控件---放大缩小
 function ZoomControl() {
   // 默认停靠位置和偏移量
-  // this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
-  // this.defaultOffset = new BMap.Size(10, 10);
+  this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
+  this.defaultOffset = new BMap.Size(10, 10);
 }
 ZoomControl.prototype = new BMap.Control();
 ZoomControl.prototype.initialize = function (map) {
