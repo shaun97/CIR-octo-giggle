@@ -335,7 +335,9 @@ function dynamicLine(history_data) {
     addMarker(point);//增加对应该的轨迹点
   }
   // 重新调整视野中心和缩放大小
-  map.centerAndZoom(new BMap.Point(lng, lat), 9);
+  // map.centerAndZoom(new BMap.Point(lng, lat), 9);
+  if (map.getZoom() < 11) map.setZoom(11);
+  map.panTo(lng, lat);
 }
 
 // 开始和结束图片 FOR START AND END MARKERS
