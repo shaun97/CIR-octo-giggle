@@ -172,12 +172,6 @@ function cha_info(id) {
     //Testing
     var dateRange = $('#ship-date-range').val();
     $('#ship-date-range').val("");
-    if (!dateRange.split(" - ")[0] || !dateRange.split(" - ")[1]) {
-      alert("Please choose a date");
-      return;
-    }
-    var startDate = new Date(dateRange.split(" - ")[0]);
-    var endDate = new Date(dateRange.split(" - ")[1]);
     // console.log(startDate, dateRange.split(" - ")[0], endDate, dateRange.split(" - ")[1]);
 
     map.clearOverlays();
@@ -218,12 +212,16 @@ function cha_info(id) {
           // */
           // ----------------------------------- MOCK ----------------------------------- // 
 
-
-
-          var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
+          if (!dateRange.split(" - ")[0] || !dateRange.split(" - ")[1]) {
+            var history_data = data.data;
+          } else {
+            var startDate = new Date(dateRange.split(" - ")[0]);
+            var endDate = new Date(dateRange.split(" - ")[1]);
+            var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
+          }
 
           history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
-          history_data = history_data.slice(Math.max(history_data.length - 15, 0)); // Slice first 
+  
 
           if (history_data.length == 0) {
             throw new Error('No data on this ship');

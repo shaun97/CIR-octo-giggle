@@ -15,7 +15,7 @@ body {
   height: 100%;
 }
 .ship_head {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
