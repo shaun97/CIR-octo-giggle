@@ -178,7 +178,7 @@ function cha_info(id) {
     }
     var startDate = new Date(dateRange.split(" - ")[0]);
     var endDate = new Date(dateRange.split(" - ")[1]);
-    console.log(startDate, dateRange.split(" - ")[0], endDate, dateRange.split(" - ")[1]);
+    // console.log(startDate, dateRange.split(" - ")[0], endDate, dateRange.split(" - ")[1]);
 
     map.clearOverlays();
     MAP_VIEW = false;
@@ -195,7 +195,7 @@ function cha_info(id) {
           if (data.data == null) throw new Error('No data on this ship');
 
           // ----------------------------------- MOCK ----------------------------------- //
-          
+          /*
           let history_data = [
             // {
             //   NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63228361228394,
@@ -220,7 +220,7 @@ function cha_info(id) {
 
 
 
-          // var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
+          var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
 
           history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
           history_data = history_data.slice(Math.max(history_data.length - 15, 0)); // Slice first 
