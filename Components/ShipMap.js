@@ -183,7 +183,7 @@ function cha_info(id) {
     map.clearOverlays();
     MAP_VIEW = false;
     $.ajax({
-      url: `http://${IP_ADDRESS}/shipsController/getMMSI?MmsiIorName=` + id,
+      url: `http://${IP_ADDRESS}/ships/getMMSI?MmsiIorName=` + id,
       // url: 'http://localhost:3000/data',
       type: "GET",//请求方式为get
       dataType: "json", //返回数据格式为json
