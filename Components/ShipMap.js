@@ -136,7 +136,7 @@ function showData(item) {
   $("#ship-info-id-m").text(IMO == null ? "-" : IMO);
   $("#ship-info-length").text(A == null ? "-" : A);
   $("#ship-info-dest").text(DEST == null ? "-" : DEST);
-  $("#ship-info-time").text(TIME == null ? "-" : TIME);
+  $("#ship-info-time").text(TIME == null ? "-" : convertDateToString(TIME));
   $("#ship-info-id-l").text(!MMSI ? "-" : MMSI);
   $("#ship-info-id-s").text(CALLSIGN == null ? "-" : CALLSIGN);
   $("#ship-info-type").text(TYPE == null ? "-" : TYPE);
@@ -222,7 +222,6 @@ function cha_info(id) {
 
           history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
   
-
           if (history_data.length == 0) {
             throw new Error('No data on this ship');
           }
@@ -257,14 +256,14 @@ function addMarker(point) {
   // var content_track0 ="到港时间:***离岗时间:***港口名字***";
 
   // 添加标签
-  var localTime = new Date(point.TIME).toLocaleString().replace(/\//g, '-');
+  var time = convertDateToString(point.TIME);
   //HERE
   var point_label = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
   var opts = {
     position: point_label,    // 指定文本标注所在的地理位置
     offset: new BMap.Size(20, -10)    //设置文本偏移量
   };
-  var label = new BMap.Label(localTime, opts);  // 创建文本标注对象
+  var label = new BMap.Label(time, opts);  // 创建文本标注对象
   label.setStyle({
     color: "#fff",
     fontSize: "16px",
@@ -442,6 +441,10 @@ $(function () {
     setThisShipSel(item);
   });
 });
+
+function convertDateToString(date) {
+  return new Date(date).toLocaleString('en-GB', { timeZoneName: 'short' }).replace(/\//g, '-');
+}
 
 var map = new BMap.Map("ship-map"); //初始化地图
 // map.setMaxZoom(10);
