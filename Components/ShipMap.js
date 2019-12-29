@@ -252,7 +252,7 @@ function addMarker(point) {
     offset: new BMap.Size(5, 5),
   });
   var marker_track0 = new BMap.Marker(point_track0, { icon: myIcon });
-  var content_track0 = "MMSI: " + point.MMSI + "<br>时间: " + point.TIME + "<br>航速: " + point.SOG;
+  var content_track0 = "MMSI: " + point.MMSI + "<br>时间: " + convertDateToString(point.TIME) + "<br>航速: " + point.SOG;
   // var content_track0 ="到港时间:***离岗时间:***港口名字***";
 
   // 添加标签
@@ -265,14 +265,28 @@ function addMarker(point) {
   };
   var label = new BMap.Label(time, opts);  // 创建文本标注对象
   label.setStyle({
-    color: "#fff",
+    color: "#000",
     fontSize: "16px",
     height: "20px",
     lineHeight: "20px",
-    border: "0px solid rgba(6, 28, 44, 0.51)",
-    background: "rgba(6, 28, 44, 0.51)",
+    border: "1px solid rgba(6, 28, 44, 0.51)",
+    background: "rgba(255, 255, 255, 0.80)",
+    // background: 'white',
     fontFamily: "微软雅黑",
     padding: '5px',
+    // opacity: '0%'
+    visibility: 'hidden',
+  });
+
+  marker_track0.addEventListener('mouseover', () => {
+    label.setStyle({
+      visibility: 'visible'
+    })
+  });
+  marker_track0.addEventListener('mouseout', () => {
+    label.setStyle({
+      visibility: 'hidden'
+    })
   });
 
   map.addOverlay(label);
@@ -283,6 +297,7 @@ function addMarker(point) {
 
 //添加线
 function addLine(history_data) {
+  history_data = history_data.reverse();
   // 创建标注对象并添加到地图
   if (history_data.length < 2) return;
   var linePoints = [];
@@ -292,16 +307,16 @@ function addLine(history_data) {
     var lat = point['LATITUDE1'];
     linePoints.push(new BMap.Point(lng, lat));
   }
-  var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
-    scale: 0.3,//图标缩放大小
-    strokeColor: '#fff',//设置矢量图标的线填充颜色
-    strokeWeight: '1',//设置线宽
-  });
-  var icons = new BMap.IconSequence(sy, '10', '30', true);
+  // var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
+  //   scale: 0.3,//图标缩放大小
+  //   strokeColor: '#fff',//设置矢量图标的线填充颜色
+  //   strokeWeight: '1',//设置线宽
+  // });
+  // var icons = new BMap.IconSequence(sy, '10', '30', true);
   var polyline = new BMap.Polyline(linePoints, {
     enableEditing: false,//是否启用线编辑，默认为false
     enableClicking: true,//是否响应点击事件，默认为true
-    icons: [icons],
+    // icons: [icons],
     strokeColor: "#e3682d",
     strokeWeight: 2,
     strokeOpacity: 0.5,
