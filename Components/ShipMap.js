@@ -227,7 +227,7 @@ function cha_info(id) {
             throw new Error('No data on this ship');
           }
           dynamicLine(history_data);
-          get_track(history_data); //开始和结束的图标
+          // get_track(history_data); //开始和结束的图标
         } catch (error) {
           alert("Cannot load this ship's ship data");
           console.log(error);
@@ -253,7 +253,7 @@ function addMarker(point) {
     offset: new BMap.Size(5, 5),
   });
   var marker_track0 = new BMap.Marker(point_track0, { icon: myIcon });
-  var content_track0 = "MMSI:" + point.MMSI + "<br>时间:" + point.TIME + "<br>航速:" + point.SOG;
+  var content_track0 = "MMSI: " + point.MMSI + "<br>时间: " + point.TIME + "<br>航速: " + point.SOG;
   // var content_track0 ="到港时间:***离岗时间:***港口名字***";
 
   // 添加标签
@@ -274,21 +274,9 @@ function addMarker(point) {
     background: "rgba(6, 28, 44, 0.51)",
     fontFamily: "微软雅黑",
     padding: '5px',
-    visibility: 'hidden'
   });
 
   map.addOverlay(label);
-
-  marker_track0.addEventListener('mouseover', () => {
-    label.setStyle({
-      visibility: 'visible'
-    })
-  });
-  marker_track0.addEventListener('mouseout', () => {
-    label.setStyle({
-      visibility: 'hidden'
-    })
-  });
 
   map.addOverlay(marker_track0);
   addClickHandler(content_track0, marker_track0);
@@ -339,62 +327,62 @@ function dynamicLine(history_data) {
 }
 
 // 开始和结束图片 FOR START AND END MARKERS
-function get_track(history_data) {
-  // console.log("get_track");
-  // 开始标签
-  var point_label = new BMap.Point(history_data[0]['LONGITUDE1'], history_data[0]['LATITUDE1']);
-  // console.log("start point", history_data[0].TIME);
-  var opts = {
-    position: point_label,    // 指定文本标注所在的地理位置
-    offset: new BMap.Size(-13, -45)    //设置文本偏移量
-  };
-  var label1 = new BMap.Label('', opts);  // 创建文本标注对象
-  label1.setStyle({
-    height: "50px",
-    lineHeight: "50px",
-    width: '30px',
-    border: "none",
-    background: "url('img/start2.png')",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "100% auto",
-  });
-  // console.log("added start overlay");
-  map.addOverlay(label1);
+// function get_track(history_data) {
+//   // console.log("get_track");
+//   // 开始标签
+//   var point_label = new BMap.Point(history_data[0]['LONGITUDE1'], history_data[0]['LATITUDE1']);
+//   // console.log("start point", history_data[0].TIME);
+//   var opts = {
+//     position: point_label,    // 指定文本标注所在的地理位置
+//     offset: new BMap.Size(-13, -45)    //设置文本偏移量
+//   };
+//   var label1 = new BMap.Label('', opts);  // 创建文本标注对象
+//   label1.setStyle({
+//     height: "50px",
+//     lineHeight: "50px",
+//     width: '30px',
+//     border: "none",
+//     background: "url('img/start2.png')",
+//     backgroundRepeat: "no-repeat",
+//     backgroundSize: "100% auto",
+//   });
+//   // console.log("added start overlay");
+//   map.addOverlay(label1);
 
-  // 结束标签
-  var point_label = new BMap.Point(history_data[history_data.length - 1]['LONGITUDE1'], history_data[history_data.length - 1]['LATITUDE1']);
-  // console.log("end point", history_data[history_data.length - 1].TIME);
-  var opts = {
-    position: point_label,    // 指定文本标注所在的地理位置
-    offset: new BMap.Size(-14, -47)    //设置文本偏移量
-  };
-  var label2 = new BMap.Label('', opts);  // 创建文本标注对象
-  if (history_data[history_data.length - 1].arrival_dest_port == false) { // If have not arrived
-    label2.setStyle({
-      height: "50px",
-      lineHeight: "50px",
-      width: '30px',
-      border: "none",
-      background: "url('img/stop2.png')",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "100% auto",
-    });
-    // console.log("added end overlay");
-    map.addOverlay(label2);
-  } else {
-    label2.setStyle({
-      height: "50px",
-      lineHeight: "50px",
-      width: '30px',
-      border: "none",
-      background: "url('img/stop1.png')",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "100% auto",
-    });
-    // console.log("added end overlay");
-    map.addOverlay(label2);
-  }
-}
+//   // 结束标签
+//   var point_label = new BMap.Point(history_data[history_data.length - 1]['LONGITUDE1'], history_data[history_data.length - 1]['LATITUDE1']);
+//   // console.log("end point", history_data[history_data.length - 1].TIME);
+//   var opts = {
+//     position: point_label,    // 指定文本标注所在的地理位置
+//     offset: new BMap.Size(-14, -47)    //设置文本偏移量
+//   };
+//   var label2 = new BMap.Label('', opts);  // 创建文本标注对象
+//   if (history_data[history_data.length - 1].arrival_dest_port == false) { // If have not arrived
+//     label2.setStyle({
+//       height: "50px",
+//       lineHeight: "50px",
+//       width: '30px',
+//       border: "none",
+//       background: "url('img/stop2.png')",
+//       backgroundRepeat: "no-repeat",
+//       backgroundSize: "100% auto",
+//     });
+//     // console.log("added end overlay");
+//     map.addOverlay(label2);
+//   } else {
+//     label2.setStyle({
+//       height: "50px",
+//       lineHeight: "50px",
+//       width: '30px',
+//       border: "none",
+//       background: "url('img/stop1.png')",
+//       backgroundRepeat: "no-repeat",
+//       backgroundSize: "100% auto",
+//     });
+//     // console.log("added end overlay");
+//     map.addOverlay(label2);
+//   }
+// }
 
 // 鼠标指上显示
 var opts3 = {
