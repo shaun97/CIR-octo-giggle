@@ -278,6 +278,7 @@ function filterShips() {
     if (customPred(thisShip)) {
       var img = new Image(0.1, 0.1);
       img.src = getShipIcon(thisShip);
+      // if (thisShip.MMSI = "413821923" && thisShip.NAME == "CHANGRAN61") console.log(thisShip);
       setFilterProperties(thisShip);
       data.push({
         geometry: {

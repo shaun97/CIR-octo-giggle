@@ -129,6 +129,7 @@ function addClickHandler_dot_click(item) {
 function showData(item) {
   // others DRAUGHT, B, C, NAVSTAT, D, SOG, HEADING, ETA, ROT, COG
   let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST, NICKNAME } = item.data;
+  console.log(item.data);
   $("#ship-info-box").show();
   $("#ship-info-nknm").text(NICKNAME == null ? (NAME == null ? "-" : NAME) : NICKNAME);
   $("#ship-info-name").text(NAME == null ? "-" : NAME);
@@ -136,7 +137,7 @@ function showData(item) {
   $("#ship-info-length").text(A == null ? "-" : A);
   $("#ship-info-dest").text(DEST == null ? "-" : DEST);
   $("#ship-info-time").text(TIME == null ? "-" : TIME);
-  $("#ship-info-id-l").text(MMSI == null ? "-" : MMSI);
+  $("#ship-info-id-l").text(!MMSI ? "-" : MMSI);
   $("#ship-info-id-s").text(CALLSIGN == null ? "-" : CALLSIGN);
   $("#ship-info-type").text(TYPE == null ? "-" : TYPE);
   $("#ship-info-lng").text(LONGITUDE == null ? "-" : LONGITUDE);
@@ -171,8 +172,13 @@ function cha_info(id) {
     //Testing
     var dateRange = $('#ship-date-range').val();
     $('#ship-date-range').val("");
+    if (!dateRange.split(" - ")[0] || !dateRange.split(" - ")[1]) {
+      alert("Please choose a date");
+      return;
+    }
     var startDate = new Date(dateRange.split(" - ")[0]);
     var endDate = new Date(dateRange.split(" - ")[1]);
+    console.log(startDate, dateRange.split(" - ")[0], endDate, dateRange.split(" - ")[1]);
 
     map.clearOverlays();
     MAP_VIEW = false;
@@ -189,20 +195,20 @@ function cha_info(id) {
           if (data.data == null) throw new Error('No data on this ship');
 
           // ----------------------------------- MOCK ----------------------------------- //
-          /*
+          
           let history_data = [
-            {
-              NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63228361228394,
-              LATITUDE1: 29.61557934824466, TIME: '2019-12-20 08:25:25 GMT'
-            },
-            {
-              NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.637038768093,
-              LATITUDE1: 29.60663977276527, TIME: '2019-12-20 08:35:25 GMT'
-            },
-            {
-              NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63709427282245,
-              LATITUDE1: 29.603097542389676, TIME: '2019-12-20 08:45:25 GMT'
-            },
+            // {
+            //   NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63228361228394,
+            //   LATITUDE1: 29.61557934824466, TIME: '2019-12-20 08:25:25 GMT'
+            // },
+            // {
+            //   NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.637038768093,
+            //   LATITUDE1: 29.60663977276527, TIME: '2019-12-20 08:35:25 GMT'
+            // },
+            // {
+            //   NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63709427282245,
+            //   LATITUDE1: 29.603097542389676, TIME: '2019-12-20 08:45:25 GMT'
+            // },
             {
               NAME: 'CHANGRAN61', MMSI: 413821923, LONGITUDE: 106.62659, LATITUDE: 34.4663, LONGITUDE1: 106.63787160112857,
               LATITUDE1: 29.599258851919817, TIME: '2019-12-20 08:55:25 GMT'
@@ -214,7 +220,7 @@ function cha_info(id) {
 
 
 
-          var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
+          // var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
 
           history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
           history_data = history_data.slice(Math.max(history_data.length - 15, 0)); // Slice first 
@@ -411,8 +417,8 @@ function openInfo(content, e) {
 
 $(function () {
   $.ajax({
-    //url: `http://${IP_ADDRESS}/shipsController/getDateJson`,
-    url: "http://localhost:3000/data",
+    url: `http://${IP_ADDRESS}/ships/getDateJson`,
+    // url: "http://localhost:3000/data",
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
