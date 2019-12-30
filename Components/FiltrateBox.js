@@ -282,8 +282,8 @@ function filterShips() {
         geometry: {
           type: 'Point',
           coordinates: [thisShip['LONGITUDE1'], thisShip['LATITUDE1']],
-          id: i,
         },
+        id: i,
         icon: img,
         deg: thisShip.HEADING - 90,
         data: thisShip,
