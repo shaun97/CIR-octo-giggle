@@ -1,6 +1,3 @@
-const FLEETS = {};
-let FLEET_NAME_LIST = [];
-
 $(document).ready(function () {
   $("#observe-close-button").click(function () {
     $("#observe-list-box").hide();

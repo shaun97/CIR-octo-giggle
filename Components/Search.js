@@ -1,5 +1,3 @@
-let SEARCH_SHIP = null;
-
 $('.se_btn').click(function () {
     map.setDefaultCursor('wait');
     var MmsiIorName = $('.search_box2_child').val().trim();

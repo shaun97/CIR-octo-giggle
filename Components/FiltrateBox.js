@@ -1,11 +1,3 @@
-let TYPE_ARR = Array(9).fill(true);
-let TYPE_FLTR = true;
-let SIZE_ARR = Array(8).fill(true);
-let SIZE_FLTR = true;
-let MOVE_ARR = Array(2).fill(true);
-
-let PRED = null;
-
 $(document).ready(function () {
   //Close Button
   $("#filtrate-close-button").click(function () {
