@@ -10,9 +10,6 @@ function showTable(fleet, fleetName) {
       let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST, SOG, DRAUGHT, ETA} = fleet[i].data; //.data;
       let o = '<td>';
       let c = '</td>';
-      // A = o + A + c;
-      // IMO = o + IMO + c;
-      // TYPE = o + TYPE + c;
 
       FLEETNAME = o + fleetName + c;
       NAME = o + NAME + c;
@@ -24,7 +21,7 @@ function showTable(fleet, fleetName) {
       DRAUGHT = o + DRAUGHT + c;
       DEST = o + DEST + c;
       ETA = o + ETA + c;
-      TIME = o + TIME + c;
+      TIME = o + convertDateToString(TIME) + c;
 
       $('#observe-list-table').append(
           '<tr>' +
