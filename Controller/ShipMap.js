@@ -326,7 +326,7 @@ map.enableScrollWheelZoom();//滚轮放大缩小。
       BMAP_HYBRID_MAP,
       BMAP_NORMAL_MAP
     ],
-    offset: new BMap.Size(20, 85)
+    offset: new BMap.Size(50, 120)
   }
 
   var MapType = new BMap.MapTypeControl(
