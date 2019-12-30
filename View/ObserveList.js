@@ -53,13 +53,6 @@ $(document).ready(function () {
     });
 
     tableF.click((e) => {
-      // var history_data = [
-      //       { MMSI: 565731000, TIME: "2019-12-20 08:28:04 GMT", LONGITUDE: 131.2823, LATITUDE: 28.84995 },
-      //       { MMSI: 565731000, TIME: "2019-12-20 08:29:04 GMT", LONGITUDE: 130.7823, LATITUDE: 28.44995 },
-      //       { MMSI: 565731000, TIME: "2019-12-20 08:25:04 GMT", LONGITUDE: 132.7823, LATITUDE: 28.94995 },
-      //       { MMSI: 565731000, TIME: "2019-12-20 08:26:04 GMT", LONGITUDE: 132.2823, LATITUDE: 29.54995 },
-      //       { MMSI: 565731000, TIME: "2019-12-20 08:27:04 GMT", LONGITUDE: 131.7823, LATITUDE: 29.44995 },
-      //     ]
       showTable(FLEETS[fleetNameId], newFleetName);
       $("#group-info-box").show();
     });
@@ -88,7 +81,6 @@ $(document).ready(function () {
     }
     const item = THIS_SHIP_ITEM;
     $("#add-fleet-btn").click();
-    // console.log(FLEETS[fleetName.replace(" ", "_")]);
     const unique = FLEETS[fleetName.replace(" ", "_")].reduce((x, y) => x && (y.data.MMSI != item.data.MMSI), true);
     if (!unique) {
       alert('This ship is already in fleet');
@@ -105,7 +97,6 @@ $(document).ready(function () {
     FLEETS[fleetName.replace(" ", "_")].push(item);
     showData(item);
 
-    // console.log("FLEETS after add ship", FLEETS);
     //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
 
     eye.click(function () {
@@ -122,7 +113,6 @@ $(document).ready(function () {
     })
 
     close.click(function () {
-      console.log(FLEETS[fleetName.replace(" ", "_")]);
       FLEETS[fleetName.replace(" ", "_")] = FLEETS[fleetName.replace(" ", "_")].filter(x => x != item);
       ship.remove();
     });
@@ -138,6 +128,7 @@ $(document).ready(function () {
   }
   setFleetAutoComplete();
 });
+
 // Needed for checkbox 
 layui.use(['element', 'layer', 'form'], function () {
   var element = layui.element;
