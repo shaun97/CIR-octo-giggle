@@ -1,6 +1,3 @@
-const FLEETS = {};
-let FLEET_NAME_LIST = [];
-
 $(document).ready(function () {
   $("#observe-close-button").click(function () {
     $("#observe-list-box").hide();
@@ -31,10 +28,7 @@ $(document).ready(function () {
 
     //-------------- FUNCTIONALITY FOR FLEET TREE-BUTTONS --------------//
 
-    // <i class="layui-icon layui-colla-icon"></i>
-    // console.log('added functionality');
     newFleet.click(function () {
-      // console.log('toggle');
       content.toggleClass("layui-show");
       icon.html() == "" ? icon.html("") : icon.html(""); // Styling for Dropdown
     })
