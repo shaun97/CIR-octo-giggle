@@ -1,18 +1,15 @@
-// Moved to Modal
-/*
-var ALL_SHIPS = [];
-var MAPV_LAYER;
-var BOAT_MARKERS = [];
-var MAP_VIEW = true;
-var THIS_SHIP_ITEM = null;
-var THIS_SHIP_ITEM_HOVER = null;
-var THIS_SHIP_LABEL = null;
-var THIS_SHIP_LABEL_HOVER = null;
-*/
-
 function setThisShipSel(item) {
   if (THIS_SHIP_ITEM == item) return;
   if (THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
+
+  var style_this_ship_label = {
+    border: "0px solid rgba(6, 28, 44, 0.51)",
+    fontFamily: "微软雅黑",
+    padding: '0px 5px',
+    background: 'red',
+    color: '#fff',
+    //Test opacity: "0.8"
+  };
 
   var point = new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(34, 7) });
@@ -30,14 +27,23 @@ function setThisShipSel(item) {
 function setThisShipHover(item) {
   if (item == null) {
     if (THIS_SHIP_LABEL_HOVER != null) map.removeOverlay(THIS_SHIP_LABEL_HOVER);
+    THIS_SHIP_ITEM_HOVER = null;
     return;
   } else if (THIS_SHIP_ITEM == item) {
-    return
+    return;
   } else if (THIS_SHIP_ITEM_HOVER != item) {
     map.removeOverlay(THIS_SHIP_LABEL_HOVER);
-  } else { //item == THIS_SHIP_LABEL_ITEM
+  } else { //item == THIS_SHIP_ITEM_HOVER
     return;
   }
+
+  var style_this_ship_label_hover = {
+    border: "0px solid rgba(6, 28, 44, 0.51)",
+    fontFamily: "微软雅黑",
+    padding: '0px 5px',
+    background: 'white',
+    color: '#000',
+  };
 
   var point = new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(20, -7) });
@@ -59,233 +65,152 @@ function resetView() {
   MAPV_LAYER.show();
 }
 
-// function drawBoatMarker(boatMarker, data, boo) {
-//   boatMarker.data = data;
-//   boatMarker.setRotation(data.HEADING);
-//   map.addOverlay(boatMarker);
-
-//   var label_dot = new BMap.Label(data.NAME, { offset: new BMap.Size(25, 0) });
-//   var style_info = {
-//     border: "0px solid rgba(6, 28, 44, 0.51)",
-//     fontFamily: "微软雅黑",
-//     padding: '0px 5px',
-//   };
-
-var style_this_ship_label = {
-  border: "0px solid rgba(6, 28, 44, 0.51)",
-  fontFamily: "微软雅黑",
-  padding: '0px 5px',
-  background: 'red',
-  color: '#fff',
-  //Test opacity: "0.8"
-};
-
-var style_this_ship_label_hover = {
-  border: "0px solid rgba(6, 28, 44, 0.51)",
-  fontFamily: "微软雅黑",
-  padding: '0px 5px',
-  background: 'white',
-  color: '#000',
-};
-//   var style_info3 = {
-//     border: "0px solid rgba(6, 28, 44, 0.51)",
-//     fontFamily: "微软雅黑",
-//     padding: '0px 5px',
-//     background: '#fff',
-//     color: '#000',
-//   };
-//   // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER -----START------
-//   if (boo) {
-//     label_dot.setStyle(style_info2);
-//     boatMarker.setTop(true);
-//   } else {
-//     label_dot.setStyle(style_info);
-//     addMouseHandler_dot_over(boatMarker, style_info3, label_dot);
-//     addMouseHandler_dot_out(boatMarker, style_info, label_dot);
-//   }
-//   // STYLING FOR THE SEARCH WILL HAVE TO CHANGE THIS LATER ------END-------
-//   boatMarker.setLabel(label_dot);
-
-//   addClickHandler_dot_click(boatMarker);
-
 function addClickHandler_dot_click(item) {
-  map.panTo(new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']), true);
-  // map.addOverlay(new BMap.Marker(new BMap.Point(item.data['LONGITUDE'], item.data['LATITUDE'])));
-  setThisShipSel(item)
+  // item has item.data that contains data
+  map.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
+  setThisShipSel(item);
   showData(item);
+  setUpTrack(item);
 }
 
-// function addMouseHandler_dot_over(marker, style, label_dot2) {
-//   marker.addEventListener("mouseover", function (e) {
-//     return label_dot2.setStyle(style_info2);
-//   });
-// }
-// function addMouseHandler_dot_out(marker, style, label_dot2) {
-//   marker.addEventListener("mouseout", function (e) {
-//     return label_dot2.setStyle(style_info3);
-//   });
-// }
-
-function showData(item) {
-  // others DRAUGHT, B, C, NAVSTAT, D, SOG, HEADING, ETA, ROT, COG
-  let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST, NICKNAME } = item.data;
-  console.log(item.data);
-  $("#ship-info-box").show();
-  $("#ship-info-nknm").text(NICKNAME == null ? (NAME == null ? "-" : NAME) : NICKNAME);
-  $("#ship-info-name").text(NAME == null ? "-" : NAME);
-  $("#ship-info-id-m").text(IMO == null ? "-" : IMO);
-  $("#ship-info-length").text(A == null ? "-" : A);
-  $("#ship-info-dest").text(DEST == null ? "-" : DEST);
-  $("#ship-info-time").text(TIME == null ? "-" : convertDateToString(TIME));
-  $("#ship-info-id-l").text(!MMSI ? "-" : MMSI);
-  $("#ship-info-id-s").text(CALLSIGN == null ? "-" : CALLSIGN);
-  $("#ship-info-type").text(TYPE == null ? "-" : TYPE);
-  $("#ship-info-lng").text(LONGITUDE == null ? "-" : LONGITUDE);
-  $("#ship-info-lat").text(LATITUDE == null ? "-" : LATITUDE);
-  cha_info(MMSI);
-}
-
-function cha_info(id) {
+function setUpTrack(item) {
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
   $('#inq-track-btn').click(function () {
-
-    //Testing
-    var dateRange = $('#ship-date-range').val();
-    $('#ship-date-range').val("");
-    // console.log(startDate, dateRange.split(" - ")[0], endDate, dateRange.split(" - ")[1]);
-
     map.clearOverlays();
     MAP_VIEW = false;
-    chaInfoAjax(dateRange, id);
-    // Moved to Modal/Ajax
-    /*
-    $.ajax({
-      url: `http://${IP_ADDRESS}/ships/getMMSI?MmsiIorName=` + id,
-      // url: 'http://localhost:3000/data',
-      type: "GET",//请求方式为get
-      dataType: "json", //返回数据格式为json
-      success: function (data) {
-        // console.log(data.data, id); // Will need to change this to data.data
-        try {
-          // console.log(data.data);
+    chaInfoAjax(item.data.MMSI);
 
-          if (data.data == null) throw new Error('No data on this ship');
-
-          if (!dateRange.split(" - ")[0] || !dateRange.split(" - ")[1]) {
-            var history_data = data.data;
-          } else {
-            var startDate = new Date(dateRange.split(" - ")[0]);
-            var endDate = new Date(dateRange.split(" - ")[1]);
-            var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
-          }
-
-          history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
-
-          if (history_data.length == 0) {
-            throw new Error('No data on this ship');
-          }
-          dynamicLine(history_data);
-          // get_track(history_data); //开始和结束的图标
-        } catch (error) {
-          alert("Cannot load this ship's ship data");
-          console.log(error);
-
-          $('#clr-track-btn').click();
-        }
-      },
-      error: function () {
-        alert("Error please try again");
-        $('#clr-track-btn').click();
-      }
-    });
-    */
+    if (map.getZoom() < 11) map.setZoom(11);
+    map.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
+  });
+  $('#clr-track-btn').click(function () {
+    MAP_VIEW = true;
+    map.clearOverlays();
+    resetView();
+    let item = THIS_SHIP_ITEM;
+    THIS_SHIP_ITEM = null; // Cheat
+    setThisShipSel(item);
   });
 }
 
-// 查询轨迹
-//在轨迹点上创建图标，并添加点击事件，显示轨迹点信息。points,数组。
-function addMarker(point) {
-  //添加标注
-  var point_track0 = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
-  // map.centerAndZoom(point_track0, 15);
-  var myIcon = new BMap.Icon("img/dot.png", new BMap.Size(15, 15), {
-    offset: new BMap.Size(5, 5),
-  });
-  var marker_track0 = new BMap.Marker(point_track0, { icon: myIcon });
-  var content_track0 = "MMSI: " + point.MMSI + "<br>时间: " + convertDateToString(point.TIME) + "<br>航速: " + point.SOG;
-  // var content_track0 ="到港时间:***离岗时间:***港口名字***";
+function drawTrack(data) {
+  try {
 
-  // 添加标签
-  var time = convertDateToString(point.TIME);
-  //HERE
-  var point_label = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
-  var opts = {
-    position: point_label,    // 指定文本标注所在的地理位置
-    offset: new BMap.Size(20, -10)    //设置文本偏移量
-  };
-  var label = new BMap.Label(time, opts);  // 创建文本标注对象
-  label.setStyle({
-    color: "#000",
-    fontSize: "16px",
-    height: "20px",
-    lineHeight: "20px",
-    border: "1px solid rgba(6, 28, 44, 0.51)",
-    background: "rgba(255, 255, 255, 0.80)",
-    // background: 'white',
-    fontFamily: "微软雅黑",
-    padding: '5px',
-    // opacity: '0%'
-    visibility: 'hidden',
-  });
+    if (data.data == null) throw new Error('No data on this ship');
 
-  marker_track0.addEventListener('mouseover', () => {
-    label.setStyle({
-      visibility: 'visible'
-    })
-  });
-  marker_track0.addEventListener('mouseout', () => {
-    label.setStyle({
-      visibility: 'hidden'
-    })
-  });
+    var dateRange = $('#ship-date-range').val();
+    $('#ship-date-range').val("");
 
-  map.addOverlay(label);
+    if (!dateRange.split(" - ")[0] || !dateRange.split(" - ")[1]) {
+      var history_data = data.data;
+    } else {
+      var startDate = new Date(dateRange.split(" - ")[0]);
+      var endDate = new Date(dateRange.split(" - ")[1]);
+      var history_data = data.data.filter(ship_point => new Date(ship_point.TIME) > startDate && new Date(ship_point.TIME) < endDate);
+    }
 
-  map.addOverlay(marker_track0);
-  addClickHandler(content_track0, marker_track0);
-}
+    history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
 
-//添加线
-function addLine(history_data) {
-  history_data = history_data.reverse();
-  // 创建标注对象并添加到地图
-  if (history_data.length < 2) return;
-  var linePoints = [];
-  for (var i = 0; i < history_data.length; i++) {
-    var point = history_data[i];
-    var lng = point['LONGITUDE1'];
-    var lat = point['LATITUDE1'];
-    linePoints.push(new BMap.Point(lng, lat));
+    if (history_data.length == 0) {
+      throw new Error('No data on this ship');
+    }
+    dynamicLine(history_data);
+    // get_track(history_data); //开始和结束的图标
+  } catch (error) {
+    alert("Cannot load this ship's ship data");
+    console.log(error);
+
+    $('#clr-track-btn').click();
   }
-  // var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
-  //   scale: 0.3,//图标缩放大小
-  //   strokeColor: '#fff',//设置矢量图标的线填充颜色
-  //   strokeWeight: '1',//设置线宽
-  // });
-  // var icons = new BMap.IconSequence(sy, '10', '30', true);
-  var polyline = new BMap.Polyline(linePoints, {
-    enableEditing: false,//是否启用线编辑，默认为false
-    enableClicking: true,//是否响应点击事件，默认为true
-    // icons: [icons],
-    strokeColor: "#e3682d",
-    strokeWeight: 2,
-    strokeOpacity: 0.5,
-  });
-  map.addOverlay(polyline);   //增加折线
 }
 
 //轨迹点加入到轨迹中。
 function dynamicLine(history_data) {
+  // 查询轨迹
+  //在轨迹点上创建图标，并添加点击事件，显示轨迹点信息。points,数组。
+  function addMarker(point) {
+    //添加标注
+    var point_track0 = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
+    // map.centerAndZoom(point_track0, 15);
+    var myIcon = new BMap.Icon("img/dot.png", new BMap.Size(15, 15), {
+      offset: new BMap.Size(5, 5),
+    });
+    var marker_track0 = new BMap.Marker(point_track0, { icon: myIcon });
+    var content_track0 = "MMSI: " + point.MMSI + "<br>时间: " + convertDateToString(point.TIME) + "<br>航速: " + point.SOG;
+    // var content_track0 ="到港时间:***离岗时间:***港口名字***";
+
+    // 添加标签
+    var time = convertDateToString(point.TIME);
+    //HERE
+    var point_label = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
+    var opts = {
+      position: point_label,    // 指定文本标注所在的地理位置
+      offset: new BMap.Size(20, -10)    //设置文本偏移量
+    };
+    var label = new BMap.Label(time, opts);  // 创建文本标注对象
+    label.setStyle({
+      color: "#000",
+      fontSize: "16px",
+      height: "20px",
+      lineHeight: "20px",
+      border: "1px solid rgba(6, 28, 44, 0.51)",
+      background: "rgba(255, 255, 255, 0.80)",
+      // background: 'white',
+      fontFamily: "微软雅黑",
+      padding: '5px',
+      // opacity: '0%'
+      visibility: 'hidden',
+    });
+
+    marker_track0.addEventListener('mouseover', () => {
+      label.setStyle({
+        visibility: 'visible'
+      })
+    });
+    marker_track0.addEventListener('mouseout', () => {
+      label.setStyle({
+        visibility: 'hidden'
+      })
+    });
+
+    map.addOverlay(label);
+
+    map.addOverlay(marker_track0);
+
+    marker_track0.addEventListener("mouseover", function (e) {
+      openInfo(content_track0, e)
+    });
+  }
+
+  //添加线
+  function addLine(history_data) {
+    history_data = history_data.reverse();
+    // 创建标注对象并添加到地图
+    if (history_data.length < 2) return;
+    var linePoints = [];
+    for (var i = 0; i < history_data.length; i++) {
+      var point = history_data[i];
+      var lng = point['LONGITUDE1'];
+      var lat = point['LATITUDE1'];
+      linePoints.push(new BMap.Point(lng, lat));
+    }
+    // var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
+    //   scale: 0.3,//图标缩放大小
+    //   strokeColor: '#fff',//设置矢量图标的线填充颜色
+    //   strokeWeight: '1',//设置线宽
+    // });
+    // var icons = new BMap.IconSequence(sy, '10', '30', true);
+    var polyline = new BMap.Polyline(linePoints, {
+      enableEditing: false,//是否启用线编辑，默认为false
+      enableClicking: true,//是否响应点击事件，默认为true
+      // icons: [icons],
+      strokeColor: "#e3682d",
+      strokeWeight: 2,
+      strokeOpacity: 0.5,
+    });
+    map.addOverlay(polyline);   //增加折线
+  }
+
   var lng; var lat;
   addLine(history_data);//增加轨迹线
   for (var i = 0; i < history_data.length; i++) {
@@ -300,7 +225,6 @@ function dynamicLine(history_data) {
   map.panTo(lng, lat);
 }
 
-/* 
 // 开始和结束图片 FOR START AND END MARKERS
 function get_track(history_data) {
   // console.log("get_track");
@@ -358,27 +282,20 @@ function get_track(history_data) {
     map.addOverlay(label2);
   }
 }
-*/
 
-// 鼠标指上显示
-var opts3 = {
-  width: 200,     // 信息窗口宽度
-  height: 95,     // 信息窗口高度
-  title: "船运信息", // 信息窗口标题
-  enableMessage: true//设置允许信息窗发送短息
-};
-function addClickHandler(content, marker) {
-  marker.addEventListener("mouseover", function (e) {
-    openInfo(content, e)
-  });
-}
 function openInfo(content, e) {
+  // 鼠标指上显示
+  var opts3 = {
+    width: 200,     // 信息窗口宽度
+    height: 95,     // 信息窗口高度
+    title: "船运信息", // 信息窗口标题
+    enableMessage: true//设置允许信息窗发送短息
+  };
   var p = e.target;
   var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
   var infoWindow = new BMap.InfoWindow(content, opts3);  // 创建信息窗口对象
   map.openInfoWindow(infoWindow, point); //开启信息窗口
 }
-
 function convertDateToString(date) {
   return new Date(date).toLocaleString('en-GB', { timeZoneName: 'short' }).replace(/\//g, '-');
 }
@@ -389,3 +306,63 @@ var map = new BMap.Map("ship-map"); //初始化地图
 map.centerAndZoom(new BMap.Point(106.5584370000, 29.5689960000), 4);//设置中心点和显示级别。中国。
 map.enableScrollWheelZoom();//滚轮放大缩小。
 
+/* 
+------------------------------------
+        MAP ZOOM LEAFTLET
+------------------------------------
+*/
+(function () {
+  //添加地图类型控件-卫星地图
+  var mapTypeOps = {
+    mapTypes: [
+      BMAP_HYBRID_MAP,
+      BMAP_NORMAL_MAP
+    ],
+    offset: new BMap.Size(20, 85)
+  }
+
+  var MapType = new BMap.MapTypeControl(
+    mapTypeOps
+  );
+
+  map.addControl(MapType);
+  // map.setMapType(BMAP_SATELLITE_MAP);
+
+  // 自定义控件---放大缩小
+  function ZoomControl() {
+    // 默认停靠位置和偏移量
+    this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
+    this.defaultOffset = new BMap.Size(10, 10);
+  }
+  ZoomControl.prototype = new BMap.Control();
+  ZoomControl.prototype.initialize = function (map) {
+
+    // 创建一个DOM元素
+    var div_ss_box = document.createElement("div");
+    div_ss_box.classList.add("leaflet-control-zoom");
+    var div_scale = document.createElement("a");
+    var div_suo = document.createElement("a");
+    div_scale.classList.add("scale_aa");
+    div_scale.classList.add("suo_aa");
+    div_ss_box.appendChild(div_scale);
+    div_ss_box.appendChild(div_suo);
+
+
+    // 添加文字说明
+    div_scale.appendChild(document.createTextNode("+"));
+    div_suo.appendChild(document.createTextNode("-"));
+    // 绑定事件,点击一次放大两级
+    div_scale.onclick = function (e) {
+      map.setZoom(map.getZoom() + 1);
+    }
+    div_suo.onclick = function (e) {
+      map.setZoom(map.getZoom() - 1);
+    }
+    // 添加DOM元素到地图中
+    map.getContainer().appendChild(div_ss_box);
+    // 将DOM元素返回
+    return div_ss_box
+  }
+  var myZoomCtrl = new ZoomControl();
+  map.addControl(myZoomCtrl);
+}())
