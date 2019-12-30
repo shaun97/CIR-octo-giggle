@@ -133,9 +133,10 @@ function dynamicLine(history_data) {
     var point_track0 = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
     // map.centerAndZoom(point_track0, 15);
     var myIcon = new BMap.Icon("img/dot.png", new BMap.Size(15, 15), {
-      offset: new BMap.Size(5, 5),
+      offset: new BMap.Size(0, 0),
     });
     var marker_track0 = new BMap.Marker(point_track0, { icon: myIcon });
+    marker_track0.setTop(true);
     var content_track0 = "MMSI: " + point.MMSI + "<br>时间: " + convertDateToString(point.TIME) + "<br>航速: " + point.SOG;
     // var content_track0 ="到港时间:***离岗时间:***港口名字***";
 
@@ -184,7 +185,8 @@ function dynamicLine(history_data) {
 
   //添加线
   function addLine(history_data) {
-    history_data = history_data.reverse();
+    console.log(history_data);
+    // history_data = history_data.reverse();
     // 创建标注对象并添加到地图
     if (history_data.length < 2) return;
     var linePoints = [];
@@ -193,22 +195,28 @@ function dynamicLine(history_data) {
       var lng = point['LONGITUDE1'];
       var lat = point['LATITUDE1'];
       linePoints.push(new BMap.Point(lng, lat));
+      if (i >= 1 && i < history_data.length) {
+        if (linePoints[i-1].lng == linePoints[i].lng && linePoints[i-1].lat == linePoints[i].lat) continue;
+        var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
+          scale: 0.35,//图标缩放大小
+          strokeColor: '#e3682d',//设置矢量图标的线填充颜色
+          strokeWeight: '2',//设置线宽
+        });
+        var icons = new BMap.IconSequence(sy, '50', '50%', false);
+        var polyline = new BMap.Polyline(linePoints.slice(i-1), {
+          enableEditing: false,//是否启用线编辑，默认为false
+          enableClicking: true,//是否响应点击事件，默认为true
+          icons: [icons],
+          strokeColor: "#e3682d",
+          strokeWeight: 1,
+          strokeOpacity: 0.5,
+        });
+        console.log("hello");
+        map.addOverlay(polyline);   //增加折线
+        console.log("after");
+      }
     }
-    // var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
-    //   scale: 0.3,//图标缩放大小
-    //   strokeColor: '#fff',//设置矢量图标的线填充颜色
-    //   strokeWeight: '1',//设置线宽
-    // });
-    // var icons = new BMap.IconSequence(sy, '10', '30', true);
-    var polyline = new BMap.Polyline(linePoints, {
-      enableEditing: false,//是否启用线编辑，默认为false
-      enableClicking: true,//是否响应点击事件，默认为true
-      // icons: [icons],
-      strokeColor: "#e3682d",
-      strokeWeight: 2,
-      strokeOpacity: 0.5,
-    });
-    map.addOverlay(polyline);   //增加折线
+    
   }
 
   var lng; var lat;

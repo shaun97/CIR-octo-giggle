@@ -1,19 +1,17 @@
 function mapInitAjax() {
-  // $(function () {
-    // console.log("1");
-    $.ajax({
-      url: `http://${IP_ADDRESS}/ships/getDateJson`,
-      type: "GET",//请求方式为get
-      dataType: "json", //返回数据格式为json
-      success: function (data) {
-        ALL_SHIPS = data.data; // Change back
-        mapLayersInit();
-      },
-      error: function () {
-        alert("Cannot load ship data");
-      }
-    });
-  // });
+  $.ajax({
+    url: `http://${IP_ADDRESS}/ships/getDateJson`,
+    // url: 'http://localhost:3000/data',
+    type: "GET",//请求方式为get
+    dataType: "json", //返回数据格式为json
+    success: function (data) {
+      ALL_SHIPS = data.data; // Change back
+      mapLayersInit();
+    },
+    error: function () {
+      alert("Cannot load ship data");
+    }
+  });
 }
 
 function chaInfoAjax(id) {
