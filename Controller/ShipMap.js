@@ -57,12 +57,56 @@ function setThisShipHover(item) {
 }
 
 function mapLayersInit() {
-  filterShips();
+  setFilterProperties();
+  MAPV_LAYER = filterShips(ALL_SHIPS);
   close_load();
 }
 
+// //Clears the map into a blank slate
+// function resetView() {
+//   if (MAPV_LAYER == null) return;
+//   if (MAP_VIEW) {
+//     if (TEMP_MAPV_LAYER == null) {
+//       map.clearOverlays();
+//       MAPV_LAYER.hide();
+//       // MAPV_LAYER.show();
+//     } else {
+//       map.clearOverlays();
+//       TEMP_MAPV_LAYER.destroy();
+//     }                             
+//   } else {
+//     if (TEMP_MAPV_LAYER == null) {
+//       map.clearOverlays();
+//       MAPV_LAYER.show();
+//     } else {
+//       map.clearOverlays();
+//       TEMP_MAPV_LAYER.show();
+//     }
+//   }
+// }
+
 function resetView() {
-  MAPV_LAYER.show();
+
+}
+
+
+function clearMapOverlay() {
+  map.clearOverlays();
+  if (MAPV_LAYER != null) MAPV_LAYER.hide();
+}
+
+function clearTempOverlay() {
+  map.clearOverlays();
+  if (TEMP_MAPV_LAYER != null) TEMP_MAPV_LAYER.destroy();
+}
+
+function clearTrack() {
+  map.clearOverlays();
+  if (TEMP_MAPV_LAYER == null) {
+    MAPV_LAYER.show();
+  } else {
+    TEMP_MAPV_LAYER.show();
+  }
 }
 
 function addClickHandler_dot_click(item) {
@@ -74,19 +118,28 @@ function addClickHandler_dot_click(item) {
 }
 
 function setUpTrack(item) {
+  //fix
+  var trackClearLayer = null;
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
   $('#inq-track-btn').click(function () {
     map.clearOverlays();
+    if (MAPV_LAYER != null) MAPV_LAYER.hide();
     MAP_VIEW = false;
+    //fix
+    trackClearLayer = filterShips([]);
     chaInfoAjax(item.data.MMSI);
-
     if (map.getZoom() < 11) map.setZoom(11);
     map.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
   });
+
   $('#clr-track-btn').click(function () {
+    clearTrack();
+
+    //fix
+    trackClearLayer.destroy();
     MAP_VIEW = true;
-    map.clearOverlays();
-    resetView();
+    // map.clearOverlays();
+    // resetView();
     let item = THIS_SHIP_ITEM;
     THIS_SHIP_ITEM = null; // Cheat
     setThisShipSel(item);
@@ -123,6 +176,8 @@ function drawTrack(data) {
     $('#clr-track-btn').click();
   }
 }
+
+
 
 //轨迹点加入到轨迹中。
 function dynamicLine(history_data) {
@@ -196,14 +251,14 @@ function dynamicLine(history_data) {
       var lat = point['LATITUDE1'];
       linePoints.push(new BMap.Point(lng, lat));
       if (i >= 1 && i < history_data.length) {
-        if (linePoints[i-1].lng == linePoints[i].lng && linePoints[i-1].lat == linePoints[i].lat) continue;
+        if (linePoints[i - 1].lng == linePoints[i].lng && linePoints[i - 1].lat == linePoints[i].lat) continue;
         var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
           scale: 0.35,//图标缩放大小
           strokeColor: '#e3682d',//设置矢量图标的线填充颜色
           strokeWeight: '2',//设置线宽
         });
         var icons = new BMap.IconSequence(sy, '50', '50%', false);
-        var polyline = new BMap.Polyline(linePoints.slice(i-1), {
+        var polyline = new BMap.Polyline(linePoints.slice(i - 1), {
           enableEditing: false,//是否启用线编辑，默认为false
           enableClicking: true,//是否响应点击事件，默认为true
           icons: [icons],
@@ -216,7 +271,7 @@ function dynamicLine(history_data) {
         console.log("after");
       }
     }
-    
+
   }
 
   var lng; var lat;

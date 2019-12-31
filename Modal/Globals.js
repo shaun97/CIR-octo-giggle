@@ -1,5 +1,10 @@
 var ALL_SHIPS = [];
+
+//States
 var MAPV_LAYER;
+var TEMP_MAPV_LAYER;
+
+
 var BOAT_MARKERS = [];
 var MAP_VIEW = true;
 var THIS_SHIP_ITEM = null;

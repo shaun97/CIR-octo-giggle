@@ -26,8 +26,8 @@ function addShipToFleet(fleetName) {
         FLEETS[fleetNameId] = [];
         FLEET_NAME_LIST.push(fleetName);
         printFleetNameTree(fleetName, fleetNameId);
-    } 
-    
+    }
+
     if (!FLEETS[fleetNameId].reduce((x, y) => x && (y.data.MMSI != THIS_SHIP_ITEM.data.MMSI), true)) {
         throw 'This ship is already in the fleet';
     };
@@ -36,3 +36,14 @@ function addShipToFleet(fleetName) {
     printShipsTree(fleetName, fleetNameId, THIS_SHIP_ITEM);
     return THIS_SHIP_ITEM;
 }
+
+function hideOtherShips() {
+    var data = [];
+    jQuery.each(FLEETS, function (fleetName, ships) {
+        jQuery.each(ships, function (i, val) {
+            data.push(val.data);
+        })
+    });
+   TEMP_MAPV_LAYER = filterShips(data);
+}
+

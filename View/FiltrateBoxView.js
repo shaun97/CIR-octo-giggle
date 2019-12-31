@@ -189,6 +189,7 @@ $(document).ready(function () {
 
     MOVE_ARR[0] = $('#option-status-stop-btn').hasClass("grey-button") ? false : true;
     MOVE_ARR[1] = $('#option-status-moving-btn').hasClass("grey-button") ? false : true;
-    filterShips();
+    // 
+    filterShips(ALL_SHIPS);
   })
 });

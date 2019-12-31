@@ -7,6 +7,16 @@ $(document).ready(function () {
     $("#observe-read").hide();
   });
 
+  $('.layui-form-checkbox').click(function () {
+    if ($(this).hasClass("layui-form-checked")) {
+      hideOtherShips();
+    } else {
+     // filterShips(ALL_SHIPS);
+     clearTempOverlay();
+     MAPV_LAYER.show();
+    }
+  });
+
   $("#add-fleet-btn").click(function () {
     let newFleetName = $("#add-ship-fleet-name").val().trim();
 
