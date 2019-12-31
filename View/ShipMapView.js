@@ -23,7 +23,7 @@ function showTrack() {
 }
 
 function clearTrack() {
-  CLEAR_LAYER.destroy();
+  if (CLEAR_LAYER != null) CLEAR_LAYER.destroy();
   map.clearOverlays();
   if (TEMP_MAPV_LAYER == null) {
     MAPV_LAYER.show();
