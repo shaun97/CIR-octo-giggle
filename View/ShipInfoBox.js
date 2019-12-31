@@ -1,7 +1,8 @@
 $(document).ready(function () {
   $("#info-close-button").click(function () {
     $("#ship-info-box").hide();
-    if (!MAP_VIEW) $("#clr-track-btn").click();
+    if (!MAP_VIEW) {$("#clr-track-btn").click()};
+    map.removeOverlay(THIS_SHIP_LABEL);
   });
   $("#info-edit-button").click(function () {
     $("#change-name-box").show();

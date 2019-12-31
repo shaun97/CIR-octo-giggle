@@ -94,7 +94,7 @@ function filterShips(arrOfShips) {
   let currMapVLayer = showPoints(data);
   return currMapVLayer;
 }
-var data = null
+
 
 function showPoints(data) {
   dataSet = new mapv.DataSet(data);
@@ -124,11 +124,6 @@ function showPoints(data) {
   console.timeEnd("");
   return new mapv.baiduMapLayer(map, dataSet, options);
   //MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
-}
-
-function change() {
-  console.log(dataSet.get());
-  dataSet.set(THIS_SHIP_ITEM);
 }
 
 function customPred(ship) {
