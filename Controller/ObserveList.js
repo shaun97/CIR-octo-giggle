@@ -41,9 +41,10 @@ function hideOtherShips() {
     var data = [];
     jQuery.each(FLEETS, function (fleetName, ships) {
         jQuery.each(ships, function (i, val) {
-            data.push(val.data);
+            data.push(val);
         })
     });
-   return showPoints(data);
+    console.log('data to hide', data);
+    return showPoints(data);
 }
 

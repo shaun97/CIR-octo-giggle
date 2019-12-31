@@ -238,9 +238,7 @@ function dynamicLine(history_data) {
           strokeWeight: 1,
           strokeOpacity: 0.5,
         });
-        console.log("hello");
         map.addOverlay(polyline);   //增加折线
-        console.log("after");
       }
     }
 
