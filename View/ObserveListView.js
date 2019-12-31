@@ -8,6 +8,7 @@ $(document).ready(function () {
   });
 
   $('.layui-form-checkbox').click(function () {
+    if (!MAP_VIEW) clearTrack();
     if ($(this).hasClass("layui-form-checked")) {
       map.clearOverlays();
       if (MAPV_LAYER != null) MAPV_LAYER.hide();

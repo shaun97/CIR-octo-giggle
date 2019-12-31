@@ -94,6 +94,10 @@ function filterShips(arrOfShips) {
   let currMapVLayer = showPoints(data);
   return currMapVLayer;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a83eaf8317913d31d981526b861e292fee31b7fb
 
 function showPoints(data) {
   dataSet = new mapv.DataSet(data);
@@ -124,11 +128,6 @@ function showPoints(data) {
   console.time("turn on filter");
   return new mapv.baiduMapLayer(map, dataSet, options);
   //MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
-}
-
-function change() {
-  console.log(dataSet.get());
-  dataSet.set(THIS_SHIP_ITEM);
 }
 
 function customPred(ship) {
