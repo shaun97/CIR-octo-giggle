@@ -94,10 +94,6 @@ function filterShips(arrOfShips) {
   let currMapVLayer = showPoints(data);
   return currMapVLayer;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> a83eaf8317913d31d981526b861e292fee31b7fb
 
 function showPoints(data) {
   dataSet = new mapv.DataSet(data);
