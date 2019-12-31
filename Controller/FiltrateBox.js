@@ -63,7 +63,7 @@ function setFilterProperties() {
 }
 
 function filterShips(arrOfShips) {
-  console.time("");
+  console.time("Filter");
   $("#ship-info-box").hide();
   var data = [];
   TYPE_FLTR = TYPE_ARR.reduce((x, y) => x && y, true);
@@ -94,7 +94,6 @@ function filterShips(arrOfShips) {
   let currMapVLayer = showPoints(data);
   return currMapVLayer;
 }
-var data = null
 
 function showPoints(data) {
   dataSet = new mapv.DataSet(data);
@@ -121,7 +120,8 @@ function showPoints(data) {
     size: 8,
   };
 
-  console.timeEnd("");
+  console.timeEnd("Filter");
+  console.time("turn on filter");
   return new mapv.baiduMapLayer(map, dataSet, options);
   //MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
 }

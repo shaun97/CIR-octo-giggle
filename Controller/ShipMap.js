@@ -59,6 +59,7 @@ function setThisShipHover(item) {
 function mapLayersInit() {
   setFilterProperties();
   MAPV_LAYER = filterShips(ALL_SHIPS);
+  console.timeEnd("turn on filter");
   close_load();
 }
 

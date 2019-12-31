@@ -15,8 +15,7 @@ function showData(item) {
   $("#ship-info-lat").text(LATITUDE == null ? "-" : LATITUDE);
 }
 
-function showTrack() {
-    
+function showTrack() {    
   map.clearOverlays();
   if (MAPV_LAYER != null) MAPV_LAYER.hide();
   MAP_VIEW = false;

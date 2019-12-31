@@ -189,7 +189,16 @@ $(document).ready(function () {
 
     MOVE_ARR[0] = $('#option-status-stop-btn').hasClass("grey-button") ? false : true;
     MOVE_ARR[1] = $('#option-status-moving-btn').hasClass("grey-button") ? false : true;
-    // 
-    filterShips(ALL_SHIPS);
+    
+    // if (MAPV_LAYER != null) MAPV_LAYER.destroy();
+    // map.clearOverlays();
+    resetViewForFilter();
+    MAPV_LAYER = filterShips(ALL_SHIPS);
+    console.timeEnd("turn on filter");
   })
 });
+
+function resetViewForFilter() {
+  if (MAPV_LAYER != null) MAPV_LAYER.destroy();
+  map.clearOverlays();
+}
