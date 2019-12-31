@@ -59,6 +59,7 @@ function setThisShipHover(item) {
 function mapLayersInit() {
   setFilterProperties();
   MAPV_LAYER = filterShips(ALL_SHIPS);
+  console.timeEnd("turn on filter");
   close_load();
 }
 
@@ -237,9 +238,7 @@ function dynamicLine(history_data) {
           strokeWeight: 1,
           strokeOpacity: 0.5,
         });
-        console.log("hello");
         map.addOverlay(polyline);   //增加折线
-        console.log("after");
       }
     }
 
@@ -352,7 +351,7 @@ map.enableScrollWheelZoom();//滚轮放大缩小。
       BMAP_HYBRID_MAP,
       BMAP_NORMAL_MAP
     ],
-    offset: new BMap.Size(20, 85)
+    offset: new BMap.Size(50, 120)
   }
 
   var MapType = new BMap.MapTypeControl(

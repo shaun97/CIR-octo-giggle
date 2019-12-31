@@ -16,7 +16,11 @@ $(document).ready(function () {
     } else {
       if (MAP_VIEW) {
         map.clearOverlays();
+        THIS_SHIP_ITEM = null;
+        THIS_SHIP_ITEM_HOVER = null;
         if (TEMP_MAPV_LAYER != null) TEMP_MAPV_LAYER.destroy();
+        console.log(TEMP_MAPV_LAYER);
+        TEMP_MAPV_LAYER = null;
         MAPV_LAYER.show();
       }
     }
