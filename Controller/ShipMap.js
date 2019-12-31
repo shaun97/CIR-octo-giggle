@@ -86,28 +86,8 @@ function mapLayersInit() {
 // }
 
 function resetView() {
-
 }
 
-
-function clearMapOverlay() {
-  map.clearOverlays();
-  if (MAPV_LAYER != null) MAPV_LAYER.hide();
-}
-
-function clearTempOverlay() {
-  map.clearOverlays();
-  if (TEMP_MAPV_LAYER != null) TEMP_MAPV_LAYER.destroy();
-}
-
-function clearTrack() {
-  map.clearOverlays();
-  if (TEMP_MAPV_LAYER == null) {
-    MAPV_LAYER.show();
-  } else {
-    TEMP_MAPV_LAYER.show();
-  }
-}
 
 function addClickHandler_dot_click(item) {
   // item has item.data that contains data
@@ -118,28 +98,17 @@ function addClickHandler_dot_click(item) {
 }
 
 function setUpTrack(item) {
-  //fix
-  var trackClearLayer = null;
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
   $('#inq-track-btn').click(function () {
-    map.clearOverlays();
-    if (MAPV_LAYER != null) MAPV_LAYER.hide();
-    MAP_VIEW = false;
-    //fix
-    trackClearLayer = filterShips([]);
+    showTrack();
     chaInfoAjax(item.data.MMSI);
+    showData(item);
     if (map.getZoom() < 11) map.setZoom(11);
     map.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
   });
 
   $('#clr-track-btn').click(function () {
     clearTrack();
-
-    //fix
-    trackClearLayer.destroy();
-    MAP_VIEW = true;
-    // map.clearOverlays();
-    // resetView();
     let item = THIS_SHIP_ITEM;
     THIS_SHIP_ITEM = null; // Cheat
     setThisShipSel(item);
@@ -150,6 +119,8 @@ function drawTrack(data) {
   try {
 
     if (data.data == null) throw new Error('No data on this ship');
+
+    data.data = data.data.map(x => x[0]);
 
     var dateRange = $('#ship-date-range').val();
     $('#ship-date-range').val("");

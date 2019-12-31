@@ -44,6 +44,6 @@ function hideOtherShips() {
             data.push(val.data);
         })
     });
-   TEMP_MAPV_LAYER = filterShips(data);
+   return filterShips(data);
 }
 

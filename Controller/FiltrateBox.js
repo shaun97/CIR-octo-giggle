@@ -63,6 +63,7 @@ function setFilterProperties() {
 }
 
 function filterShips(arrOfShips) {
+  console.time("");
   $("#ship-info-box").hide();
   var data = [];
   TYPE_FLTR = TYPE_ARR.reduce((x, y) => x && y, true);
@@ -93,9 +94,11 @@ function filterShips(arrOfShips) {
   let currMapVLayer = showPoints(data);
   return currMapVLayer;
 }
+var data = null
 
 function showPoints(data) {
-  var dataSet = new mapv.DataSet(data);
+  dataSet = new mapv.DataSet(data);
+  // var dataSet = new mapv.DataSet(data);
   // 添加百度地图可视化叠加图层 The OVERLAY OPTIONS!!!
   var options = {
     methods: { // 一些事件回调函数
@@ -118,9 +121,14 @@ function showPoints(data) {
     size: 8,
   };
 
-  clearMapOverlay();
+  console.timeEnd("");
   return new mapv.baiduMapLayer(map, dataSet, options);
   //MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
+}
+
+function change() {
+  console.log(dataSet.get());
+  dataSet.set(THIS_SHIP_ITEM);
 }
 
 function customPred(ship) {

@@ -14,3 +14,22 @@ function showData(item) {
   $("#ship-info-lng").text(LONGITUDE == null ? "-" : LONGITUDE);
   $("#ship-info-lat").text(LATITUDE == null ? "-" : LATITUDE);
 }
+
+function showTrack() {
+    
+  map.clearOverlays();
+  if (MAPV_LAYER != null) MAPV_LAYER.hide();
+  MAP_VIEW = false;
+  CLEAR_LAYER = filterShips([]);
+}
+
+function clearTrack() {
+  CLEAR_LAYER.destroy();
+  map.clearOverlays();
+  if (TEMP_MAPV_LAYER == null) {
+    MAPV_LAYER.show();
+  } else {
+    TEMP_MAPV_LAYER.show();
+  }
+  MAP_VIEW = true;
+}

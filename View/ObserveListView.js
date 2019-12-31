@@ -9,11 +9,15 @@ $(document).ready(function () {
 
   $('.layui-form-checkbox').click(function () {
     if ($(this).hasClass("layui-form-checked")) {
-      hideOtherShips();
+      map.clearOverlays();
+      if (MAPV_LAYER != null) MAPV_LAYER.hide();
+      TEMP_MAPV_LAYER = hideOtherShips();
     } else {
-     // filterShips(ALL_SHIPS);
-     clearTempOverlay();
-     MAPV_LAYER.show();
+      if (MAP_VIEW) {
+        map.clearOverlays();
+        if (TEMP_MAPV_LAYER != null) TEMP_MAPV_LAYER.destroy();
+        MAPV_LAYER.show();
+      }
     }
   });
 
