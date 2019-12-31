@@ -1,11 +1,15 @@
 function mapInitAjax() {
   $.ajax({
     url: `http://${IP_ADDRESS}/ships/getDateJson`,
-    // url: 'http://localhost:3000/data',
+    //  url: 'http://localhost:3000/data',
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
       ALL_SHIPS = data.data; // Change back
+      if (!ALL_SHIPS) {
+        alert("Please refresh page");
+        return;
+      }
       mapLayersInit();
     },
     error: function () {

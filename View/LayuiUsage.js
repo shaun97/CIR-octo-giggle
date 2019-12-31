@@ -1,6 +1,10 @@
 // Needed for checkbox 
+var element = null;
+var form = null;
+var layer = null;
 layui.use(['element', 'layer', 'form'], function () {
-    var element = layui.element;
-    var layer = layui.layer;
-    var form = layui.form;
+    element = layui.element;
+    layer = layui.layer;
+    form = layui.form;
+
   });

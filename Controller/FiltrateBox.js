@@ -39,40 +39,40 @@ function getShipIcon(ship) {
   }
 }
 
-function setFilterProperties(ship) {
-  var size = ship.A;
-  if (!size || size < 40) {
-    ship.SIZE_IDX = 0;
-  } else if (size < 80) {
-    ship.SIZE_IDX = 1;
-  } else if (size < 120) {
-    ship.SIZE_IDX = 2;
-  } else if (size < 160) {
-    ship.SIZE_IDX = 3;
-  } else if (size < 240) {
-    ship.SIZE_IDX = 4;
-  } else if (size < 320) {
-    ship.SIZE_IDX = 5;
-  } else {
-    ship.SIZE_IDX = 6;
+function setFilterProperties() {
+  var ship = null;
+  for (var i = 0; i < ALL_SHIPS.length; i++) {
+    ship = ALL_SHIPS[i];
+    var size = ship.A;
+    if (!size || size < 40) {
+      ship.SIZE_IDX = 0;
+    } else if (size < 80) {
+      ship.SIZE_IDX = 1;
+    } else if (size < 120) {
+      ship.SIZE_IDX = 2;
+    } else if (size < 160) {
+      ship.SIZE_IDX = 3;
+    } else if (size < 240) {
+      ship.SIZE_IDX = 4;
+    } else if (size < 320) {
+      ship.SIZE_IDX = 5;
+    } else {
+      ship.SIZE_IDX = 6;
+    }
   }
 }
 
-function filterShips() {
+function filterShips(arrOfShips) {
+  console.time("");
   $("#ship-info-box").hide();
   var data = [];
   TYPE_FLTR = TYPE_ARR.reduce((x, y) => x && y, true);
   SIZE_FLTR = SIZE_ARR.reduce((x, y) => x && y, true);
-  if (!ALL_SHIPS) {
-    alert("Please refresh page");
-    return;
-  }
+
   let thisShip = null;
   let check = 0;
-  for (var i = 0; i < ALL_SHIPS.length; i++) {
-    thisShip = ALL_SHIPS[i];
-    setFilterProperties(thisShip);
-    if (i == 0 )console.log(thisShip, thisShip['LONGITUDE1'], thisShip['LATITUDE1']);
+  for (var i = 0; i < arrOfShips.length; i++) {
+    thisShip = arrOfShips[i];
     if (customPred(thisShip)) {
       check++;
       var img = new Image(0.1, 0.1);
@@ -88,9 +88,17 @@ function filterShips() {
         data: thisShip,
       });
     }
+    if (i == 0) console.log(thisShip, thisShip['LONGITUDE1'], thisShip['LATITUDE1']);
   }
-  console.log("check:", check, "all:", ALL_SHIPS.length);
-  var dataSet = new mapv.DataSet(data);
+  console.log("check:", check, "all:", arrOfShips.length);
+  let currMapVLayer = showPoints(data);
+  return currMapVLayer;
+}
+var data = null
+
+function showPoints(data) {
+  dataSet = new mapv.DataSet(data);
+  // var dataSet = new mapv.DataSet(data);
   // 添加百度地图可视化叠加图层 The OVERLAY OPTIONS!!!
   var options = {
     methods: { // 一些事件回调函数
@@ -112,9 +120,15 @@ function filterShips() {
     height: 10,
     size: 8,
   };
-  map.clearOverlays();
-  MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
-  close_load();
+
+  console.timeEnd("");
+  return new mapv.baiduMapLayer(map, dataSet, options);
+  //MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
+}
+
+function change() {
+  console.log(dataSet.get());
+  dataSet.set(THIS_SHIP_ITEM);
 }
 
 function customPred(ship) {

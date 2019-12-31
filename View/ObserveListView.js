@@ -7,6 +7,20 @@ $(document).ready(function () {
     $("#observe-read").hide();
   });
 
+  $('.layui-form-checkbox').click(function () {
+    if ($(this).hasClass("layui-form-checked")) {
+      map.clearOverlays();
+      if (MAPV_LAYER != null) MAPV_LAYER.hide();
+      TEMP_MAPV_LAYER = hideOtherShips();
+    } else {
+      if (MAP_VIEW) {
+        map.clearOverlays();
+        if (TEMP_MAPV_LAYER != null) TEMP_MAPV_LAYER.destroy();
+        MAPV_LAYER.show();
+      }
+    }
+  });
+
   $("#add-fleet-btn").click(function () {
     let newFleetName = $("#add-ship-fleet-name").val().trim();
 
