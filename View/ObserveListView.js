@@ -94,7 +94,6 @@ function printShipsTree(fleetName, fleetNameId, item) {
 
 //Prints out the fleet
 function printFleetNameTree(newFleetName, fleetNameId) {
-
   let newFleet = $('<h2/>').addClass("layui-colla-title").text(newFleetName);
   let icon = $('<i/>').addClass("layui-icon").addClass("layui-colla-icon").html("");
   let eyeF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
