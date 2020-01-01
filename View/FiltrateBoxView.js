@@ -203,6 +203,7 @@ $(document).ready(function () {
 });
 
 function resetViewForFilter() {
+  if (!MAP_VIEW) clearTrack();
   map.clearOverlays();
   setThisShipSel(null);
 }
