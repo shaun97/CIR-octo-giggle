@@ -1,6 +1,6 @@
 function setThisShipSel(item) {
   if (THIS_SHIP_ITEM == item) return;
-  if (THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
+  if (!item || THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
 
   var style_this_ship_label = {
     border: "0px solid rgba(6, 28, 44, 0.51)",
@@ -10,6 +10,10 @@ function setThisShipSel(item) {
     color: '#fff',
     //Test opacity: "0.8"
   };
+
+  THIS_SHIP_ITEM = item;
+
+  if (!item) return;
 
   var point = new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(34, 7) });
@@ -21,7 +25,6 @@ function setThisShipSel(item) {
   marker.setLabel(label_dot);
   map.addOverlay(marker);
   THIS_SHIP_LABEL = marker;
-  THIS_SHIP_ITEM = item;
 }
 
 function setThisShipHover(item) {
@@ -57,10 +60,14 @@ function setThisShipHover(item) {
 }
 
 function mapLayersInit() {
+  console.time('init');
   setFilterProperties();
-  MAPV_LAYER = filterShips(ALL_SHIPS);
-  console.timeEnd("turn on filter");
+  setGeoItems();
+  // console.log(ALL_SHIPS);
+  MAPV_LAYER = showPoints(ALL_SHIPS);
+  // console.log('init mapv', MAPV_LAYER);
   close_load();
+  console.timeEnd('init');
 }
 
 // //Clears the map into a blank slate
@@ -101,8 +108,12 @@ function addClickHandler_dot_click(item) {
 function setUpTrack(item) {
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
   $('#inq-track-btn').click(function () {
+    // console.log('1', MAPV_LAYER.dataSet);
     showTrack();
+    // console.log('2', MAPV_LAYER.dataSet);
+    // console.log(item);
     chaInfoAjax(item.data.MMSI);
+    // console.log('3', MAPV_LAYER.dataSet);
     showData(item);
     if (map.getZoom() < 11) map.setZoom(11);
     map.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);

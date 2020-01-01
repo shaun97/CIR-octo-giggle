@@ -4,7 +4,7 @@ $('.se_btn').click(function () {
 
     let latestShip = null;
     for (let i = 0; i < ALL_SHIPS.length; i++) {
-        let ship = ALL_SHIPS[i];
+        let ship = ALL_SHIPS[i].data;
         if (ship.MMSI == MmsiIorName) {
             latestShip = ship;
         }

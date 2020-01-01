@@ -168,6 +168,11 @@ $(document).ready(function () {
   })
 
   $('#filter-btn').click(function () {
+    if ($('.layui-form-checkbox').hasClass("layui-form-checked")) {
+      alert("Have not added this functionality");
+      return;
+    }
+    console.time("real filter");
     TYPE_ARR[0] = $('#option-type-container-btn').hasClass("grey-button") ? false : true;
     TYPE_ARR[1] = $('#option-type-oil-btn').hasClass("grey-button") ? false : true;
     TYPE_ARR[2] = $("#option-type-passenger-btn").hasClass("grey-button") ? false : true;
@@ -192,12 +197,12 @@ $(document).ready(function () {
     
     resetViewForFilter();
     MAPV_LAYER = filterShips(ALL_SHIPS);
-    console.timeEnd("turn on filter");
+    MAPV_LAYER.show();
+    console.timeEnd('real filter');
   })
 });
 
 function resetViewForFilter() {
-  if (MAPV_LAYER != null) MAPV_LAYER.destroy();
-  MAPV_LAYER = null;
   map.clearOverlays();
+  setThisShipSel(null);
 }

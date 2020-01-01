@@ -62,7 +62,30 @@ function setFilterProperties() {
   }
 }
 
-function filterShips(arrOfShips) {
+function setGeoItems() {
+  let thisShip = null;
+  for (var i = 0; i < ALL_SHIPS.length; i++) {
+    thisShip = ALL_SHIPS[i];
+    var img = new Image(0.1, 0.1);
+    img.src = getShipIcon(thisShip);
+    ALL_SHIPS[i] = {
+      geometry: {
+        type: 'Point',
+        coordinates: [thisShip['LONGITUDE1'], thisShip['LATITUDE1']],
+        id: i,
+      },
+      icon: img,
+      deg: thisShip.HEADING - 90,
+      data: thisShip,
+    }
+  }
+}
+
+/**
+ * 
+ * @param {*} arrShipsGeo: Array of Geometric ship objects
+ */
+function filterShips(arrShipsGeo) {
   console.time("Filter");
   $("#ship-info-box").hide();
   var data = [];
@@ -71,28 +94,17 @@ function filterShips(arrOfShips) {
 
   let thisShip = null;
   let check = 0;
-  for (var i = 0; i < arrOfShips.length; i++) {
-    thisShip = arrOfShips[i];
-    if (customPred(thisShip)) {
+  for (var i = 0; i < arrShipsGeo.length; i++) {
+    thisShip = arrShipsGeo[i];
+    if (customPred(thisShip.data)) {
       check++;
-      var img = new Image(0.1, 0.1);
-      img.src = getShipIcon(thisShip);
-      data.push({
-        geometry: {
-          type: 'Point',
-          coordinates: [thisShip['LONGITUDE1'], thisShip['LATITUDE1']],
-          id: i,
-        },
-        icon: img,
-        deg: thisShip.HEADING - 90,
-        data: thisShip,
-      });
+      data.push(thisShip);
     }
     if (i == 0) console.log(thisShip, thisShip['LONGITUDE1'], thisShip['LATITUDE1']);
   }
-  console.log("check:", check, "all:", arrOfShips.length);
-  let currMapVLayer = showPoints(data);
-  return currMapVLayer;
+  console.log("check:", check, "all:", arrShipsGeo.length);
+  MAPV_LAYER.dataSet.set(data);
+  return MAPV_LAYER;
 }
 
 function showPoints(data) {
@@ -120,10 +132,7 @@ function showPoints(data) {
     size: 8,
   };
 
-  console.timeEnd("Filter");
-  console.time("turn on filter");
   return new mapv.baiduMapLayer(map, dataSet, options);
-  //MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
 }
 
 function customPred(ship) {
