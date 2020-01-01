@@ -2,7 +2,7 @@ var ALL_SHIPS = [];
 
 //States
 var MAPV_LAYER;
-var TEMP_MAPV_LAYER;
+// var TEMP_MAPV_LAYER;
 var CLEAR_LAYER;
 
 var BOAT_MARKERS = [];

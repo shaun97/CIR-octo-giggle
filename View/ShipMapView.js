@@ -1,4 +1,4 @@
-function showTrack() {    
+function showTrack() {
   map.clearOverlays();
   if (MAPV_LAYER != null) MAPV_LAYER.hide();
   MAP_VIEW = false;
@@ -8,11 +8,11 @@ function showTrack() {
 function clearTrack() {
   destroyClearLayer()
   map.clearOverlays();
-  if (TEMP_MAPV_LAYER == null) {
-    MAPV_LAYER.show();
-  } else {
-    TEMP_MAPV_LAYER.show();
-  }
+  // if (TEMP_MAPV_LAYER == null) {
+  MAPV_LAYER.show();
+  // } else {
+  //   TEMP_MAPV_LAYER.show();
+  // }
   MAP_VIEW = true;
 }
 

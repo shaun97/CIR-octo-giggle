@@ -168,10 +168,6 @@ $(document).ready(function () {
   })
 
   $('#filter-btn').click(function () {
-    if ($('.layui-form-checkbox').hasClass("layui-form-checked")) {
-      alert("Have not added this functionality");
-      return;
-    }
     console.time("real filter");
     TYPE_ARR[0] = $('#option-type-container-btn').hasClass("grey-button") ? false : true;
     TYPE_ARR[1] = $('#option-type-oil-btn').hasClass("grey-button") ? false : true;
@@ -195,8 +191,13 @@ $(document).ready(function () {
     MOVE_ARR[0] = $('#option-status-stop-btn').hasClass("grey-button") ? false : true;
     MOVE_ARR[1] = $('#option-status-moving-btn').hasClass("grey-button") ? false : true;
     
+    if ($('.layui-form-checkbox').hasClass("layui-form-checked")) {
+      hideOtherShips();
+      return;
+    }
+
     resetViewForFilter();
-    MAPV_LAYER = filterShips(ALL_SHIPS);
+    filterShips(ALL_SHIPS);
     MAPV_LAYER.show();
     console.timeEnd('real filter');
   })

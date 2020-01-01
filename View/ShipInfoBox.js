@@ -14,9 +14,13 @@ $(document).ready(function () {
   });
 });
 
-function showData(item) {
+/**
+ * 
+ * @param {*} data : Data of the ship
+ */
+function showData(data) {
   // others DRAUGHT, B, C, NAVSTAT, D, SOG, HEADING, ETA, ROT, COG
-  let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST, NICKNAME } = item.data;
+  let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST, NICKNAME } = data;
   $("#ship-info-box").show();
   $("#ship-info-nknm").text(NICKNAME == null ? (NAME == null ? "-" : NAME) : NICKNAME);
   $("#ship-info-name").text(NAME == null ? "-" : NAME);
