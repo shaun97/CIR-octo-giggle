@@ -78,6 +78,9 @@ function getShipIcon(ship) {
 function setFilterProperties() {
   var ship = null;
   for (var i = 0; i < ALL_SHIPS.length; i++) {
+    ALL_SHIPS[i].doShow = true;
+  }
+  for (var i = 0; i < ALL_SHIPS.length; i++) {
     ship = ALL_SHIPS[i];
     var size = ship.A;
     if (!size || size < 40) {

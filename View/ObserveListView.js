@@ -70,10 +70,21 @@ function printShipsTree(fleetName, fleetNameId, item) {
     addClickHandler_dot_click(item);
   });
 
+
+  var showBtnClicked = true;
   eye.click(function () {
     eye.html() == '<img src="./img/icon_open.png" class="tree-button-icon">'
       ? eye.html('<img src="./img/icon_hide.png" class="tree-button-icon">')
       : eye.html('<img src="./img/icon_open.png" class="tree-button-icon">');
+
+    if (showBtnClicked) {
+      showBtnClicked = false;
+      item.show = false;
+    } else {
+      showBtnClicked = true;
+      item.show = true;
+    }
+    
   });
 
   track.click(function () {
