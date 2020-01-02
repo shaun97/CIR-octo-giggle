@@ -12,6 +12,9 @@ function filterShips(arrShipsGeo) {
   let thisShip = null;
   let check = 0;
   for (var i = 0; i < arrShipsGeo.length; i++) {
+    if (!arrShipsGeo[i].doShow) {
+      continue;
+    }
     thisShip = arrShipsGeo[i];
     if (customPred(thisShip.data)) {
       check++;

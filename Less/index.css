@@ -462,8 +462,7 @@ body .layui-laydate-content td:hover,
   right: 50px;
   top: 21%;
   height: auto;
-  width: 380px;
-  overflow-y: scroll;
+  width: 390px;
 }
 #ship-filtrate-box #ship-filtrate-inner-box {
   display: flex;
@@ -482,8 +481,9 @@ body .layui-laydate-content td:hover,
 #ship-filtrate-box .filtrate-sub-box {
   width: 100%;
   padding-left: 20px;
-  padding-right: 40px;
+  padding-right: 20px;
   height: auto;
+  box-sizing: border-box;
 }
 #ship-filtrate-box .filtrate-sub-box .filtrate-titles {
   margin: 3% 0 3%;
