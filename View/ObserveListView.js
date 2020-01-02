@@ -8,6 +8,7 @@ $(document).ready(function () {
   });
 
   $('.layui-form-checkbox').click(function () {
+    console.log("clicked checkbox");
     console.time('click checkbox');
     if (!MAP_VIEW) clearTrack();
     if ($(this).hasClass("layui-form-checked")) {

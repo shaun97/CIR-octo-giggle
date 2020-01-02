@@ -191,13 +191,14 @@ $(document).ready(function () {
     MOVE_ARR[0] = $('#option-status-stop-btn').hasClass("grey-button") ? false : true;
     MOVE_ARR[1] = $('#option-status-moving-btn').hasClass("grey-button") ? false : true;
     
+    resetViewForFilter();
+    
     if ($('.layui-form-checkbox').hasClass("layui-form-checked")) {
       hideOtherShips();
-      return;
+    } else {
+      filterShips(ALL_SHIPS);
     }
 
-    resetViewForFilter();
-    filterShips(ALL_SHIPS);
     MAPV_LAYER.show();
     console.timeEnd('real filter');
   })
