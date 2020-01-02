@@ -47,3 +47,25 @@ function hideOtherShips() {
     // return showPoints(data);
     filterShips(data);
 }
+
+function showIndivShips(ship) {
+    ship.doShow = !ship.doShow;
+
+    if ($('.layui-form-checkbox').hasClass("layui-form-checked")) {
+        hideOtherShips();
+    } else {
+        filterShips(ALL_SHIPS);
+    }
+}
+
+function toggleFleet(fleet, doShow) {
+    for (var i = 0; i < fleet.length; i++) {
+        fleet[i].doShow = doShow;
+    }
+
+    if ($('.layui-form-checkbox').hasClass("layui-form-checked")) {
+        hideOtherShips();
+    } else {
+        filterShips(ALL_SHIPS);
+    }
+}

@@ -1,6 +1,6 @@
 function setThisShipSel(item) {
 
-  if (THIS_SHIP_ITEM == item) return;
+ if (THIS_SHIP_ITEM == item) return;
   if (!item || THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
 
   var style_this_ship_label = {
@@ -78,9 +78,6 @@ function getShipIcon(ship) {
 function setFilterProperties() {
   var ship = null;
   for (var i = 0; i < ALL_SHIPS.length; i++) {
-    ALL_SHIPS[i].doShow = true;
-  }
-  for (var i = 0; i < ALL_SHIPS.length; i++) {
     ship = ALL_SHIPS[i];
     var size = ship.A;
     if (!size || size < 40) {
@@ -133,6 +130,7 @@ function setGeoItems() {
         coordinates: [thisShip['LONGITUDE1'], thisShip['LATITUDE1']],
         id: i,
       },
+      doShow: true,
       icon: img,
       deg: thisShip.HEADING - 90,
       data: thisShip,

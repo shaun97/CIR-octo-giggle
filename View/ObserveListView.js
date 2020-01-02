@@ -8,7 +8,6 @@ $(document).ready(function () {
   });
 
   $('.layui-form-checkbox').click(function () {
-    console.log("clicked checkbox");
     console.time('click checkbox');
     if (!MAP_VIEW) clearTrack();
     if ($(this).hasClass("layui-form-checked")) {
@@ -67,25 +66,19 @@ function printShipsTree(fleetName, fleetNameId, item) {
   //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
 
   ship.click(function () {
-    clearTrack();
+    if (!MAP_VIEW) {
+      clearTrack();
+    }
     addClickHandler_dot_click(item);
   });
 
 
-  var showBtnClicked = true;
   eye.click(function () {
     eye.html() == '<img src="./img/icon_open.png" class="tree-button-icon">'
       ? eye.html('<img src="./img/icon_hide.png" class="tree-button-icon">')
       : eye.html('<img src="./img/icon_open.png" class="tree-button-icon">');
 
-    if (showBtnClicked) {
-      showBtnClicked = false;
-      item.show = false;
-    } else {
-      showBtnClicked = true;
-      item.show = true;
-    }
-    
+    showIndivShips(item);
   });
 
   track.click(function () {
@@ -136,10 +129,14 @@ function printFleetNameTree(newFleetName, fleetNameId) {
     icon.html() == "" ? icon.html("") : icon.html(""); // Styling for Dropdown
   })
 
+  var fleetDoShowBtn = true;
   eyeF.click(function () {
     eyeF.html() == '<img src="./img/icon_open.png" class="tree-button-icon">'
       ? eyeF.html('<img src="./img/icon_hide.png" class="tree-button-icon">')
       : eyeF.html('<img src="./img/icon_open.png" class="tree-button-icon">');
+
+    fleetDoShowBtn = !fleetDoShowBtn;
+    toggleFleet(FLEETS[fleetNameId], fleetDoShowBtn);
   });
 
   closeF.click(function () {
