@@ -1,6 +1,6 @@
 function setThisShipSel(item) {
 
- if (THIS_SHIP_ITEM == item) return;
+  if (THIS_SHIP_ITEM == item) return;
   if (!item || THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
 
   var style_this_ship_label = {
@@ -462,3 +462,15 @@ map.enableScrollWheelZoom();//滚轮放大缩小。
   var myZoomCtrl = new ZoomControl();
   map.addControl(myZoomCtrl);
 }())
+
+map.addEventListener("zoomend", function (e) {
+  if (!MAP_VIEW) return;
+  if (map.getZoom() < 8) {
+    ZOOM_SHIP_OFFSET = 20 - map.getZoom() * 2;
+    filterShips(ALL_SHIPS);
+    console.log(map.getZoom());
+  } else {
+    ZOOM_SHIP_OFFSET = 1;
+    filterShips(ALL_SHIPS);
+  }
+})
