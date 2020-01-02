@@ -7,10 +7,12 @@ $(document).ready(function () {
   $("#info-edit-button").click(function () {
     $("#change-name-box").show();
   });
-  $("#info-box-observe-btn").click(function () {
+  $("#info-box-observe-btn").click(function (e) {
     $("#observe-write").show();
     $("#observe-read").hide();
-    $("#observe-list-box").show()
+    $("#observe-list-box").show();
+    $("#observe-list-box").click();
+    e.stopPropagation();
   });
 });
 
