@@ -11,10 +11,11 @@ function filterShips(arrShipsGeo) {
 
   let thisShip = null;
   let check = 0;
-  for (var i = 0; i < arrShipsGeo.length; i++) {
+  for (var i = 0; i < arrShipsGeo.length; i += ZOOM_SHIP_OFFSET) {
     if (!arrShipsGeo[i].doShow) {
       continue;
     }
+
     thisShip = arrShipsGeo[i];
     if (customPred(thisShip.data)) {
       check++;
@@ -28,7 +29,11 @@ function filterShips(arrShipsGeo) {
 }
 
 function showPoints(data) {
-  dataSet = new mapv.DataSet(data);
+  var trimmedData = [];
+  for (var i = 0; i < data.length; i += ZOOM_SHIP_OFFSET) {
+    trimmedData.push(data[i]);
+  }
+  dataSet = new mapv.DataSet(trimmedData);
   // var dataSet = new mapv.DataSet(data);
   // 添加百度地图可视化叠加图层 The OVERLAY OPTIONS!!!
   var options = {

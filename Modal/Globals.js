@@ -4,6 +4,7 @@ var ALL_SHIPS = [];
 var MAPV_LAYER;
 // var TEMP_MAPV_LAYER;
 var CLEAR_LAYER;
+var ZOOM_SHIP_OFFSET = 12;
 
 var BOAT_MARKERS = [];
 var MAP_VIEW = true;
