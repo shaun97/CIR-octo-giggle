@@ -82,12 +82,17 @@ function printShipsTree(fleetName, fleetNameId, item) {
   });
 
   track.click(function () {
+    
     addClickHandler_dot_click(item);
     if (MAP_VIEW) {
       $('#inq-track-btn').click();
     } else {
       $('#clr-track-btn').click();
     }
+
+    track.html() == '<img src="./img/icon_track_myship_track.png" class="tree-button-icon">'
+    ? track.html('<img src="./img/icon_track_myship_track.png" style="filter: sepia(100%) hue-rotate(190deg) saturate(500%)" class="tree-button-icon">')
+    : track.html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
 
     // if (map.getZoom() < 12) map.setZoom(12);
     // map.panTo(new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']), true);
