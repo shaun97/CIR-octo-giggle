@@ -32,6 +32,7 @@ function showPoints(data) {
   // var dataSet = new mapv.DataSet(data);
   // 添加百度地图可视化叠加图层 The OVERLAY OPTIONS!!!
   var options = {
+    // globalCompositeOperation: 'blur',
     methods: { // 一些事件回调函数
       click: function (item) { // 点击事件，返回对应点击元素的对象值
         if (item == null) return;
