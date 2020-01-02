@@ -1,68 +1,8 @@
-function getShipIcon(ship) {
-  var typeID = ship.TYPE;
-  if (70 <= typeID && typeID <= 79) {
-    ship.TYPE_IDX = 0;
-    if (ship.HEADING == 511) return './img/cargoships_pt.png';
-    return './img/cargoships.png';
-  } else if (80 <= typeID && typeID <= 89) {
-    ship.TYPE_IDX = 1;
-    if (ship.HEADING == 511) return './img/tankers_pt.png';
-    return './img/tankers.png';
-  } else if (60 <= typeID && typeID <= 69) {
-    ship.TYPE_IDX = 2;
-    if (ship.HEADING == 511) return './img/passenger_pt.png';
-    return './img/passenger.png';
-  } else if (40 <= typeID && typeID <= 49) {
-    ship.TYPE_IDX = 3;
-    if (ship.HEADING == 511) return './img/highspeedcrafts_pt.png';
-    return './img/highspeedcrafts.png';
-  } else if (36 <= typeID && typeID <= 37) {
-    ship.TYPE_IDX = 4;
-    if (ship.HEADING == 511) return './img/Yatchs_pt.png';
-    return './img/Yachts.png';
-  } else if (typeID == 30) {
-    ship.TYPE_IDX = 5;
-    if (ship.HEADING == 511) return './img/fishingship_pt.png';
-    return './img/fishingship.png';
-  } else if (typeID == 35) {
-    ship.TYPE_IDX = 6;
-    if (ship.HEADING == 511) return './img/military_pt.png';
-    return './img/military.png';
-  } else if (0 <= typeID && typeID <= 19 || 38 <= typeID && typeID <= 39) {
-    ship.TYPE_IDX = 7;
-    if (ship.HEADING == 511) return './img/othertype_pt.png';
-    return './img/othertype.png';
-  } else {
-    ship.TYPE_IDX = 8;
-    if (ship.HEADING == 511) return './img/unknown_pt.png';
-    return './img/unknown.png';
-  }
-}
-
-function setFilterProperties() {
-  var ship = null;
-  for (var i = 0; i < ALL_SHIPS.length; i++) {
-    ship = ALL_SHIPS[i];
-    var size = ship.A;
-    if (!size || size < 40) {
-      ship.SIZE_IDX = 0;
-    } else if (size < 80) {
-      ship.SIZE_IDX = 1;
-    } else if (size < 120) {
-      ship.SIZE_IDX = 2;
-    } else if (size < 160) {
-      ship.SIZE_IDX = 3;
-    } else if (size < 240) {
-      ship.SIZE_IDX = 4;
-    } else if (size < 320) {
-      ship.SIZE_IDX = 5;
-    } else {
-      ship.SIZE_IDX = 6;
-    }
-  }
-}
-
-function filterShips(arrOfShips) {
+/**
+ * 
+ * @param {*} arrShipsGeo: Array of Geometric ship objects
+ */
+function filterShips(arrShipsGeo) {
   console.time("Filter");
   $("#ship-info-box").hide();
   var data = [];
@@ -71,28 +11,17 @@ function filterShips(arrOfShips) {
 
   let thisShip = null;
   let check = 0;
-  for (var i = 0; i < arrOfShips.length; i++) {
-    thisShip = arrOfShips[i];
-    if (customPred(thisShip)) {
+  for (var i = 0; i < arrShipsGeo.length; i++) {
+    thisShip = arrShipsGeo[i];
+    if (customPred(thisShip.data)) {
       check++;
-      var img = new Image(0.1, 0.1);
-      img.src = getShipIcon(thisShip);
-      data.push({
-        geometry: {
-          type: 'Point',
-          coordinates: [thisShip['LONGITUDE1'], thisShip['LATITUDE1']],
-          id: i,
-        },
-        icon: img,
-        deg: thisShip.HEADING - 90,
-        data: thisShip,
-      });
+      data.push(thisShip);
     }
     if (i == 0) console.log(thisShip, thisShip['LONGITUDE1'], thisShip['LATITUDE1']);
   }
-  console.log("check:", check, "all:", arrOfShips.length);
-  let currMapVLayer = showPoints(data);
-  return currMapVLayer;
+  console.log("check:", check, "all:", arrShipsGeo.length);
+  MAPV_LAYER.dataSet.set(data);
+  return MAPV_LAYER;
 }
 
 function showPoints(data) {
@@ -120,10 +49,7 @@ function showPoints(data) {
     size: 8,
   };
 
-  console.timeEnd("Filter");
-  console.time("turn on filter");
   return new mapv.baiduMapLayer(map, dataSet, options);
-  //MAPV_LAYER = new mapv.baiduMapLayer(map, dataSet, options);
 }
 
 function customPred(ship) {

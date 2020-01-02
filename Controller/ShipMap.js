@@ -1,7 +1,7 @@
 function setThisShipSel(item) {
 
   if (THIS_SHIP_ITEM == item) return;
-  if (THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
+  if (!item || THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
 
   var style_this_ship_label = {
     border: "0px solid rgba(6, 28, 44, 0.51)",
@@ -11,6 +11,10 @@ function setThisShipSel(item) {
     color: '#fff',
     //Test opacity: "0.8"
   };
+
+  THIS_SHIP_ITEM = item;
+
+  if (!item) return;
 
   var point = new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']);
   var label_dot = new BMap.Label(item.data.NAME, { offset: new BMap.Size(34, 7) });
@@ -22,7 +26,6 @@ function setThisShipSel(item) {
   marker.setLabel(label_dot);
   map.addOverlay(marker);
   THIS_SHIP_LABEL = marker;
-  THIS_SHIP_ITEM = item;
 }
 
 function setThisShipHover(item) {
@@ -57,54 +60,112 @@ function setThisShipHover(item) {
   THIS_SHIP_ITEM_HOVER = item;
 }
 
+const movingIcons = [
+  './img/cargoships.png', './img/tankers.png', './img/passenger.png',
+  './img/highspeedcrafts.png', './img/Yachts.png', './img/fishingship.png',
+  './img/military.png', './img/othertype.png', './img/unknown.png'
+];
+const stationaryIcons = [
+  './img/cargoships_pt.png', './img/tankers_pt.png', './img/passenger_pt.png',
+  './img/highspeedcrafts_pt.png', './img/Yachts_pt.png', './img/fishingship_pt.png',
+  './img/military_pt.png', './img/othertype_pt.png', './img/unknown_pt.png'
+];
+function getShipIcon(ship) {
+  if (ship.HEADING == 511) return stationaryIcons[ship.TYPE_IDX];
+  return movingIcons[ship.TYPE_IDX];
+}
+
+function setFilterProperties() {
+  var ship = null;
+  for (var i = 0; i < ALL_SHIPS.length; i++) {
+    ship = ALL_SHIPS[i];
+    var size = ship.A;
+    if (!size || size < 40) {
+      ship.SIZE_IDX = 0;
+    } else if (size < 80) {
+      ship.SIZE_IDX = 1;
+    } else if (size < 120) {
+      ship.SIZE_IDX = 2;
+    } else if (size < 160) {
+      ship.SIZE_IDX = 3;
+    } else if (size < 240) {
+      ship.SIZE_IDX = 4;
+    } else if (size < 320) {
+      ship.SIZE_IDX = 5;
+    } else {
+      ship.SIZE_IDX = 6;
+    }
+    var typeID = ship.TYPE;
+    if (70 <= typeID && typeID <= 79) {
+      ship.TYPE_IDX = 0;
+    } else if (80 <= typeID && typeID <= 89) {
+      ship.TYPE_IDX = 1;
+    } else if (60 <= typeID && typeID <= 69) {
+      ship.TYPE_IDX = 2;
+    } else if (40 <= typeID && typeID <= 49) {
+      ship.TYPE_IDX = 3;
+    } else if (36 <= typeID && typeID <= 37) {
+      ship.TYPE_IDX = 4;
+    } else if (typeID == 30) {
+      ship.TYPE_IDX = 5;
+    } else if (typeID == 35) {
+      ship.TYPE_IDX = 6;
+    } else if (0 <= typeID && typeID <= 19 || 38 <= typeID && typeID <= 39) {
+      ship.TYPE_IDX = 7;
+    } else {
+      ship.TYPE_IDX = 8;
+    }
+  }
+}
+
+function setGeoItems() {
+  let thisShip = null;
+  for (var i = 0; i < ALL_SHIPS.length; i++) {
+    thisShip = ALL_SHIPS[i];
+    var img = new Image(0.1, 0.1);
+    img.src = getShipIcon(thisShip);
+    ALL_SHIPS[i] = {
+      geometry: {
+        type: 'Point',
+        coordinates: [thisShip['LONGITUDE1'], thisShip['LATITUDE1']],
+        id: i,
+      },
+      icon: img,
+      deg: thisShip.HEADING - 90,
+      data: thisShip,
+    }
+  }
+}
+
 function mapLayersInit() {
+  console.time('init');
   setFilterProperties();
-  MAPV_LAYER = filterShips(ALL_SHIPS);
-  console.timeEnd("turn on filter");
+  setGeoItems();
+  // console.log(ALL_SHIPS);
+  MAPV_LAYER = showPoints(ALL_SHIPS);
+  // console.log('init mapv', MAPV_LAYER);
   close_load();
+  console.timeEnd('init');
 }
-
-// //Clears the map into a blank slate
-// function resetView() {
-//   if (MAPV_LAYER == null) return;
-//   if (MAP_VIEW) {
-//     if (TEMP_MAPV_LAYER == null) {
-//       map.clearOverlays();
-//       MAPV_LAYER.hide();
-//       // MAPV_LAYER.show();
-//     } else {
-//       map.clearOverlays();
-//       TEMP_MAPV_LAYER.destroy();
-//     }                             
-//   } else {
-//     if (TEMP_MAPV_LAYER == null) {
-//       map.clearOverlays();
-//       MAPV_LAYER.show();
-//     } else {
-//       map.clearOverlays();
-//       TEMP_MAPV_LAYER.show();
-//     }
-//   }
-// }
-
-function resetView() {
-}
-
 
 function addClickHandler_dot_click(item) {
   // item has item.data that contains data
   map.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
   setThisShipSel(item);
-  showData(item);
+  showData(item.data);
   setUpTrack(item);
 }
 
 function setUpTrack(item) {
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
   $('#inq-track-btn').click(function () {
+    // console.log('1', MAPV_LAYER.dataSet);
     showTrack();
+    // console.log('2', MAPV_LAYER.dataSet);
+    // console.log(item);
     chaInfoAjax(item.data.MMSI);
-    showData(item);
+    // console.log('3', MAPV_LAYER.dataSet);
+    showData(item.data);
     if (map.getZoom() < 11) map.setZoom(11);
     map.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
   });

@@ -8,22 +8,17 @@ $(document).ready(function () {
   });
 
   $('.layui-form-checkbox').click(function () {
+    console.time('click checkbox');
     if (!MAP_VIEW) clearTrack();
     if ($(this).hasClass("layui-form-checked")) {
-      map.clearOverlays();
-      if (MAPV_LAYER != null) MAPV_LAYER.hide();
-      TEMP_MAPV_LAYER = hideOtherShips();
+      setThisShipSel(null);
+      hideOtherShips();
     } else {
       if (MAP_VIEW) {
-        map.clearOverlays();
-        THIS_SHIP_ITEM = null;
-        THIS_SHIP_ITEM_HOVER = null;
-        if (TEMP_MAPV_LAYER != null) TEMP_MAPV_LAYER.destroy();
-        console.log(TEMP_MAPV_LAYER);
-        TEMP_MAPV_LAYER = null;
-        MAPV_LAYER.show();
+        filterShips(ALL_SHIPS);
       }
     }
+    console.timeEnd('click checkbox');
   });
 
   $("#add-fleet-btn").click(function () {
@@ -66,7 +61,7 @@ function printShipsTree(fleetName, fleetNameId, item) {
   let treeButtons = $('<div/>').addClass("tree-buttons").append(eye, track, edit, close);
   let ship = $('<div/>').addClass("ship-in-list").html(item.data.NICKNAME == null ? item.data.NAME : item.data.NICKNAME).append(treeButtons);
   $(`#content-list-${fleetNameId}`).append(ship);
-  showData(item);
+  showData(item.data);
 
   //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
 
@@ -81,15 +76,12 @@ function printShipsTree(fleetName, fleetNameId, item) {
       : eye.html('<img src="./img/icon_open.png" class="tree-button-icon">');
   });
 
-  var isTrack = false;
   track.click(function () {
-    if (isTrack) {
-      setUpTrack(item);
-      $('#clr-track-btn').click();
-      isTrack = false;
-    } else {
+    addClickHandler_dot_click(item);
+    if (MAP_VIEW) {
       $('#inq-track-btn').click();
-      isTrack = true;
+    } else {
+      $('#clr-track-btn').click();
     }
 
     // if (map.getZoom() < 12) map.setZoom(12);
@@ -111,7 +103,6 @@ function printShipsTree(fleetName, fleetNameId, item) {
 
 //Prints out the fleet
 function printFleetNameTree(newFleetName, fleetNameId) {
-
   let newFleet = $('<h2/>').addClass("layui-colla-title").text(newFleetName);
   let icon = $('<i/>').addClass("layui-icon").addClass("layui-colla-icon").html("");
   let eyeF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');

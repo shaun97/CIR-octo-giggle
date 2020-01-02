@@ -1,4 +1,3 @@
-
 function addFleet(newFleetName) {
     if (newFleetName == "") {
         throw "Please enter something for the fleet name";
@@ -45,6 +44,6 @@ function hideOtherShips() {
         })
     });
     console.log('data to hide', data);
-    return showPoints(data);
+    // return showPoints(data);
+    filterShips(data);
 }
-
