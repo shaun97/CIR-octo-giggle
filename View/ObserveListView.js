@@ -8,6 +8,7 @@ $(document).ready(function () {
   });
 
   $('.layui-form-checkbox').click(function () {
+    console.log("clicked checkbox");
     console.time('click checkbox');
     if (!MAP_VIEW) clearTrack();
     if ($(this).hasClass("layui-form-checked")) {
@@ -65,6 +66,11 @@ function printShipsTree(fleetName, fleetNameId, item) {
 
   //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
 
+  ship.click(function () {
+    clearTrack();
+    addClickHandler_dot_click(item);
+  });
+
   eye.click(function () {
     eye.html() == '<img src="./img/icon_open.png" class="tree-button-icon">'
       ? eye.html('<img src="./img/icon_hide.png" class="tree-button-icon">')
@@ -72,10 +78,17 @@ function printShipsTree(fleetName, fleetNameId, item) {
   });
 
   track.click(function () {
-    if (map.getZoom() < 12) map.setZoom(12);
-    map.panTo(new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']), true);
-    setThisShipSel(item);
-    showData(item.data);
+    addClickHandler_dot_click(item);
+    if (MAP_VIEW) {
+      $('#inq-track-btn').click();
+    } else {
+      $('#clr-track-btn').click();
+    }
+
+    // if (map.getZoom() < 12) map.setZoom(12);
+    // map.panTo(new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']), true);
+    // setThisShipSel(item);
+    // showData(item);
   })
 
   close.click(function () {
@@ -83,8 +96,10 @@ function printShipsTree(fleetName, fleetNameId, item) {
     ship.remove();
   });
 
+  $(".tree-button").click(function (e) {
+    e.stopPropagation();
+  });
   //-------------- END FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
-
 }
 
 //Prints out the fleet

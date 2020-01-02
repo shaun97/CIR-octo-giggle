@@ -1,4 +1,5 @@
 function setThisShipSel(item) {
+
   if (THIS_SHIP_ITEM == item) return;
   if (!item || THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
 
