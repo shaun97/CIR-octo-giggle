@@ -611,8 +611,10 @@ body .layui-laydate-content td:hover,
   cursor: pointer;
 }
 #speed-info-box {
-  height: 400px;
+  height: 200px;
   width: 400px;
+  left: 7.3%;
+  top: 70%;
 }
 .fastmenu_box {
   top: 75px;
