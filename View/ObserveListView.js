@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  updateNumBoatsHeader();
   $("#observe-close-button").click(function () {
     $("#observe-list-box").hide();
   });
@@ -30,7 +31,6 @@ $(document).ready(function () {
       alert(e);
       return;
     }
-
     printFleetNameTree(newFleetName, fleetNameId);
   });
 
@@ -38,6 +38,7 @@ $(document).ready(function () {
     let fleetName = $("#add-ship-fleet-name").val().trim();
     try {
       item = addShipToFleet(fleetName);
+      updateNumBoatsHeader();
     } catch (e) {
       alert(e);
       return;
@@ -62,6 +63,7 @@ function printShipsTree(fleetName, fleetNameId, item) {
   let ship = $('<div/>').addClass("ship-in-list").html(item.data.NICKNAME == null ? item.data.NAME : item.data.NICKNAME).append(treeButtons);
   $(`#content-list-${fleetNameId}`).append(ship);
   showData(item.data);
+  //updateNumFleetHeader(fleetNameId, fleetName);
 
   //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
 
@@ -82,7 +84,7 @@ function printShipsTree(fleetName, fleetNameId, item) {
   });
 
   track.click(function () {
-    
+
     addClickHandler_dot_click(item);
     if (MAP_VIEW) {
       $('#inq-track-btn').click();
@@ -91,8 +93,8 @@ function printShipsTree(fleetName, fleetNameId, item) {
     }
 
     track.html() == '<img src="./img/icon_track_myship_track.png" class="tree-button-icon">'
-    ? track.html('<img src="./img/icon_track_myship_track.png" style="filter: sepia(100%) hue-rotate(190deg) saturate(500%)" class="tree-button-icon">')
-    : track.html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
+      ? track.html('<img src="./img/icon_track_myship_track.png" style="filter: sepia(100%) hue-rotate(190deg) saturate(500%)" class="tree-button-icon">')
+      : track.html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
 
     // if (map.getZoom() < 12) map.setZoom(12);
     // map.panTo(new BMap.Point(item.data['LONGITUDE1'], item.data['LATITUDE1']), true);
@@ -103,6 +105,8 @@ function printShipsTree(fleetName, fleetNameId, item) {
   close.click(function () {
     FLEETS[fleetName.replace(" ", "_")] = FLEETS[fleetName.replace(" ", "_")].filter(x => x != item);
     ship.remove();
+    updateNumBoatsHeader();
+   // updateNumFleetHeader(fleetNameId, fleetName) 
   });
 
   $(".tree-button").click(function (e) {
@@ -113,7 +117,7 @@ function printShipsTree(fleetName, fleetNameId, item) {
 
 //Prints out the fleet
 function printFleetNameTree(newFleetName, fleetNameId) {
-  let newFleet = $('<h2/>').addClass("layui-colla-title").text(newFleetName);
+  let newFleet = $('<h2/>').addClass("layui-colla-title").text(newFleetName).attr("id", `fleet-header-${fleetNameId}`);;
   let icon = $('<i/>').addClass("layui-icon").addClass("layui-colla-icon").html("");
   let eyeF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
   let tableF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_info_myship_track.png" class="tree-button-icon">');
@@ -125,7 +129,7 @@ function printFleetNameTree(newFleetName, fleetNameId) {
     .append(newFleet.append(treeButtonsF).append(icon))
     .append(content)
   $('.my-ship-list').append(newItem);
-
+  //updateNumFleetHeader(fleetNameId, newFleetName) 
 
   //-------------- FUNCTIONALITY FOR FLEET TREE-BUTTONS --------------//
 
@@ -148,7 +152,9 @@ function printFleetNameTree(newFleetName, fleetNameId) {
     newItem.empty();
     newItem.remove();
     FLEET_NAME_LIST = FLEET_NAME_LIST.filter(x => x != newFleetName);
-    setFleetAutoComplete();
+    delete FLEETS[fleetNameId];
+    //setFleetAutoComplete();
+    updateNumBoatsHeader();
   });
 
   tableF.click((e) => {
@@ -167,3 +173,17 @@ $("#observe-add-ship-cancel-btn").click(function () {
   $("#observe-write").hide();
   $("#observe-read").show();
 })
+
+function updateNumBoatsHeader() {
+  var noOfShipsInList = 0;
+  Object.keys(FLEETS).forEach(function (key, index) {
+    noOfShipsInList += FLEETS[key].length;
+    console.log("updated num boats");
+  })
+  $("#observe-list-text").text("我的关注 （" + noOfShipsInList + "条）");
+}
+
+function updateNumFleetHeader(fleetNameId, fleetName) {
+  var noOfShipsInFleet = FLEETS[fleetNameId].length;
+  $(`#fleet-header-${fleetNameId}`).text(`${fleetName} （${noOfShipsInFleet}条）`);
+}

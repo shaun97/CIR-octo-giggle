@@ -180,8 +180,9 @@
         <div class="pop-up layui-anim layui-anim-scale" id="observe-list-box">
             <div class="ship-info-header-bar">
                 <div class="pop-up-header">
-                    <h6 class="pop-up-header-text"><img src="./img/icon_add_white.png" height="17px" width="17px">
-                        我的关注</h6>
+                    <div class="pop-up-header-text"><img src="./img/icon_add_white.png" height="17px" width="17px">
+                        <h6 id="observe-list-text">我的关注 （0条）</h6>
+                    </div>
                     <button class="pop-up-header-button close-button" id="observe-close-button"><img
                             src="./img/icon_close.png" class="close_image"></button>
                 </div>
@@ -224,6 +225,19 @@
                 <button type="button" class="layui-btn layui-btn-sm blue-button">导出船舶</button>
             </div>
         </div>
+
+        <!-- Ship speed info box  -->
+        <!-- <div class="pop-up layui-anim layui-anim-scale" id="speed-info-box">
+            <div class="ship-filtrate-header-bar">
+                <div class="pop-up-header">
+                    <h6 class="pop-up-header-text">
+                        航速分析</h6>
+                    <button class="pop-up-header-button close-button" id="speed-info-close-button"><img
+                            src="./img/icon_close.png" class="close_image"></button>
+                </div>
+            </div>
+        </div>
+        <script>$("#speed-info-box").show()</script> -->
 
         <!-- Ship Filtrate  -->
         <div class="pop-up layui-anim layui-anim-scale" id="ship-filtrate-box">
@@ -338,7 +352,8 @@
                                 class="layui-btn layui-btn-sm blue-button filtrate-size-btn"
                                 id="option-size-320abv-btn">>320</button></li>
                         <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
-                                id="option-size-custom">自定义长度</button></li>
+                                id="option-size-custom">自定义长度</button>
+                        </li>
                     </ul>
                 </div>
                 <hr>
@@ -360,11 +375,14 @@
                     <h6 class="filtrate-titles"><b>船旗</b></h6>
                     <ul class="filtrate-filters-options">
                         <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
-                                id="option-flag-china-btn">中国大陆</button></li>
+                                id="option-flag-china-btn">中国大陆</button>
+                        </li>
                         <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
-                                id="option-flag-ht-btn">中国港澳台</button></li>
+                                id="option-flag-ht-btn">中国港澳台</button>
+                        </li>
                         <li class="filtrate-option-li"> <button type="button" class="layui-btn layui-btn-sm blue-button"
-                                id="option-flag-others-btn">国外</button></li>
+                                id="option-flag-others-btn">国外</button>
+                        </li>
                     </ul>
                 </div>
                 <div class="bottom" style="margin-top: auto">
@@ -580,7 +598,7 @@
     function close_load() {
         $(".onload_box").hide();
     }
-    // close_load();
+    close_load();
 </script>
 
 <script type="text/javascript">
@@ -599,6 +617,7 @@
 <script type="text/javascript" src="./View/GroupInfo.js"></script>
 <script type="text/javascript" src="./View/ShipMapView.js"></script>
 <script type="text/javascript" src="./View/FiltrateBoxView.js"></script>
+<script type="text/javascript" src="./View/ShipSpeedBoxView.js"></script>
 
 
 <script type="text/javascript" src="./Controller/ObserveList.js"></script>
