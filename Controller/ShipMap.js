@@ -168,6 +168,7 @@ function setUpTrack(item) {
 
   $('#clr-track-btn').click(function () {
     clearTrack();
+    $('#speed-info-box').hide();
     let item = THIS_SHIP_ITEM;
     THIS_SHIP_ITEM = null; // Cheat
     setThisShipSel(item);
