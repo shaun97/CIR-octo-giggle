@@ -1,8 +1,8 @@
 function mapInitAjax() {
   console.time("init AJAX");
   $.ajax({
-     url: `http://${IP_ADDRESS}/ships/getDateJson`,
-    //url: 'http://localhost:3000/data',
+    // url: `http://${IP_ADDRESS}/ships/getDateJson`,
+    url: 'http://localhost:3000/data',
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
@@ -31,6 +31,9 @@ function chaInfoAjax(id) {
   //   success: function (data) {
   //     console.timeEnd("Search AJAX");
   //     drawTrack(data);
+  //     $("#speed-info-box").show()
+  //     showSpeedChart();
+
   //   },
   //   error: function () {
   //     alert("Error please try again");
@@ -38,7 +41,7 @@ function chaInfoAjax(id) {
   //   }
   // });
 
-  return drawTrack({
+  drawTrack({
     data: [
       [{
         LATITUDE1: 30.79797,
@@ -47,7 +50,8 @@ function chaInfoAjax(id) {
         MMSI: 412379380,
         LATITUDE: 30.79797,
         LONGITUDE: 122.30033,
-        TIME: "2019-12-25 09:06:54 GMT"
+        SOG: 22,
+        TIME: "2019-12-22 09:06:54 GMT"
       }],
       [{
         LATITUDE1: 30.79797,
@@ -56,7 +60,8 @@ function chaInfoAjax(id) {
         MMSI: 412379380,
         LATITUDE: 30.79797,
         LONGITUDE: 122.30033,
-        TIME: "2019-12-25 09:05:54 GMT"
+        SOG: 20,
+        TIME: "2019-12-23 09:05:54 GMT"
       }],
       [{
         LATITUDE1: 30.80797,
@@ -65,7 +70,8 @@ function chaInfoAjax(id) {
         MMSI: 412379380,
         LATITUDE: 30.79797,
         LONGITUDE: 122.30033,
-        TIME: "2019-12-25 09:04:54 GMT"
+        SOG: 40,
+        TIME: "2019-12-24 09:04:54 GMT"
       }],
       [{
         LATITUDE1: 31.79797,
@@ -74,6 +80,7 @@ function chaInfoAjax(id) {
         MMSI: 412379380,
         LATITUDE: 31.79797,
         LONGITUDE: 122.50033,
+        SOG: 50,
         TIME: "2019-12-25 09:03:54 GMT"
       }],
       [{
@@ -83,7 +90,8 @@ function chaInfoAjax(id) {
         MMSI: 412379380,
         LATITUDE: 31.75797,
         LONGITUDE: 122.50033,
-        TIME: "2019-12-25 09:02:54 GMT"
+        SOG: 10,
+        TIME: "2019-12-26 09:02:54 GMT"
       }],
       [{
         LATITUDE1: 31.83797,
@@ -92,8 +100,12 @@ function chaInfoAjax(id) {
         MMSI: 412379380,
         LATITUDE: 31.75797,
         LONGITUDE: 122.50033,
-        TIME: "2019-12-25 09:02:54 GMT"
+        SOG: 35,
+        TIME: "2019-12-27 09:02:54 GMT"
       }],
     ]
   });
+  $("#speed-info-box").show()
+  showSpeedChart();
+
 }
