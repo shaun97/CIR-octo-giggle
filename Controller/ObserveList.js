@@ -7,6 +7,7 @@ function addFleet(newFleetName) {
         var fleetNameId = newFleetName.replace(" ", "_");
         FLEETS[fleetNameId] = [];
         FLEET_NAME_LIST.push(newFleetName);
+        insertGroupAttention(newFleetName);
         return fleetNameId;
     }
 }
@@ -33,6 +34,7 @@ function addShipToFleet(fleetName) {
 
     FLEETS[fleetNameId].push(THIS_SHIP_ITEM);
     printShipsTree(fleetName, fleetNameId, THIS_SHIP_ITEM);
+    insertShipAttention(fleetName, THIS_SHIP_ITEM.data.NICKNAME, THIS_SHIP_ITEM.data.MMSI)
     return THIS_SHIP_ITEM;
 }
 
@@ -67,3 +69,39 @@ function toggleFleet(fleet, doShow) {
         filterShips(ALL_SHIPS);
     }
 }
+
+function addShipToGroup(fleetName, fleetNameId, MMSI, shipName) {
+    let tempShip = null;
+    for (var i = 0; i < ALL_SHIPS.length; i++) {
+        if (ALL_SHIPS[i].data.MMSI == MMSI) {
+            tempShip = ALL_SHIPS[i];
+            tempShip.NICKNAME = shipName;
+            break;
+        }
+    }
+    if (tempShip != null) {
+        FLEETS[fleetNameId].push(tempShip);
+        printShipsTree(fleetName, fleetNameId, tempShip);
+    } else {
+        //Not added as ship is not found
+    }
+}
+
+function loadGuanZhu(data) {
+    for (var i = 0; i < data.length; i++) {
+        var newFleetName = data[i].shipGroup;
+        var fleetNameId = newFleetName.replace(" ", "_");
+        FLEETS[fleetNameId] = [];
+        FLEET_NAME_LIST.push(newFleetName);
+        printFleetNameTree(newFleetName, fleetNameId);
+
+        //loop through all the ships in this group
+         for (var j = 0; j < data[i].MMSI.length; j++) {
+             let MMSI = data[i].MMSI[j];
+             let shipName = data[i].shipName[j];
+            addShipToGroup(newFleetName, fleetNameId, MMSI, shipName);
+         }
+         updateNumBoatsHeader();
+    }
+}
+
