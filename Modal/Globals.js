@@ -14,6 +14,7 @@ var THIS_SHIP_LABEL = null;
 var THIS_SHIP_LABEL_HOVER = null;
 
 var HISTORY_DATA = null;
+var TRACK_MARKERS = [];
 
 const FLEETS = {};
 let FLEET_NAME_LIST = [];

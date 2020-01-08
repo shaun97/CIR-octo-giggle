@@ -253,6 +253,10 @@ function dynamicLine(history_data) {
   addLine(history_data);//增加轨迹线
 
   HISTORY_DATA = history_data;
+  let last = HISTORY_DATA[HISTORY_DATA.length - 1];
+
+  if (map.getZoom() < 11) map.setZoom(11);
+  map.panTo(last.LONGITUDE1, last.LATITUDE1);
 
   addTrackPoints();
 
@@ -312,14 +316,15 @@ function addTrackPoints() {
     marker_track0.addEventListener("click", function (e) {
       openInfo(content_track0, e)
     });
+    TRACK_MARKERS.push(marker_track0);
   }
 
   history_data = HISTORY_DATA;
-  var lng; var lat;
+  for (var i = 0; i < TRACK_MARKERS.length; i++) {
+    map.removeOverlay(TRACK_MARKERS[i]); 
+  }
   for (var i = history_data.length - 1; i >= 0; i--) {
     var point = history_data[i];
-    lng = point['LONGITUDE1'];
-    lat = point['LATITUDE1'];
     console.log("hit if");
     if (i == history_data.length - 1
       || farEnough(history_data[i], history_data[i + 1])) {
@@ -329,19 +334,17 @@ function addTrackPoints() {
   }
   // 重新调整视野中心和缩放大小
   // map.centerAndZoom(new BMap.Point(lng, lat), 9);
-  if (map.getZoom() < 11) map.setZoom(11);
-  map.panTo(lng, lat);
 }
 
 function farEnough(data1, data2) {
   let lng1 = data1.LONGITUDE1; let lng2 = data2.LONGITUDE1;
   let lat1 = data1.LATITUDE1; let lat2 = data2.LATITUDE1;
-  let zoom = map.getZoom();
-  zoom = zoom * zoom * zoom/ 1000;
-  console.log("zoom:", zoom, "diff", lng1 - lng2);
-  if (lng1 - lng2 > zoom || lng2 - lng1 > zoom) {
-    return true;
-  }
+  let dLong = lng1 - lng2 < 0 ? lng2 - lng1 : lng1 - lng2; 
+  let dLat = lat1 - lat2 < 0 ? lat2 - lat1 : lat1 - lat2; 
+  // console.log('long:', dLong, 'lat', dLat);
+  if (dLong > 0.01 || dLat > 0.05) {
+      return true;
+    }
   return false;
 }
 
@@ -488,12 +491,14 @@ map.enableScrollWheelZoom();//滚轮放大缩小。
 }())
 
 map.addEventListener("zoomend", function (e) {
-  if (!MAP_VIEW) return;
-  if (map.getZoom() < 8) {
+  if (!MAP_VIEW) {
+    // console.log('adding track points');
+    addTrackPoints();
+  } else if (map.getZoom() < 8) {
     ZOOM_SHIP_OFFSET = 20 - map.getZoom() * 2;
     filterShips(ALL_SHIPS);
     console.log(map.getZoom());
-  } else {
+  } else if (map.getZoom() == 9) {
     ZOOM_SHIP_OFFSET = 1;
     filterShips(ALL_SHIPS);
   }
