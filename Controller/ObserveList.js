@@ -33,7 +33,7 @@ function addShipToFleet(fleetName) {
     };
 
     FLEETS[fleetNameId].push(THIS_SHIP_ITEM);
-    printShipsTree(fleetName, fleetNameId, THIS_SHIP_ITEM);
+    printShipsTree(fleetName, fleetNameId, THIS_SHIP_ITEM, true);
     insertShipAttention(fleetName, THIS_SHIP_ITEM.data.NICKNAME, THIS_SHIP_ITEM.data.MMSI)
     return THIS_SHIP_ITEM;
 }
@@ -70,7 +70,7 @@ function toggleFleet(fleet, doShow) {
     }
 }
 
-function addShipToGroup(fleetName, fleetNameId, MMSI, shipName) {
+function addShipToGroupLoad(fleetName, fleetNameId, MMSI, shipName) {
     let tempShip = null;
     for (var i = 0; i < ALL_SHIPS.length; i++) {
         if (ALL_SHIPS[i].data.MMSI == MMSI) {
@@ -81,7 +81,7 @@ function addShipToGroup(fleetName, fleetNameId, MMSI, shipName) {
     }
     if (tempShip != null) {
         FLEETS[fleetNameId].push(tempShip);
-        printShipsTree(fleetName, fleetNameId, tempShip);
+        printShipsTree(fleetName, fleetNameId, tempShip, false);
     } else {
         //Not added as ship is not found
     }
@@ -99,7 +99,7 @@ function loadGuanZhu(data) {
          for (var j = 0; j < data[i].MMSI.length; j++) {
              let MMSI = data[i].MMSI[j];
              let shipName = data[i].shipName[j];
-            addShipToGroup(newFleetName, fleetNameId, MMSI, shipName);
+            addShipToGroupLoad(newFleetName, fleetNameId, MMSI, shipName);
          }
          updateNumBoatsHeader();
     }

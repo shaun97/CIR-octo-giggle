@@ -57,7 +57,7 @@ function setCheckboxFunctionality() {
   });
 }
 
-function printShipsTree(fleetName, fleetNameId, item) {
+function printShipsTree(fleetName, fleetNameId, item, boo) {
   item.data.NICKNAME = ($("#add-ship-to-fleet-inputbar").val() == "") ? item.data.NICKNAME : $("#add-ship-to-fleet-inputbar").val();
   let eye = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
   let track = $('<button/>').addClass("tree-button").html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
@@ -66,7 +66,7 @@ function printShipsTree(fleetName, fleetNameId, item) {
   let treeButtons = $('<div/>').addClass("tree-buttons").append(eye, track, edit, close);
   let ship = $('<div/>').addClass("ship-in-list").html(item.data.NICKNAME == null ? item.data.NAME : item.data.NICKNAME).append(treeButtons);
   $(`#content-list-${fleetNameId}`).append(ship);
-  showData(item.data);
+  if (boo) showData(item.data);
   //updateNumFleetHeader(fleetNameId, fleetName);
 
   //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
