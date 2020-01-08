@@ -7,6 +7,7 @@ function addFleet(newFleetName) {
         var fleetNameId = newFleetName.replace(" ", "_");
         FLEETS[fleetNameId] = [];
         FLEET_NAME_LIST.push(newFleetName);
+        insertGroupAttention(newFleetName);
         return fleetNameId;
     }
 }
@@ -33,6 +34,7 @@ function addShipToFleet(fleetName) {
 
     FLEETS[fleetNameId].push(THIS_SHIP_ITEM);
     printShipsTree(fleetName, fleetNameId, THIS_SHIP_ITEM);
+    insertShipAttention(fleetName, THIS_SHIP_ITEM.data.NICKNAME, THIS_SHIP_ITEM.data.MMSI)
     return THIS_SHIP_ITEM;
 }
 

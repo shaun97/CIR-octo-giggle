@@ -133,3 +133,33 @@ function getGuanZhuAjax() {
     }
   });
 }
+
+function insertShipAttention(shipGroup, shipName, MMSI) {
+  $.ajax({
+    url: `http://${IP_ADDRESS}/ships/insertShipAttention?shipGroup=${shipGroup}&shipName=${shipName}&mmsi=${MMSI}&userId=${USER_KEY}`,
+    // url: 'http://localhost:3000/data',
+    type: "GET",//请求方式为get
+    dataType: "json", //返回数据格式为json
+    success: function (data) {
+      console.log("Ship inserted");
+    },
+    error: function () {
+      alert("Ship not saved");
+    }
+  });
+}
+
+function insertGroupAttention(shipGroup) {
+  $.ajax({
+    url: `http://${IP_ADDRESS}/ships/insertShipAttention?shipGroup=${shipGroup}&userID=${USER_KEY}`,
+    // url: 'http://localhost:3000/data',
+    type: "GET",//请求方式为get
+    dataType: "json", //返回数据格式为json
+    success: function (data) {
+      console.log("Group Inserted");
+    },
+    error: function () {
+      alert("Group not saved");
+    }
+  });
+}
