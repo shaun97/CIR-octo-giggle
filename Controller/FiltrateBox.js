@@ -44,7 +44,7 @@ function filterShips(arrShipsGeo) {
   return MAPV_LAYER;
 }
 
-function showPoints(data) {
+function initPoints(data) {
   var trimmedData = [];
   for (var i = 0; i < data.length; i += ZOOM_SHIP_OFFSET) {
     trimmedData.push(data[i]);
