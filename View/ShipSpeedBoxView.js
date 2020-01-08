@@ -6,12 +6,15 @@ $(document).ready(function () {
 })
 
 function showSpeedChart() {
+    if (SPEED_CHART != null && SPEED_CHART.getOption != null) {
+        SPEED_CHART.clear;
+    }
     var data = [];
     for (var i = 0; i < HISTORY_DATA.length; i++) {
         var snapshot = HISTORY_DATA[i];
-        console.log(snapshot.TIME);
-        var temp = { name: snapshot.TIME, value: [snapshot.TIME.slice(0,-4), snapshot.SOG]}
-        console.log(temp);
+
+        var temp = { name: snapshot.TIME, value: [snapshot.TIME.slice(0, -4), snapshot.SOG] }
+
         data.push(temp);
     }
     // date1 = { name: '1', value: ['2019-12-20 08:59:30', 10] };
@@ -20,8 +23,7 @@ function showSpeedChart() {
     // date4 = { name: '4', value: ['2019-12-20 11:59:30', 100] };
 
     // data = [date1, date2, date3, date4]
-
-    var myChart = echarts.init(document.getElementById('speed-chart'));
+    SPEED_CHART = echarts.init(document.getElementById('speed-chart'));
 
     // specify chart configuration item and data
     option = {
@@ -66,5 +68,5 @@ function showSpeedChart() {
     };
 
     // use configuration item and data specified to show chart
-    myChart.setOption(option);
+    SPEED_CHART.setOption(option);
 }

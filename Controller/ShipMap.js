@@ -162,12 +162,13 @@ function setUpTrack(item) {
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
   $('#inq-track-btn').click(function () {
     showTrack();
-    chaInfoAjax(item.data.MMSI);
     showData(item.data);
+    chaInfoAjax(item.data.MMSI);
   });
 
   $('#clr-track-btn').click(function () {
     clearTrack();
+    $('#speed-info-box').hide();
     let item = THIS_SHIP_ITEM;
     THIS_SHIP_ITEM = null; // Cheat
     setThisShipSel(item);

@@ -4,6 +4,7 @@ $(document).ready(function () {
     if (!MAP_VIEW) {$("#clr-track-btn").click()};
     map.removeOverlay(THIS_SHIP_LABEL);
     setThisShipSel(null);
+    $('#speed-info-box').hide();
   });
   $("#info-edit-button").click(function () {
     $("#change-name-box").show();
