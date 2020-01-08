@@ -33,6 +33,8 @@ function chaInfoAjax(id) {
       console.timeEnd("Search AJAX");
       close_load();
       drawTrack(data);
+      $("#speed-info-box").show()
+      showSpeedChart();
     },
     error: function () {
       close_load();
@@ -105,8 +107,4 @@ function chaInfoAjax(id) {
   //     }],
   //   ]
   // });
-
-  $("#speed-info-box").show()
-  showSpeedChart();
-
 }
