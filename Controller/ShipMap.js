@@ -209,8 +209,6 @@ function drawTrack(data) {
   }
 }
 
-
-
 //轨迹点加入到轨迹中。
 function dynamicLine(history_data) {
   //添加线
