@@ -49,7 +49,6 @@ function hideOtherShips() {
 
 function showIndivShips(ship) {
     ship.doShow = !ship.doShow;
-
     if ($('.layui-form-checkbox').hasClass("layui-form-checked")) {
         hideOtherShips();
     } else {

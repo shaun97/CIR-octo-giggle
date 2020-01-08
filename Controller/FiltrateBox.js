@@ -30,7 +30,7 @@ function filterShips(arrShipsGeo) {
     if (i == 0) console.log(thisShip, thisShip['LONGITUDE1'], thisShip['LATITUDE1']);
   }
 
-  if (THIS_SHIP_ITEM) {
+  if (THIS_SHIP_ITEM && THIS_SHIP_ITEM.doShow) {
     console.log('running this ship item check');
     let boo = false;
     for (var i = 0; i < data.length; i++) {
