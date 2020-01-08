@@ -1,8 +1,8 @@
 function mapInitAjax() {
   console.time("init AJAX");
   $.ajax({
-     url: `http://${IP_ADDRESS}/ships/getDateJson`,
-    // url: 'http://localhost:3000/data',
+    //url: `http://${IP_ADDRESS}/ships/getDateJson`,
+     url: 'http://localhost:3000/data',
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
@@ -21,7 +21,6 @@ function mapInitAjax() {
 }
 
 function chaInfoAjax(id) {
-
   console.time("Search AJAX");
   open_load();
   $.ajax({
@@ -107,4 +106,20 @@ function chaInfoAjax(id) {
   //     }],
   //   ]
   // });
+}
+
+function getGuanZhuAjax() {
+  $.ajax({
+    url: `http://${IP_ADDRESS}/ships/getShipAttention?userId=` + USER_KEY,
+    // url: 'http://localhost:3000/data',
+    type: "GET",//请求方式为get
+    dataType: "json", //返回数据格式为json
+    success: function (data) {
+      loadGuanZhu(data.data);
+      console.log("guanzhu");
+    },
+    error: function () {
+      alert("Cannot load save data");
+    }
+  });
 }

@@ -5,6 +5,7 @@ $(document).ready(function () {
     $("#observe-list-box").show();
     $("#observe-write").hide()
     $("#observe-read").show();
+
   });
 });
 

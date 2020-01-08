@@ -26,3 +26,5 @@ let SIZE_FLTR = true;
 let MOVE_ARR = Array(2).fill(true);
 
 let SPEED_CHART = null;
+
+let USER_KEY = '2';

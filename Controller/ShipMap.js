@@ -146,6 +146,7 @@ function mapLayersInit() {
   setFilterProperties();
   setGeoItems();
   MAPV_LAYER = initPoints(ALL_SHIPS);
+  getGuanZhuAjax();
   close_load();
   console.timeEnd('init');
 }
