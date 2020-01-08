@@ -4,14 +4,16 @@
  */
 function filterShips(arrShipsGeo) {
   CURRENT_SHIPS = arrShipsGeo;
-  // console.time("Filter");
-  $("#ship-info-box").hide();
+  console.time("Filter");
   var data = [];
   TYPE_FLTR = TYPE_ARR.reduce((x, y) => x && y, true);
   SIZE_FLTR = SIZE_ARR.reduce((x, y) => x && y, true);
 
   let thisShip = null;
   let check = 0;
+
+  setZoomOffset(); 
+
   if (arrShipsGeo.length < 1000) {
     ZOOM_SHIP_OFFSET = 1;
   }
@@ -41,6 +43,7 @@ function filterShips(arrShipsGeo) {
 
   console.log("check:", check, "all:", arrShipsGeo.length);
   MAPV_LAYER.dataSet.set(data);
+  console.timeEnd("Filter");
   return MAPV_LAYER;
 }
 

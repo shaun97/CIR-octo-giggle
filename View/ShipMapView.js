@@ -8,11 +8,8 @@ function showTrack() {
 function clearTrack() {
   destroyClearLayer()
   map.clearOverlays();
-  // if (TEMP_MAPV_LAYER == null) {
+  if ((map.getZoom() >= 9 && ZOOM_SHIP_OFFSET != 1) || (map.getZoom() < 9 && ZOOM_SHIP_OFFSET == 1)) filterShips(CURRENT_SHIPS);
   MAPV_LAYER.show();
-  // } else {
-  //   TEMP_MAPV_LAYER.show();
-  // }
   MAP_VIEW = true;
 }
 
