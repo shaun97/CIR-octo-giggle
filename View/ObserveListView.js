@@ -8,20 +8,6 @@ $(document).ready(function () {
     $("#observe-read").hide();
   });
 
-  $('.layui-form-checkbox').click(function () {
-    console.time('click checkbox');
-    if (!MAP_VIEW) clearTrack();
-    if ($(this).hasClass("layui-form-checked")) {
-      setThisShipSel(null);
-      hideOtherShips();
-    } else {
-      if (MAP_VIEW) {
-        filterShips(ALL_SHIPS);
-      }
-    }
-    console.timeEnd('click checkbox');
-  });
-
   $("#add-fleet-btn").click(function () {
     let newFleetName = $("#add-ship-fleet-name").val().trim();
 
@@ -50,8 +36,26 @@ $(document).ready(function () {
       source: FLEET_NAME_LIST
     });
   }
+
   setFleetAutoComplete();
 });
+
+function setCheckboxFunctionality() {
+  // $(".layui-form-checkbox").attr("onclick", "").unbind("click");
+  $('.layui-form-checkbox').click(function () {
+    console.time('click checkbox');
+    if (!MAP_VIEW) clearTrack();
+    if ($(this).hasClass("layui-form-checked")) {
+      setThisShipSel(null);
+      hideOtherShips();
+    } else {
+      if (MAP_VIEW) {
+        filterShips(ALL_SHIPS);
+      }
+    }
+    console.timeEnd('click checkbox');
+  });
+}
 
 function printShipsTree(fleetName, fleetNameId, item) {
   item.data.NICKNAME = ($("#add-ship-to-fleet-inputbar").val() == "") ? item.data.NICKNAME : $("#add-ship-to-fleet-inputbar").val();
