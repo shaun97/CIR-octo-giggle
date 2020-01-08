@@ -76,6 +76,24 @@ function chaInfoAjax(id) {
         LONGITUDE: 122.50033,
         TIME: "2019-12-25 09:03:54 GMT"
       }],
+      [{
+        LATITUDE1: 31.83797,
+        LONGITUDE1: 122.53033,
+        NAME: "SHAN SHI",
+        MMSI: 412379380,
+        LATITUDE: 31.75797,
+        LONGITUDE: 122.50033,
+        TIME: "2019-12-25 09:02:54 GMT"
+      }],
+      [{
+        LATITUDE1: 31.83797,
+        LONGITUDE1: 122.54033,
+        NAME: "SHAN SHI",
+        MMSI: 412379380,
+        LATITUDE: 31.75797,
+        LONGITUDE: 122.50033,
+        TIME: "2019-12-25 09:02:54 GMT"
+      }],
     ]
   });
 }

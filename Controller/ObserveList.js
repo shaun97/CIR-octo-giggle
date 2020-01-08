@@ -44,7 +44,6 @@ function hideOtherShips() {
         })
     });
     console.log('data to hide', data);
-    // return showPoints(data);
     filterShips(data);
 }
 

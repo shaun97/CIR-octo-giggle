@@ -1,4 +1,5 @@
 function setThisShipSel(item) {
+  console.log('this item', item);
 
   if (THIS_SHIP_ITEM == item) return;
   if (!item || THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
@@ -26,6 +27,8 @@ function setThisShipSel(item) {
   marker.setLabel(label_dot);
   map.addOverlay(marker);
   THIS_SHIP_LABEL = marker;
+  console.log('lat', item.data.LATITUDE1);
+  console.log('lng', item.data.LONGITUDE1);
 }
 
 function setThisShipHover(item) {
@@ -142,9 +145,7 @@ function mapLayersInit() {
   console.time('init');
   setFilterProperties();
   setGeoItems();
-  // console.log(ALL_SHIPS);
-  MAPV_LAYER = showPoints(ALL_SHIPS);
-  // console.log('init mapv', MAPV_LAYER);
+  MAPV_LAYER = initPoints(ALL_SHIPS);
   close_load();
   console.timeEnd('init');
 }
@@ -160,15 +161,9 @@ function addClickHandler_dot_click(item) {
 function setUpTrack(item) {
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
   $('#inq-track-btn').click(function () {
-    // console.log('1', MAPV_LAYER.dataSet);
     showTrack();
-    // console.log('2', MAPV_LAYER.dataSet);
-    // console.log(item);
     chaInfoAjax(item.data.MMSI);
-    // console.log('3', MAPV_LAYER.dataSet);
     showData(item.data);
-    // if (map.getZoom() < 11) map.setZoom(11);
-    // map.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
   });
 
   $('#clr-track-btn').click(function () {
@@ -198,7 +193,9 @@ function drawTrack(data) {
     }
 
     history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
-
+    let last = history_data[history_data.length - 1];
+    if (map.getZoom() < 11) map.setZoom(11);
+    map.centerAndZoom(new BMap.Point(last.LONGITUDE1, last.LATITUDE1), map.getZoom());
     if (history_data.length == 0) {
       throw new Error('No data on this ship');
     }
@@ -212,15 +209,12 @@ function drawTrack(data) {
   }
 }
 
-
-
 //轨迹点加入到轨迹中。
 function dynamicLine(history_data) {
   //添加线
   function addLine(history_data) {
-    console.log(history_data);
-    // history_data = history_data.reverse();
     // 创建标注对象并添加到地图
+    history_data = history_data.reverse();
     if (history_data.length < 2) return;
     var linePoints = [];
     for (var i = 0; i < history_data.length; i++) {
@@ -247,105 +241,99 @@ function dynamicLine(history_data) {
         map.addOverlay(polyline);   //增加折线
       }
     }
-
   }
+  function addTrackPoints(history_data) {
+    console.log('hisdata in add track points', history_data)
+    // 查询轨迹
+    //在轨迹点上创建图标，并添加点击事件，显示轨迹点信息。points,数组。
+    function addMarker(point) {
+      //添加标注
+      var point_track0 = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
+      var myIcon = new BMap.Icon("img/dot.png", new BMap.Size(15, 15), {
+        offset: new BMap.Size(0, 0),
+      });
+      var marker_track0 = new BMap.Marker(point_track0, { icon: myIcon });
+      marker_track0.setTop(true);
+      var content_track0 = "MMSI: " + point.MMSI + "<br>时间: " + convertDateToString(point.TIME) + "<br>航速: " + point.SOG;
+      // var content_track0 ="到港时间:***离岗时间:***港口名字***";
 
-  addLine(history_data);//增加轨迹线
-
-  HISTORY_DATA = history_data;
-  let last = HISTORY_DATA[HISTORY_DATA.length - 1];
-
-  if (map.getZoom() < 11) map.setZoom(11);
-  map.panTo(last.LONGITUDE1, last.LATITUDE1);
-
-  addTrackPoints();
-
-}
-
-function addTrackPoints() {
-  // 查询轨迹
-  //在轨迹点上创建图标，并添加点击事件，显示轨迹点信息。points,数组。
-  function addMarker(point) {
-    //添加标注
-    var point_track0 = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
-    // map.centerAndZoom(point_track0, 15);
-    var myIcon = new BMap.Icon("img/dot.png", new BMap.Size(15, 15), {
-      offset: new BMap.Size(0, 0),
-    });
-    var marker_track0 = new BMap.Marker(point_track0, { icon: myIcon });
-    marker_track0.setTop(true);
-    var content_track0 = "MMSI: " + point.MMSI + "<br>时间: " + convertDateToString(point.TIME) + "<br>航速: " + point.SOG;
-    // var content_track0 ="到港时间:***离岗时间:***港口名字***";
-
-    // 添加标签
-    var time = convertDateToString(point.TIME);
-    //HERE
-    var point_label = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
-    var opts = {
-      position: point_label,    // 指定文本标注所在的地理位置
-      offset: new BMap.Size(10, -30)    //设置文本偏移量
-    };
-    var label = new BMap.Label(time, opts);  // 创建文本标注对象
-    label.setStyle({
-      color: "#000",
-      fontSize: "12px",
-      height: "12px",
-      lineHeight: "12px",
-      border: "1px solid rgba(6, 28, 44, 0.51)",
-      background: "rgba(255, 255, 255, 0.60)",
-      fontFamily: "微软雅黑",
-      padding: '5px',
-      // visibility: 'hidden',
-    });
-
-    label.addEventListener('mouseover', () => {
+      // 添加标签
+      var time = convertDateToString(point.TIME);
+      //HERE
+      var point_label = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
+      var opts = {
+        position: point_label,    // 指定文本标注所在的地理位置
+        offset: new BMap.Size(10, -30)    //设置文本偏移量
+      };
+      var label = new BMap.Label(time, opts);  // 创建文本标注对象
       label.setStyle({
-        visibility: 'hidden'
-      })
-    });
-    label.addEventListener('mouseout', () => {
-      label.setStyle({
-        visibility: 'visible'
-      })
-    });
+        color: "#000",
+        fontSize: "10px",
+        height: "10px",
+        lineHeight: "10px",
+        border: "1px solid rgba(6, 28, 44, 0.51)",
+        background: "rgba(255, 255, 255, 0.60)",
+        fontFamily: "微软雅黑",
+        padding: '5px',
+        // visibility: 'hidden',
+      });
 
-    map.addOverlay(label);
+      label.addEventListener('mouseover', () => {
+        label.setStyle({
+          visibility: 'hidden'
+        })
+      });
+      label.addEventListener('mouseout', () => {
+        label.setStyle({
+          visibility: 'visible'
+        })
+      });
 
-    map.addOverlay(marker_track0);
+      map.addOverlay(label);
 
-    marker_track0.addEventListener("click", function (e) {
-      openInfo(content_track0, e)
-    });
-    TRACK_MARKERS.push(marker_track0);
-  }
+      map.addOverlay(marker_track0);
 
-  history_data = HISTORY_DATA;
-  for (var i = 0; i < TRACK_MARKERS.length; i++) {
-    map.removeOverlay(TRACK_MARKERS[i]); 
-  }
-  for (var i = history_data.length - 1; i >= 0; i--) {
-    var point = history_data[i];
-    console.log("hit if");
-    if (i == history_data.length - 1
-      || farEnough(history_data[i], history_data[i + 1])) {
-      console.log("added");
-      addMarker(point);//增加对应该的轨迹点
+      marker_track0.addEventListener("click", function (e) {
+        openInfo(content_track0, e)
+      });
+      TRACK_MARKERS.push(marker_track0);
     }
-  }
-  // 重新调整视野中心和缩放大小
-  // map.centerAndZoom(new BMap.Point(lng, lat), 9);
-}
 
-function farEnough(data1, data2) {
-  let lng1 = data1.LONGITUDE1; let lng2 = data2.LONGITUDE1;
-  let lat1 = data1.LATITUDE1; let lat2 = data2.LATITUDE1;
-  let dLong = lng1 - lng2 < 0 ? lng2 - lng1 : lng1 - lng2; 
-  let dLat = lat1 - lat2 < 0 ? lat2 - lat1 : lat1 - lat2; 
-  // console.log('long:', dLong, 'lat', dLat);
-  if (dLong > 0.01 || dLat > 0.05) {
+    let data = [];
+    for (var i = 0; i < TRACK_MARKERS.length; i++) {
+      map.removeOverlay(TRACK_MARKERS[i]);
+    }
+    for (var i = history_data.length - 1; i >= 0; i--) {
+      var point = history_data[i];
+      if (i == history_data.length - 1
+        || farEnough(history_data[i], history_data[i + 1])) {
+        addMarker(point);//增加对应该的轨迹点
+        data.push(point);
+      }
+    }
+    // 重新调整视野中心和缩放大小
+    return data;
+  }
+
+  let dLatMin = [null, null, null, null, 3, 1, 0.7, 0.5, 0.2, 0.07, 0.04, 0.02, 0.010, 0.007, 0.004, 0.002, 0.001, 0.0007, 0.0004, 0.0002]
+  let dLongMin = [null, null, null, null, 6, 3, 1.5, 1.0, 0.7, 0.45, 0.25, 0.10, 0.075, 0.05, 0.03, 0.02, 0.01, 0.008, 0.004, 0.002]
+
+  function farEnough(data1, data2) {
+    let lng1 = data1.LONGITUDE1; let lng2 = data2.LONGITUDE1;
+    let lat1 = data1.LATITUDE1; let lat2 = data2.LATITUDE1;
+    let dLong = lng1 - lng2 < 0 ? lng2 - lng1 : lng1 - lng2;
+    let dLat = lat1 - lat2 < 0 ? lat2 - lat1 : lat1 - lat2;
+    if (dLat > dLatMin[map.getZoom()] || dLong > dLongMin[map.getZoom()]) {
       return true;
     }
-  return false;
+    return false;
+  }
+
+  HISTORY_DATA = history_data;
+  console.log(HISTORY_DATA);
+
+  let pointsFarEnough = addTrackPoints(HISTORY_DATA);
+  addLine(pointsFarEnough);//增加轨迹线
 }
 
 // 开始和结束图片 FOR START AND END MARKERS
@@ -492,14 +480,16 @@ map.enableScrollWheelZoom();//滚轮放大缩小。
 
 map.addEventListener("zoomend", function (e) {
   if (!MAP_VIEW) {
-    // console.log('adding track points');
-    addTrackPoints();
-  } else if (map.getZoom() < 8) {
+    map.clearOverlays();
+    console.log('zoomed with TRACK')
+    dynamicLine(HISTORY_DATA);
+  } else if (map.getZoom() < 9) {
     ZOOM_SHIP_OFFSET = 20 - map.getZoom() * 2;
-    filterShips(ALL_SHIPS);
-    console.log(map.getZoom());
-  } else if (map.getZoom() == 9) {
+    filterShips(CURRENT_SHIPS);
+  } else if (map.getZoom() >= 9) {
+    if (ZOOM_SHIP_OFFSET == 1) return;
     ZOOM_SHIP_OFFSET = 1;
-    filterShips(ALL_SHIPS);
+    filterShips(CURRENT_SHIPS);
   }
+  console.log('zoom', map.getZoom());
 })
