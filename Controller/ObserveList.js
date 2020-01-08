@@ -85,7 +85,6 @@ function addShipToGroup(fleetName, fleetNameId, MMSI, shipName) {
     }
 }
 
-
 function loadGuanZhu(data) {
     for (var i = 0; i < data.length; i++) {
         var newFleetName = data[i].shipGroup;
@@ -100,6 +99,7 @@ function loadGuanZhu(data) {
              let shipName = data[i].shipName[j];
             addShipToGroup(newFleetName, fleetNameId, MMSI, shipName);
          }
+         updateNumBoatsHeader();
     }
 }
 
