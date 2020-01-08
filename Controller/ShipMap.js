@@ -163,8 +163,8 @@ function setUpTrack(item) {
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
   $('#inq-track-btn').click(function () {
     showTrack();
-    chaInfoAjax(item.data.MMSI);
     showData(item.data);
+    chaInfoAjax(item.data.MMSI);
   });
 
   $('#clr-track-btn').click(function () {
@@ -488,12 +488,18 @@ map.addEventListener("zoomend", function (e) {
     console.log('zoomed with TRACK')
     dynamicLine(HISTORY_DATA);
   } else if (map.getZoom() < 9) {
-    ZOOM_SHIP_OFFSET = 20 - map.getZoom() * 2;
     filterShips(CURRENT_SHIPS);
   } else if (map.getZoom() >= 9) {
     if (ZOOM_SHIP_OFFSET == 1) return;
-    ZOOM_SHIP_OFFSET = 1;
     filterShips(CURRENT_SHIPS);
   }
   console.log('zoom', map.getZoom());
 })
+
+function setZoomOffset() {
+  if (map.getZoom() < 9) {
+    ZOOM_SHIP_OFFSET = 20 - map.getZoom() * 2;
+  } else {
+    ZOOM_SHIP_OFFSET = 1;
+  }
+}

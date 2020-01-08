@@ -20,7 +20,7 @@ $('.se_btn').click(function () {
     let point = new BMap.Point(latestShip.data['LONGITUDE1'], latestShip.data['LATITUDE1']);
 
     if (map.getZoom() < 12) map.setZoom(12);
-    map.panTo(point, true);//设置中心点和显示级别。中国
+    map.centerAndZoom(point, map.getZoom());//设置中心点和显示级别。中国
 
     console.log('latest', latestShip)
     setThisShipSel(latestShip);

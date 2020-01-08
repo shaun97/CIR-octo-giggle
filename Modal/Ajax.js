@@ -1,8 +1,13 @@
 function mapInitAjax() {
   console.time("init AJAX");
   $.ajax({
+<<<<<<< HEAD
     //url: `http://${IP_ADDRESS}/ships/getDateJson`,
      url: 'http://localhost:3000/data',
+=======
+    //  url: `http://${IP_ADDRESS}/ships/getDateJson`,
+    url: 'http://localhost:3000/data',
+>>>>>>> 10c25369bc6eb62879c10fabe1d0b612846ca692
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
@@ -30,15 +35,25 @@ function chaInfoAjax(id) {
     dataType: "json", //返回数据格式为json
     success: function (data) {
       console.timeEnd("Search AJAX");
-      close_load();
-      drawTrack(data);
-      $("#speed-info-box").show()
-      showSpeedChart();
+      console.log('ajax data', data.data);
+      try {
+        if (!data.data || data.data.length == 0) {
+          close_load();
+          throw new Error('No data on this ship');
+        }
+        drawTrack(data);
+        $("#speed-info-box").show()
+        showSpeedChart();
+        close_load();
+      } catch (error) {
+        console.log(error);
+        alert(error);
+        close_load();
+        clearTrack();
+      }
     },
     error: function () {
-      close_load();
-      alert("Error please try again");
-      $('#clr-track-btn').click();
+      throw new Error('Please try again');
     }
   });
 

@@ -198,7 +198,7 @@ $(document).ready(function () {
     } else {
       filterShips(ALL_SHIPS);
     }
-
+    $("#ship-info-box").hide();
     MAPV_LAYER.show();
     console.timeEnd('real filter');
   })
