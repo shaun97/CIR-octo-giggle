@@ -1,4 +1,5 @@
 function setThisShipSel(item) {
+  console.log('this item', item);
 
   if (THIS_SHIP_ITEM == item) return;
   if (!item || THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
@@ -160,15 +161,9 @@ function addClickHandler_dot_click(item) {
 function setUpTrack(item) {
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
   $('#inq-track-btn').click(function () {
-    // console.log('1', MAPV_LAYER.dataSet);
     showTrack();
-    // console.log('2', MAPV_LAYER.dataSet);
-    // console.log(item);
     chaInfoAjax(item.data.MMSI);
-    // console.log('3', MAPV_LAYER.dataSet);
     showData(item.data);
-    // if (map.getZoom() < 11) map.setZoom(11);
-    // map.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
   });
 
   $('#clr-track-btn').click(function () {
@@ -255,10 +250,9 @@ function dynamicLine(history_data) {
   HISTORY_DATA = history_data;
   let last = HISTORY_DATA[HISTORY_DATA.length - 1];
 
-  if (map.getZoom() < 11) map.setZoom(11);
-  map.panTo(last.LONGITUDE1, last.LATITUDE1);
-
   addTrackPoints();
+  if (map.getZoom() < 11) map.setZoom(11);
+  map.centerAndZoom(new BMap.Point(last.LONGITUDE1, last.LATITUDE1), map.getZoom());
 
 }
 
@@ -268,7 +262,6 @@ function addTrackPoints() {
   function addMarker(point) {
     //添加标注
     var point_track0 = new BMap.Point(point['LONGITUDE1'], point['LATITUDE1']);
-    // map.centerAndZoom(point_track0, 15);
     var myIcon = new BMap.Icon("img/dot.png", new BMap.Size(15, 15), {
       offset: new BMap.Size(0, 0),
     });
@@ -333,7 +326,6 @@ function addTrackPoints() {
     }
   }
   // 重新调整视野中心和缩放大小
-  // map.centerAndZoom(new BMap.Point(lng, lat), 9);
 }
 
 function farEnough(data1, data2) {
@@ -494,12 +486,13 @@ map.addEventListener("zoomend", function (e) {
   if (!MAP_VIEW) {
     // console.log('adding track points');
     addTrackPoints();
-  } else if (map.getZoom() < 8) {
+  } else if (map.getZoom() < 9) {
     ZOOM_SHIP_OFFSET = 20 - map.getZoom() * 2;
-    filterShips(ALL_SHIPS);
-    console.log(map.getZoom());
-  } else if (map.getZoom() == 9) {
+    filterShips(CURRENT_SHIPS);
+  } else if (map.getZoom() >= 9) {
+    if (ZOOM_SHIP_OFFSET == 1) return;
     ZOOM_SHIP_OFFSET = 1;
-    filterShips(ALL_SHIPS);
+    filterShips(CURRENT_SHIPS);
   }
+  console.log('zoom', map.getZoom());
 })

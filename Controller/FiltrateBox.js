@@ -3,7 +3,8 @@
  * @param {*} arrShipsGeo: Array of Geometric ship objects
  */
 function filterShips(arrShipsGeo) {
-  console.time("Filter");
+  CURRENT_SHIPS = arrShipsGeo;
+  // console.time("Filter");
   $("#ship-info-box").hide();
   var data = [];
   TYPE_FLTR = TYPE_ARR.reduce((x, y) => x && y, true);
@@ -11,6 +12,9 @@ function filterShips(arrShipsGeo) {
 
   let thisShip = null;
   let check = 0;
+  if (arrShipsGeo.length < 1000) {
+    ZOOM_SHIP_OFFSET = 1;
+  }
   for (var i = 0; i < arrShipsGeo.length; i += ZOOM_SHIP_OFFSET) {
     if (!arrShipsGeo[i].doShow) {
       continue;
@@ -23,6 +27,18 @@ function filterShips(arrShipsGeo) {
     }
     if (i == 0) console.log(thisShip, thisShip['LONGITUDE1'], thisShip['LATITUDE1']);
   }
+
+  if (THIS_SHIP_ITEM) {
+    console.log('running this ship item check');
+    let boo = false;
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].MMSI == THIS_SHIP_ITEM.data.MMSI) { 
+        boo = true;
+      }
+    }
+    if (!boo) data.push(THIS_SHIP_ITEM);
+  }
+
   console.log("check:", check, "all:", arrShipsGeo.length);
   MAPV_LAYER.dataSet.set(data);
   return MAPV_LAYER;
@@ -57,6 +73,7 @@ function showPoints(data) {
     height: 10,
     size: 8,
   };
+  CURRENT_SHIPS = data;
 
   return new mapv.baiduMapLayer(map, dataSet, options);
 }

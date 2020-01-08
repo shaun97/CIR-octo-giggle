@@ -1,8 +1,8 @@
 var ALL_SHIPS = [];
+var CURRENT_SHIPS
 
 //States
 var MAPV_LAYER;
-// var TEMP_MAPV_LAYER;
 var CLEAR_LAYER;
 var ZOOM_SHIP_OFFSET = 12;
 
