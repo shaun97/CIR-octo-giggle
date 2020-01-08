@@ -92,6 +92,7 @@ body {
   display: inline-block;
   vertical-align: middle;
   line-height: 5.1vh;
+  font-size: 14px;
 }
 .pop-up .pop-up-header .pop-up-header-button {
   background-color: transparent;
@@ -290,6 +291,9 @@ body .layui-laydate-content td:hover,
   display: none;
   flex-direction: column;
   margin-bottom: 0;
+}
+#observe-list-box #observe-list-text {
+  display: inline-block;
 }
 #observe-list-box .show-ships-bar {
   height: 50px;
@@ -605,6 +609,12 @@ body .layui-laydate-content td:hover,
 }
 .search_box2 .se_btn:hover {
   cursor: pointer;
+}
+#speed-info-box {
+  height: 200px;
+  width: 400px;
+  left: 7.3%;
+  top: 70%;
 }
 .fastmenu_box {
   top: 75px;
