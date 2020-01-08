@@ -304,10 +304,12 @@ function dynamicLine(history_data) {
     for (var i = 0; i < TRACK_MARKERS.length; i++) {
       map.removeOverlay(TRACK_MARKERS[i]);
     }
+    let last = null;
     for (var i = history_data.length - 1; i >= 0; i--) {
       var point = history_data[i];
       if (i == history_data.length - 1
-        || farEnough(history_data[i], history_data[i + 1])) {
+        || farEnough(history_data[i], last)) {
+        last = history_data[i];
         addMarker(point);//增加对应该的轨迹点
         data.push(point);
       }
@@ -413,7 +415,7 @@ function convertDateToString(date) {
 }
 
 mapInitAjax();
-var map = new BMap.Map("ship-map"); //初始化地图
+var map = new BMap.Map("ship-map", {enableMapClick: false}); //初始化地图
 // map.setMaxZoom(10);
 map.centerAndZoom(new BMap.Point(106.5584370000, 29.5689960000), 4);//设置中心点和显示级别。中国。
 map.enableScrollWheelZoom();//滚轮放大缩小。
