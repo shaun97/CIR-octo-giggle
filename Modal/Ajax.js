@@ -22,51 +22,60 @@ function mapInitAjax() {
 
 function chaInfoAjax(id) {
 
-  console.time("Search AJAX");
-  $.ajax({
-    url: `http://${IP_ADDRESS}/ships/getMMSI?MmsiIorName=` + id,
-    // url: 'http://localhost:3000/data',
-    type: "GET",//请求方式为get
-    dataType: "json", //返回数据格式为json
-    success: function (data) {
-      console.timeEnd("Search AJAX");
-      drawTrack(data);
-    },
-    error: function () {
-      alert("Error please try again");
-      $('#clr-track-btn').click();
-    }
-  });
-
-  // return drawTrack({
-  //   data: [
-  //     [{
-  //       LATITUDE1: 30.79797,
-  //       LONGITUDE1: 122.30033,
-  //       NAME: "SHAN SHI",
-  //       MMSI: 412379380,
-  //       LATITUDE: 30.79797,
-  //       LONGITUDE: 122.30033,
-  //       TIME: "2019-12-25 09:06:54 GMT"
-  //     }],
-  //     [{
-  //       LATITUDE1: 30.79797,
-  //       LONGITUDE1: 122.30033,
-  //       NAME: "SHAN SHI",
-  //       MMSI: 412379380,
-  //       LATITUDE: 30.79797,
-  //       LONGITUDE: 122.30033,
-  //       TIME: "2019-12-25 09:07:54 GMT"
-  //     }],
-  //     [{
-  //       LATITUDE1: 31.79797,
-  //       LONGITUDE1: 122.50033,
-  //       NAME: "SHAN SHI",
-  //       MMSI: 412379380,
-  //       LATITUDE: 31.79797,
-  //       LONGITUDE: 122.50033,
-  //       TIME: "2019-12-25 09:10:54 GMT"
-  //     }],
-  //   ]
+  // console.time("Search AJAX");
+  // $.ajax({
+  //   url: `http://${IP_ADDRESS}/ships/getMMSI?MmsiIorName=` + id,
+  //   // url: 'http://localhost:3000/data',
+  //   type: "GET",//请求方式为get
+  //   dataType: "json", //返回数据格式为json
+  //   success: function (data) {
+  //     console.timeEnd("Search AJAX");
+  //     drawTrack(data);
+  //   },
+  //   error: function () {
+  //     alert("Error please try again");
+  //     $('#clr-track-btn').click();
+  //   }
   // });
+
+  return drawTrack({
+    data: [
+      [{
+        LATITUDE1: 30.79797,
+        LONGITUDE1: 122.30033,
+        NAME: "SHAN SHI",
+        MMSI: 412379380,
+        LATITUDE: 30.79797,
+        LONGITUDE: 122.30033,
+        TIME: "2019-12-25 09:06:54 GMT"
+      }],
+      [{
+        LATITUDE1: 30.79797,
+        LONGITUDE1: 122.30033,
+        NAME: "SHAN SHI",
+        MMSI: 412379380,
+        LATITUDE: 30.79797,
+        LONGITUDE: 122.30033,
+        TIME: "2019-12-25 09:05:54 GMT"
+      }],
+      [{
+        LATITUDE1: 30.80797,
+        LONGITUDE1: 122.20033,
+        NAME: "SHAN SHI",
+        MMSI: 412379380,
+        LATITUDE: 30.79797,
+        LONGITUDE: 122.30033,
+        TIME: "2019-12-25 09:04:54 GMT"
+      }],
+      [{
+        LATITUDE1: 31.79797,
+        LONGITUDE1: 122.50033,
+        NAME: "SHAN SHI",
+        MMSI: 412379380,
+        LATITUDE: 31.79797,
+        LONGITUDE: 122.50033,
+        TIME: "2019-12-25 09:03:54 GMT"
+      }],
+    ]
+  });
 }
