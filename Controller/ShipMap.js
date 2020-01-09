@@ -181,8 +181,6 @@ function drawTrack(data) {
 
     if (data.data == null) throw new Error('No data on this ship');
 
-    data.data = data.data.map(x => x[0]);
-
     var dateRange = $('#ship-date-range').val();
     $('#ship-date-range').val("");
 
@@ -206,7 +204,6 @@ function drawTrack(data) {
   } catch (error) {
     alert("Cannot load this ship's ship data");
     console.log(error);
-
     $('#clr-track-btn').click();
   }
 }

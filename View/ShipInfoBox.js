@@ -10,6 +10,7 @@ $(document).ready(function () {
     $("#change-name-box").show();
   });
   $("#info-box-observe-btn").click(function (e) {
+    if (!CHECKBOX_FUNCTIONALITY) setCheckboxFunctionality(); CHECKBOX_FUNCTIONALITY = true;
     $("#observe-write").show();
     $("#observe-read").hide();
     $("#observe-list-box").show();

@@ -8,20 +8,6 @@ $(document).ready(function () {
     $("#observe-read").hide();
   });
 
-  $('.layui-form-checkbox').click(function () {
-    console.time('click checkbox');
-    if (!MAP_VIEW) clearTrack();
-    if ($(this).hasClass("layui-form-checked")) {
-      setThisShipSel(null);
-      hideOtherShips();
-    } else {
-      if (MAP_VIEW) {
-        filterShips(ALL_SHIPS);
-      }
-    }
-    console.timeEnd('click checkbox');
-  });
-
   $("#add-fleet-btn").click(function () {
     let newFleetName = $("#add-ship-fleet-name").val().trim();
 
@@ -50,19 +36,37 @@ $(document).ready(function () {
       source: FLEET_NAME_LIST
     });
   }
+
   setFleetAutoComplete();
 });
 
-function printShipsTree(fleetName, fleetNameId, item) {
+function setCheckboxFunctionality() {
+  // $(".layui-form-checkbox").attr("onclick", "").unbind("click");
+  $('.layui-form-checkbox').click(function () {
+    console.time('click checkbox');
+    if (!MAP_VIEW) clearTrack();
+    if ($(this).hasClass("layui-form-checked")) {
+      setThisShipSel(null);
+      hideOtherShips();
+    } else {
+      if (MAP_VIEW) {
+        filterShips(ALL_SHIPS);
+      }
+    }
+    console.timeEnd('click checkbox');
+  });
+}
+
+function printShipsTree(fleetName, fleetNameId, item, boo) {
   item.data.NICKNAME = ($("#add-ship-to-fleet-inputbar").val() == "") ? item.data.NICKNAME : $("#add-ship-to-fleet-inputbar").val();
-  let eye = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
+  let eye = $('<button/>').addClass("tree-button").attr('id', 'eye' + '-' + fleetNameId + '-' + item.data.MMSI).html('<img src="./img/icon_hide.png" class="tree-button-icon">');
   let track = $('<button/>').addClass("tree-button").html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
   let edit = $('<button/>').addClass("tree-button").html('<img src="./img/icon_edit_myship_track.png" class="tree-button-icon">');
   let close = $('<button/>').addClass("tree-button").html('<img src="./img/icon_delt_myship_track.png" class="tree-button-icon">');
   let treeButtons = $('<div/>').addClass("tree-buttons").append(eye, track, edit, close);
   let ship = $('<div/>').addClass("ship-in-list").html(item.data.NICKNAME == null ? item.data.NAME : item.data.NICKNAME).append(treeButtons);
   $(`#content-list-${fleetNameId}`).append(ship);
-  showData(item.data);
+  if (boo) showData(item.data);
   //updateNumFleetHeader(fleetNameId, fleetName);
 
   //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
@@ -71,6 +75,7 @@ function printShipsTree(fleetName, fleetNameId, item) {
     if (!MAP_VIEW) {
       clearTrack();
     }
+    if (map.getZoom() < 9) map.setZoom(9);
     addClickHandler_dot_click(item);
   });
 
@@ -141,7 +146,7 @@ function printFleetNameTree(newFleetName, fleetNameId) {
       : eyeF.html('<img src="./img/icon_open.png" class="tree-button-icon">');
 
     fleetDoShowBtn = !fleetDoShowBtn;
-    toggleFleet(FLEETS[fleetNameId], fleetDoShowBtn);
+    toggleFleet(FLEETS[fleetNameId], fleetDoShowBtn, fleetNameId);
   });
 
   closeF.click(function () {

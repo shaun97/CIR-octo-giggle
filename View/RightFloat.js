@@ -1,5 +1,6 @@
 $(document).ready(function () {
   $("#star-button").click(function () {
+    if (!CHECKBOX_FUNCTIONALITY) setCheckboxFunctionality(); CHECKBOX_FUNCTIONALITY = true;
     $('.pop-up').css('z-index', '1');
     $('#observe-list-box').css('z-index', '2');
     $("#observe-list-box").show();
