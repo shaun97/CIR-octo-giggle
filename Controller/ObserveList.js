@@ -77,9 +77,8 @@ function addShipToGroupLoad(fleetName, fleetNameId, MMSI, shipName) {
     for (var i = 0; i < ALL_SHIPS.length; i++) {
         if (ALL_SHIPS[i].data.MMSI == MMSI) {
             tempShip = ALL_SHIPS[i];
-            tempShip.NICKNAME = shipName;
-            console.log(tempShip.NICKNAME);
-            console.log(ALL_SHIPS[i].NICKNAME);
+            tempShip.data.NICKNAME = shipName;
+
             break;
         }
     }
