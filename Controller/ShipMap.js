@@ -3,7 +3,7 @@ var ShipMap = (function () {
     console.log('this item', item);
 
     if (THIS_SHIP_ITEM == item) return;
-    if (!item || THIS_SHIP_ITEM != item) map.removeOverlay(THIS_SHIP_LABEL);
+    if (!item || THIS_SHIP_ITEM != item) MAP.removeOverlay(THIS_SHIP_LABEL);
 
     var style_this_ship_label = {
       border: "0px solid rgba(6, 28, 44, 0.51)",
@@ -26,7 +26,7 @@ var ShipMap = (function () {
     square.anchor = new BMap.Size(15, 15);
     var marker = new BMap.Marker(point, { icon: square });
     marker.setLabel(label_dot);
-    map.addOverlay(marker);
+    MAP.addOverlay(marker);
     THIS_SHIP_LABEL = marker;
     console.log('lat', item.data.LATITUDE1);
     console.log('lng', item.data.LONGITUDE1);
@@ -34,13 +34,13 @@ var ShipMap = (function () {
 
   function setThisShipHover(item) {
     if (item == null) {
-      if (THIS_SHIP_LABEL_HOVER != null) map.removeOverlay(THIS_SHIP_LABEL_HOVER);
+      if (THIS_SHIP_LABEL_HOVER != null) MAP.removeOverlay(THIS_SHIP_LABEL_HOVER);
       THIS_SHIP_ITEM_HOVER = null;
       return;
     } else if (THIS_SHIP_ITEM == item) {
       return;
     } else if (THIS_SHIP_ITEM_HOVER != item) {
-      map.removeOverlay(THIS_SHIP_LABEL_HOVER);
+      MAP.removeOverlay(THIS_SHIP_LABEL_HOVER);
     } else { //item == THIS_SHIP_ITEM_HOVER
       return;
     }
@@ -59,7 +59,7 @@ var ShipMap = (function () {
     var blank = new BMap.Icon("img/square_focus.png", new BMap.Size(0, 0), {});
     var marker = new BMap.Marker(point, { icon: blank });
     marker.setLabel(label_dot);
-    map.addOverlay(marker);
+    MAP.addOverlay(marker);
     THIS_SHIP_LABEL_HOVER = marker;
     THIS_SHIP_ITEM_HOVER = item;
   }
@@ -159,9 +159,9 @@ var ShipMap = (function () {
         },
         mousemove: function (item) { // 点击事件，返回对应点击元素的对象值
           if (item != null) {
-            map.setDefaultCursor('pointer');
+            MAP.setDefaultCursor('pointer');
           } else {
-            map.setDefaultCursor('default');
+            MAP.setDefaultCursor('default');
           }
           setThisShipHover(item);
         }
@@ -172,7 +172,7 @@ var ShipMap = (function () {
       size: 8,
     };
     CURRENT_SHIPS = data;
-    return new mapv.baiduMapLayer(map, dataSet, options);
+    return new mapv.baiduMapLayer(MAP, dataSet, options);
   }
 
   function mapLayersInit() {
@@ -187,7 +187,7 @@ var ShipMap = (function () {
 
   function clickShipHandler(item) {
     // item has item.data that contains data
-    map.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
+    MAP.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
     setThisShipSel(item);
     ShipInfoBox.showData(item.data);
     setUpTrack(item);
@@ -228,8 +228,8 @@ var ShipMap = (function () {
 
       history_data = history_data.sort((x, y) => new Date(x.TIME) > new Date(y.TIME) ? 1 : -1)
       let last = history_data[history_data.length - 1];
-      if (map.getZoom() < 11) map.setZoom(11);
-      map.centerAndZoom(new BMap.Point(last.LONGITUDE1, last.LATITUDE1), map.getZoom());
+      if (MAP.getZoom() < 11) MAP.setZoom(11);
+      MAP.centerAndZoom(new BMap.Point(last.LONGITUDE1, last.LATITUDE1), MAP.getZoom());
       if (history_data.length == 0) {
         throw new Error('No data on this ship');
       }
@@ -270,7 +270,7 @@ var ShipMap = (function () {
             strokeWeight: 1,
             strokeOpacity: 0.5,
           });
-          map.addOverlay(polyline);   //增加折线
+          MAP.addOverlay(polyline);   //增加折线
         }
       }
     }
@@ -321,9 +321,9 @@ var ShipMap = (function () {
           })
         });
 
-        map.addOverlay(label);
+        MAP.addOverlay(label);
 
-        map.addOverlay(marker_track0);
+        MAP.addOverlay(marker_track0);
 
         marker_track0.addEventListener("click", function (e) {
           openInfo(content_track0, e)
@@ -333,7 +333,7 @@ var ShipMap = (function () {
 
       let data = [];
       for (var i = 0; i < TRACK_MARKERS.length; i++) {
-        map.removeOverlay(TRACK_MARKERS[i]);
+        MAP.removeOverlay(TRACK_MARKERS[i]);
       }
       let last = null;
       for (var i = history_data.length - 1; i >= 0; i--) {
@@ -357,7 +357,7 @@ var ShipMap = (function () {
       let lat1 = data1.LATITUDE1; let lat2 = data2.LATITUDE1;
       let dLong = lng1 - lng2 < 0 ? lng2 - lng1 : lng1 - lng2;
       let dLat = lat1 - lat2 < 0 ? lat2 - lat1 : lat1 - lat2;
-      if (dLat > dLatMin[map.getZoom()] || dLong > dLongMin[map.getZoom()]) {
+      if (dLat > dLatMin[MAP.getZoom()] || dLong > dLongMin[MAP.getZoom()]) {
         return true;
       }
       return false;
@@ -390,7 +390,7 @@ var ShipMap = (function () {
       backgroundSize: "100% auto",
     });
     // console.log("added start overlay");
-    map.addOverlay(label1);
+    MAP.addOverlay(label1);
 
     // 结束标签
     var point_label = new BMap.Point(history_data[history_data.length - 1]['LONGITUDE1'], history_data[history_data.length - 1]['LATITUDE1']);
@@ -411,7 +411,7 @@ var ShipMap = (function () {
         backgroundSize: "100% auto",
       });
       // console.log("added end overlay");
-      map.addOverlay(label2);
+      MAP.addOverlay(label2);
     } else {
       label2.setStyle({
         height: "50px",
@@ -423,7 +423,7 @@ var ShipMap = (function () {
         backgroundSize: "100% auto",
       });
       // console.log("added end overlay");
-      map.addOverlay(label2);
+      MAP.addOverlay(label2);
     }
   }
 
@@ -438,36 +438,35 @@ var ShipMap = (function () {
     var p = e.target;
     var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
     var infoWindow = new BMap.InfoWindow(content, opts3);  // 创建信息窗口对象
-    map.openInfoWindow(infoWindow, point); //开启信息窗口
+    MAP.openInfoWindow(infoWindow, point); //开启信息窗口
   }
   function convertDateToString(date) {
     return new Date(date).toLocaleString('en-GB', { timeZoneName: 'short' }).replace(/\//g, '-');
   }
 
   mapInitAjax();
-  map = new BMap.Map("ship-map", { enableMapClick: false }); //初始化地图
-  // map = map;
-  // map.setMaxZoom(10);
-  map.centerAndZoom(new BMap.Point(106.5584370000, 29.5689960000), 4);//设置中心点和显示级别。中国。
-  map.enableScrollWheelZoom();//滚轮放大缩小。
+  MAP = new BMap.Map("ship-map", { enableMapClick: false }); //初始化地图
+  // MAP.setMaxZoom(10);
+  MAP.centerAndZoom(new BMap.Point(106.5584370000, 29.5689960000), 4);//设置中心点和显示级别。中国。
+  MAP.enableScrollWheelZoom();//滚轮放大缩小。
 
-  map.addEventListener("zoomend", function (e) {
+  MAP.addEventListener("zoomend", function (e) {
     if (!MAP_VIEW) {
-      map.clearOverlays();
+      MAP.clearOverlays();
       console.log('zoomed with TRACK')
       dynamicLine(HISTORY_DATA);
-    } else if (map.getZoom() < 9) {
+    } else if (MAP.getZoom() < 9) {
       FiltrateBox.filterShips(CURRENT_SHIPS);
-    } else if (map.getZoom() >= 9) {
+    } else if (MAP.getZoom() >= 9) {
       if (ZOOM_SHIP_OFFSET == 1) return;
       FiltrateBox.filterShips(CURRENT_SHIPS);
     }
-    console.log('zoom', map.getZoom());
+    console.log('zoom', MAP.getZoom());
   })
 
   function setZoomOffset() {
-    if (map.getZoom() < 9) {
-      ZOOM_SHIP_OFFSET = 20 - map.getZoom() * 2;
+    if (MAP.getZoom() < 9) {
+      ZOOM_SHIP_OFFSET = 20 - MAP.getZoom() * 2;
     } else {
       ZOOM_SHIP_OFFSET = 1;
     }
@@ -492,8 +491,8 @@ var ShipMap = (function () {
       mapTypeOps
     );
 
-    map.addControl(MapType);
-    // map.setMapType(BMAP_SATELLITE_MAP);
+    MAP.addControl(MapType);
+    // MAP.setMapType(BMAP_SATELLITE_MAP);
 
     // 自定义控件---放大缩小
     function ZoomControl() {
@@ -502,7 +501,7 @@ var ShipMap = (function () {
       this.defaultOffset = new BMap.Size(10, 10);
     }
     ZoomControl.prototype = new BMap.Control();
-    ZoomControl.prototype.initialize = function (map) {
+    ZoomControl.prototype.initialize = function (MAP) {
 
       // 创建一个DOM元素
       var div_ss_box = document.createElement("div");
@@ -520,18 +519,18 @@ var ShipMap = (function () {
       div_suo.appendChild(document.createTextNode("-"));
       // 绑定事件,点击一次放大两级
       div_scale.onclick = function (e) {
-        map.setZoom(map.getZoom() + 1);
+        MAP.setZoom(MAP.getZoom() + 1);
       }
       div_suo.onclick = function (e) {
-        map.setZoom(map.getZoom() - 1);
+        MAP.setZoom(MAP.getZoom() - 1);
       }
       // 添加DOM元素到地图中
-      map.getContainer().appendChild(div_ss_box);
+      MAP.getContainer().appendChild(div_ss_box);
       // 将DOM元素返回
       return div_ss_box
     }
     var myZoomCtrl = new ZoomControl();
-    map.addControl(myZoomCtrl);
+    MAP.addControl(myZoomCtrl);
   }());
 
   return {

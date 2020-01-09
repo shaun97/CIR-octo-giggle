@@ -76,7 +76,7 @@ var ObserveListView = (function () {
       if (!MAP_VIEW) {
         ShipMapView.clearTrack();
       }
-      if (map.getZoom() < 9) map.setZoom(9);
+      if (MAP.getZoom() < 9) MAP.setZoom(9);
       ShipMap.clickShipHandler(item);
     });
 

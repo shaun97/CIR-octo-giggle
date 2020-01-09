@@ -1,6 +1,6 @@
 var ALL_SHIPS = [];
 var CURRENT_SHIPS
-var map = null;
+var MAP = null;
 
 //States
 var MAPV_LAYER;

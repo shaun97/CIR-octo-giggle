@@ -3,7 +3,7 @@ var ShipInfoBox = (function () {
     $("#info-close-button").click(function () {
       $("#ship-info-box").hide();
       if (!MAP_VIEW) { $("#clr-track-btn").click() };
-      map.removeOverlay(THIS_SHIP_LABEL);
+      MAP.removeOverlay(THIS_SHIP_LABEL);
       ShipMap.setThisShipSel(null);
       $('#speed-info-box').hide();
     });
