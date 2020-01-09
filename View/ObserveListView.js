@@ -59,7 +59,7 @@ function setCheckboxFunctionality() {
 
 function printShipsTree(fleetName, fleetNameId, item, boo) {
   item.data.NICKNAME = ($("#add-ship-to-fleet-inputbar").val() == "") ? item.data.NICKNAME : $("#add-ship-to-fleet-inputbar").val();
-  let eye = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
+  let eye = $('<button/>').addClass("tree-button").attr('id', 'eye' + '-' + fleetNameId + '-' + item.data.MMSI).html('<img src="./img/icon_hide.png" class="tree-button-icon">');
   let track = $('<button/>').addClass("tree-button").html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
   let edit = $('<button/>').addClass("tree-button").html('<img src="./img/icon_edit_myship_track.png" class="tree-button-icon">');
   let close = $('<button/>').addClass("tree-button").html('<img src="./img/icon_delt_myship_track.png" class="tree-button-icon">');
@@ -146,7 +146,7 @@ function printFleetNameTree(newFleetName, fleetNameId) {
       : eyeF.html('<img src="./img/icon_open.png" class="tree-button-icon">');
 
     fleetDoShowBtn = !fleetDoShowBtn;
-    toggleFleet(FLEETS[fleetNameId], fleetDoShowBtn);
+    toggleFleet(FLEETS[fleetNameId], fleetDoShowBtn, fleetNameId);
   });
 
   closeF.click(function () {
