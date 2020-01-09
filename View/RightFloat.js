@@ -18,5 +18,4 @@
       $("#filtrate-option-custom-close").click()
     });
   });
-  
 }());
