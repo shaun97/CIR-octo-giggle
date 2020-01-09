@@ -7,7 +7,7 @@ function mapInitAjax() {
     dataType: "json", //返回数据格式为json
     success: function (data) {
       console.timeEnd("init AJAX");
-      ALL_SHIPS = data.data; // Change back
+      ALL_SHIPS = data.data[0]; // Change back
       if (!ALL_SHIPS || ALL_SHIPS.length == 0) {
         alert("Please refresh page");
         return;
@@ -30,6 +30,10 @@ function chaInfoAjax(id) {
     dataType: "json", //返回数据格式为json
     success: function (data) {
       console.timeEnd("Search AJAX");
+      console.log('before change', data.data);
+      data.data = data.data.map(x => x[0] ? x[0] : x); // Backend change
+      
+      console.log('after change', data.data);
       console.log('ajax data', data.data);
       try {
         if (!data.data || data.data.length == 0) {

@@ -75,6 +75,7 @@ function printShipsTree(fleetName, fleetNameId, item, boo) {
     if (!MAP_VIEW) {
       clearTrack();
     }
+    if (map.getZoom() < 9) map.setZoom(9);
     addClickHandler_dot_click(item);
   });
 
