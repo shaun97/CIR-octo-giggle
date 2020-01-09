@@ -141,7 +141,7 @@ body {
 #ship-info-box {
   left: 7.3%;
   top: 20%;
-  height: 370px;
+  height: auto;
   width: 350px;
 }
 #ship-info-box .ship-details {
@@ -189,6 +189,7 @@ body {
 }
 #ship-info-box .ship-info-two-buttons {
   margin-left: 6%;
+  margin-bottom: 10px;
 }
 #ship-info-box .ship-info-two-buttons .ship-info-button {
   width: 20%;
