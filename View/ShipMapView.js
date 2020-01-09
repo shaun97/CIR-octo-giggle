@@ -9,7 +9,7 @@ var ShipMapView = (function () {
   function clearTrack() {
     destroyClearLayer()
     map.clearOverlays();
-    if ((map.getZoom() >= 9 && ZOOM_SHIP_OFFSET != 1) || (map.getZoom() < 9 && ZOOM_SHIP_OFFSET == 1)) filterShips(CURRENT_SHIPS);
+    if ((map.getZoom() >= 9 && ZOOM_SHIP_OFFSET != 1) || (map.getZoom() < 9 && ZOOM_SHIP_OFFSET == 1)) FiltrateBox.filterShips(CURRENT_SHIPS);
     MAPV_LAYER.show();
     MAP_VIEW = true;
   }

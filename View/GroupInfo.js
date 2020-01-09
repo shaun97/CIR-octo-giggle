@@ -22,7 +22,7 @@ var GroupInfo = (function () {
       DRAUGHT = o + DRAUGHT + c;
       DEST = o + DEST + c;
       ETA = o + ETA + c;
-      TIME = o + convertDateToString(TIME) + c;
+      TIME = o + ShipMap.convertDateToString(TIME) + c;
 
       $('#observe-list-table').append(
         '<tr>' +

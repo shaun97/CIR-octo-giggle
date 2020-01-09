@@ -4,7 +4,7 @@ var ShipInfoBox = (function () {
       $("#ship-info-box").hide();
       if (!MAP_VIEW) { $("#clr-track-btn").click() };
       map.removeOverlay(THIS_SHIP_LABEL);
-      setThisShipSel(null);
+      ShipMap.setThisShipSel(null);
       $('#speed-info-box').hide();
     });
     $("#info-edit-button").click(function () {
@@ -43,7 +43,7 @@ var ShipInfoBox = (function () {
     $("#ship-info-id-m").text(IMO == null ? "-" : IMO);
     $("#ship-info-length").text(A == null ? "-" : A);
     $("#ship-info-dest").text(DEST == null ? "-" : DEST);
-    $("#ship-info-time").text(TIME == null ? "-" : convertDateToString(TIME));
+    $("#ship-info-time").text(TIME == null ? "-" : ShipMap.convertDateToString(TIME));
     $("#ship-info-id-l").text(!MMSI ? "-" : MMSI);
     $("#ship-info-id-s").text(CALLSIGN == null ? "-" : CALLSIGN);
     $("#ship-info-type").text(TYPE == null ? "-" : TYPE);

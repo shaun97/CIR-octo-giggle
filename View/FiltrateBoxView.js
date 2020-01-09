@@ -195,9 +195,9 @@ var FiltrateView = (function () {
       FiltrateView.resetViewForFilter();
 
       if ($('.layui-form-checkbox').hasClass("layui-form-checked")) {
-        hideOtherShips();
+        ObserveList.hideOtherShips();
       } else {
-        filterShips(ALL_SHIPS);
+        FiltrateBox.filterShips(ALL_SHIPS);
       }
       $("#ship-info-box").hide();
       MAPV_LAYER.show();
@@ -207,7 +207,7 @@ var FiltrateView = (function () {
   function resetViewForFilter() {
     if (!MAP_VIEW) ShipMapView.clearTrack();
     map.clearOverlays();
-    setThisShipSel(null);
+    ShipMap.setThisShipSel(null);
   }
   return {
     resetViewForFilter: resetViewForFilter

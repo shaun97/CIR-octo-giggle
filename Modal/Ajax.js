@@ -13,7 +13,7 @@ function mapInitAjax() {
         alert("Please refresh page");
         return;
       }
-      mapLayersInit();
+      ShipMap.mapLayersInit();
     },
     error: function () {
       alert("Cannot load ship data");
@@ -41,7 +41,7 @@ function chaInfoAjax(id) {
           close_load();
           throw new Error('No data on this ship');
         }
-        drawTrack(data);
+        ShipMap.drawTrack(data);
         $("#speed-info-box").show()
         ShipSpeedBoxView.showSpeedChart();
         close_load();
@@ -130,7 +130,7 @@ function getGuanZhuAjax() {
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
-      loadGuanZhu(data.data);
+      ObserveList.loadGuanZhu(data.data);
       console.log("guanzhu");
     },
     error: function () {

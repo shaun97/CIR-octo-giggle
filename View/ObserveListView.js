@@ -13,7 +13,7 @@ var ObserveListView = (function () {
       let newFleetName = $("#add-ship-fleet-name").val().trim();
 
       try {
-        fleetNameId = addFleet(newFleetName);
+        fleetNameId = ObserveList.addFleet(newFleetName);
       } catch (e) {
         alert(e);
         return;
@@ -24,7 +24,7 @@ var ObserveListView = (function () {
     $("#add-ship-to-fleet-btn").click(function () {
       let fleetName = $("#add-ship-fleet-name").val().trim();
       try {
-        item = addShipToFleet(fleetName);
+        item = ObserveList.addShipToFleet(fleetName);
         updateNumBoatsHeader();
       } catch (e) {
         alert(e);
@@ -47,11 +47,11 @@ var ObserveListView = (function () {
       console.time('click checkbox');
       if (!MAP_VIEW) ShipMapView.clearTrack();
       if ($(this).hasClass("layui-form-checked")) {
-        setThisShipSel(null);
-        hideOtherShips();
+        ShipMap.setThisShipSel(null);
+        ObserveList.hideOtherShips();
       } else {
         if (MAP_VIEW) {
-          filterShips(ALL_SHIPS);
+          FiltrateBox.filterShips(ALL_SHIPS);
         }
       }
       console.timeEnd('click checkbox');
@@ -77,7 +77,7 @@ var ObserveListView = (function () {
         ShipMapView.clearTrack();
       }
       if (map.getZoom() < 9) map.setZoom(9);
-      addClickHandler_dot_click(item);
+      ShipMap.clickShipHandler(item);
     });
 
 
@@ -86,14 +86,14 @@ var ObserveListView = (function () {
         ? eye.html('<img src="./img/icon_hide.png" class="tree-button-icon">')
         : eye.html('<img src="./img/icon_open.png" class="tree-button-icon">');
 
-      showIndivShips(item);
+        ObserveList.showIndivShips(item);
     });
 
     track.click(function () {
       MAP_VIEW == true
         ? track.html('<img src="./img/icon_track_myship_track.png" style="filter: sepia(100%) hue-rotate(190deg) saturate(500%)" class="tree-button-icon">')
         : track.html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
-      addClickHandler_dot_click(item);
+      ShipMap.clickShipHandler(item);
       $('#clr-track-btn').click(() => {
         track.html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
       })
@@ -147,7 +147,7 @@ var ObserveListView = (function () {
         : eyeF.html('<img src="./img/icon_open.png" class="tree-button-icon">');
 
       fleetDoShowBtn = !fleetDoShowBtn;
-      toggleFleet(FLEETS[fleetNameId], fleetDoShowBtn, fleetNameId);
+      ObserveList.toggleFleet(FLEETS[fleetNameId], fleetDoShowBtn, fleetNameId);
     });
 
     closeF.click(function () {
