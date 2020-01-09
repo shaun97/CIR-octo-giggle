@@ -155,20 +155,20 @@ function addClickHandler_dot_click(item) {
   // item has item.data that contains data
   map.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
   setThisShipSel(item);
-  showData(item.data);
+  ShipInfoBox.showData(item.data);
   setUpTrack(item);
 }
 
 function setUpTrack(item) {
   $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
   $('#inq-track-btn').click(function () {
-    showTrack();
-    showData(item.data);
+    ShipMapView.showTrack();
+    ShipInfoBox.showData(item.data);
     chaInfoAjax(item.data.MMSI);
   });
 
   $('#clr-track-btn').click(function () {
-    clearTrack();
+    ShipMapView.clearTrack();
     $('#speed-info-box').hide();
     let item = THIS_SHIP_ITEM;
     THIS_SHIP_ITEM = null; // Cheat

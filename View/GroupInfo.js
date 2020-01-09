@@ -1,13 +1,14 @@
-$(document).ready(function () {
-  $("#group-info-close-button").click(function () {
-    $("#group-info-box").hide();
+var GroupInfo = (function () {
+  $(document).ready(function () {
+    $("#group-info-close-button").click(function () {
+      $("#group-info-box").hide();
+    });
   });
-});
 
-function showTable(fleet, fleetName) {
-  $('#observe-list-table tr').slice(1).remove();
-  for (var i = 0; i < fleet.length; i++) {
-      let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST, SOG, DRAUGHT, ETA} = fleet[i].data; //.data;
+  function showTable(fleet, fleetName) {
+    $('#observe-list-table tr').slice(1).remove();
+    for (var i = 0; i < fleet.length; i++) {
+      let { A, LONGITUDE, TIME, IMO, NAME, MMSI, CALLSIGN, LATITUDE, TYPE, DEST, SOG, DRAUGHT, ETA } = fleet[i].data; //.data;
       let o = '<td>';
       let c = '</td>';
 
@@ -24,19 +25,21 @@ function showTable(fleet, fleetName) {
       TIME = o + convertDateToString(TIME) + c;
 
       $('#observe-list-table').append(
-          '<tr>' +
-          FLEETNAME +
-          NAME +
-          MMSI +
-          CALLSIGN +
-          LONGITUDE + 
-          LATITUDE +
-          SOG +
-          DRAUGHT + 
-          DEST +
-          ETA +
-          TIME +
-          '</tr>'
+        '<tr>' +
+        FLEETNAME +
+        NAME +
+        MMSI +
+        CALLSIGN +
+        LONGITUDE +
+        LATITUDE +
+        SOG +
+        DRAUGHT +
+        DEST +
+        ETA +
+        TIME +
+        '</tr>'
       )
+    }
   }
-}
+  return { showTable: showTable }
+}());

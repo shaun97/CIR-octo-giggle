@@ -24,5 +24,5 @@ $('.se_btn').click(function () {
 
     console.log('latest', latestShip)
     setThisShipSel(latestShip);
-    showData(latestShip.data);
+    ShipInfoBox.showData(latestShip.data);
 });

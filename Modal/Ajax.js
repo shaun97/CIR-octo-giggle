@@ -1,13 +1,14 @@
 function mapInitAjax() {
   console.time("init AJAX");
   $.ajax({
-     url: `http://${IP_ADDRESS}/ships/getDateJson`,
-    // url: 'http://localhost:3000/data',
+    // url: `http://${IP_ADDRESS}/ships/getDateJson`,
+    url: 'http://localhost:3000/data',
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
       console.timeEnd("init AJAX");
-      ALL_SHIPS = data.data[0]; // Change back
+      ALL_SHIPS = data.data[0][0] ? data.data[0] : data.data;
+      // ALL_SHIPS = data.data[0]; // Change back
       if (!ALL_SHIPS || ALL_SHIPS.length == 0) {
         alert("Please refresh page");
         return;
@@ -42,13 +43,13 @@ function chaInfoAjax(id) {
         }
         drawTrack(data);
         $("#speed-info-box").show()
-        showSpeedChart();
+        ShipSpeedBoxView.showSpeedChart();
         close_load();
       } catch (error) {
         console.log(error);
         alert(error);
         close_load();
-        clearTrack();
+        ShipMapView.clearTrack();
       }
     },
     error: function () {
