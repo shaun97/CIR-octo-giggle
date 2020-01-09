@@ -167,3 +167,30 @@ function insertGroupAttention(shipGroup) {
     }
   });
 }
+
+
+function delGroupAttention(shipGroup) {
+  $.ajax({
+    url: `http://${IP_ADDRESS}/ships/insertShipAttention?shipGroup=${shipGroup}&mmsi=${}&userID=${USER_KEY}`,
+    type: "GET",//请求方式为get
+    dataType: "json", //返回数据格式为json
+    success: function (data) {
+      console.log("Group deleted");
+    },
+    error: function () {
+    }
+  });
+}
+
+function delShipAttention(shipGroup, mmsi) {
+  $.ajax({
+    url: `http://${IP_ADDRESS}/ships/insertShipAttention?shipGroup=${shipGroup}&mmsi=${mmsi}&userID=${USER_KEY}`,
+    type: "GET",//请求方式为get
+    dataType: "json", //返回数据格式为json
+    success: function (data) {
+      console.log("Ship deleted");
+    },
+    error: function () {
+    }
+  });
+}

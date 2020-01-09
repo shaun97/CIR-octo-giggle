@@ -107,6 +107,7 @@ function printShipsTree(fleetName, fleetNameId, item, boo) {
     FLEETS[fleetName.replace(" ", "_")] = FLEETS[fleetName.replace(" ", "_")].filter(x => x != item);
     ship.remove();
     updateNumBoatsHeader();
+    delShipAttention(fleetName, item/data.MMSI);
     // updateNumFleetHeader(fleetNameId, fleetName) 
   });
 
@@ -154,6 +155,7 @@ function printFleetNameTree(newFleetName, fleetNameId) {
     newItem.remove();
     FLEET_NAME_LIST = FLEET_NAME_LIST.filter(x => x != newFleetName);
     delete FLEETS[fleetNameId];
+    delGroupAttention(newFleetName);
     //setFleetAutoComplete();
     updateNumBoatsHeader();
   });
