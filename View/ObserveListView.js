@@ -126,7 +126,7 @@ var ObserveListView = (function () {
   //Prints out the fleet
   function printFleetNameTree(newFleetName, fleetNameId) {
     let newFleet = $('<h2/>').addClass("layui-colla-title").attr("id", `fleet-header-${fleetNameId}`);
-    let name = $('<div/>').addClass('fleet-name').html(newFleetName)
+    let name = $('<div/>').addClass('fleet-name').html(newFleetName);
     let icon = $('<i/>').addClass("layui-icon").addClass("layui-colla-icon").html("");
     let eyeF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
     let tableF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_info_myship_track.png" class="tree-button-icon">');
