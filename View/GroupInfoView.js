@@ -1,3 +1,6 @@
+/**
+ * 车队信息表代码
+ */
 var GroupInfoView = (function () {
   $(document).ready(function () {
     $("#group-info-close-button").click(function () {

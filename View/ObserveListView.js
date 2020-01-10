@@ -1,3 +1,6 @@
+/**
+ * 关注的代码
+ */
 var ObserveListView = (function () {
   $(document).ready(function () {
     updateNumBoatsHeader();
@@ -32,9 +35,15 @@ var ObserveListView = (function () {
       }
     })
 
+    $("#observe-add-ship-cancel-btn").click(function () {
+      $("#observe-write").hide();
+      $("#observe-read").show();
+    })
+
     setFleetAutoComplete();
   });
 
+  //下拉菜单代码
   function setFleetAutoComplete() {
     $("#add-ship-fleet-name").autocomplete({
       source: FLEET_NAME_LIST,
@@ -45,8 +54,8 @@ var ObserveListView = (function () {
     })
   }
 
+  // 必须在关注的第一次打开时调用SetupCheckbox
   function setupCheckbox() {
-    // $(".layui-form-checkbox").attr("onclick", "").unbind("click");
     $('.layui-form-checkbox').click(function () {
       console.time('click checkbox');
       if (!MAP_VIEW) ShipMapView.clearTrack();
@@ -62,10 +71,17 @@ var ObserveListView = (function () {
     });
   }
 
+  /**
+   * 
+   * @param {String} fleetName : 带空格的名称
+   * @param {String} fleetNameId : 名称用" "替换为"-"
+   * @param {*} item : Geo item
+   * @param {*} boo : 如果true，请调用showData
+   */
   function printShipsTree(fleetName, fleetNameId, item, boo) {
     item.data.NICKNAME = item.data.NICKNAME ? item.data.NICKNAME : item.data.NAME;
     item.data.NICKNAME = ($("#add-ship-to-fleet-inputbar").val() == "") ? item.data.NICKNAME : $("#add-ship-to-fleet-inputbar").val();
-    let name = $('<div/>').addClass('ship-name').addClass('ship-mmsi-' + item.data.MMSI);
+    let name = $('<div/>').addClass('ship-name').addClass('ship-mmsi-' + item.data.MMSI); // 船名有一个易于编辑的类
     let eye = $('<button/>').addClass("tree-button").addClass('eye-' + item.data.MMSI).html('<img src="./img/icon_hide.png" class="tree-button-icon">');
     let track = $('<button/>').addClass("tree-button").html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
     let edit = $('<button/>').addClass("tree-button").html('<img src="./img/icon_edit_myship_track.png" class="tree-button-icon">');
@@ -90,7 +106,7 @@ var ObserveListView = (function () {
     function editShipOnClick() {
       ShipMap.setThisShipSel(item);
       ShipInfoBox.showData(THIS_SHIP_ITEM.data);
-     $('#change-name-box').show();
+      $('#change-name-box').show();
     }
     edit.click(editShipOnClick);
 
@@ -98,7 +114,7 @@ var ObserveListView = (function () {
       eye.html() == '<img src="./img/icon_open.png" class="tree-button-icon">'
         ? $('.eye-' + item.data.MMSI).html('<img src="./img/icon_hide.png" class="tree-button-icon">')
         : $('.eye-' + item.data.MMSI).html('<img src="./img/icon_open.png" class="tree-button-icon">');
-        ObserveList.showIndivShips(item);
+      ObserveList.showIndivShips(item);
     });
 
     track.click(function () {
@@ -130,7 +146,11 @@ var ObserveListView = (function () {
     //-------------- END FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
   }
 
-  //Prints out the fleet
+  /**
+   * 
+   * @param {String} newFleetName : 带空格的名称
+   * @param {String} fleetNameId : 名称用" "替换为"-"
+   */
   function printFleetNameTree(newFleetName, fleetNameId) {
     let newFleet = $('<h2/>').addClass("layui-colla-title").attr("id", `fleet-header-${fleetNameId}`);
     let name = $('<div/>').addClass('fleet-name').html(newFleetName);
@@ -202,11 +222,7 @@ var ObserveListView = (function () {
     });
   }
 
-  $("#observe-add-ship-cancel-btn").click(function () {
-    $("#observe-write").hide();
-    $("#observe-read").show();
-  })
-
+  // 更新关注船总数
   function updateNumBoatsHeader() {
     var noOfShipsInList = 0;
     Object.keys(FLEETS).forEach(function (key, index) {
@@ -225,6 +241,6 @@ var ObserveListView = (function () {
     printShipsTree: printShipsTree,
     printFleetNameTree: printFleetNameTree,
     updateNumBoatsHeader: updateNumBoatsHeader,
-    updateNumFleetHeader: updateNumFleetHeader // NOT USED YET
+    updateNumFleetHeader: updateNumFleetHeader // 尚未使用
   }
 }());
