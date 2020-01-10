@@ -125,7 +125,8 @@ var ObserveListView = (function () {
 
   //Prints out the fleet
   function printFleetNameTree(newFleetName, fleetNameId) {
-    let newFleet = $('<h2/>').addClass("layui-colla-title").text(newFleetName).attr("id", `fleet-header-${fleetNameId}`);;
+    let newFleet = $('<h2/>').addClass("layui-colla-title").attr("id", `fleet-header-${fleetNameId}`);
+    let name = $('<div/>').addClass('fleet-name').html(newFleetName)
     let icon = $('<i/>').addClass("layui-icon").addClass("layui-colla-icon").html("");
     let eyeF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_hide.png" class="tree-button-icon">');
     let tableF = $('<button/>').addClass("tree-button").html('<img src="./img/icon_info_myship_track.png" class="tree-button-icon">');
@@ -134,7 +135,7 @@ var ObserveListView = (function () {
     let treeButtonsF = $('<div/>').addClass("tree-buttons").append(eyeF, tableF, editF, closeF);
     let content = $('<div/>').addClass("layui-colla-content").attr("id", `content-list-${fleetNameId}`);
     let newItem = $('<div/>').addClass("layui-colla-item")
-      .append(newFleet.append(treeButtonsF).append(icon))
+      .append(newFleet.append(name).append(treeButtonsF).append(icon))
       .append(content)
     $('.my-ship-list').append(newItem);
     //updateNumFleetHeader(fleetNameId, newFleetName) 
@@ -145,6 +146,21 @@ var ObserveListView = (function () {
       content.toggleClass("layui-show");
       icon.html() == "" ? icon.html("") : icon.html(""); // Styling for Dropdown
     })
+
+    function editFleetOnClick() {
+      name.html('<input type="text" name="title" lay-verify="title" autocomplete="off" class="change-fleet-name">');
+      $('.change-fleet-name').focus();
+      name.keypress(function (e) {
+        if (e.which == 13) {
+          var newName = $('.change-fleet-name').val();
+          var newNameId = newName.replace(" ", "_");
+          name.html(newName);
+          newFleet.attr("id", `fleet-header-${newNameId}`);
+          content.attr("id", `content-list-${newNameId}`);
+        }
+      });
+    }
+    editF.click(editFleetOnClick);
 
     var fleetDoShowBtn = true;
     eyeF.click(function () {

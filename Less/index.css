@@ -387,6 +387,11 @@ body .layui-laydate-content td:hover,
   border-color: black;
   color: black;
 }
+#observe-list-box .change-fleet-name {
+  height: 17px;
+  width: 100px;
+  margin-right: 0px;
+}
 #observe-list-box hr {
   margin: 0.5px 5px 0.5px 5px;
 }
@@ -439,6 +444,11 @@ body .layui-laydate-content td:hover,
   background-color: white;
   padding: auto;
   font-size: small;
+}
+#observe-list-box .my-ship-list .layui-colla-title .fleet-name {
+  width: 180px;
+  margin-right: 0;
+  display: inline-block;
 }
 #observe-list-box .my-ship-list .ship-in-list {
   margin-left: 5.5%;
