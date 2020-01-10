@@ -1,7 +1,7 @@
 const IP_ADDRESS = '117.78.28.83:8761';
 // const IP_ADDRESS = '192.168.0.181:8761';
 
-let USER_KEY = '10';
+let USER_KEY = '11';
 
 // ALL_SHIPS : Array of Geo items (查看vmap API). 在initMap处填写.
 var ALL_SHIPS = [];
