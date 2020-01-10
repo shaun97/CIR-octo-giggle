@@ -63,16 +63,18 @@ var ObserveListView = (function () {
   }
 
   function printShipsTree(fleetName, fleetNameId, item, boo) {
-    item.data.NICKNAME = item.data.NAME;
+    item.data.NICKNAME = item.data.NICKNAME ? item.data.NICKNAME : item.data.NAME;
     item.data.NICKNAME = ($("#add-ship-to-fleet-inputbar").val() == "") ? item.data.NICKNAME : $("#add-ship-to-fleet-inputbar").val();
+    let name = $('<div/>').addClass('ship-name').addClass('ship-mmsi-' + item.data.MMSI);
     let eye = $('<button/>').addClass("tree-button").attr('id', 'eye' + '-' + fleetNameId + '-' + item.data.MMSI).html('<img src="./img/icon_hide.png" class="tree-button-icon">');
     let track = $('<button/>').addClass("tree-button").html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
     let edit = $('<button/>').addClass("tree-button").html('<img src="./img/icon_edit_myship_track.png" class="tree-button-icon">');
     let close = $('<button/>').addClass("tree-button").html('<img src="./img/icon_delt_myship_track.png" class="tree-button-icon">');
     let treeButtons = $('<div/>').addClass("tree-buttons").append(eye, track, edit, close);
-    let ship = $('<div/>').addClass("ship-in-list").html(item.data.NICKNAME).append(treeButtons);
+    let ship = $('<div/>').addClass("ship-in-list").append(name).append(treeButtons);
     $(`#content-list-${fleetNameId}`).append(ship);
     if (boo) ShipInfoBox.showData(item.data);
+    $('.ship-mmsi-' + item.data.MMSI).html(item.data.NICKNAME);
     //updateNumFleetHeader(fleetNameId, fleetName);
 
     //-------------- FUNCTIONALITY FOR SHIP TREE-BUTTONS --------------//
@@ -85,6 +87,12 @@ var ObserveListView = (function () {
       ShipMap.clickShipHandler(item);
     });
 
+    function editShipOnClick() {
+      ShipMap.setThisShipSel(item);
+      ShipInfoBox.showData(THIS_SHIP_ITEM.data);
+     $('#change-name-box').show();
+    }
+    edit.click(editShipOnClick);
 
     eye.click(function () {
       eye.html() == '<img src="./img/icon_open.png" class="tree-button-icon">'

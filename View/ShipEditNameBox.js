@@ -8,7 +8,8 @@
         $("#ship-info-nknm").text(
           $("#edit-name-input").val()
         );
-        THIS_SHIP_ITEM.data['NICKNAME'] = $("#edit-name-input").val();
+        let newShipName = $("#edit-name-input").val();
+        ObserveList.editShipName(newShipName);
         $("#edit-name-input").val("");
         $("#change-name-box").hide();
       }
