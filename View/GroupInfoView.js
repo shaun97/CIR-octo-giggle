@@ -1,10 +1,19 @@
-var GroupInfo = (function () {
+/**
+ * 车队信息表代码
+ */
+var GroupInfoView = (function () {
   $(document).ready(function () {
     $("#group-info-close-button").click(function () {
       $("#group-info-box").hide();
     });
   });
 
+  /**
+   * 
+   * @param {Array} fleet: Geo Ships array 
+   * @param {String} fleetName: 车队名称 
+   * 打开舰队信息表
+   */
   function showTable(fleet, fleetName) {
     $('#observe-list-table tr').slice(1).remove();
     for (var i = 0; i < fleet.length; i++) {

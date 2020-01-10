@@ -1,4 +1,11 @@
+/**
+ * 查看筛选框的代码
+ * 
+ */
+
 var FiltrateView = (function () {
+
+  // 过滤按钮onclick
   $(document).ready(function () {
     //Close Button
     $("#filtrate-close-button").click(function () {
@@ -204,11 +211,14 @@ var FiltrateView = (function () {
       console.timeEnd('real filter');
     })
   });
+
+  // 在调用筛选器之前重置映射视图
   function resetViewForFilter() {
     if (!MAP_VIEW) ShipMapView.clearTrack();
     MAP.clearOverlays();
     ShipMap.setThisShipSel(null);
   }
+  
   return {
     resetViewForFilter: resetViewForFilter
   }

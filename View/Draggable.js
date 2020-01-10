@@ -1,3 +1,6 @@
+/**
+ * 按“header”拖动“pop-up”的Jquery代码
+ */
 (function () {
     $(document).ready(function () {
         $(".pop-up").draggable({

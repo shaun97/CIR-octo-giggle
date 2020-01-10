@@ -216,7 +216,7 @@ var ShipMap = (function () {
   function drawTrack(data) {
     try {
 
-      if (data.data == null) throw new Error('No data on this ship');
+      if (data.data == null) throw new Error('没有这个船的数据');
 
       var dateRange = $('#ship-date-range').val();
       $('#ship-date-range').val("");
@@ -234,11 +234,11 @@ var ShipMap = (function () {
       if (MAP.getZoom() < 11) MAP.setZoom(11);
       MAP.centerAndZoom(new BMap.Point(last.LONGITUDE1, last.LATITUDE1), MAP.getZoom());
       if (history_data.length == 0) {
-        throw new Error('No data on this ship');
+        throw new Error('没有数据');
       }
       dynamicLine(history_data);
     } catch (error) {
-      alert("Cannot load this ship's ship data");
+      alert("错误");
       console.log(error);
       $('#clr-track-btn').click();
     }

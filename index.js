@@ -1,15 +1,17 @@
+/**
+ * 调用map和mapInitAjax检索船舶数据
+ */
+
 mapInitAjax();
 var map = new BMap.Map("ship-map", { enableMapClick: false }); //初始化地图
-MAP = map;
-// map = map;
-// map.setMaxZoom(10);
+MAP = map; // MAP是全局变量，MAP是按照baidu MAP的要求保存的
 map.centerAndZoom(new BMap.Point(106.5584370000, 29.5689960000), 4);//设置中心点和显示级别。中国。
 map.enableScrollWheelZoom();//滚轮放大缩小。
 
+// 在不同的缩放级别过滤船只和重画轨道线。
 map.addEventListener("zoomend", function (e) {
   if (!MAP_VIEW) {
     map.clearOverlays();
-    console.log('zoomed with TRACK')
     ShipMap.dynamicLine(HISTORY_DATA);
   } else if (map.getZoom() < 9) {
     FiltrateBox.filterShips(CURRENT_SHIPS);
@@ -17,7 +19,6 @@ map.addEventListener("zoomend", function (e) {
     if (ZOOM_SHIP_OFFSET == 1) return;
     FiltrateBox.filterShips(CURRENT_SHIPS);
   }
-  console.log('zoom', map.getZoom());
 });
 
 /* 

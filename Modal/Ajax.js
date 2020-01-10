@@ -1,8 +1,8 @@
 function mapInitAjax() {
   console.time("init AJAX");
   $.ajax({
-    url: `http://${IP_ADDRESS}/ships/getDateJson`,
-    //url: 'http://localhost:3000/data',
+    // url: `http://${IP_ADDRESS}/ships/getDateJson`,
+    url: 'http://localhost:3000/data',
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
@@ -11,13 +11,13 @@ function mapInitAjax() {
       ALL_SHIPS = data.data[0][0] ? data.data[0] : data.data;
       // ALL_SHIPS = data.data[0]; // Change back
       if (!ALL_SHIPS || ALL_SHIPS.length == 0) {
-        alert("Please refresh page");
+        alert("后段错误，请刷新");
         return;
       }
       ShipMap.mapLayersInit();
     },
     error: function () {
-      alert("Cannot load ship data");
+      alert("后段错误");
     }
   });
 }
@@ -34,13 +34,11 @@ function chaInfoAjax(id) {
       console.timeEnd("Search AJAX");
       console.log('before change', data.data);
       data.data = data.data.map(x => x[0] ? x[0] : x); // Backend change
-
       console.log('after change', data.data);
-      console.log('ajax data', data.data);
       try {
         if (!data.data || data.data.length == 0) {
           close_load();
-          throw new Error('No data on this ship');
+          throw new Error('没有这个船的数据');
         }
         ShipMap.drawTrack(data);
         $("#speed-info-box").show()
@@ -49,12 +47,11 @@ function chaInfoAjax(id) {
       } catch (error) {
         console.log(error);
         alert(error);
-        close_load();
-        ShipMapView.clearTrack();
+        $('#clr-track-btn').click();
       }
     },
     error: function () {
-      throw new Error('Please try again');
+      throw new Error('后段错误，请刷新');
     }
   });
 
@@ -138,7 +135,7 @@ function getGuanZhuAjax() {
       ObserveList.loadGuanZhu(data.data);
     },
     error: function () {
-      alert("Cannot load save data");
+      alert("不能保存数据");
     }
   });
 }
@@ -153,7 +150,7 @@ function insertShipAttention(shipGroup, shipName, MMSI) {
       console.log("Ship inserted");
     },
     error: function () {
-      alert("Ship not saved");
+      alert("不能保存数据");
     }
   });
 }
