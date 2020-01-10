@@ -5,6 +5,7 @@ var ShipSpeedBoxView = (function () {
         });
     })
 
+    // 根据全局变量“HISTORY_DATA”绘制速度图
     function showSpeedChart() {
         if (SPEED_CHART != null && SPEED_CHART.getOption != null) {
             SPEED_CHART.clear;
@@ -17,12 +18,6 @@ var ShipSpeedBoxView = (function () {
 
             data.push(temp);
         }
-        // date1 = { name: '1', value: ['2019-12-20 08:59:30', 10] };
-        // date2 = { name: '2', value: ['2019-12-20 09:59:30', 10] };
-        // date3 = { name: '3', value: ['2019-12-20 10:59:30', 11] };
-        // date4 = { name: '4', value: ['2019-12-20 11:59:30', 100] };
-
-        // data = [date1, date2, date3, date4]
         SPEED_CHART = echarts.init(document.getElementById('speed-chart'));
 
         // specify chart configuration item and data

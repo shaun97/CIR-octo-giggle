@@ -1,4 +1,5 @@
 var ShipMapView = (function () {
+  // 清除轨迹的地图视图，在轨迹之前调用
   function showTrack() {
     MAP.clearOverlays();
     if (MAPV_LAYER != null) MAPV_LAYER.hide();
@@ -6,6 +7,7 @@ var ShipMapView = (function () {
     createClearLayer();
   }
 
+  // 清除跟踪，在跟踪后调用
   function clearTrack() {
     destroyClearLayer()
     MAP.clearOverlays();

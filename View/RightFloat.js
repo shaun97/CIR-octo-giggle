@@ -1,6 +1,7 @@
 (function () {
   $(document).ready(function () {
     $("#star-button").click(function () {
+      // 必须在第一次打开关注时设置复选框功能
       if (!CHECKBOX_FUNCTIONALITY) ObserveListView.setupCheckbox(); CHECKBOX_FUNCTIONALITY = true;
       $('.pop-up').css('z-index', '1');
       $('#observe-list-box').css('z-index', '2');

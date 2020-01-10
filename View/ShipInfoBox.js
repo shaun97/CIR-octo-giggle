@@ -32,7 +32,7 @@ var ShipInfoBox = (function () {
 
   /**
    * 
-   * @param {*} data : Data of the ship
+   * @param {JSON} data : 船的数据，不是Geo Item
    */
   function showData(data) {
     // others DRAUGHT, B, C, NAVSTAT, D, SOG, HEADING, ETA, ROT, COG
