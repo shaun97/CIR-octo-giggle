@@ -108,13 +108,38 @@ var ObserveList = (function () {
             ObserveListView.updateNumBoatsHeader();
         }
     }
+
+
+    function editFleetName(oldFleetName, newFleetName) {
+        if (newFleetName == "") {
+            throw "Please enter something for the fleet name";
+        } else if (FLEET_NAME_LIST.includes(newFleetName)) {
+            throw "Fleet already exist"
+        } else {
+            var newFleetNameId = newFleetName.replace(" ", "_");
+            var oldFleetNameId = oldFleetName.replace(" ", "_");
+
+            //Update the global with the new fleet name
+            FLEETS[newFleetNameId] = FLEETS[oldFleetNameId];
+            delete FLEETS[oldFleetName];
+
+            FLEET_NAME_LIST.pop(oldFleetName);
+            FLEET_NAME_LIST.push(newFleetName);
+
+            //AJAX CALL
+        }
+    }
+
+
+
     return {
         addFleet: addFleet,
         addShipToFleet: addShipToFleet,
         hideOtherShips: hideOtherShips,
         showIndivShips: showIndivShips,
         toggleFleet: toggleFleet,
-        loadGuanZhu: loadGuanZhu
+        loadGuanZhu: loadGuanZhu,
+        editFleetName: editFleetName
     }
 }());
 

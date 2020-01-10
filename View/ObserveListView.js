@@ -157,6 +157,7 @@ var ObserveListView = (function () {
           name.html(newName);
           newFleet.attr("id", `fleet-header-${newNameId}`);
           content.attr("id", `content-list-${newNameId}`);
+          ObserveList.editFleetName(newFleetName, newName);
         }
       });
     }
