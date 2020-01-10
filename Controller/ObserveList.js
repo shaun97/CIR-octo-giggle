@@ -128,11 +128,13 @@ var ObserveList = (function () {
 
             //AJAX CALL
 
-            
+
 
 
         }
     }
+
+
 
     return {
         addFleet: addFleet,
@@ -140,7 +142,8 @@ var ObserveList = (function () {
         hideOtherShips: hideOtherShips,
         showIndivShips: showIndivShips,
         toggleFleet: toggleFleet,
-        loadGuanZhu: loadGuanZhu
+        loadGuanZhu: loadGuanZhu,
+        editFleetName: editFleetName
     }
 }());
 
