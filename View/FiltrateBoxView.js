@@ -206,7 +206,7 @@ var FiltrateView = (function () {
   });
   function resetViewForFilter() {
     if (!MAP_VIEW) ShipMapView.clearTrack();
-    map.clearOverlays();
+    MAP.clearOverlays();
     ShipMap.setThisShipSel(null);
   }
   return {
