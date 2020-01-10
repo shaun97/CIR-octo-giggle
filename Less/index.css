@@ -1264,7 +1264,7 @@ button:focus {
   margin-right: 27px;
 }
 .change_like_siblings {
-  boxShadow: 0 2px 2px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25) !important;
   border: 0 solid rgba(0, 0, 0, 0.3) !important;
 }
 .change_like_siblings .layui-layer-title {
