@@ -2,6 +2,10 @@
  * 
  */
 var ShipMap = (function () {
+  /**
+   * 
+   * @param {*} item : Geo Item of ship
+   */
   function setThisShipSel(item) {
     console.log('this item', item);
 
@@ -35,6 +39,10 @@ var ShipMap = (function () {
     console.log('lng', item.data.LONGITUDE1);
   }
 
+  /**
+   * 
+   * @param {*} item : Geo Item of ship
+   */
   function setThisShipHover(item) {
     if (item == null) {
       if (THIS_SHIP_LABEL_HOVER != null) MAP.removeOverlay(THIS_SHIP_LABEL_HOVER);
@@ -82,6 +90,7 @@ var ShipMap = (function () {
     return movingIcons[ship.TYPE_IDX];
   }
 
+  // 五种类型和大小一个数字，便于过滤
   function setFilterProperties() {
     var ship = null;
     for (var i = 0; i < ALL_SHIPS.length; i++) {
@@ -178,6 +187,10 @@ var ShipMap = (function () {
     return new mapv.baiduMapLayer(MAP, dataSet, options);
   }
 
+  /**
+   * 由initMapAjax调用以将“ALL_SHIPS”中的数据更改为地理项，
+   * 添加筛选器属性并调用API以加载“关注”船只。
+   */
   function mapLayersInit() {
     console.time('init');
     setFilterProperties();
@@ -188,6 +201,7 @@ var ShipMap = (function () {
     console.timeEnd('init');
   }
 
+  // 处理船舶点击
   function clickShipHandler(item) {
     // item has item.data that contains data
     MAP.panTo(new BMap.Point(item.data.LONGITUDE1, item.data.LATITUDE1), true);
@@ -196,6 +210,7 @@ var ShipMap = (function () {
     setUpTrack(item);
   }
 
+  // 提供“查询”和“取消”按钮的功能
   function setUpTrack(item) {
     $("#inq-track-btn").attr("onclick", "").unbind("click"); // clear previous onclick
     $('#inq-track-btn').click(function () {
@@ -373,7 +388,7 @@ var ShipMap = (function () {
     addLine(pointsFarEnough);//增加轨迹线
   }
 
-  // 开始和结束图片 FOR START AND END MARKERS --- NOT USING AT THE MOMENT
+  // 开始和结束图片 FOR START AND END MARKERS --- NOT USED YET
   function get_track(history_data) {
     // 开始标签
     var point_label = new BMap.Point(history_data[0]['LONGITUDE1'], history_data[0]['LATITUDE1']);
