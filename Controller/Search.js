@@ -21,7 +21,7 @@
         //Throws an error if not found in local ships
         if (latestShip == null) {
             MAP.setDefaultCursor('default');
-            alert("No ship found");
+            alert("没有船");
             return;
         }
 
