@@ -66,7 +66,7 @@ var ObserveListView = (function () {
     item.data.NICKNAME = item.data.NICKNAME ? item.data.NICKNAME : item.data.NAME;
     item.data.NICKNAME = ($("#add-ship-to-fleet-inputbar").val() == "") ? item.data.NICKNAME : $("#add-ship-to-fleet-inputbar").val();
     let name = $('<div/>').addClass('ship-name').addClass('ship-mmsi-' + item.data.MMSI);
-    let eye = $('<button/>').addClass("tree-button").attr('id', 'eye' + '-' + fleetNameId + '-' + item.data.MMSI).html('<img src="./img/icon_hide.png" class="tree-button-icon">');
+    let eye = $('<button/>').addClass("tree-button").addClass('eye-' + item.data.MMSI).html('<img src="./img/icon_hide.png" class="tree-button-icon">');
     let track = $('<button/>').addClass("tree-button").html('<img src="./img/icon_track_myship_track.png" class="tree-button-icon">');
     let edit = $('<button/>').addClass("tree-button").html('<img src="./img/icon_edit_myship_track.png" class="tree-button-icon">');
     let close = $('<button/>').addClass("tree-button").html('<img src="./img/icon_delt_myship_track.png" class="tree-button-icon">');
@@ -96,9 +96,8 @@ var ObserveListView = (function () {
 
     eye.click(function () {
       eye.html() == '<img src="./img/icon_open.png" class="tree-button-icon">'
-        ? eye.html('<img src="./img/icon_hide.png" class="tree-button-icon">')
-        : eye.html('<img src="./img/icon_open.png" class="tree-button-icon">');
-
+        ? $('.eye-' + item.data.MMSI).html('<img src="./img/icon_hide.png" class="tree-button-icon">')
+        : $('.eye-' + item.data.MMSI).html('<img src="./img/icon_open.png" class="tree-button-icon">');
         ObserveList.showIndivShips(item);
     });
 

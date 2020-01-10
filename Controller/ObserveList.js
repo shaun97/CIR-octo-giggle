@@ -62,7 +62,7 @@ var ObserveList = (function () {
     function toggleFleet(fleet, doShow, fleetNameId) {
         for (var i = 0; i < fleet.length; i++) {
             fleet[i].doShow = doShow;
-            $(`#eye-${fleetNameId}-${fleet[i].data.MMSI}`)
+            $(`.eye-${fleet[i].data.MMSI}`)
                 .html(doShow ? '<img src="./img/icon_hide.png" class="tree-button-icon">' : '<img src="./img/icon_open.png" class="tree-button-icon">');
         }
 
