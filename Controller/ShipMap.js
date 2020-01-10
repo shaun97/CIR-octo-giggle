@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 var ShipMap = (function () {
   function setThisShipSel(item) {
     console.log('this item', item);

@@ -1,8 +1,8 @@
 function mapInitAjax() {
   console.time("init AJAX");
   $.ajax({
-    // url: `http://${IP_ADDRESS}/ships/getDateJson`,
-    url: 'http://localhost:3000/data',
+     url: `http://${IP_ADDRESS}/ships/getDateJson`,
+    //url: 'http://localhost:3000/data',
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
@@ -125,7 +125,7 @@ function chaInfoAjax(id) {
 
 function getGuanZhuAjax() {
   $.ajax({
-    url: `http://${IP_ADDRESS}/ships/getShipAttention?userId=` + USER_KEY,
+    url: `http://${IP_ADDRESS}/ships/getShipAttention?userId=${USER_KEY}`,
     // url: 'http://localhost:3000/data',
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
@@ -156,7 +156,7 @@ function insertShipAttention(shipGroup, shipName, MMSI) {
 
 function insertGroupAttention(shipGroup) {
   $.ajax({
-    url: `http://${IP_ADDRESS}/ships/insertShipAttention?shipGroup=${shipGroup}&userID=${USER_KEY}`,
+    url: `http://${IP_ADDRESS}/ships/insertShipAttention?shipGroup=${shipGroup}&userId=${USER_KEY}`,
     // url: 'http://localhost:3000/data',
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
@@ -172,7 +172,7 @@ function insertGroupAttention(shipGroup) {
 
 function delGroupAttention(shipGroup) {
   $.ajax({
-    url: `http://${IP_ADDRESS}/ships/insertShipAttention?shipGroup=${shipGroup}&mmsi=&userID=${USER_KEY}`,
+    url: `http://${IP_ADDRESS}/ships/delete?userId=${USER_KEY}&shipGroup=${shipGroup}`,
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
@@ -185,7 +185,7 @@ function delGroupAttention(shipGroup) {
 
 function delShipAttention(shipGroup, mmsi) {
   $.ajax({
-    url: `http://${IP_ADDRESS}/ships/insertShipAttention?shipGroup=${shipGroup}&mmsi=${mmsi}&userID=${USER_KEY}`,
+    url: `http://${IP_ADDRESS}/ships/delete?userId=${USER_KEY}&MMSI=${mmsi}&shipGroup=${shipGroup}`,
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {

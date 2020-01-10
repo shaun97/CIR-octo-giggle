@@ -108,7 +108,7 @@ var ObserveListView = (function () {
       FLEETS[fleetName.replace(" ", "_")] = FLEETS[fleetName.replace(" ", "_")].filter(x => x != item);
       ship.remove();
       updateNumBoatsHeader();
-      delShipAttention(fleetName, item/data.MMSI);
+      delShipAttention(fleetName, item.data.MMSI);
       // updateNumFleetHeader(fleetNameId, fleetName) 
     });
 
