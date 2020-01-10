@@ -100,35 +100,37 @@ var ObserveList = (function () {
             ObserveListView.printFleetNameTree(newFleetName, fleetNameId);
 
             //loop through all the ships in this group
-            for (var j = 0; j < data[i].MMSI.length; j++) {
-                let MMSI = data[i].MMSI[j];
-                let shipName = data[i].shipName[j];
-                addShipToGroupLoad(newFleetName, fleetNameId, MMSI, shipName);
+            if (data[i].hasOwnProperty("MMSI")){
+                console.log("includes mmsi");
+                for (var j = 0; j < data[i].MMSI.length; j++) {
+                    let MMSI = data[i].MMSI[j];
+                    let shipName = data[i].shipName[j];
+                    addShipToGroupLoad(newFleetName, fleetNameId, MMSI, shipName);
+                }
             }
             ObserveListView.updateNumBoatsHeader();
         }
     }
 
 
-    function editFleetName(oldFleetName, newFleetName) {
-        if (newFleetName == "") {
+    function editFleetName(oldShipGroup, newShipGroup) {
+        if (newShipGroup== "") {
             throw "Please enter something for the fleet name";
-        } else if (FLEET_NAME_LIST.includes(newFleetName)) {
+        } else if (FLEET_NAME_LIST.includes(newShipGroup)) {
             throw "Fleet already exist"
         } else {
-            var newFleetNameId = newFleetName.replace(" ", "_");
-            var oldFleetNameId = oldFleetName.replace(" ", "_");
+            var newShipGroupId = newShipGroup.replace(" ", "_");
+            var oldShipGroupId = oldShipGroup.replace(" ", "_");
 
             //Update the global with the new fleet name
-            FLEETS[newFleetNameId] = FLEETS[oldFleetNameId];
-            delete FLEETS[oldFleetName];
+            FLEETS[newShipGroupId] = FLEETS[oldShipGroupId];
+            delete FLEETS[oldShipGroup];
 
-            FLEET_NAME_LIST.pop(oldFleetName);
-            FLEET_NAME_LIST.push(newFleetName);
+            FLEET_NAME_LIST.pop(oldShipGroup);
+            FLEET_NAME_LIST.push(newShipGroup);
 
             //AJAX CALL
-
-
+            updateGroupNickname(oldShipGroup, newShipGroup);
         }
     }
 
@@ -145,6 +147,7 @@ var ObserveList = (function () {
         THIS_SHIP_ITEM.data.NICKNAME = newShipName;
 
         //Update backend 
+        updateShipNickname(newShipName, THIS_SHIP_ITEM.data.MMSI)
 
         //refresh infobox
         ShipInfoBox.showData(THIS_SHIP_ITEM.data);

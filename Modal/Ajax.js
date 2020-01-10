@@ -1,8 +1,8 @@
 function mapInitAjax() {
   console.time("init AJAX");
   $.ajax({
-    //url: `http://${IP_ADDRESS}/ships/getDateJson`,
-    url: 'http://localhost:3000/data',
+    url: `http://${IP_ADDRESS}/ships/getDateJson`,
+    //url: 'http://localhost:3000/data',
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
@@ -194,6 +194,32 @@ function delShipAttention(shipGroup, mmsi) {
     dataType: "json", //返回数据格式为json
     success: function (data) {
       console.log("Ship deleted");
+    },
+    error: function () {
+    }
+  });
+}
+
+function updateShipNickname(shipName, mmsi) {
+  $.ajax({
+    url: `http://${IP_ADDRESS}/ships/updateGroupNickname?shipName=${shipName}&mmsi=${mmsi}&userId=${USER_KEY}`,
+    type: "GET",//请求方式为get
+    dataType: "json", //返回数据格式为json
+    success: function (data) {
+      console.log("Ship updated");
+    },
+    error: function () {
+    }
+  });
+}
+
+function updateGroupNickname(shipGroup, newShipGroup) {
+  $.ajax({
+    url: `http://${IP_ADDRESS}/ships/updateGroupNickname?shipGroup=${shipGroup}&userId=${USER_KEY}&newShipGroup=${newShipGroup}`,
+    type: "GET",//请求方式为get
+    dataType: "json", //返回数据格式为json
+    success: function (data) {
+      console.log("Group updated");
     },
     error: function () {
     }

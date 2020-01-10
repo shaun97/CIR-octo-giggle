@@ -31,7 +31,7 @@ let MOVE_ARR = Array(2).fill(true);
 
 let SPEED_CHART = null;
 
-let USER_KEY = '10';
+let USER_KEY = '11';
 
 // Very stupid
 let CHECKBOX_FUNCTIONALITY = false;
