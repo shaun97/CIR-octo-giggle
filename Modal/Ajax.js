@@ -1,13 +1,8 @@
 function mapInitAjax() {
   console.time("init AJAX");
   $.ajax({
-<<<<<<< HEAD
-     url: `http://${IP_ADDRESS}/ships/getDateJson`,
-    //url: 'http://localhost:3000/data',
-=======
     url: `http://${IP_ADDRESS}/ships/getDateJson`,
     // url: 'http://localhost:3000/data',
->>>>>>> 6e5816bdf7fe0c42e06537a02fa6a2c747a03ddb
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
