@@ -5,6 +5,12 @@ var GroupInfo = (function () {
     });
   });
 
+  /**
+   * 
+   * @param {Array} fleet: Geo Ships array 
+   * @param {String} fleetName: 车队名称 
+   * 打开舰队信息表
+   */
   function showTable(fleet, fleetName) {
     $('#observe-list-table tr').slice(1).remove();
     for (var i = 0; i < fleet.length; i++) {
