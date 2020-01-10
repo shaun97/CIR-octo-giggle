@@ -129,9 +129,29 @@ var ObserveList = (function () {
             //AJAX CALL
 
 
-
-
         }
+    }
+
+    function editShipName(oldShipName, newShipName, item, fleetNameId, shipHTML) {
+        //Admin parsing
+        if (fleetName == "") {
+            throw "Please enter something for the fleet name";
+        }
+
+        var newShipNameId = newShipName.replace(" ", "_");
+        var oldShipNameId = oldShipName.replace(" ", "_");
+
+        //Update html and html ID
+        var newShipNameHTMLId = newShipName.replace(" ","-");
+        shipHTML.id = newShipNameHTMLId;
+        shipHTML.html = newShipName;
+
+
+        //Update Globals & Nickname
+
+        //Update backend 
+
+        //showData
     }
 
 
