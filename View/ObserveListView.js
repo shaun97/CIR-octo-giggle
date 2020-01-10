@@ -32,14 +32,18 @@ var ObserveListView = (function () {
       }
     })
 
-    function setFleetAutoComplete() {
-      $("#add-ship-fleet-name").autocomplete({
-        source: FLEET_NAME_LIST
-      });
-    }
-
     setFleetAutoComplete();
   });
+
+  function setFleetAutoComplete() {
+    $("#add-ship-fleet-name").autocomplete({
+      source: FLEET_NAME_LIST,
+      minLength: 0
+    });
+    $("#add-ship-fleet-name").click(() => {
+      $("#add-ship-fleet-name").autocomplete('search', '');
+    })
+  }
 
   function setupCheckbox() {
     // $(".layui-form-checkbox").attr("onclick", "").unbind("click");
@@ -157,7 +161,7 @@ var ObserveListView = (function () {
       FLEET_NAME_LIST = FLEET_NAME_LIST.filter(x => x != newFleetName);
       delete FLEETS[fleetNameId];
       delGroupAttention(newFleetName);
-      //setFleetAutoComplete();
+      setFleetAutoComplete();
       updateNumBoatsHeader();
     });
 
