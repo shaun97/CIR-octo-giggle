@@ -191,7 +191,7 @@ var ObserveListView = (function () {
     });
 
     tableF.click((e) => {
-      GroupInfo.showTable(FLEETS[fleetNameId], newFleetName);
+      GroupInfoView.showTable(FLEETS[fleetNameId], newFleetName);
       $("#group-info-box").show();
     });
 
