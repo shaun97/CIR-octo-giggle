@@ -3,7 +3,7 @@ const IP_ADDRESS = '117.78.28.83:8761';
 
 var ALL_SHIPS = [];
 var CURRENT_SHIPS
-var map = null;
+var MAP = null;
 
 //States
 var MAPV_LAYER;

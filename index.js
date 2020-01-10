@@ -1,5 +1,6 @@
 mapInitAjax();
-map = new BMap.Map("ship-map", { enableMapClick: false }); //初始化地图
+var map = new BMap.Map("ship-map", { enableMapClick: false }); //初始化地图
+MAP = map;
 // map = map;
 // map.setMaxZoom(10);
 map.centerAndZoom(new BMap.Point(106.5584370000, 29.5689960000), 4);//设置中心点和显示级别。中国。

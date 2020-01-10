@@ -1,12 +1,13 @@
 function mapInitAjax() {
   console.time("init AJAX");
   $.ajax({
-    // url: `http://${IP_ADDRESS}/ships/getDateJson`,
-    url: 'http://localhost:3000/data',
+    url: `http://${IP_ADDRESS}/ships/getDateJson`,
+    // url: 'http://localhost:3000/data',
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
     success: function (data) {
       console.timeEnd("init AJAX");
+      console.log('init data', data);
       ALL_SHIPS = data.data[0][0] ? data.data[0] : data.data;
       // ALL_SHIPS = data.data[0]; // Change back
       if (!ALL_SHIPS || ALL_SHIPS.length == 0) {
@@ -33,7 +34,7 @@ function chaInfoAjax(id) {
       console.timeEnd("Search AJAX");
       console.log('before change', data.data);
       data.data = data.data.map(x => x[0] ? x[0] : x); // Backend change
-      
+
       console.log('after change', data.data);
       console.log('ajax data', data.data);
       try {
@@ -57,9 +58,9 @@ function chaInfoAjax(id) {
     }
   });
 
-  // drawTrack({
+  // ShipMap.drawTrack({
   //   data: [
-  //     [{
+  //     {
   //       LATITUDE1: 30.79797,
   //       LONGITUDE1: 122.30033,
   //       NAME: "SHAN SHI",
@@ -68,8 +69,8 @@ function chaInfoAjax(id) {
   //       LONGITUDE: 122.30033,
   //       SOG: 22,
   //       TIME: "2019-12-22 09:06:54 GMT"
-  //     }],
-  //     [{
+  //     },
+  //     {
   //       LATITUDE1: 30.79797,
   //       LONGITUDE1: 122.30033,
   //       NAME: "SHAN SHI",
@@ -78,8 +79,8 @@ function chaInfoAjax(id) {
   //       LONGITUDE: 122.30033,
   //       SOG: 20,
   //       TIME: "2019-12-23 09:05:54 GMT"
-  //     }],
-  //     [{
+  //     },
+  //     {
   //       LATITUDE1: 30.80797,
   //       LONGITUDE1: 122.20033,
   //       NAME: "SHAN SHI",
@@ -88,8 +89,8 @@ function chaInfoAjax(id) {
   //       LONGITUDE: 122.30033,
   //       SOG: 40,
   //       TIME: "2019-12-24 09:04:54 GMT"
-  //     }],
-  //     [{
+  //     },
+  //     {
   //       LATITUDE1: 31.79797,
   //       LONGITUDE1: 122.50033,
   //       NAME: "SHAN SHI",
@@ -98,8 +99,8 @@ function chaInfoAjax(id) {
   //       LONGITUDE: 122.50033,
   //       SOG: 50,
   //       TIME: "2019-12-25 09:03:54 GMT"
-  //     }],
-  //     [{
+  //     },
+  //     {
   //       LATITUDE1: 31.83797,
   //       LONGITUDE1: 122.53033,
   //       NAME: "SHAN SHI",
@@ -108,8 +109,8 @@ function chaInfoAjax(id) {
   //       LONGITUDE: 122.50033,
   //       SOG: 10,
   //       TIME: "2019-12-26 09:02:54 GMT"
-  //     }],
-  //     [{
+  //     },
+  //     {
   //       LATITUDE1: 31.83797,
   //       LONGITUDE1: 122.54033,
   //       NAME: "SHAN SHI",
@@ -118,9 +119,12 @@ function chaInfoAjax(id) {
   //       LONGITUDE: 122.50033,
   //       SOG: 35,
   //       TIME: "2019-12-27 09:02:54 GMT"
-  //     }],
+  //     },
   //   ]
   // });
+  // $("#speed-info-box").show()
+  // ShipSpeedBoxView.showSpeedChart();
+  // close_load();
 }
 
 function getGuanZhuAjax() {
