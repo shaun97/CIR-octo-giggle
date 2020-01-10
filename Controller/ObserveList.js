@@ -132,26 +132,22 @@ var ObserveList = (function () {
         }
     }
 
-    function editShipName(oldShipName, newShipName, item, fleetNameId, shipHTML) {
+    function editShipName(newShipName) {
         //Admin parsing
-        if (fleetName == "") {
+        if (newShipName == "") {
             throw "Please enter something for the fleet name";
         }
 
-        var newShipNameId = newShipName.replace(" ", "_");
-        var oldShipNameId = oldShipName.replace(" ", "_");
-
         //Update html and html ID
-        var newShipNameHTMLId = newShipName.replace(" ","-");
-        shipHTML.id = newShipNameHTMLId;
-        shipHTML.html = newShipName;
-
+        $('.ship-mmsi-' + THIS_SHIP_ITEM.data.MMSI).html(newShipName);
 
         //Update Globals & Nickname
+        THIS_SHIP_ITEM.data.NICKNAME = newShipName;
 
         //Update backend 
 
-        //showData
+        //refresh infobox
+        ShipInfoBox.showData(THIS_SHIP_ITEM.data);
     }
 
 
@@ -163,7 +159,7 @@ var ObserveList = (function () {
         showIndivShips: showIndivShips,
         toggleFleet: toggleFleet,
         loadGuanZhu: loadGuanZhu,
-        editFleetName: editFleetName
+        editFleetName: editFleetName,
+        editShipName: editShipName
     }
 }());
-

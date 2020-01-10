@@ -456,6 +456,11 @@ body .layui-laydate-content td:hover,
   overflow: hidden;
   cursor: pointer;
 }
+#observe-list-box .my-ship-list .ship-in-list .ship-name {
+  width: 180px;
+  margin-right: 0;
+  display: inline-block;
+}
 #observe-list-box .my-ship-list .tree-buttons {
   float: right;
   height: 22px;
